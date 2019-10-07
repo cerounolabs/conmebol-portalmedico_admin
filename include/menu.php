@@ -138,14 +138,89 @@
 
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                           		<i class="icon-Business-ManWoman"></i>
-                           		<span class="hide-menu"> Funcionarios </span>
+                           		<i class="icon-Ambulance"></i>
+                           		<span class="hide-menu"> Lesiones </span>
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="../public/funcionario.php" class="sidebar-link">
+                               		<a href="javascript:void(0)" class="sidebar-link">
                                			<i class="mdi mdi-funcionario"></i>
-                               			<span class="hide-menu"> Funcionarios </span>
+                               			<span class="hide-menu"> Lesiones </span>
+                                    </a>
+                               	</li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                           		<i class="icon-Boom"></i>
+                           		<span class="hide-menu"> Competencias </span>
+                           	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                            	<li class="sidebar-item">
+                               		<a href="javascript:void(0)" class="sidebar-link">
+                               			<i class="mdi mdi-funcionario"></i>
+                               			<span class="hide-menu"> Competencias </span>
+                                    </a>
+                               	</li>
+                            </ul>
+                        </li>
+                        
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                           		<i class="icon-Control"></i>
+                           		<span class="hide-menu"> Equipos </span>
+                           	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                            	<li class="sidebar-item">
+                               		<a href="javascript:void(0)" class="sidebar-link">
+                               			<i class="mdi mdi-funcionario"></i>
+                               			<span class="hide-menu"> Equipos </span>
+                                    </a>
+                               	</li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                           		<i class="icon-Betvibes "></i>
+                           		<span class="hide-menu"> Medicos </span>
+                           	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                            	<li class="sidebar-item">
+                               		<a href="javascript:void(0)" class="sidebar-link">
+                               			<i class="mdi mdi-funcionario"></i>
+                               			<span class="hide-menu"> Medicos </span>
+                                    </a>
+                               	</li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                           		<i class="icon-Bar-Chart "></i>
+                           		<span class="hide-menu"> Reportes </span>
+                           	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                            	<li class="sidebar-item">
+                               		<a href="javascript:void(0)" class="sidebar-link">
+                               			<i class="mdi mdi-funcionario"></i>
+                               			<span class="hide-menu"> Reportes </span>
+                                    </a>
+                               	</li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                           		<i class="icon-Business-ManWoman"></i>
+                           		<span class="hide-menu"> Usuarios </span>
+                           	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                            	<li class="sidebar-item">
+                               		<a href="javascript:void(0)" class="sidebar-link">
+                               			<i class="mdi mdi-funcionario"></i>
+                               			<span class="hide-menu"> Usuarios </span>
                                     </a>
                                	</li>
                             </ul>

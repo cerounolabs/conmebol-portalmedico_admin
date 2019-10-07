@@ -1,5 +1,5 @@
 <?php
-    $api = 'http://api.conmebol.com/sistemalesion/public/v1';
+    $api = 'http://api.conmebol.com/portalmedico/public/v1';
 
     function get_curl($ext){
         global $api;
