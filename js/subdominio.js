@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com.py/sistemalesion/public/v1/100/'+codigo;
+	var urlDominio	= 'http://api.conmebol.com.py/portalmedico/public/v1/100/'+codigo;
 	
 	$('#tableLoad').DataTable({
 		processing	: true,

@@ -19,7 +19,7 @@
         $_SESSION['usu_02'] = 'CONMEBOL';
         $_SESSION['usu_03'] = 'CONFEDERACIÓN SUDAMERICANA DE FÚTBOL';
 
-        $_SESSION['expire'] = time() + 600;
+        $_SESSION['expire'] = time() + 1800;
 
         header('Location: ../../public/home.php');
     } else { 
