@@ -37,13 +37,13 @@
 		
 		switch($work02){
 			case 'C':
-				$result	= post_curl('100/dominio', $dataJSON);
+				$result	= post_curl('100', $dataJSON);
 				break;
 			case 'U':
-				$result	= put_curl('100/dominio/'.$work01, $dataJSON);
+				$result	= put_curl('100/'.$work01, $dataJSON);
 				break;
 			case 'D':
-				$result	= delete_curl('100/dominio/'.$work01, $dataJSON);
+				$result	= delete_curl('100/'.$work01, $dataJSON);
 				break;
 		}
 	}
