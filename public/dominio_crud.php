@@ -25,7 +25,7 @@
     }
 
 	if ($workCodigo <> 0){
-		$dataJSON			= get_curl('000/dominio/'.$workCodigo);
+		$dataJSON			= get_curl('000/'.$workCodigo);
 		if ($dataJSON['code'] == 200){
 			$row_01			= $dataJSON['data'][0]['tipo_estado_codigo'];
 			$row_02			= $dataJSON['data'][0]['tipo_estado_nombre'];
