@@ -35,7 +35,7 @@
             $row_06			= $dataJSON['data'][0]['tipo_observacion'];
         }
         
-        if ($row_01 == 'H'){
+        if ($row_01 === 'A'){
             $row_01_h = 'selected';
             $row_01_d = '';
         }else{
@@ -160,8 +160,8 @@
                                         <label for="dominioEstado">Estado</label>
                                 		<select id="dominioEstado" name="dominioEstado" class="select2 form-control custom-select" style="width: 100%; height:36px;" <?php echo $workReadonly; ?>>
                                     		<optgroup label="Estado">
-                                        		<option value="H" <?php echo $row_01_h; ?>>HABILITADO</option>
-                                        		<option value="I" <?php echo $row_01_d; ?>>DESHABILITADO</option>
+                                        		<option value="A" <?php echo $row_01_h; ?>>ACTIVO</option>
+                                        		<option value="I" <?php echo $row_01_d; ?>>INACTIVO</option>
                                     		</optgroup>
                                 		</select>
                                     </div>
