@@ -17,7 +17,11 @@
         $valorDisciplina    = 'FOOTBALL';
     }
 
-    
+    if(isset($_GET['competencia'])){
+        $valorCompetencia   = $_GET['competencia'];
+    } else {
+        $valorCompetencia   = 0;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +72,10 @@
                                     <li class="breadcrumb-item" aria-current="page">
                                         <a href="../public/disciplina.php">Disciplinas</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Competencias</li>
+                                    <li class="breadcrumb-item" aria-current="page">
+                                        <a href="../public/competencia.php?disciplina=<?php echo $valorDisciplina; ?>">Competencias</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Juegos</li>
                                 </ol>
                             </nav>
                         </div>
@@ -90,17 +97,17 @@
                     <div class="col-12">
                         <div class="row">
 <?php
-    $competenciaJSON = get_curl('200/disciplina/'.$valorDisciplina);
+    $juegoJSON = get_curl('200/juego/'.$valorCompetencia);
 
-    if ($competenciaJSON['code'] === 200) {
-        foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) { 
+    if ($juegoJSON['code'] === 200) {
+        foreach ($juegoJSON['data'] as $juegoKEY => $juegoVALUE) { 
 ?>
-                            <div class="col-md-3">
-                                <div class="card" style="height:200px;">
-                                    <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="<?php echo $competenciaVALUE['competicion_nombre']; ?>">
+                            <div class="col-sm-12 col-md-4 col-lg-3">
+                                <div class="card" style="height:250px;">
                                     <div class="card-body">
-                                        <h4 class="card-title"><?php echo $competenciaVALUE['competicion_nombre']; ?></h4>
-                                        <a href="../public/juego.php?disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $competenciaVALUE['competicion_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Ver Juegos</a>
+                                        <h4 class="card-title"><?php echo $juegoVALUE['equipo_local_nombre'].' '.$juegoVALUE['equipo_local_resultado_final'].' <br> vs <br> '.$juegoVALUE['equipo_visitante_nombre'].' '.$juegoVALUE['equipo_visitante_resultado_final']; ?></h4>
+                                        <p class="card-text"> FASE: <?php echo $juegoVALUE['juego_fase']; ?> <br> ESTADO: <?php echo $juegoVALUE['juego_estado']; ?> <br> HORARIO: <?php echo $juegoVALUE['juego_horario']; ?></p>
+                                        <a href="javascript:void(0)" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Ver Detalle</a>
                                     </div>
                                 </div>
                             </div>
