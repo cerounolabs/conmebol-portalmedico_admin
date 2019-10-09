@@ -10,14 +10,6 @@
         $codeRest       = 0;
         $msgRest        = '';
     }
-
-    if(isset($_GET['disciplina'])){
-        $valorDisciplina    = $_GET['disciplina'];
-    } else {
-        $valorDisciplina    = 'FOOTBALL';
-    }
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -65,10 +57,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../public/home.php">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/disciplina.php">Disciplinas</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Competencias</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Disciplina</li>
                                 </ol>
                             </nav>
                         </div>
@@ -89,25 +78,35 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
-<?php
-    $competenciaJSON = get_curl('200/disciplina/'.$valorDisciplina);
-
-    if ($competenciaJSON['code'] === 200) {
-        foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) { 
-?>
-                            <div class="col-md-3">
-                                <div class="card" style="height:200px;">
-                                    <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="<?php echo $competenciaVALUE['competicion_nombre']; ?>">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="F&uacute;tbol de Campo">
                                     <div class="card-body">
-                                        <h4 class="card-title"><?php echo $competenciaVALUE['competicion_nombre']; ?></h4>
-                                        <a href="javascript:void(0)" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Ver Juegos</a>
+                                        <h4 class="card-title">F&uacute;tbol de Campo</h4>
+                                        <a href="../public/competencia.php?disciplina=FOOTBALL" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
                                     </div>
                                 </div>
                             </div>
-<?php
-        }
-    }
-?>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="F&uacute;tbol de Sal&oacute;n">
+                                    <div class="card-body">
+                                        <h4 class="card-title">F&uacute;tbol de Sal&oacute;n</h4>
+                                        <a href="../public/competencia.php?disciplina=FUTSAL" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="F&uacute;tbol de Playa">
+                                    <div class="card-body">
+                                        <h4 class="card-title">F&uacute;tbol de Playa</h4>
+                                        <a href="../public/competencia.php?disciplina=BEACH_SOCCER" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

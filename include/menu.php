@@ -158,9 +158,30 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="../public/competencia.php" class="sidebar-link">
-                               			<i class="mdi mdi-funcionario"></i>
-                               			<span class="hide-menu"> Competencias </span>
+                               		<a href="../public/disciplina.php" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> Disciplinas </span>
+                                    </a>
+                               	</li>
+                                
+                                <li class="sidebar-item">
+                               		<a href="../public/competencia.php?disciplina=FOOTBALL" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> F&uacute;tbol de Campo </span>
+                                    </a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/competencia.php?disciplina=FUTSAL" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> F&uacute;tbol de Sal&oacute;n </span>
+                                    </a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/competencia.php?disciplina=BEACH_SOCCER" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> F&uacute;tbol de Playa </span>
                                     </a>
                                	</li>
                             </ul>
