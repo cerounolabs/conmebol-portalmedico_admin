@@ -30,6 +30,12 @@ File: scss
 @import url(icons/material-design-iconic-font/css/materialdesignicons.min.css);
 @import url(icons/crypto-icons/cryptocoins.css);
 @import url(icons/iconmind/iconmind.css);
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .search-box .app-search .form-control, .topbar .mega-dropdown .dropdown-menu {
   border-radius: 0px; }
 

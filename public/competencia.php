@@ -93,15 +93,20 @@
     $competenciaJSON = get_curl('200/disciplina/'.$valorDisciplina);
 
     if ($competenciaJSON['code'] === 200) {
-        foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) { 
+        foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) {
+            $imgFile = getImagenBase64($competenciaVALUE['competicion_imagen_tipo'], $competenciaVALUE['competicion_codigo'], $competenciaVALUE['competicion_imagen_valor']);
 ?>
-                            <div class="col-md-3">
-                                <div class="card" style="height:200px;">
-                                    <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="<?php echo $competenciaVALUE['competicion_nombre']; ?>">
+                            <div class="col-md-2">
+                                <div class="card" style="height:200px; padding:20px;">
+                                    <a href="../public/juego.php?disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $competenciaVALUE['competicion_codigo']; ?>" style="height:100%">
+                                        <img class="card-img-top img-responsive" src="<?php echo $imgFile; ?>" alt="<?php echo $competenciaVALUE['competicion_nombre']; ?>" style="height:100%">
+                                    <!--
                                     <div class="card-body">
-                                        <h4 class="card-title"><?php echo $competenciaVALUE['competicion_nombre']; ?></h4>
-                                        <a href="../public/juego.php?disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $competenciaVALUE['competicion_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Ver Juegos</a>
+                                        <h4 class="card-title"><?php //echo $competenciaVALUE['competicion_nombre']; ?></h4>
+                                        Ver Juegos
                                     </div>
+                                    -->
+                                    </a>
                                 </div>
                             </div>
 <?php
