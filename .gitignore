@@ -80,4 +80,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#Imagen
+imagen/*
+
 # End of https://www.gitignore.io/api/linux,macos,windows,visualstudiocode

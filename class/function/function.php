@@ -11,6 +11,43 @@
         return $result;
     }
 
+    function getImagenBase64($var01, $var02, $var03){
+        $path   = '../imagen/competencia/img_'.$var02;
+        $ext    = '';
+        $imgFile= '';
+        $result = '';
+
+        if ($var01 === "image/png"){
+            $result   = $path.'.png';
+        } elseif ($var01 === 'image/jpeg') {
+            $result   = $path.'.jpeg';
+        } elseif ($var01 === 'image/jpg') {
+            $result   = $path.'.jpg';
+        } elseif ($var01 === 'image/gif') {
+            $result   = $path.'.gif';
+        }
+
+        if (!file_exists($result)) {
+            $bin        = base64_decode($var03);
+            $size       = getImageSizeFromString($bin);
+        
+            if (empty($size['mime']) || strpos($size['mime'], 'image/') !== 0) {
+                die();
+            }
+        
+            $ext        = substr($size['mime'], 6);
+        
+            if (!in_array($ext, ['png', 'gif', 'jpeg', 'jpg'])) {
+                die();
+            }
+        
+            $result     = $path.'.'.$ext;
+            file_put_contents($result, $bin);
+        }
+
+        return $result;
+    }
+
     function getTitleDominio($var01){
         switch ($var01) {
             case 'PARTECUERPO':
