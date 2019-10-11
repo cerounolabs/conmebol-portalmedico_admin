@@ -194,7 +194,7 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="javascript:void(0)" class="sidebar-link">
+                               		<a href="../public/equipo.php" class="sidebar-link">
                                			<i class="mdi mdi-funcionario"></i>
                                			<span class="hide-menu"> Equipos </span>
                                     </a>
