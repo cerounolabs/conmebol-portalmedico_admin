@@ -94,12 +94,11 @@
 
     if ($competenciaJSON['code'] === 200) {
         foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) {
-            $imgFile = getImagenBase64($competenciaVALUE['competicion_imagen_tipo'], $competenciaVALUE['competicion_codigo'], $competenciaVALUE['competicion_imagen_valor']);
 ?>
                             <div class="col-md-2">
                                 <div class="card" style="height:200px; padding:20px;">
                                     <a href="../public/juego.php?disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $competenciaVALUE['competicion_codigo']; ?>" style="height:100%">
-                                        <img class="card-img-top img-responsive" src="<?php echo $imgFile; ?>" alt="<?php echo $competenciaVALUE['competicion_nombre']; ?>" style="height:100%">
+                                        <img class="card-img-top img-responsive" src="../<?php echo $competenciaVALUE['competicion_imagen_path']; ?>" alt="<?php echo $competenciaVALUE['competicion_nombre']; ?>" style="height:100%">
                                     <!--
                                     <div class="card-body">
                                         <h4 class="card-title"><?php //echo $competenciaVALUE['competicion_nombre']; ?></h4>
