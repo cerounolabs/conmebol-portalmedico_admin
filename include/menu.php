@@ -144,28 +144,28 @@
                             <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
                                		<a href="../public/disciplina.php?tipo=LES" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
+                               			<i class="mdi mdi-lesion"></i>
                                			<span class="hide-menu"> Disciplinas </span>
                                     </a>
                                	</li>
                                 
                                 <li class="sidebar-item">
                                		<a href="../public/competencia.php?tipo=LES&disciplina=FOOTBALL" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
+                               			<i class="mdi mdi-lesion"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Campo </span>
                                     </a>
                                	</li>
 
                                 <li class="sidebar-item">
                                		<a href="../public/competencia.php?tipo=LES&disciplina=FUTSAL" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
+                               			<i class="mdi mdi-lesion"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Sal&oacute;n </span>
                                     </a>
                                	</li>
 
                                 <li class="sidebar-item">
                                		<a href="../public/competencia.php?tipo=LES&disciplina=BEACH_SOCCER" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
+                               			<i class="mdi mdi-lesion"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Playa </span>
                                     </a>
                                	</li>
