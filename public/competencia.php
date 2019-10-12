@@ -11,13 +11,23 @@
         $msgRest        = '';
     }
 
+    if(isset($_GET['tipo'])){
+        $valorTipo          = $_GET['tipo'];
+    } else {
+        $valorTipo          = 'COM';
+    }
+
     if(isset($_GET['disciplina'])){
         $valorDisciplina    = $_GET['disciplina'];
     } else {
         $valorDisciplina    = 'FOOTBALL';
     }
 
-    
+    if($valorTipo === 'COM'){
+        $urlTipo            = 'juego';
+    } else {
+        $urlTipo            = 'lesion';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +107,7 @@
 ?>
                             <div class="col-md-2">
                                 <div class="card" style="height:200px; padding:20px;">
-                                    <a href="../public/juego.php?disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $competenciaVALUE['competicion_codigo']; ?>" style="height:100%">
+                                    <a href="../public/<?php echo $urlTipo; ?>.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $competenciaVALUE['competicion_codigo']; ?>" style="height:100%">
                                         <img class="card-img-top img-responsive" src="../<?php echo $competenciaVALUE['competicion_imagen_path']; ?>" alt="<?php echo $competenciaVALUE['competicion_nombre']; ?>" style="height:100%">
                                     <!--
                                     <div class="card-body">

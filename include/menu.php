@@ -141,11 +141,32 @@
                            		<i class="icon-Ambulance"></i>
                            		<span class="hide-menu"> Lesiones </span>
                            	</a>
-							<ul aria-expanded="false" class="collapse first-level">
-                            	<li class="sidebar-item">
-                               		<a href="javascript:void(0)" class="sidebar-link">
-                               			<i class="mdi mdi-funcionario"></i>
-                               			<span class="hide-menu"> Lesiones </span>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                               		<a href="../public/disciplina.php?tipo=LES" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> Disciplinas </span>
+                                    </a>
+                               	</li>
+                                
+                                <li class="sidebar-item">
+                               		<a href="../public/competencia.php?tipo=LES&disciplina=FOOTBALL" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> F&uacute;tbol de Campo </span>
+                                    </a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/competencia.php?tipo=LES&disciplina=FUTSAL" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> F&uacute;tbol de Sal&oacute;n </span>
+                                    </a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/competencia.php?tipo=LES&disciplina=BEACH_SOCCER" class="sidebar-link">
+                               			<i class="mdi mdi-competencia"></i>
+                               			<span class="hide-menu"> F&uacute;tbol de Playa </span>
                                     </a>
                                	</li>
                             </ul>
@@ -158,28 +179,28 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="../public/disciplina.php" class="sidebar-link">
+                               		<a href="../public/disciplina.php?tipo=COM" class="sidebar-link">
                                			<i class="mdi mdi-competencia"></i>
                                			<span class="hide-menu"> Disciplinas </span>
                                     </a>
                                	</li>
                                 
                                 <li class="sidebar-item">
-                               		<a href="../public/competencia.php?disciplina=FOOTBALL" class="sidebar-link">
+                               		<a href="../public/competencia.php?tipo=COM&disciplina=FOOTBALL" class="sidebar-link">
                                			<i class="mdi mdi-competencia"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Campo </span>
                                     </a>
                                	</li>
 
                                 <li class="sidebar-item">
-                               		<a href="../public/competencia.php?disciplina=FUTSAL" class="sidebar-link">
+                               		<a href="../public/competencia.php?tipo=COM&disciplina=FUTSAL" class="sidebar-link">
                                			<i class="mdi mdi-competencia"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Sal&oacute;n </span>
                                     </a>
                                	</li>
 
                                 <li class="sidebar-item">
-                               		<a href="../public/competencia.php?disciplina=BEACH_SOCCER" class="sidebar-link">
+                               		<a href="../public/competencia.php?tipo=COM&disciplina=BEACH_SOCCER" class="sidebar-link">
                                			<i class="mdi mdi-competencia"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Playa </span>
                                     </a>

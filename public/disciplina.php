@@ -10,6 +10,12 @@
         $codeRest       = 0;
         $msgRest        = '';
     }
+
+    if(isset($_GET['tipo'])){
+        $valorTipo      = $_GET['tipo'];
+    } else {
+        $valorTipo      = 'COM';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +89,7 @@
                                     <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="F&uacute;tbol de Campo">
                                     <div class="card-body">
                                         <h4 class="card-title">F&uacute;tbol de Campo</h4>
-                                        <a href="../public/competencia.php?disciplina=FOOTBALL" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
+                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=FOOTBALL" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +99,7 @@
                                     <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="F&uacute;tbol de Sal&oacute;n">
                                     <div class="card-body">
                                         <h4 class="card-title">F&uacute;tbol de Sal&oacute;n</h4>
-                                        <a href="../public/competencia.php?disciplina=FUTSAL" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
+                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=FUTSAL" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +109,7 @@
                                     <img class="card-img-top img-responsive" src="../assets/images/big/img1.jpg" alt="F&uacute;tbol de Playa">
                                     <div class="card-body">
                                         <h4 class="card-title">F&uacute;tbol de Playa</h4>
-                                        <a href="../public/competencia.php?disciplina=BEACH_SOCCER" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
+                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=BEACH_SOCCER" class="btn btn-info" style="background-color:#005ea6;">Ver Competencias</a>
                                     </div>
                                 </div>
                             </div>

@@ -11,6 +11,12 @@
         $msgRest        = '';
     }
 
+    if(isset($_GET['tipo'])){
+        $valorTipo          = $_GET['tipo'];
+    } else {
+        $valorTipo          = 'COM';
+    }
+
     if(isset($_GET['disciplina'])){
         $valorDisciplina    = $_GET['disciplina'];
     } else {
@@ -73,7 +79,7 @@
                                         <a href="../public/disciplina.php">Disciplinas</a>
                                     </li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/competencia.php?disciplina=<?php echo $valorDisciplina; ?>">Competencias</a>
+                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>">Competencias</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Juegos</li>
                                 </ol>

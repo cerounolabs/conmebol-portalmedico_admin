@@ -29,8 +29,16 @@
                 $_SESSION['expire'] = time() + 1800;
     
                 $urlAct             = $_SERVER['REQUEST_URI'];
-                $urlAnt             = substr($_SERVER['HTTP_REFERER'], 39);
                 $urlPat             = strtoupper(substr(substr($_SERVER['SCRIPT_FILENAME'], 48), 0, -4));
+                $ulrPos             = strpos($_SERVER['HTTP_REFERER'], 'public');
+                $urlAnt             = substr($_SERVER['HTTP_REFERER'], $ulrPos);
+                $ulrPos             = strpos($urlAnt, '.php?');
+
+                if ($ulrPos > 0){
+                    $urlQui = substr($urlAnt, $ulrPos);
+                    $ulrPos = strlen($urlQui);
+                    $urlAnt = substr($urlAnt, 0, ($ulrPos * -1));
+                }
 /*
                 foreach ($seg_01['data'] as $seg_01Key=>$seg_01Array) {
                     if ($urlPat == $seg_01Array['programa_nombre']){
