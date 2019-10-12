@@ -80,7 +80,7 @@ $(document).ready(function() {
 			{ data				: 'organizacion_codigo', name : 'organizacion_codigo'},
 			{ data				: 'organizacion_nombre', name : 'organizacion_nombre'},
 			{ data				: 'organizacion_nombre_corto', name : 'organizacion_nombre_corto'},
-			{ render			: function (data, type, full, meta) {return '<img src="image/png;base64,' + full.organizacion_imagen_valor + '" height="50" />';}},
+			{ render			: function (data, type, full, meta) {return '<img src="../' + full.organizacion_imagen_path + '" height="50" />';}},
 			{ data				: 'equipo_ultima_actualizacion', name : 'equipo_ultima_actualizacion'},
 		]
 	});
