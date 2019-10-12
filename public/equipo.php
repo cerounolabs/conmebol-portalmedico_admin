@@ -86,15 +86,15 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="">
                                             <tr class="bg-light">
-                                                <th class="border-top-0">C&Oacute;DIGO</th>
-                                                <th class="border-top-0">ESTADO</th>
-                                                <th class="border-top-0">TIPO</th>
+                                                <th class="border-top-0">EQUIPO C&Oacute;D.</th>
+                                                <th class="border-top-0">EQUIPO ESTADO</th>
+                                                <th class="border-top-0">EQUIPO TIPO</th>
                                                 <th class="border-top-0">EQUIPO</th>
                                                 <th class="border-top-0">EQUIPO ABR.</th>
-                                                <th class="border-top-0">PA&Iacute;S</th>
-                                                <th class="border-top-0">REGI&Oacute;N</th>
-                                                <th class="border-top-0">CIUDAD</th>
-                                                <th class="border-top-0">C&Oacute;DIGO POSTAL</th>
+                                                <th class="border-top-0">EQUIPO PA&Iacute;S</th>
+                                                <th class="border-top-0">EQUIPO REGI&Oacute;N</th>
+                                                <th class="border-top-0">EQUIPO CIUDAD</th>
+                                                <th class="border-top-0">EQUIPO C&Oacute;DIGO POSTAL</th>
                                                 <th class="border-top-0">ORGANIZACI&Oacute;N C&Oacute;D.</th>
                                                 <th class="border-top-0">ORGANIZACI&Oacute;N</th>
                                                 <th class="border-top-0">ORGANIZACI&Oacute;N ABR.</th>
