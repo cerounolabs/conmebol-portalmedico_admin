@@ -103,8 +103,8 @@
                     <div class="col-12">
                         <div class="row">
 <?php
-    $juegoJSON = get_curl('200/juego/'.$valorCompetencia);
-
+    $juegoJSON = get_curl('200/juego/'.$valorCompetencia.'/'.$usu_04);
+    
     if ($juegoJSON['code'] === 200) {
         foreach ($juegoJSON['data'] as $juegoKEY => $juegoVALUE) { 
 ?>

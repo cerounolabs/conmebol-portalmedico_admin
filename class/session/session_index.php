@@ -18,6 +18,35 @@
         $_SESSION['usu_01'] = 'ADMINISTRADOR';
         $_SESSION['usu_02'] = 'CONMEBOL';
         $_SESSION['usu_03'] = 'CONFEDERACIÓN SUDAMERICANA DE FÚTBOL';
+        $_SESSION['usu_04'] = 39393;
+
+        $_SESSION['expire'] = time() + 1800;
+
+        header('Location: ../../public/home.php');
+
+    } elseif ($val_01 == 'river@conmebol.com' && $val_02 == 'conmebol2019') {
+        $_SESSION['log_01'] = $val_01;
+        $_SESSION['log_02'] = $val_02;
+        $_SESSION['log_03'] = $val_03;
+
+        $_SESSION['usu_01'] = 'ADMINISTRADOR';
+        $_SESSION['usu_02'] = 'RIVER PLATE';
+        $_SESSION['usu_03'] = 'CLUB ATLETICO RIVER PLATE';
+        $_SESSION['usu_04'] = 48593;
+
+        $_SESSION['expire'] = time() + 1800;
+
+        header('Location: ../../public/home.php');
+
+    } elseif ($val_01 == 'flamengo@conmebol.com' && $val_02 == 'conmebol2019') {
+        $_SESSION['log_01'] = $val_01;
+        $_SESSION['log_02'] = $val_02;
+        $_SESSION['log_03'] = $val_03;
+
+        $_SESSION['usu_01'] = 'ADMINISTRADOR';
+        $_SESSION['usu_02'] = 'FLAMENGO';
+        $_SESSION['usu_03'] = 'CLUBE DE REGATAS DO FLAMENGO';
+        $_SESSION['usu_04'] = 50627;
 
         $_SESSION['expire'] = time() + 1800;
 
@@ -44,6 +73,7 @@
             $_SESSION['usu_01'] = $val_01;
             $_SESSION['usu_02'] = $val_02;
             $_SESSION['usu_03'] = $val_03;
+            $_SESSION['usu_04'] = 39393;
     
             $_SESSION['expire'] = time() + 600;
             
