@@ -157,39 +157,67 @@
                                             <input id="workModo" name="workModo" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $workModo; ?>" required readonly>
                                             <input id="workDominio" name="workDominio" class="form-control" type="hidden" placeholder="Dominio" value="<?php echo $workDominio; ?>" required readonly>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="var01">ESTADO</label>
-                                            <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" <?php echo $workReadonly; ?>>
-                                                <optgroup label="ESTADO">
-                                                    <option value="A" <?php echo $row_01_h; ?>>ACTIVO</option>
-                                                    <option value="I" <?php echo $row_01_d; ?>>INACTIVO</option>
-                                                </optgroup>
-                                            </select>
+
+                                        <div class="row pt-3">
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var01">ESTADO</label>
+                                                    <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" <?php echo $workReadonly; ?>>
+                                                        <optgroup label="ESTADO">
+                                                            <option value="A" <?php echo $row_01_h; ?>>ACTIVO</option>
+                                                            <option value="I" <?php echo $row_01_d; ?>>INACTIVO</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var02">ORDEN</label>
+                                                    <input id="var02" name="var02" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="ORDEN" value="<?php echo $row_02; ?>" <?php echo $workReadonly; ?>>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="var02">ORDEN</label>
-                                            <input id="var02" name="var02" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="ORDEN" value="<?php echo $row_02; ?>" <?php echo $workReadonly; ?>>
+
+                                        <div class="row pt-3">
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var03_1">NOMBRE EN INGLES</label>
+                                                    <input id="var03_1" name="var03_1" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NOMBRE EN INGLES" value="<?php echo $row_03_1; ?>" required <?php echo $workReadonly; ?>>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var03_2">NOMBRE EN CASTELLANO</label>
+                                                    <input id="var03_2" name="var03_2" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NOMBRE EN CASTELLANO" value="<?php echo $row_03_2; ?>" required <?php echo $workReadonly; ?>>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var03_3">NOMBRE EN PORTUGUES</label>
+                                                    <input id="var03_3" name="var03_3" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NOMBRE EN PORTUGUES" value="<?php echo $row_03_3; ?>" required <?php echo $workReadonly; ?>>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="var03_1">NOMBRE EN INGLES</label>
-                                            <input id="var03_1" name="var03_1" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NOMBRE EN INGLES" value="<?php echo $row_03_1; ?>" required <?php echo $workReadonly; ?>>
+
+                                        <div class="row pt-3">
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var04">IMAGEN</label>
+                                                    <input id="var04" name="var04" class="form-control" type="text" style="text-transform:lowercase; height:40px;" placeholder="IMAGEN" value="<?php echo $row_04; ?>" <?php echo $workReadonly; ?>>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var05">DOMINIO</label>
+                                                    <input id="var05" name="var05" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="DOMINIO" value="<?php echo $workDominio; ?>" required readonly>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="var03_2">NOMBRE EN CASTELLANO</label>
-                                            <input id="var03_2" name="var03_2" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NOMBRE EN CASTELLANO" value="<?php echo $row_03_2; ?>" required <?php echo $workReadonly; ?>>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="var03_3">NOMBRE EN PORTUGUES</label>
-                                            <input id="var03_3" name="var03_3" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NOMBRE EN PORTUGUES" value="<?php echo $row_03_3; ?>" required <?php echo $workReadonly; ?>>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="var04">IMAGEN</label>
-                                            <input id="var04" name="var04" class="form-control" type="text" style="text-transform:lowercase; height:40px;" placeholder="IMAGEN" value="<?php echo $row_04; ?>" <?php echo $workReadonly; ?>>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="var05">DOMINIO</label>
-                                            <input id="var05" name="var05" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="DOMINIO" value="<?php echo $workDominio; ?>" required readonly>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="var06">OBSERVACI&oacute;N</label>
                                             <textarea id="var06" name="var06" class="form-control" rows="5" style="text-transform:uppercase;"  <?php echo $workReadonly; ?>><?php echo $row_06; ?></textarea>
