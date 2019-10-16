@@ -97,7 +97,9 @@
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">ORDEN</th>
                                                 <th class="border-top-0">ESTADO</th>
-                                                <th class="border-top-0">NOMBRE</th>
+                                                <th class="border-top-0">NOMBRE ING</th>
+                                                <th class="border-top-0">NOMBRE CAS</th>
+                                                <th class="border-top-0">NOMBRE POR</th>
                                                 <th class="border-top-0">DOMINIO</th>
                                                 <th class="border-top-0">OBSERVACI&Oacute;N</th>
                                                 <th class="border-top-0">USUARIO</th>

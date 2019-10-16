@@ -51,15 +51,15 @@
     function getTitleDominio($var01){
         switch ($var01) {
             case 'PARTECUERPO':
-                $result = 'Parte del Cuerpo';
+                $result = 'PARTE DEL CUERPO';
                 break;
 
             case 'GRUPODIAGNOSTICO':
-                $result = 'Grupo Diagnostico';
+                $result = 'GRUPO DIAGNÓSTICO';
                 break;
             
             case 'TIPOLESION':
-                $result = 'Tipo Lesión';
+                $result = 'TIPO LESIÓN';
                 break;
         }
 
@@ -69,11 +69,11 @@
     function getTitleDominioSub($var01){
         switch ($var01) {
             case 'ZONACUERPO':
-                $result = 'Zona del Cuerpo';
+                $result = 'ZONA DEL CUERPO';
                 break;
 
             case 'DIAGNOSTICO':
-                $result = 'Diagnostico';
+                $result = 'DIAGNÓSTICO';
                 break;
         }
 
