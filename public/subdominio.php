@@ -94,17 +94,26 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $valueDominio; ?>">
                                             <tr class="bg-light">
-                                                <th class="border-top-0">C&Oacute;DIGO</th>
-                                                <th class="border-top-0">ORDEN</th>
-                                                <th class="border-top-0">ESTADO</th>
-                                                <th class="border-top-0">TIPO</th>
-                                                <th class="border-top-0">NOMBRE</th>
-                                                <th class="border-top-0">DOMINIO</th>
-                                                <th class="border-top-0">OBSERVACI&Oacute;N</th>
-                                                <th class="border-top-0">USUARIO</th>
-                                                <th class="border-top-0">FECHA - HORA</th>
-                                                <th class="border-top-0">IP</th>
-                                                <th class="border-top-0">ACCI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">C&Oacute;DIGO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">ORDEN</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">ESTADO</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="3">TIPO</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="3">NOMBRE</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">DOMINIO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">OBSERVACI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">USUARIO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">FECHA - HORA</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">IP</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">ACCI&Oacute;N</th>
+                                            </tr>
+
+                                            <tr class="bg-light">
+                                                <th class="border-top-0" style="text-align:center;">INGLES</th>
+                                                <th class="border-top-0" style="text-align:center;">CASTELLANO</th>
+                                                <th class="border-top-0" style="text-align:center;">PORTUGUES</th>
+                                                <th class="border-top-0" style="text-align:center;">INGLES</th>
+                                                <th class="border-top-0" style="text-align:center;">CASTELLANO</th>
+                                                <th class="border-top-0" style="text-align:center;">PORTUGUES</th>
                                             </tr>
                                         </thead>
                                     </table>

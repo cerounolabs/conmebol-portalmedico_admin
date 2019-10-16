@@ -35,22 +35,26 @@ $(document).ready(function() {
 			dataSrc				: 'data'
 		},
 		columnDefs	: [
-			{ targets			: [0],	visible : true,	searchable : true,	orderData : [0, 0] },
+			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
 			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-			{ targets			: [4],	visible : false,searchable : false,	orderData : [4, 0] },
+			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
-			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] },
-			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
+			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
+			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
 			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
-			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
+			{ targets			: [10],	visible : false,searchable : false,	orderData : [10, 0]},
+			{ targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0]}
 		],
 		columns		: [
 			{ data				: 'tipo_codigo', name : 'tipo_codigo'},
 			{ data				: 'tipo_orden', name : 'tipo_orden'},
 			{ data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
-			{ data				: 'tipo_nombre', name : 'tipo_nombre'},
+			{ data				: 'tipo_nombre_ingles', name : 'tipo_nombre_ingles'},
+			{ data				: 'tipo_nombre_castellano', name : 'tipo_nombre_castellano'},
+			{ data				: 'tipo_nombre_portugues', name : 'tipo_nombre_portugues'},
 			{ data				: 'tipo_dominio', name : 'tipo_dominio'},
 			{ data				: 'tipo_observacion', name : 'tipo_observacion'},
 			{ data				: 'tipo_usuario', name : 'tipo_usuario'},
