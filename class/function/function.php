@@ -50,16 +50,72 @@
 
     function getTitleDominio($var01){
         switch ($var01) {
-            case 'PARTECUERPO':
-                $result = 'PARTE DEL CUERPO';
+            case 'CUERPOPARTE':
+                $result = 'CUERPO PARTE';
                 break;
 
-            case 'GRUPODIAGNOSTICO':
-                $result = 'GRUPO DIAGNÓSTICO';
+            case 'CUERPOZONA':
+                $result = 'CUERPO ZONA';
                 break;
             
-            case 'TIPOLESION':
-                $result = 'TIPO LESIÓN';
+            case 'DIAGNOSTICOTIPO':
+                $result = 'DIAGNÓSTICO TIPO';
+                break;
+
+            case 'DIAGNOSTICOGRUPO':
+                $result = 'DIAGNÓSTICO GRUPO';
+                break;
+
+            case 'DIAGNOSTICOTIEMPO':
+                $result = 'DIAGNÓSTICO TIEMPO';
+                break;
+
+            case 'DIAGNOSTICORECUPERACION':
+                $result = 'DIAGNÓSTICO RECUPERACIÓN';
+                break;
+
+            case 'LESIONESTADO':
+                $result = 'LESIÓN ESTADO';
+                break;
+
+            case 'LESIONTIPO':
+                $result = 'LESIÓN TIPO';
+                break;
+
+            case 'LESIONCARACTERISTICA':
+                $result = 'LESIÓN CARACTERISTICA';
+                break;
+
+            case 'LESIONREINCIDENCIA':
+                $result = 'LESIÓN REINCIDENCIA';
+                break;
+
+            case 'LESIONCAUSA':
+                $result = 'LESIÓN CAUSA';
+                break;
+
+            case 'LESIONFALTA':
+                $result = 'LESIÓN FALTA';
+                break;
+
+            case 'CAMPOCLIMA':
+                $result = 'CAMPO CLIMA';
+                break;
+
+            case 'CAMPODISTANCIA':
+                $result = 'CAMPO DISTANCIA';
+                break;
+
+            case 'CAMPOTRASLADO':
+                $result = 'CAMPO TRASLADO';
+                break;
+
+            case 'CAMPOTIPO':
+                $result = 'CAMPO TIPO';
+                break;
+
+            case 'CAMPOPOSICION':
+                $result = 'CAMPO POSICIÓN';
                 break;
         }
 
