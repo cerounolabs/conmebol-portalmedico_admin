@@ -380,7 +380,7 @@
                                 </li>
 
                                 <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=TIPOCAMPO" class="sidebar-link">
+                                    <a href="../public/dominio.php?dominio=CAMPOTIPO" class="sidebar-link">
                                	        <i class="mdi mdi-parm"></i>
                                		    <span class="hide-menu"> Campo Juego </span>
                                	    </a>
