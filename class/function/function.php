@@ -117,6 +117,14 @@
             case 'CAMPOPOSICION':
                 $result = 'CAMPO POSICIÓN';
                 break;
+
+            case 'USUARIOESTADO':
+                $result = 'USUARIO ESTADO';
+                break;
+
+            case 'USUARIOROL':
+                $result = 'USUARIO ROL';
+                break;
         }
 
         return $result;
@@ -124,8 +132,8 @@
 
     function getTitleDominioSub($var01){
         switch ($var01) {
-            case 'ZONACUERPO':
-                $result = 'ZONA DEL CUERPO';
+            case 'CUERPOZONA':
+                $result = 'CUERPO ZONA';
                 break;
 
             case 'DIAGNOSTICO':
@@ -138,12 +146,12 @@
 
     function getDominioSub($var01){
         switch ($var01) {
-            case 'ZONACUERPO':
-                $result = 'PARTECUERPO';
+            case 'CUERPOZONA':
+                $result = 'CUERPOPARTE';
                 break;
 
             case 'DIAGNOSTICO':
-                $result = 'GRUPODIAGNOSTICO';
+                $result = 'DIAGNOSTICOGRUPO';
                 break;
         }
 

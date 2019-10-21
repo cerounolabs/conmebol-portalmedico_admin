@@ -392,6 +392,20 @@
                                		    <span class="hide-menu"> Campo Posici&oacute;n </span>
                                	    </a>
                                 </li>
+
+                                <li class="sidebar-item">
+                                    <a href="../public/dominio.php?dominio=USUARIOESTADO" class="sidebar-link">
+                               	        <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Usuario Estado </span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <a href="../public/dominio.php?dominio=USUARIOROL" class="sidebar-link">
+                               	        <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Usuario Rol </span>
+                               	    </a>
+                                </li>
                             </ul>
                         </li>
                         
