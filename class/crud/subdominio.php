@@ -52,7 +52,7 @@
 				break;
 		}
 	}
-	echo $result;
+
 	$result		= json_decode($result, true);
 
 	if ($work02 == 'D'){
