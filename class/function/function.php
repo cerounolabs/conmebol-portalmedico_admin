@@ -122,6 +122,10 @@
                 $result = 'USUARIO ESTADO';
                 break;
 
+            case 'USUARIOACCESO':
+                $result = 'USUARIO ACCESO';
+                break;
+
             case 'USUARIOROL':
                 $result = 'USUARIO ROL';
                 break;
@@ -152,6 +156,20 @@
 
             case 'DIAGNOSTICO':
                 $result = 'DIAGNOSTICOGRUPO';
+                break;
+        }
+
+        return $result;
+    }
+
+    function getTitlePersona($var01){
+        switch ($var01) {
+            case 'USUARIO':
+                $result = 'USUARIOS';
+                break;
+
+            case 'MEDICO':
+                $result = 'MÉDICOS';
                 break;
         }
 

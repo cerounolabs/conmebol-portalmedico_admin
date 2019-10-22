@@ -216,7 +216,7 @@
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
                                		<a href="../public/equipo.php" class="sidebar-link">
-                               			<i class="mdi mdi-funcionario"></i>
+                               			<i class="mdi mdi-equipo"></i>
                                			<span class="hide-menu"> Equipos </span>
                                     </a>
                                	</li>
@@ -230,8 +230,8 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="javascript:void(0)" class="sidebar-link">
-                               			<i class="mdi mdi-funcionario"></i>
+                               		<a href="../public/medico.php" class="sidebar-link">
+                               			<i class="mdi mdi-medico"></i>
                                			<span class="hide-menu"> Medicos </span>
                                     </a>
                                	</li>
@@ -246,7 +246,7 @@
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
                                		<a href="javascript:void(0)" class="sidebar-link">
-                               			<i class="mdi mdi-funcionario"></i>
+                               			<i class="mdi mdi-reporte"></i>
                                			<span class="hide-menu"> Reportes </span>
                                     </a>
                                	</li>
@@ -260,8 +260,8 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="javascript:void(0)" class="sidebar-link">
-                               			<i class="mdi mdi-funcionario"></i>
+                               		<a href="../public/persona.php" class="sidebar-link">
+                               			<i class="mdi mdi-usuario"></i>
                                			<span class="hide-menu"> Usuarios </span>
                                     </a>
                                	</li>
@@ -397,6 +397,13 @@
                                     <a href="../public/dominio.php?dominio=USUARIOESTADO" class="sidebar-link">
                                	        <i class="mdi mdi-parm"></i>
                                		    <span class="hide-menu"> Usuario Estado </span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <a href="../public/dominio.php?dominio=USUARIOACCESO" class="sidebar-link">
+                               	        <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Usuario Acceso </span>
                                	    </a>
                                 </li>
 
