@@ -17,7 +17,6 @@
 
     if(isset($_GET['dominio'])){
         $workDominio    = $_GET['dominio'];
-        $titleDominio   = getTitlePersona($workDominio);
     }
 
     if(isset($_GET['mode'])){
@@ -130,7 +129,7 @@
                                             <a href="../public/home.php">Home</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../public/persona.php?dominio=<?php echo $workDominio; ?>"><?php echo $titleDominio; ?></a>
+                                            <a href="../public/persona.php">PERSONAS</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">Mantenimiento</li>
                                     </ol>
@@ -154,7 +153,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title"><?php echo $titleDominio; ?></h4>
+                                    <h4 class="card-title">PERSONAS</h4>
                                     <form id="form" data-parsley-validate class="m-t-30" method="post" action="../class/crud/persona.php">
                                         <div class="form-group">
                                             <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="<?php echo $workCodigo; ?>" required readonly>
