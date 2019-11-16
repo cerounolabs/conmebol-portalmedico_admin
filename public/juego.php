@@ -76,9 +76,6 @@
                                         <a href="../public/home.php">Home</a>
                                     </li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/disciplina.php">Disciplinas</a>
-                                    </li>
-                                    <li class="breadcrumb-item" aria-current="page">
                                         <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>">Competencias</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Juegos</li>

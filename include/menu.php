@@ -143,12 +143,12 @@
                            	</a>
                             <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                               		<a href="../public/disciplina.php?tipo=LES" class="sidebar-link">
+                               		<a href="../public/lesion_crud.php" class="sidebar-link">
                                			<i class="mdi mdi-lesion"></i>
-                               			<span class="hide-menu"> Disciplinas </span>
+                               			<span class="hide-menu"> Todas </span>
                                     </a>
                                	</li>
-                                
+
                                 <li class="sidebar-item">
                                		<a href="../public/competencia.php?tipo=LES&disciplina=FOOTBALL" class="sidebar-link">
                                			<i class="mdi mdi-lesion"></i>
@@ -177,14 +177,7 @@
                            		<i class="icon-Boom"></i>
                            		<span class="hide-menu"> Competencias </span>
                            	</a>
-							<ul aria-expanded="false" class="collapse first-level">
-                            	<li class="sidebar-item">
-                               		<a href="../public/disciplina.php?tipo=COM" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
-                               			<span class="hide-menu"> Disciplinas </span>
-                                    </a>
-                               	</li>
-                                
+							<ul aria-expanded="false" class="collapse first-level">                                
                                 <li class="sidebar-item">
                                		<a href="../public/competencia.php?tipo=COM&disciplina=FOOTBALL" class="sidebar-link">
                                			<i class="mdi mdi-competencia"></i>
@@ -274,6 +267,13 @@
                            	    <span class="hide-menu"> Par&aacute;metros </span>
                             </a>
 						    <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                               	    <a href="../public/dominio.php?dominio=COMPETENCIACATEGORIA" class="sidebar-link">
+                               		    <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Competencia Categor&iacute;a</span>
+                               	    </a>
+                                </li>
+
                                 <li class="sidebar-item">
                                	    <a href="../public/dominio.php?dominio=CUERPOPARTE" class="sidebar-link">
                                		    <i class="mdi mdi-parm"></i>
@@ -431,10 +431,17 @@
                                         <li class="sidebar-item">
                                             <a href="javascript:void(0)" class="sidebar-link">
                                                 <i class="mdi aud-parameto"></i>
-                                                <span class="hide-menu"> Partes del Cuerpo </span>
+                                                <span class="hide-menu"> Competencia Categoría </span>
                                             </a>
                                         </li>
                                         
+                                        <li class="sidebar-item">
+                                            <a href="javascript:void(0)" class="sidebar-link">
+                                                <i class="mdi aud-parameto"></i>
+                                                <span class="hide-menu"> Partes del Cuerpo </span>
+                                            </a>
+                                        </li>
+
                                         <li class="sidebar-item">
                                             <a href="javascript:void(0)" class="sidebar-link">
                                                 <i class="mdi aud-parameto"></i>

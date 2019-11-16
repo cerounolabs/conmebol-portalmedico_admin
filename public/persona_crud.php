@@ -41,6 +41,7 @@
             $row_09			= $dataJSON['data'][0]['persona_path'];
             $row_10			= $dataJSON['data'][0]['persona_telefono'];
             $row_11			= $dataJSON['data'][0]['persona_observacion'];
+            $row_12			= $dataJSON['data'][0]['tipo_categoria_codigo'];
         }
     } else {
         $row_01			= '';
@@ -54,6 +55,7 @@
         $row_09			= '';
         $row_10			= '';
         $row_11			= '';
+        $row_12			= '';
     }
     
 	switch($workModo){
@@ -162,7 +164,7 @@
                                         </div>
                                         
                                         <div class="row pt-3">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var01">ESTADO</label>
                                                     <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" required <?php echo $workReadonly; ?>>
@@ -189,7 +191,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var02">ACCESO</label>
                                                     <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required <?php echo $workReadonly; ?>>
@@ -216,7 +218,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var03">PERFIL</label>
                                                     <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;" required <?php echo $workReadonly; ?>>
@@ -226,6 +228,33 @@
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'USUARIOROL'){
                 if ($dominioVALUE['tipo_codigo'] === $row_03){
+                    $selected = 'selected';
+                } else {
+                    $selected = '';
+                }
+
+?>
+                                                            <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>" <?php echo $selected; ?>><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var12">CATEGOR&Iacute;A</label>
+                                                    <select id="var12" name="var12" class="select2 form-control custom-select" style="width:100%; height:40px;" required <?php echo $workReadonly; ?>>
+                                                        <optgroup label="Categoría">
+<?php
+    if($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COMPETENCIACATEGORIA'){
+                if ($dominioVALUE['tipo_codigo'] === $row_12){
                     $selected = 'selected';
                 } else {
                     $selected = '';

@@ -93,6 +93,7 @@
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
                                                 <th class="border-top-0" style="text-align:center;">ACCESO</th>
                                                 <th class="border-top-0" style="text-align:center;">PERFIL</th>
+                                                <th class="border-top-0" style="text-align:center;">CATEGOR&Iacute;A</th>
                                                 <th class="border-top-0" style="text-align:center;">NOMBRE</th>
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">EMAIL</th>
