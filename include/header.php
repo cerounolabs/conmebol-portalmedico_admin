@@ -4,7 +4,6 @@
 	<meta name="description" content="CONMEBOL, Sistema Medico">
 	<meta name="author" content="IT Consulting - https://it.com.py">
 
-	<!--<link href="assets/images/favicon.ico" rel="icon" type="image/png" sizes="16x16">-->
     <link href="http://www.conmebol.com/sites/all/themes/conm/favicon.ico" type="image/vnd.microsoft.icon" rel="shortcut icon"/>
 	<link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
 	<link href="../assets/libs/morris.js/morris.css" rel="stylesheet">
@@ -13,6 +12,8 @@
     <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 	<link href="../assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 	<link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+	<link href="../assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
+    <link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
 	<link href="../dist/css/style.css" rel="stylesheet">
 	<link href="../dist/css/custom.css" rel="stylesheet">
 	

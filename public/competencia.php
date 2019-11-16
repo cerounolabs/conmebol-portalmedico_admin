@@ -75,9 +75,6 @@
                                     <li class="breadcrumb-item">
                                         <a href="../public/home.php">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/disciplina.php">Disciplinas</a>
-                                    </li>
                                     <li class="breadcrumb-item active" aria-current="page">Competencias</li>
                                 </ol>
                             </nav>

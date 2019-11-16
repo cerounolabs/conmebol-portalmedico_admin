@@ -19,7 +19,7 @@
 	if (isset($_POST['var09'])){
 		$val09	= strtolower($_POST['var09']);
 	} else {
-		$val09	= 'default.png';
+		$val09	= 'assets/images/users/default.png';
 	}
 
 	if (isset($_POST['var10'])){
@@ -29,6 +29,7 @@
 	}
 	
 	$val11          = strtoupper($_POST['var11']);
+	$val12			= $_POST['var12'];
 
     $work01         = $_POST['workCodigo'];
     $work02         = $_POST['workModo'];
@@ -37,13 +38,14 @@
 	$log_01         = $_SESSION['log_01'];
     $log_03         = $_SESSION['log_03'];
 
-    if (isset($val01) && isset($val02) && isset($val03) && isset($val04) && isset($val05) && isset($val06) && isset($val07) && isset($val08)) {
+    if (isset($val01) && isset($val02) && isset($val03) && isset($val04) && isset($val05) && isset($val12)) {
         $dataJSON = json_encode(
             array(
 				'tipo_estado_codigo'			=> $val01,
 				'tipo_acceso_codigo'			=> $val02,
 				'tipo_perfil_codigo'			=> $val03,
 				'equipo_codigo'					=> $val04,
+				'tipo_categoria_codigo'			=> $val12,
 				'persona_nombre'				=> $val05,
 				'persona_user'					=> $val07,
 				'persona_contrasenha'			=> $val08,

@@ -46,11 +46,12 @@ $(document).ready(function() {
 			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
 			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
 			{ targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
+			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
 			{ targets			: [10],	visible : false,searchable : false,	orderData : [10, 0] },
 			{ targets			: [11],	visible : false,searchable : false,	orderData : [11, 0] },
 			{ targets			: [12],	visible : false,searchable : false,	orderData : [12, 0] },
-			{ targets			: [13],	visible : false,searchable : false,	orderData : [13, 0] }
+			{ targets			: [13],	visible : false,searchable : false,	orderData : [13, 0] },
+			{ targets			: [14],	visible : false,searchable : false,	orderData : [14, 0] }
 		],
 		columns		: [
 			{ data				: 'persona_codigo', name : 'persona_codigo'},
@@ -59,6 +60,7 @@ $(document).ready(function() {
 			{ data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
 			{ data				: 'tipo_acceso_nombre_castellano', name : 'tipo_acceso_nombre_castellano'},
 			{ data				: 'tipo_perfil_nombre_castellano', name : 'tipo_perfil_nombre_castellano'},
+			{ data				: 'tipo_categoria_nombre_castellano', name : 'tipo_categoria_nombre_castellano'},
 			{ data				: 'persona_nombre', name : 'persona_nombre'},
 			{ data				: 'persona_user', name : 'persona_user'},
 			{ data				: 'persona_email', name : 'persona_email'},

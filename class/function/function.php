@@ -50,6 +50,10 @@
 
     function getTitleDominio($var01){
         switch ($var01) {
+            case 'COMPETENCIACATEGORIA':
+                $result = 'COMPETENCIA CATEGORIA';
+                break;
+
             case 'CUERPOPARTE':
                 $result = 'CUERPO PARTE';
                 break;
