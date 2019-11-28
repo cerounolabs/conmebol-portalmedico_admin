@@ -294,13 +294,6 @@
                                		    <span class="hide-menu"> Cuerpo Lugar </span>
                                	    </a>
                                 </li>
-
-                                <li class="sidebar-item">
-                               	    <a href="../public/dominio.php?dominio=DIAGNOSTICOGRUPO" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Diagn&oacute;stico Grupo </span>
-                               	    </a>
-                                </li>
                                 
                                 <li class="sidebar-item">
                                	    <a href="../public/subdominio.php?dominio=DIAGNOSTICOTIPO" class="sidebar-link">

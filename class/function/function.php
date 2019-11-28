@@ -66,10 +66,6 @@
                 $result = 'CUERPO LUGAR';
                 break;
 
-            case 'DIAGNOSTICOGRUPO':
-                $result = 'DIAGNÓSTICO GRUPO';
-                break;
-
             case 'DIAGNOSTICOTIEMPO':
                 $result = 'DIAGNÓSTICO TIEMPO';
                 break;
@@ -163,7 +159,7 @@
                 break;
 
             case 'DIAGNOSTICOTIPO':
-                $result = 'DIAGNOSTICOGRUPO';
+                $result = 'CUERPOPARTE';
                 break;
         }
 
