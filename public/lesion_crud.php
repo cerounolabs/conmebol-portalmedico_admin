@@ -147,7 +147,7 @@
                                 <div class="card-body wizard-content">
                                     <h4 class="card-title">Carga de Lesi&oacute;n</h4>
                                     <h6 class="card-subtitle">Favor complete todos los campos posibles.</h6>
-                                    <form action="#" class="validation-wizard wizard-circle m-t-40">
+                                    <form method="post" action="../class/crud/lesion.php" class="validation-wizard wizard-circle m-t-40">
                                         <!-- Step 1 -->
                                         <h6>Datos del Clima</h6>
                                         <section>
@@ -641,7 +641,8 @@
                     return form.validate().settings.ignore = ":disabled", form.valid()
                 },
                 onFinished: function(event, currentIndex) {
-                    swal("Formulario enviado!", "Se realizo el envio del formulario de la lesión. Muchas Gracias");
+                    swal("Formulario enviado!", "Se realizo el envio del formulario de la lesión.");
+                    form.submit();
                 }
             }), $(".validation-wizard").validate({
                 ignore: "input[type=hidden]",

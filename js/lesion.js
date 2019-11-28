@@ -58,14 +58,10 @@ $(document).ready(function() {
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
 			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
-			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] },
-			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
-			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
-			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
-			{ targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] },
-			{ targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0] },
-			{ targets			: [12],	visible : true,	searchable : true,	orderData : [12, 0] },
-			{ targets			: [13],	visible : false,searchable : false,	orderData : [13, 0] }
+			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
+			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
+			{ targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
+			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
 		],
 		columns		: [
 			{ data				: 'equipo_codigo', name : 'equipo_codigo'},
@@ -78,10 +74,6 @@ $(document).ready(function() {
 			{ data				: 'equipo_ciudad', name : 'equipo_ciudad'},
 			{ data				: 'equipo_postal_codigo', name : 'equipo_postal_codigo'},
 			{ data				: 'organizacion_codigo', name : 'organizacion_codigo'},
-			{ data				: 'organizacion_nombre', name : 'organizacion_nombre'},
-			{ data				: 'organizacion_nombre_corto', name : 'organizacion_nombre_corto'},
-			{ render			: function (data, type, full, meta) {return '<img src="../' + full.organizacion_imagen_path + '" height="50" />';}},
-			{ data				: 'equipo_ultima_actualizacion', name : 'equipo_ultima_actualizacion'},
 		]
 	});
 });

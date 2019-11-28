@@ -81,28 +81,21 @@
                             <div class="card-body">
                                 <div class="row">
                                     <h4 class="col-10 card-title">Lesiones</h4>
-                                    <h4 class="col-2 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../public/lesion_crud.php?mode=C&codigo=0&competencia=<?php echo $valorCompetencia; ?>" role="button" title="Agregar"><i class="ti-plus"></i></a>
-                                	</h4>
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
                                             <tr class="bg-light">
-                                                <th class="border-top-0">EQUIPO C&Oacute;D.</th>
-                                                <th class="border-top-0">EQUIPO ESTADO</th>
-                                                <th class="border-top-0">EQUIPO TIPO</th>
-                                                <th class="border-top-0">EQUIPO</th>
-                                                <th class="border-top-0">EQUIPO ABR.</th>
-                                                <th class="border-top-0">EQUIPO PA&Iacute;S</th>
-                                                <th class="border-top-0">EQUIPO REGI&Oacute;N</th>
-                                                <th class="border-top-0">EQUIPO CIUDAD</th>
-                                                <th class="border-top-0">EQUIPO C&Oacute;DIGO POSTAL</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N C&Oacute;D.</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N ABR.</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N IMAGEN</th>
-                                                <th class="border-top-0">&Uacute;LTIMA ACT.</th>
+                                                <th class="border-top-0">C&Oacute;DIGO</th>
+                                                <th class="border-top-0">ESTADO</th>
+                                                <th class="border-top-0">JUEGO</th>
+                                                <th class="border-top-0">FECHA</th>
+                                                <th class="border-top-0">JUGADOR</th>
+                                                <th class="border-top-0">LESI&Oacute;N</th>
+                                                <th class="border-top-0">ZONA DEL CUERPO</th>
+                                                <th class="border-top-0">DIAGN&Oacute;STICO</th>
+                                                <th class="border-top-0">TIEMPO RECUPERACI&Oacute;N</th>
+                                                <th class="border-top-0">ACCI&Oacute;N</th>
                                             </tr>
                                         </thead>
                                         <tbody>
