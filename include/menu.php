@@ -143,13 +143,6 @@
                            	</a>
                             <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                               		<a href="../public/lesion_crud.php" class="sidebar-link">
-                               			<i class="mdi mdi-lesion"></i>
-                               			<span class="hide-menu"> Todas </span>
-                                    </a>
-                               	</li>
-
-                                <li class="sidebar-item">
                                		<a href="../public/competencia.php?tipo=LES&disciplina=FOOTBALL" class="sidebar-link">
                                			<i class="mdi mdi-lesion"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Campo </span>
@@ -287,11 +280,11 @@
                                		    <span class="hide-menu"> Cuerpo Zona </span>
                                	    </a>
                                 </li>
-                                
+
                                 <li class="sidebar-item">
-                               	    <a href="../public/subdominio.php?dominio=DIAGNOSTICOTIPO" class="sidebar-link">
+                               	    <a href="../public/dominio.php?dominio=CUERPOLUGAR" class="sidebar-link">
                                		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Diagn&oacute;stico Tipo</span>
+                               		    <span class="hide-menu"> Cuerpo Lugar </span>
                                	    </a>
                                 </li>
 
@@ -299,6 +292,13 @@
                                	    <a href="../public/dominio.php?dominio=DIAGNOSTICOGRUPO" class="sidebar-link">
                                		    <i class="mdi mdi-parm"></i>
                                		    <span class="hide-menu"> Diagn&oacute;stico Grupo </span>
+                               	    </a>
+                                </li>
+                                
+                                <li class="sidebar-item">
+                               	    <a href="../public/subdominio.php?dominio=DIAGNOSTICOTIPO" class="sidebar-link">
+                               		    <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Diagn&oacute;stico Tipo</span>
                                	    </a>
                                 </li>
 
@@ -331,9 +331,9 @@
                                 </li>
 
                                 <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=LESIONCARACTERISTICA" class="sidebar-link">
+                                    <a href="../public/dominio.php?dominio=LESIONORIGEN" class="sidebar-link">
                                	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Lesi&oacute;n Caracteristica </span>
+                               		    <span class="hide-menu"> Lesi&oacute;n Origen </span>
                                	    </a>
                                 </li>
 
@@ -369,6 +369,13 @@
                                     <a href="../public/dominio.php?dominio=CAMPODISTANCIA" class="sidebar-link">
                                	        <i class="mdi mdi-parm"></i>
                                		    <span class="hide-menu"> Campo Distancia </span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
+                                    <a href="../public/dominio.php?dominio=CAMPOMINUTO" class="sidebar-link">
+                               	        <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Campo Minuto </span>
                                	    </a>
                                 </li>
 
