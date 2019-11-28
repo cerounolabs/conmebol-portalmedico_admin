@@ -73,12 +73,12 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../public/home.php">Home</a>
+                                        <a href="../public/home.php">HOME</a>
                                     </li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>">Competencias</a>
+                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>">COMPETENCIAS</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Juegos</li>
+                                    <li class="breadcrumb-item active" aria-current="page">JUEGOS</li>
                                 </ol>
                             </nav>
                         </div>

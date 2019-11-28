@@ -123,12 +123,12 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../public/home.php">Home</a>
+                                            <a href="../public/home.php">HOME</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../public/dominio.php?dominio=<?php echo $workDominio; ?>"><?php echo $titleDominio; ?></a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Mantenimiento</li>
+                                        <li class="breadcrumb-item active" aria-current="page">MANTENIMIENTO</li>
                                     </ol>
                                 </nav>
                             </div>
