@@ -97,7 +97,7 @@
                     <div class="col-12">
                         <div class="row">
 <?php
-    $competenciaJSON = get_curl('200/disciplina/'.$valorDisciplina);
+    $competenciaJSON = get_curl('200/disciplina/'.$valorDisciplina.'/'.$usu_04);
 
     if ($competenciaJSON['code'] === 200) {
         foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) {
