@@ -75,7 +75,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../public/home.php">HOME</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">LESI&Oacute;N</li>
+                                    <li class="breadcrumb-item active" aria-current="page">LESIONES</li>
                                 </ol>
                             </nav>
                         </div>

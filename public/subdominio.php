@@ -60,7 +60,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../public/home.php">Home</a>
+                                        <a href="../public/home.php">HOME</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page"><?php echo $titleDominio; ?></li>
                                 </ol>

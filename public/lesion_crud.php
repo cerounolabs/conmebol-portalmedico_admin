@@ -118,7 +118,7 @@
                                             <a href="../public/home.php">HOME</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../public/lesion.php">LESI&Oacute;N</a>
+                                            <a href="../public/lesion.php">LESIONES</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">MANTENIMIENTO</li>
                                     </ol>
