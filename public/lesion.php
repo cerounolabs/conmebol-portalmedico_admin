@@ -10,24 +10,6 @@
         $codeRest       = 0;
         $msgRest        = '';
     }
-
-    if(isset($_GET['tipo'])){
-        $valorTipo          = $_GET['tipo'];
-    } else {
-        $valorTipo          = 'COM';
-    }
-
-    if(isset($_GET['disciplina'])){
-        $valorDisciplina    = $_GET['disciplina'];
-    } else {
-        $valorDisciplina    = 'FOOTBALL';
-    }
-
-    if(isset($_GET['competencia'])){
-        $valorCompetencia   = $_GET['competencia'];
-    } else {
-        $valorCompetencia   = 0;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -74,12 +56,6 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="../public/home.php">HOME</a>
-                                    </li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>">COMPETENCIAS</a>
-                                    </li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/juego.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $valorCompetencia; ?>">JUEGOS</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">LESIONES</li>
                                 </ol>

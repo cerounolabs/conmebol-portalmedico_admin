@@ -167,10 +167,17 @@
 -->
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                           		<i class="icon-Boom"></i>
-                           		<span class="hide-menu"> Competencias </span>
+                                <i class="icon-Ambulance"></i>
+                           		<span class="hide-menu"> Lesiones </span>
                            	</a>
-							<ul aria-expanded="false" class="collapse first-level">                                
+							<ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                               		<a href="../public/lesion.php" class="sidebar-link">
+                               			<i class="mdi mdi-lesion"></i>
+                               			<span class="hide-menu"> Lesiones Cargadas </span>
+                                    </a>
+                               	</li>
+
                                 <li class="sidebar-item">
                                		<a href="../public/competencia.php?tipo=COM&disciplina=FOOTBALL" class="sidebar-link">
                                			<i class="mdi mdi-competencia"></i>
