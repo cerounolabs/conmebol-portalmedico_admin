@@ -135,7 +135,7 @@
                                	</li>
                             </ul>
                         </li>
-
+<!--
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Ambulance"></i>
@@ -164,7 +164,7 @@
                                	</li>
                             </ul>
                         </li>
-
+-->
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Boom"></i>
