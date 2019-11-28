@@ -61,9 +61,9 @@
             case 'CUERPOZONA':
                 $result = 'CUERPO ZONA';
                 break;
-            
-            case 'DIAGNOSTICOTIPO':
-                $result = 'DIAGNÓSTICO TIPO';
+
+            case 'CUERPOLUGAR':
+                $result = 'CUERPO LUGAR';
                 break;
 
             case 'DIAGNOSTICOGRUPO':
@@ -86,8 +86,8 @@
                 $result = 'LESIÓN TIPO';
                 break;
 
-            case 'LESIONCARACTERISTICA':
-                $result = 'LESIÓN CARACTERISTICA';
+            case 'LESIONORIGEN':
+                $result = 'LESIÓN ORIGEN';
                 break;
 
             case 'LESIONREINCIDENCIA':
@@ -108,6 +108,10 @@
 
             case 'CAMPODISTANCIA':
                 $result = 'CAMPO DISTANCIA';
+                break;
+
+            case 'CAMPOMINUTO':
+                $result = 'CAMPO MINUTO';
                 break;
 
             case 'CAMPOTRASLADO':
@@ -144,8 +148,8 @@
                 $result = 'CUERPO ZONA';
                 break;
 
-            case 'DIAGNOSTICO':
-                $result = 'DIAGNÓSTICO';
+            case 'DIAGNOSTICOTIPO':
+                $result = 'DIAGNÓSTICO TIPO';
                 break;
         }
 
@@ -158,7 +162,7 @@
                 $result = 'CUERPOPARTE';
                 break;
 
-            case 'DIAGNOSTICO':
+            case 'DIAGNOSTICOTIPO':
                 $result = 'DIAGNOSTICOGRUPO';
                 break;
         }

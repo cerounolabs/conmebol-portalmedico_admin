@@ -24,7 +24,7 @@
 
         header('Location: ../../public/home.php');
 
-    } elseif ($val_01 == 'river@conmebol.com' && $val_02 == 'conmebol2019') {
+    } elseif ($val_01 == 'riverplate@conmebol.com' && $val_02 == 'conmebol2019') {
         $_SESSION['log_01'] = $val_01;
         $_SESSION['log_02'] = $val_02;
         $_SESSION['log_03'] = $val_03;

@@ -73,12 +73,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../public/home.php">Home</a>
+                                        <a href="../public/home.php">HOME</a>
                                     </li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>">Competencias</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Juegos</li>
+                                    <li class="breadcrumb-item active" aria-current="page">LESI&Oacute;N</li>
                                 </ol>
                             </nav>
                         </div>
@@ -98,33 +95,46 @@
                 <!-- basic table -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="row">
-<?php
-    $juegoJSON = get_curl('200/juego/'.$valorCompetencia.'/'.$usu_04);
-    
-    if ($juegoJSON['code'] === 200) {
-        foreach ($juegoJSON['data'] as $juegoKEY => $juegoVALUE) { 
-?>
-                            <div class="col-sm-12 col-md-4 col-lg-3">
-                                <div class="card" style="height:250px;">
-                                    <div class="card-body">
-                                        <h4 class="card-title"><?php echo $juegoVALUE['equipo_local_nombre'].' '.$juegoVALUE['equipo_local_resultado_final'].' <br> vs <br> '.$juegoVALUE['equipo_visitante_nombre'].' '.$juegoVALUE['equipo_visitante_resultado_final']; ?></h4>
-                                        <p class="card-text"> FASE: <?php echo $juegoVALUE['juego_fase']; ?> <br> ESTADO: <?php echo $juegoVALUE['juego_estado']; ?> <br> HORARIO: <?php echo $juegoVALUE['juego_horario']; ?></p>
-                                        <a href="../public/lesion_crud.php?mode=C&codigo=0&competencia=<?php echo $valorCompetencia; ?>&equipo=<?php echo $usu_04; ?>&juego=<?php echo $juegoVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Lesi&oacute;n</a>
-                                    </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h4 class="col-10 card-title">Lesiones</h4>
+                                    <h4 class="col-2 card-title" style="text-align: right;">
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../public/lesion_crud.php?mode=C&codigo=0&competencia=<?php echo $valorCompetencia; ?>" role="button" title="Agregar"><i class="ti-plus"></i></a>
+                                	</h4>
+								</div>
+                                <div class="table-responsive">
+                                    <table id="tableLoad" class="table v-middle" style="width: 100%;">
+                                        <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
+                                            <tr class="bg-light">
+                                                <th class="border-top-0">EQUIPO C&Oacute;D.</th>
+                                                <th class="border-top-0">EQUIPO ESTADO</th>
+                                                <th class="border-top-0">EQUIPO TIPO</th>
+                                                <th class="border-top-0">EQUIPO</th>
+                                                <th class="border-top-0">EQUIPO ABR.</th>
+                                                <th class="border-top-0">EQUIPO PA&Iacute;S</th>
+                                                <th class="border-top-0">EQUIPO REGI&Oacute;N</th>
+                                                <th class="border-top-0">EQUIPO CIUDAD</th>
+                                                <th class="border-top-0">EQUIPO C&Oacute;DIGO POSTAL</th>
+                                                <th class="border-top-0">ORGANIZACI&Oacute;N C&Oacute;D.</th>
+                                                <th class="border-top-0">ORGANIZACI&Oacute;N</th>
+                                                <th class="border-top-0">ORGANIZACI&Oacute;N ABR.</th>
+                                                <th class="border-top-0">ORGANIZACI&Oacute;N IMAGEN</th>
+                                                <th class="border-top-0">&Uacute;LTIMA ACT.</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-<?php
-        }
-    }
-?>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Modal Procesar -->
-                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
+                <div id="modalprocesar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="prodesc">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -178,5 +188,7 @@
 <?php
     }
 ?>
+
+    <script src="../js/lesion.js"></script>
 </body>
 </html>

@@ -11,52 +11,39 @@
         $msgRest        = '';
     }
 
-    if(isset($_GET['codigo'])){
-        $workCodigo     = $_GET['codigo'];
-    } else {
-        $workCodigo     = $usu_04;
-    }
-
     if(isset($_GET['mode'])){
         $workModo       = $_GET['mode'];
     } else {
         $workModo       = 'C';
     }
 
-    $dominioJSON        = get_curl('000');
-    $organizacionJSON   = get_curl('500');
-    $equipoJSON         = get_curl('300');
-
-	if ($workCodigo <> 0){
-		$dataJSON			= get_curl('400/'.$workCodigo);
-		if ($dataJSON['code'] == 200){
-            $row_01			= $dataJSON['data'][0]['tipo_estado_codigo'];
-            $row_02			= $dataJSON['data'][0]['tipo_acceso_codigo'];
-            $row_03			= $dataJSON['data'][0]['tipo_perfil_codigo'];
-            $row_04         = $dataJSON['data'][0]['equipo_codigo'];
-            $row_05         = $dataJSON['data'][0]['persona_nombre'];
-            $row_06			= $dataJSON['data'][0]['persona_email'];
-            $row_07         = $dataJSON['data'][0]['persona_user'];
-			$row_08			= 'conmebol2019';
-            $row_09			= $dataJSON['data'][0]['persona_path'];
-            $row_10			= $dataJSON['data'][0]['persona_telefono'];
-            $row_11			= $dataJSON['data'][0]['persona_observacion'];
-            $row_12			= $dataJSON['data'][0]['tipo_categoria_codigo'];
-        }
+    if(isset($_GET['codigo'])){
+        $workCodigo     = $_GET['codigo'];
     } else {
-        $row_01			= '';
-        $row_02			= '';
-        $row_03			= 0;
-        $row_04         = '';
-        $row_05			= '';
-        $row_06			= '';
-        $row_07			= '';
-        $row_08			= '';
-        $row_09			= '';
-        $row_10			= '';
-        $row_11			= '';
-        $row_12			= '';
+        $workCodigo     = $usu_04;
     }
+
+    if(isset($_GET['competencia'])){
+        $valorCompetencia   = $_GET['competencia'];
+    } else {
+        $valorCompetencia   = 0;
+    }
+
+    if(isset($_GET['equipo'])){
+        $valorEquipo   = $_GET['equipo'];
+    } else {
+        $valorEquipo   = 0;
+    }
+
+    if(isset($_GET['juego'])){
+        $valorJuego     = $_GET['juego'];
+    } else {
+        $valorJuego     = 0;
+    }
+
+    $dominioJSON        = get_curl('000');
+    $subDominioJSON     = get_curl('100');
+    $jugadorJSON        = get_curl('700/'.$valorCompetencia.'/'.$valorEquipo);
     
 	switch($workModo){
 		case 'C':
@@ -128,12 +115,12 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../public/home.php">Home</a>
+                                            <a href="../public/home.php">HOME</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../public/lesion.php">LESI&Oacute;N</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Mantenimiento</li>
+                                        <li class="breadcrumb-item active" aria-current="page">MANTENIMIENTO</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -155,143 +142,86 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body wizard-content">
-                                    <h4 class="card-title">Alta de Colaborador</h4>
-                                    <h6 class="card-subtitle">Favor complete todos los campos posible.</h6>
+                                    <h4 class="card-title">Carga de Lesi&oacute;n</h4>
+                                    <h6 class="card-subtitle">Favor complete todos los campos posibles.</h6>
                                     <form action="#" class="validation-wizard wizard-circle m-t-40">
                                         <!-- Step 1 -->
                                         <h6>Datos del Clima</h6>
                                         <section>
                                             <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <label>Primer Nombre</label>
+                                                        <label>Clima</label>
                                                         <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var001"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var001" name="var001" class="form-control" placeholder="Primer Nombre" style="height:40px;" aria-label="Primer Nombre" aria-describedby="basic-var001" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Segundo Nombre</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var002"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var002" name="var002" class="form-control" placeholder="Segundo Nombre" style="height:40px;" aria-label="Segundo Nombre" aria-describedby="basic-var002">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Primer Apellido</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var003"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var003" name="var003" class="form-control" placeholder="Primer Apellido" style="height:40px;" aria-label="Primer Apellido" aria-describedby="basic-var003" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Segundo Apellido</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var004"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var004" name="var004" class="form-control" placeholder="Segundo Apellido" style="height:40px;" aria-label="Segundo Apellido" aria-describedby="basic-var004">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>N&uacute;mero Documento</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var005"><i class="ti-id-badge"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var005" name="var005" class="form-control" placeholder="N&uacute;mero Documento" style="height:40px;" aria-label="N&uacute;mero Documento" aria-describedby="basic-var005" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Estado Civil</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var006" name="var006" style="width:100%; height:40px;" aria-label="Estado Civil" aria-describedby="basic-var006" required>
-    <?php
-        if ($dominioJSON['code'] === 200){
-            foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-                if ($dominioVALUE['tipo_estado_codigo'] === 'H' && $dominioVALUE['tipo_dominio'] === 'ESTADOCIVIL'){
-    ?>
-                                                                <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre']; ?></option>
-    <?php
-                }
+                                                            <select class="custom-select form-control" id="var101" name="var101" style="width:100%; height:40px;" aria-label="Clima" aria-describedby="basic-var101">
+                                                                <optgroup label="Clima">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOCLIMA'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
             }
         }
-    ?>
+    }
+?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <label>Sexo</label>
+                                                        <label>Temperatura</label>
                                                         <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var007" name="var007" style="width:100%; height:40px;" aria-label="Sexo" aria-describedby="basic-var007" required>
-    <?php
-        if ($dominioJSON['code'] === 200){
-            foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-                if ($dominioVALUE['tipo_estado_codigo'] === 'H' && $dominioVALUE['tipo_dominio'] === 'SEXO'){
-    ?>
-                                                                <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre']; ?></option>
-    <?php
-                }
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-var102"><i class="ti-user"></i></span>
+                                                            </div>
+                                                            <input type="text" id="var102" name="var102" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Distancia</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var103" name="var103" style="width:100%; height:40px;" aria-label="Distancia" aria-describedby="basic-var103">
+                                                                <optgroup label="Distancia">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPODISTANCIA'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
             }
         }
-    ?>
+    }
+?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <label>Fecha Nacimiento</label>
+                                                        <label>Traslado</label>
                                                         <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var008"><i class="ti-gift"></i></span>
-                                                            </div>
-                                                            <input type="date" id="var008" name="var008" class="form-control" placeholder="Fecha Nacimiento" aria-label="Fecha Nacimiento" style="height:40px;" aria-describedby="basic-var008" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>¿Cu&aacute;ntos hijos/as tienes?</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var009" name="var009" style="width:100%; height:40px;" aria-label="¿Cu&aacute;ntos hijos/as tienes?" aria-describedby="basic-var009" required>
-                                                                <option value="0"> 0 </option>
-                                                                <option value="1"> 1 </option>
-                                                                <option value="2"> 2 </option>
-                                                                <option value="3"> 3 </option>
-                                                                <option value="4"> 4 </option>
-                                                                <option value="5"> 5 </option>
-                                                                <option value="6"> 5+ </option>
+                                                            <select class="custom-select form-control" id="var104" name="var104" style="width:100%; height:40px;" aria-label="Clima" aria-describedby="basic-var104">
+                                                                <optgroup label="Traslado">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOTRASLADO'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -300,146 +230,338 @@
                                         </section>
                                         <!-- Step 1 -->
 
-                                        <h6>Datos Personales</h6>
+                                        <!-- Step 2 -->
+                                        <h6>Datos del Juego</h6>
                                         <section>
                                             <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <label>Primer Nombre</label>
+                                                        <label>Jugador</label>
                                                         <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var001"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var001" name="var001" class="form-control" placeholder="Primer Nombre" style="height:40px;" aria-label="Primer Nombre" aria-describedby="basic-var001" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Segundo Nombre</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var002"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var002" name="var002" class="form-control" placeholder="Segundo Nombre" style="height:40px;" aria-label="Segundo Nombre" aria-describedby="basic-var002">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Primer Apellido</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var003"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var003" name="var003" class="form-control" placeholder="Primer Apellido" style="height:40px;" aria-label="Primer Apellido" aria-describedby="basic-var003" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Segundo Apellido</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var004"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var004" name="var004" class="form-control" placeholder="Segundo Apellido" style="height:40px;" aria-label="Segundo Apellido" aria-describedby="basic-var004">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>N&uacute;mero Documento</label>
-                                                        <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var005"><i class="ti-id-badge"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var005" name="var005" class="form-control" placeholder="N&uacute;mero Documento" style="height:40px;" aria-label="N&uacute;mero Documento" aria-describedby="basic-var005" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>Estado Civil</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var006" name="var006" style="width:100%; height:40px;" aria-label="Estado Civil" aria-describedby="basic-var006" required>
-    <?php
-        if ($dominioJSON['code'] === 200){
-            foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-                if ($dominioVALUE['tipo_estado_codigo'] === 'H' && $dominioVALUE['tipo_dominio'] === 'ESTADOCIVIL'){
-    ?>
-                                                                <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre']; ?></option>
-    <?php
-                }
-            }
+                                                            <select class="custom-select form-control" id="var201" name="var201" style="width:100%; height:40px;" aria-label="Jugador" aria-describedby="basic-var201">
+                                                                <optgroup label="Jugador">
+<?php
+    if ($jugadorJSON['code'] == 200){
+        foreach ($jugadorJSON['data'] as $jugadorKEY => $jugadorVALUE) {
+?>
+                                                                    <option value="<?php echo $jugadorVALUE['jugador_codigo']; ?>"><?php echo $jugadorVALUE['jugador_completo']; ?></option>
+<?php
         }
-    ?>
+    }
+?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <label>Sexo</label>
+                                                        <label>Posici&oacute;n</label>
                                                         <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var007" name="var007" style="width:100%; height:40px;" aria-label="Sexo" aria-describedby="basic-var007" required>
-    <?php
-        if ($dominioJSON['code'] === 200){
-            foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-                if ($dominioVALUE['tipo_estado_codigo'] === 'H' && $dominioVALUE['tipo_dominio'] === 'SEXO'){
-    ?>
-                                                                <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre']; ?></option>
-    <?php
-                }
+                                                            <select class="custom-select form-control" id="var202" name="var202" style="width:100%; height:40px;" aria-label="Posici&oacute;n" aria-describedby="basic-var202">
+                                                                <optgroup label="Posici&oacute;n">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOPOSICION'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
             }
         }
-    ?>
+    }
+?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <label>Fecha Nacimiento</label>
+                                                        <label>Minuto</label>
                                                         <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var008"><i class="ti-gift"></i></span>
-                                                            </div>
-                                                            <input type="date" id="var008" name="var008" class="form-control" placeholder="Fecha Nacimiento" aria-label="Fecha Nacimiento" style="height:40px;" aria-describedby="basic-var008" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label>¿Cu&aacute;ntos hijos/as tienes?</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var009" name="var009" style="width:100%; height:40px;" aria-label="¿Cu&aacute;ntos hijos/as tienes?" aria-describedby="basic-var009" required>
-                                                                <option value="0"> 0 </option>
-                                                                <option value="1"> 1 </option>
-                                                                <option value="2"> 2 </option>
-                                                                <option value="3"> 3 </option>
-                                                                <option value="4"> 4 </option>
-                                                                <option value="5"> 5 </option>
-                                                                <option value="6"> 5+ </option>
+                                                            <select class="custom-select form-control" id="var203" name="var203" style="width:100%; height:40px;" aria-label="Minuto" aria-describedby="basic-var203">
+                                                                <optgroup label="Minuto">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOMINUTO'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </section>
-                                        <!-- Step 1 -->
+                                        <!-- Step 2 -->
+
+                                        <!-- Step 3 -->
+                                        <h6>Datos de la Lesi&oacute;n</h6>
+                                        <section>
+                                            <div class="row pt-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Zona del Cuerpo</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var301" name="var301" style="width:100%; height:40px;" aria-label="Zona del Cuerpo" aria-describedby="basic-var301">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CUERPOPARTE'){
+?>
+                                                                <optgroup label="<?php echo $dominioVALUE['tipo_nombre_castellano']; ?>">
+<?php
+                if ($subDominioJSON['code'] === 200){
+                    foreach ($subDominioJSON['data'] as $subDominioKEY => $subDominioVALUE) {
+                        if ($subDominioVALUE['tipo_sub_estado_codigo'] === 'A' && $subDominioVALUE['tipo_sub_dominio'] === 'CUERPOZONA' && $subDominioVALUE['tipo_codigo'] === $dominioVALUE['tipo_codigo']){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo'].'_'.$subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>
+<?php
+                        }
+                    }
+                }
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Lugar del Cuerpo</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var302" name="var302" style="width:100%; height:40px;" aria-label="Lugar del Cuerpo" aria-describedby="basic-var302">
+                                                                <optgroup label="Lugar del Cuerpo">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CUERPOLUGAR'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Lesi&oacute;n Tipo</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var303" name="var303" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Tipo" aria-describedby="basic-var303">
+                                                                <optgroup label="Lesi&oacute;n Tipo">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONTIPO'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Lesi&oacute;n Origen</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var304" name="var304" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Origen" aria-describedby="basic-var304">
+                                                                <optgroup label="Lesi&oacute;n Origen">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONORIGEN'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Lesi&oacute;n Reincidencia</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var305" name="var305" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Reincidencia" aria-describedby="basic-var305">
+                                                                <optgroup label="Lesi&oacute;n Reincidencia">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONREINCIDENCIA'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Lesi&oacute;n Causa</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var306" name="var306" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Causa" aria-describedby="basic-var306">
+                                                                <optgroup label="Lesi&oacute;n Causa">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONCAUSA'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Lesi&oacute;n Falta</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var307" name="var307" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Falta" aria-describedby="basic-var307">
+                                                                <optgroup label="Lesi&oacute;n Falta">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONFALTA'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- Step 3 -->
+
+                                        <!-- Step 4 -->
+                                        <h6>Datos del Diagnóstico</h6>
+                                        <section>
+                                            <div class="row pt-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Diagn&oacute;stico Tipo</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var401" name="var401" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Tipo" aria-describedby="basic-var401">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'DIAGNOSTICOGRUPO'){
+?>
+                                                                <optgroup label="<?php echo $dominioVALUE['tipo_nombre_castellano']; ?>">
+<?php
+                if ($subDominioJSON['code'] === 200){
+                    foreach ($subDominioJSON['data'] as $subDominioKEY => $subDominioVALUE) {
+                        if ($subDominioVALUE['tipo_sub_estado_codigo'] === 'A' && $subDominioVALUE['tipo_sub_dominio'] === 'DIAGNOSTICOTIPO' && $subDominioVALUE['tipo_codigo'] === $dominioVALUE['tipo_codigo']){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo'].'_'.$subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>
+<?php
+                        }
+                    }
+                }
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Diagn&oacute;stico Recuperaci&oacute;n</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var402" name="var402" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Recuperaci&oacute;n" aria-describedby="basic-var402">
+                                                                <optgroup label="Diagn&oacute;stico Recuperaci&oacute;n">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'DIAGNOSTICORECUPERACION'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Diagn&oacute;stico Tiempo</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var403" name="var403" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Tiempo" aria-describedby="basic-var403">
+                                                                <optgroup label="Diagn&oacute;stico Tiempo">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'DIAGNOSTICOTIEMPO'){
+?>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Diagn&oacute;stico Comentario</label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-var404"><i class="ti-user"></i></span>
+                                                            </div>
+                                                            <input type="text" id="var404" name="var404" class="form-control" placeholder="Diagn&oacute;stico Comentario" style="height:40px;" aria-label="Diagn&oacute;stico Comentario" aria-describedby="basic-var404">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- Step 4 -->
                                     </form>
                                 </div>
                             </div>
@@ -516,7 +638,7 @@
                     return form.validate().settings.ignore = ":disabled", form.valid()
                 },
                 onFinished: function(event, currentIndex) {
-                    swal("Formulario enviado!", "Se realizo el envio del formulario. Muchas Gracias y BIENVENIDO/A A CARSA");
+                    swal("Formulario enviado!", "Se realizo el envio del formulario de la lesión. Muchas Gracias");
                 }
             }), $(".validation-wizard").validate({
                 ignore: "input[type=hidden]",
