@@ -159,7 +159,7 @@
                 break;
 
             case 'DIAGNOSTICOTIPO':
-                $result = 'CUERPOPARTE';
+                $result = 'CUERPOZONA';
                 break;
         }
 
