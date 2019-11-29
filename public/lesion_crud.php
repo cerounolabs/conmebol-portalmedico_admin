@@ -154,6 +154,20 @@
                                             <div class="row pt-3">
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
+                                                        <div class="input-group mb-3">
+                                                            <input type="hidden" id="workTipo" name="workTipo" value="<?php echo $valorTipo; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                            <input type="hidden" id="workDisciplina" name="workDisciplina" value="<?php echo $valorDisciplina; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                            <input type="hidden" id="workCompetencia" name="workCompetencia" value="<?php echo $valorCompetencia; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                            <input type="hidden" id="workEquipo" name="workEquipo" value="<?php echo $valorEquipo; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                            <input type="hidden" id="workJuego" name="workJuego" value="<?php echo $valorJuego; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row pt-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
                                                         <label>Clima</label>
                                                         <div class="input-group mb-3">
                                                             <select class="custom-select form-control" id="var101" name="var101" style="width:100%; height:40px;" aria-label="Clima" aria-describedby="basic-var101">
