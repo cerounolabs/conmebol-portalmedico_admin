@@ -87,9 +87,9 @@
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
                                             <tr class="bg-light">
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
+                                                <th class="border-top-0">FECHA</th>
                                                 <th class="border-top-0">ESTADO</th>
                                                 <th class="border-top-0">JUEGO</th>
-                                                <th class="border-top-0">FECHA</th>
                                                 <th class="border-top-0">JUGADOR</th>
                                                 <th class="border-top-0">LESI&Oacute;N</th>
                                                 <th class="border-top-0">ZONA DEL CUERPO</th>

@@ -64,16 +64,16 @@ $(document).ready(function() {
 			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
 		],
 		columns		: [
-			{ data				: 'equipo_codigo', name : 'equipo_codigo'},
-			{ data				: 'equipo_estado', name : 'equipo_estado'},
-			{ data				: 'equipo_naturaleza', name : 'equipo_naturaleza'},
-			{ data				: 'equipo_nombre', name : 'equipo_nombre'},
-			{ data				: 'equipo_nombre_corto', name : 'equipo_nombre_corto'},
-			{ data				: 'equipo_pais', name : 'equipo_pais'},
-			{ data				: 'equipo_region', name : 'equipo_region'},
-			{ data				: 'equipo_ciudad', name : 'equipo_ciudad'},
-			{ data				: 'equipo_postal_codigo', name : 'equipo_postal_codigo'},
-			{ data				: 'organizacion_codigo', name : 'organizacion_codigo'},
+			{ data				: 'lesion_codigo', name : 'lesion_codigo'},
+			{ data				: 'lesion_fecha_alta', name : 'lesion_fecha_alta'},
+			{ data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
+			{ data				: 'juego_nombre', name : 'juego_nombre'},
+			{ data				: 'jugador_nombre', name : 'jugador_nombre'},
+			{ data				: 'tipo_lesion_nombre_castellano', name : 'tipo_lesion_nombre_castellano'},
+			{ data				: 'tipo_cuerpo_zona_nombre_castellano', name : 'tipo_cuerpo_zona_nombre_castellano'},
+			{ data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
+			{ data				: 'tipo_diagnostico_recuperacion_nombre_castellano', name : 'tipo_diagnostico_recuperacion_nombre_castellano'},
+			{ render			: function (data, type, full, meta) {return '<a href="#" role="button" class="btn btn-primary"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="#" role="button" class="btn btn-success"><i class="ti-pencil"></i>&nbsp;</a></a>&nbsp;<a href="#" role="button" class="btn btn-danger"><i class="ti-trash"></i>&nbsp;</a>';}},
 		]
 	});
 });
