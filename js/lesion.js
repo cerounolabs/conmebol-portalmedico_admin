@@ -72,7 +72,7 @@ $(document).ready(function() {
 			{ data				: 'tipo_lesion_nombre_castellano', name : 'tipo_lesion_nombre_castellano'},
 			{ data				: 'tipo_cuerpo_zona_nombre_castellano', name : 'tipo_cuerpo_zona_nombre_castellano'},
 			{ data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
-			{ data				: 'tipo_diagnostico_recuperacion_nombre_castellano', name : 'tipo_diagnostico_recuperacion_nombre_castellano'},
+			{ data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
 			{ render			: function (data, type, full, meta) {return '<a href="#" role="button" class="btn btn-primary"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="#" role="button" class="btn btn-success"><i class="ti-pencil"></i>&nbsp;</a></a>&nbsp;<a href="#" role="button" class="btn btn-danger"><i class="ti-trash"></i>&nbsp;</a>';}},
 		]
 	});
