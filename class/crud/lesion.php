@@ -8,7 +8,7 @@
     require '../../class/function/curl_api.php';
 
 	$val001         = 112;
-	$val002         = date('Y-m-d H:i:s');
+	$val002         = date('Y-m-dTH:i:s');
 
     $val101         = $_POST['var101'];
     $val102         = strtoupper($_POST['var102']);
@@ -78,15 +78,13 @@
 				'auditoria_fecha_hora'							=> date('Y-m-d H:i:s'),
 				'auditoria_ip'									=> $log_03
 			));
-			echo $dataJSON;
 		
 		$result	= post_curl('600', $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
-	echo json_encode($result);
 
-//	header('Location: ../../public/lesion_crud.php?tipo='.$work01.'&disciplina='.$work02.'&competencia='.$work03.'&equipo='.$work04.'&juego='.$work05.'&code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../public/lesion_crud.php?tipo='.$work01.'&disciplina='.$work02.'&competencia='.$work03.'&equipo='.$work04.'&juego='.$work05.'&code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>
