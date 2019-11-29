@@ -7,6 +7,9 @@
     
     require '../../class/function/curl_api.php';
 
+	$val001         = 112;
+	$val002         = date('Y-m-d H:i:s');
+
     $val101         = $_POST['var101'];
     $val102         = strtoupper($_POST['var102']);
     $val103         = $_POST['var103'];
@@ -15,6 +18,7 @@
 	$val201      	= $_POST['var201'];
 	$val202			= $_POST['var202'];
 	$val203         = $_POST['var203'];
+	$val204         = 113;
 
 	$val301      	= $_POST['var301'];
 	$val302			= $_POST['var302'];
@@ -41,12 +45,41 @@
     if (isset($work01) && isset($work02) && isset($work03) && isset($work04) && isset($work05) && isset($log_01) && isset($log_03)) {
         $dataJSON = json_encode(
             array(
-				'auditoria_usuario'				=> $log_01,
-				'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),
-				'auditoria_ip'					=> $log_03
+				'tipo_estado_codigo'							=> $val001,
+				'competencia_codigo'							=> $work03,
+				'juego_codigo'									=> $work05,
+				'equipo_codigo'									=> $work04,
+				'jugador_codigo'								=> $val201,
+				'lesion_fecha_hora'								=> $val002,
+
+				'tipo_clima_codigo'								=> $val101,
+				'temperatura_numero'							=> $val102,
+				'tipo_distancia_codigo'							=> $val103,
+				'tipo_traslado_codigo'							=> $val104,
+
+				'tipo_posicion_codigo'							=> $val202,
+				'tipo_minuto_codigo'							=> $val203,
+				'tipo_campo_codigo'								=> $val204,
+
+				'tipo_cuerpo_zona_codigo'						=> $val301,
+				'tipo_cuerpo_lugar_codigo'						=> $val302,
+				'tipo_lesion_tipo_codigo'						=> $val303,
+				'tipo_lesion_origen_codigo'						=> $val304,
+				'tipo_lesion_reincidencia_codigo'				=> $val305,
+				'tipo_lesion_causa_codigo'						=> $val306,
+				'tipo_lesion_falta_codigo'						=> $val307,
+
+				'tipo_diagnostico_tipo_codigo'					=> $val401,
+				'tipo_diagnostico_recuperacion_codigo'			=> $val402,
+				'tipo_diagnostico_tiempo_codigo'				=> $val403,
+				'diagnostico_observacion'						=> $val404,
+				
+				'auditoria_usuario'								=> $log_01,
+				'auditoria_fecha_hora'							=> date('Y-m-d H:i:s'),
+				'auditoria_ip'									=> $log_03
 			));
 		
-		$result	= post_curl('400', $dataJSON);
+		$result	= post_curl('600', $dataJSON);
 	}
 
 	$result		= json_decode($result, true);

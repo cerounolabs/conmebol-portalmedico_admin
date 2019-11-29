@@ -324,7 +324,7 @@
                     foreach ($subDominioJSON['data'] as $subDominioKEY => $subDominioVALUE) {
                         if ($subDominioVALUE['tipo_sub_estado_codigo'] === 'A' && $subDominioVALUE['tipo_sub_dominio'] === 'CUERPOZONA' && $subDominioVALUE['tipo_codigo'] === $dominioVALUE['tipo_codigo']){
 ?>
-                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo'].'_'.$subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>
+                                                                    <option value="<?php echo $subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>
 <?php
                         }
                     }
@@ -493,7 +493,7 @@
                     foreach ($subDominioJSON['data'] as $subDominioKEY => $subDominioVALUE) {
                         if ($subDominioVALUE['tipo_sub_estado_codigo'] === 'A' && $subDominioVALUE['tipo_sub_dominio'] === 'DIAGNOSTICOTIPO' && $subDominioVALUE['tipo_codigo'] === $dominioVALUE['tipo_codigo']){
 ?>
-                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo'].'_'.$subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>
+                                                                    <option value="<?php echo $subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>
 <?php
                         }
                     }
