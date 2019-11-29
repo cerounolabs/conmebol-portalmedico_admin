@@ -8,7 +8,7 @@
     require '../../class/function/curl_api.php';
 
 	$val001         = 112;
-	$val002         = date('Y-m-dTH:i:s');
+	$val002         = date('Y-m-d');
 
     $val101         = $_POST['var101'];
     $val102         = strtoupper($_POST['var102']);
