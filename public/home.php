@@ -10,6 +10,8 @@
         $codeRest       = 0;
         $msgRest        = '';
     }
+
+    $competenciaJSON = get_curl('200/disciplina/'.$usu_04);
 ?>
 
 <!DOCTYPE html>
@@ -76,8 +78,55 @@
                 <!-- ============================================================== -->
                 <!-- basic table -->
                 <div class="row">
-                    
-
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var01">Disciplina</label>
+                                                    <select id="var01" name="var01" onchange="getCompetencias();" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <optgroup label="Disciplina">
+                                                            <option value="FOOTBALL">F&uacute;tbol de Campo</option>
+                                                            <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
+                                                            <option value="BEACH_SOCCER">F&uacute;tbol de Playa</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="var02">Competencia</label>
+                                                    <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var03">Lesi&oacute;n</label>
+                                                    <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <optgroup label="Lesi&oacute;n">
+                                                            <option value="0">Todos</option>
+                                                            <option value="1">Ingresado</option>
+                                                            <option value="2">En Proceso</option>
+                                                            <option value="3">Finalizado</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-2">
+                                                <div class="form-group text-right">
+                                                    <button type="submit" class="btn btn-info">VER</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -119,5 +168,27 @@
 <?php
     }
 ?>
+    <script>
+        function getCompetencias(){
+            var codDisciplina   = document.getElementById('var01');
+            var selCompetencia  = document.getElementById('var02'); 
+            var xDATA           = '<?php echo json_encode($competenciaJSON); ?>';
+            var xJSON           = JSON.parseJSON(xDATA);
+                    
+            while (selCompetencia.length > 0) {
+                selCompetencia.remove(0);
+            }
+
+            xJSON.forEach(element => {
+                console.log('val => '+ element.competicion_disciplina);
+                if (codDisciplina.value == element.competicion_disciplina) {
+                    var option  = document.createElement('option');
+                    option.value= element.competicion_codigo;
+                    option.text = element.competicion_nombre;
+                    selCompetencia.add(option, null);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
