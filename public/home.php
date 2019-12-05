@@ -572,49 +572,111 @@
             };
 
             var chart06 = echarts.init(document.getElementById('chart06'));
-            var option06= {
+
+            var dataStyle = {
+                normal: {
+                    label: {show: false},
+                    labelLine: {show: false}
+                }
+            };
+
+            var placeHolderStyle = {
+                normal: {
+                    color: 'rgba(0,0,0,0)',
+                    label: {show: false},
+                    labelLine: {show: false}
+                },
+                emphasis: {
+                    color: 'rgba(0,0,0,0)'
+                }
+            };
+
+            var option06 = {
+                title: {
+                    text: 'Amonestación',
+                    x: 'center',
+                    y: 'center',
+                    itemGap: 10,
+                    textStyle: {
+                        color: 'rgba(30,144,255,0.8)',
+                        fontSize: 19,
+                        fontWeight: '500'
+                    }
+                },
+
                 tooltip: {
-                    trigger: 'item',
+                    show: true,
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                color: ['#4fc3f7', '#4798e8', '#1565c0'],
-                calculable: true,
+
+                legend: {
+                    orient: 'vertical',
+                    x: document.getElementById('chart06').offsetWidth / 2,
+                    y: 30,
+                    x: '55%',
+                    itemGap: 15,
+                    data: ['Ninguna', 'Tarjeta Amarilla','Tarjeta Roja']
+                },
+
+                // Add custom colors
+                color: ['#006064', '#ffbc34', '#f62d51'],
+ 
+                // Add series
                 series: [
-                    {   
-                        name: 'Amonestación',
+                    {
+                        name: '1',
                         type: 'pie',
-                        radius: ['60%', '85%'],
-                        selectedMode: 'single',
-                        x: '55%',
-                        y: '7.5%',
-                        width: '40%',
-                        height: '85%',
-                        funnelAlign: 'right',
-                        itemStyle: {
-                            normal: {
-                                label: {
-                                    position: 'inner'
-                                },
-                                labelLine: {
-                                    show: false
-                                }
-                            },
-                            emphasis: {
-                                label: {
-                                    show: true
-                                }
-                            }
-                        },
+                        clockWise: false,
+                        radius: ['75%', '90%'],
+                        itemStyle: dataStyle,
                         data: [
-<?php
-    if ($lesionFaltaJSON['code'] == 200){
-        foreach ($lesionFaltaJSON['data'] as $lesionFaltaKEY => $lesionFaltaVALUE) {
-?>
-            {value: 20, name: '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>'},
-<?php
-        }
-    }
-?>
+                            {
+                                value: 20,
+                                name: 'Ninguna'
+                            },
+                            {
+                                value: 80,
+                                name: 'invisible',
+                                itemStyle: placeHolderStyle
+                            }
+                        ]
+                    },
+
+                    {
+                        name: '2',
+                        type:'pie',
+                        clockWise: false,
+                        radius: ['60%', '75%'],
+                        itemStyle: dataStyle,
+                        data: [
+                            {
+                                value: 50, 
+                                name: 'Tarjeta Amarilla'
+                            },
+                            {
+                                value: 50,
+                                name: 'invisible',
+                                itemStyle: placeHolderStyle
+                            }
+                        ]
+                    },
+
+                    {
+                        name: '3',
+                        type: 'pie',
+                        clockWise: false,
+                        radius: ['45%', '60%'],
+                        itemStyle: dataStyle,
+                        data: [
+                            {
+                                value: 30, 
+                                name: 'Tarjeta Roja'
+                            },
+                            {
+                                value: 70,
+                                name: 'invisible',
+                                itemStyle: placeHolderStyle
+                            }
                         ]
                     }
                 ]
