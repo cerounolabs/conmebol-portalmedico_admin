@@ -35,9 +35,12 @@
         $var04 = date('Y');
     }
 
-    $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
-    $lesionJSON         = get_curl('000/dominio/LESIONTIPO');
-    $diagnosticoJSON    = get_curl('000/dominio/DIAGNOSTICOGRUPO');
+    $competenciaJSON        = get_curl('200/disciplina/'.$usu_04);
+    $lesionTipoJSON         = get_curl('000/dominio/LESIONTIPO');
+    $lesionDiagnosticoJSON  = get_curl('000/dominio/DIAGNOSTICOGRUPO');
+    $lesionReincidenciaJSON = get_curl('000/dominio/LESIONREINCIDENCIA');
+    $lesionCausaJSON        = get_curl('000/dominio/LESIONCAUSA');
+    $lesionFaltaJSON        = get_curl('000/dominio/LESIONFALTA');
 
     $var01_1 = '';
     $var01_2 = '';
@@ -228,6 +231,33 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title">Lesión x Reincidencia</h4>
+                                <div id="chart04" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info" style="background-color:#163562;">
+                                <h4 class="card-title" style="color:#fff;">Lesión x Causa</h4>
+                                <div id="chart05" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title">Lesión x Amonestación</h4>
+                                <div id="chart06" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -312,7 +342,7 @@
                 calculable: true,
                 series: [
                     {   
-                        name: 'Lesión',
+                        name: 'Estado',
                         type: 'pie',
                         radius: ['60%', '85%'],
                         selectedMode: 'single',
@@ -381,10 +411,10 @@
                         },
                         data: [
 <?php
-    if ($lesionJSON['code'] == 200){
-        foreach ($lesionJSON['data'] as $lesionKEY => $lesionVALUE) {
+    if ($lesionTipoJSON['code'] == 200){
+        foreach ($lesionTipoJSON['data'] as $lesionTipoKEY => $lesionTipoVALUE) {
 ?>
-            {value: 20, name: '<?php echo $lesionVALUE['tipo_nombre_castellano']; ?>'},
+            {value: 20, name: '<?php echo $lesionTipoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -430,10 +460,157 @@
                         },
                         data: [
 <?php
-    if ($diagnosticoJSON['code'] == 200){
-        foreach ($diagnosticoJSON['data'] as $diagnosticoKEY => $diagnosticoVALUE) {
+    if ($lesionDiagnosticoJSON['code'] == 200){
+        foreach ($lesionDiagnosticoJSON['data'] as $lesionDiagnosticoKEY => $lesionDiagnosticoVALUE) {
 ?>
-            {value: 20, name: '<?php echo $diagnosticoVALUE['tipo_nombre_castellano']; ?>'},
+            {value: 20, name: '<?php echo $lesionDiagnosticoVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart04 = echarts.init(document.getElementById('chart04'));
+            var option04= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Reincidencia',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($lesionReincidenciaJSON['code'] == 200){
+        foreach ($lesionReincidenciaJSON['data'] as $lesionReincidenciaKEY => $lesionReincidenciaVALUE) {
+?>
+            {value: 20, name: '<?php echo $lesionReincidenciaVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart05 = echarts.init(document.getElementById('chart05'));
+            var option05= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Causa',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($lesionCausaJSON['code'] == 200){
+        foreach ($lesionCausaJSON['data'] as $lesionCausaKEY => $lesionCausaVALUE) {
+?>
+            {value: 20, name: '<?php echo $lesionCausaVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart06 = echarts.init(document.getElementById('chart06'));
+            var option06= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Amonestación',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($lesionFaltaJSON['code'] == 200){
+        foreach ($lesionFaltaJSON['data'] as $lesionFaltaKEY => $lesionFaltaVALUE) {
+?>
+            {value: 20, name: '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -446,6 +623,9 @@
             chart01.setOption(option01);
             chart02.setOption(option02);
             chart03.setOption(option03);
+            chart04.setOption(option04);
+            chart05.setOption(option05);
+            chart06.setOption(option06);
         });
     </script>
 </body>
