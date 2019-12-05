@@ -225,7 +225,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="card">
                             <div class="card-body analytics-info" style="background-color:#163562;">
-                                <h4 class="card-title" style="color:#fff;">Lesión x Diagnostico</h4>
+                                <h4 class="card-title" style="color:#fff;">Lesión x Reincidencia</h4>
                                 <div id="chart03" style="height:300px;"></div>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="card">
                             <div class="card-body analytics-info">
-                                <h4 class="card-title">Lesión x Reincidencia</h4>
+                                <h4 class="card-title">Lesión x Diagnostico</h4>
                                 <div id="chart04" style="height:300px;"></div>
                             </div>
                         </div>
@@ -381,40 +381,25 @@
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                color: ['#ffbc34', '#4fc3f7', '#212529', '#f62d51', '#2962FF', '#FFC400', '#006064', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
                 calculable: true,
                 series: [
-                    {   
+                    {
                         name: 'Tipo',
                         type: 'pie',
-                        radius: ['60%', '85%'],
-                        selectedMode: 'single',
-                        x: '55%',
-                        y: '7.5%',
+                        radius: ['15%', '73%'],
+                        center: ['50%', '57%'],
+                        roseType: 'area',
                         width: '40%',
-                        height: '85%',
-                        funnelAlign: 'right',
-                        itemStyle: {
-                            normal: {
-                                label: {
-                                    position: 'inner'
-                                },
-                                labelLine: {
-                                    show: false
-                                }
-                            },
-                            emphasis: {
-                                label: {
-                                    show: true
-                                }
-                            }
-                        },
+                        height: '78%',
+                        x: '30%',
+                        y: '17.5%',
                         data: [
 <?php
-    if ($lesionTipoJSON['code'] == 200){
+    if ($lesionTipoJSON['code'] === 200){
         foreach ($lesionTipoJSON['data'] as $lesionTipoKEY => $lesionTipoVALUE) {
 ?>
-            {value: 20, name: '<?php echo $lesionTipoVALUE['tipo_nombre_castellano']; ?>'},
+                            {value: 20, name: '<?php echo $lesionTipoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -426,55 +411,6 @@
 
             var chart03 = echarts.init(document.getElementById('chart03'));
             var option03= {
-                tooltip: {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b}: {c} ({d}%)"
-                },
-                color: ['#4fc3f7', '#4798e8', '#1565c0'],
-                calculable: true,
-                series: [
-                    {   
-                        name: 'Diagnostico',
-                        type: 'pie',
-                        radius: ['60%', '85%'],
-                        selectedMode: 'single',
-                        x: '55%',
-                        y: '7.5%',
-                        width: '40%',
-                        height: '85%',
-                        funnelAlign: 'right',
-                        itemStyle: {
-                            normal: {
-                                label: {
-                                    position: 'inner'
-                                },
-                                labelLine: {
-                                    show: false
-                                }
-                            },
-                            emphasis: {
-                                label: {
-                                    show: true
-                                }
-                            }
-                        },
-                        data: [
-<?php
-    if ($lesionDiagnosticoJSON['code'] == 200){
-        foreach ($lesionDiagnosticoJSON['data'] as $lesionDiagnosticoKEY => $lesionDiagnosticoVALUE) {
-?>
-            {value: 20, name: '<?php echo $lesionDiagnosticoVALUE['tipo_nombre_castellano']; ?>'},
-<?php
-        }
-    }
-?>
-                        ]
-                    }
-                ]
-            };
-
-            var chart04 = echarts.init(document.getElementById('chart04'));
-            var option04= {
                 tooltip: {
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
@@ -521,6 +457,33 @@
                     }
                 ]
             };
+
+            var chart04 = echarts.init(document.getElementById('chart04'));
+            var option04= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#ffbc34', '#4fc3f7', '#212529', '#f62d51', '#2962FF', '#FFC400', '#006064', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
+                calculable: true,
+                series: [{
+                    name: 'Diagnostico',
+                    type: 'pie',
+                    radius: '70%',
+                    center: ['50%', '57.5%'],
+                    data: [
+<?php
+    if ($lesionDiagnosticoJSON['code'] == 200){
+        foreach ($lesionDiagnosticoJSON['data'] as $lesionDiagnosticoKEY => $lesionDiagnosticoVALUE) {
+?>
+            {value: 20, name: '<?php echo $lesionDiagnosticoVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                    ]
+                }]
+        };
 
             var chart05 = echarts.init(document.getElementById('chart05'));
             var option05= {
@@ -615,24 +578,53 @@
                     y: 30,
                     x: '55%',
                     itemGap: 15,
-                    data: ['Ninguna', 'Tarjeta Amarilla','Tarjeta Roja']
+                    data: [
+<?php
+    if ($lesionFaltaJSON['code'] == 200){
+        foreach ($lesionFaltaJSON['data'] as $lesionFaltaKEY => $lesionFaltaVALUE) {
+?>
+                        '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>',
+<?php
+        }
+    }
+?>
+                    ]
                 },
 
-                // Add custom colors
                 color: ['#006064', '#ffbc34', '#f62d51'],
  
-                // Add series
                 series: [
+<?php
+    if ($lesionFaltaJSON['code'] == 200){
+        $index      = 1;
+        foreach ($lesionFaltaJSON['data'] as $lesionFaltaKEY => $lesionFaltaVALUE) {
+            switch ($index) {
+                case 1:
+                    $dataRadius1 = '75%';
+                    $dataRadius2 = '90%';
+                    break;
+                
+                case 2:
+                    $dataRadius1 = '60%';
+                    $dataRadius2 = '75%';
+                    break;
+
+                case 3:
+                    $dataRadius1 = '45%';
+                    $dataRadius2 = '60%';
+                    break;
+            }
+?>
                     {
-                        name: '1',
+                        name: '<?php echo $index; ?>',
                         type: 'pie',
                         clockWise: false,
-                        radius: ['75%', '90%'],
+                        radius: ['<?php echo $dataRadius1; ?>', '<?php echo $dataRadius2; ?>'],
                         itemStyle: dataStyle,
                         data: [
                             {
                                 value: 20,
-                                name: 'Ninguna'
+                                name: '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>'
                             },
                             {
                                 value: 80,
@@ -641,44 +633,11 @@
                             }
                         ]
                     },
-
-                    {
-                        name: '2',
-                        type:'pie',
-                        clockWise: false,
-                        radius: ['60%', '75%'],
-                        itemStyle: dataStyle,
-                        data: [
-                            {
-                                value: 50, 
-                                name: 'Tarjeta Amarilla'
-                            },
-                            {
-                                value: 50,
-                                name: 'invisible',
-                                itemStyle: placeHolderStyle
-                            }
-                        ]
-                    },
-
-                    {
-                        name: '3',
-                        type: 'pie',
-                        clockWise: false,
-                        radius: ['45%', '60%'],
-                        itemStyle: dataStyle,
-                        data: [
-                            {
-                                value: 30, 
-                                name: 'Tarjeta Roja'
-                            },
-                            {
-                                value: 70,
-                                name: 'invisible',
-                                itemStyle: placeHolderStyle
-                            }
-                        ]
-                    }
+<?php
+            $index = $index + 1;
+        }
+    }
+?>
                 ]
             };
 
