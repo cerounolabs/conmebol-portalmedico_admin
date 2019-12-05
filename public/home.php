@@ -38,6 +38,9 @@
     $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
     $lesionJSON         = get_curl('000/dominio/LESIONTIPO');
     $diagnosticoJSON    = get_curl('000/dominio/DIAGNOSTICOGRUPO');
+    $reincidenciaJSON   = get_curl('000/dominio/LESIONREINCIDENCIA');
+    $causaJSON          = get_curl('000/dominio/LESIONCAUSA');
+    $faltaJSON          = get_curl('000/dominio/LESIONFALTA');
 
     $var01_1 = '';
     $var01_2 = '';
@@ -224,6 +227,33 @@
                             <div class="card-body analytics-info" style="background-color:#163562;">
                                 <h4 class="card-title" style="color:#fff;">Lesión x Diagnostico</h4>
                                 <div id="chart03" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title">Lesión x Reincidencia</h4>
+                                <div id="chart04" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info" style="background-color:#163562;">
+                                <h4 class="card-title" style="color:#fff;">Lesión x Causa</h4>
+                                <div id="chart05" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title">Lesión x Amonestación</h4>
+                                <div id="chart06" style="height:300px;"></div>
                             </div>
                         </div>
                     </div>
@@ -443,9 +473,159 @@
                 ]
             };
 
+            var chart04 = echarts.init(document.getElementById('chart04'));
+            var option04= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Reincidencia',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($reincidenciaJSON['code'] == 200){
+        foreach ($reincidenciaJSON['data'] as $reincidenciaKEY => $reincidenciaVALUE) {
+?>
+            {value: 20, name: '<?php echo $reincidenciaVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart05 = echarts.init(document.getElementById('chart05'));
+            var option05= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Causa',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($causaJSON['code'] == 200){
+        foreach ($causaJSON['data'] as $causaKEY => $causaVALUE) {
+?>
+            {value: 20, name: '<?php echo $causaVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart06 = echarts.init(document.getElementById('chart06'));
+            var option06= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Amonestación',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($faltaJSON['code'] == 200){
+        foreach ($faltaJSON['data'] as $faltaKEY => $faltaVALUE) {
+?>
+            {value: 20, name: '<?php echo $faltaVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
             chart01.setOption(option01);
             chart02.setOption(option02);
             chart03.setOption(option03);
+            chart04.setOption(option04);
+            chart05.setOption(option05);
+            chart06.setOption(option06);
         });
     </script>
 </body>
