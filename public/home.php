@@ -11,7 +11,74 @@
         $msgRest        = '';
     }
 
-    $competenciaJSON = get_curl('200/disciplina/'.$usu_04);
+    if(isset($_GET['var01'])){
+        $var01 = $_GET['var01'];
+    } else {
+        $var01 = 'FOOTBALL';
+    }
+
+    if(isset($_GET['var02'])){
+        $var02 = $_GET['var02'];
+    } else {
+        $var02 = 0;
+    }
+
+    if(isset($_GET['var03'])){
+        $var03 = $_GET['var03'];
+    } else {
+        $var03 = 0;
+    }
+
+    if(isset($_GET['var04'])){
+        $var04 = $_GET['var04'];
+    } else {
+        $var04 = date('Y');
+    }
+
+    $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
+    $lesionJSON         = get_curl('000/dominio/LESIONTIPO');
+    $diagnosticoJSON    = get_curl('000/dominio/DIAGNOSTICOGRUPO');
+
+    $var01_1 = '';
+    $var01_2 = '';
+    $var01_3 = '';
+
+    switch ($var01) {
+        case 'FOOTBALL':
+            $var01_1 = 'selected';
+            break;
+
+        case 'FUTSAL':
+            $var01_2 = 'selected';
+            break;
+
+        case 'BEACH_SOCCER':
+            $var01_3 = 'selected';
+            break;
+    }
+
+    $var03_0 = '';
+    $var03_1 = '';
+    $var03_2 = '';
+    $var03_3 = '';
+
+    switch ($var03) {
+        case '0':
+            $var03_0 = 'selected';
+            break;
+
+        case '1':
+            $var03_1 = 'selected';
+            break;
+
+        case '2':
+            $var03_2 = 'selected';
+            break;
+
+        case '3':
+            $var03_3 = 'selected';
+            break;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -84,39 +151,45 @@
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-3">
+                                            <div class="col-sm-12 col-md-2">
                                                 <div class="form-group">
                                                     <label for="var01">Disciplina</label>
                                                     <select id="var01" name="var01" onchange="getCompetencias();" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <optgroup label="Disciplina">
-                                                            <option value="FOOTBALL">F&uacute;tbol de Campo</option>
-                                                            <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
-                                                            <option value="BEACH_SOCCER">F&uacute;tbol de Playa</option>
+                                                            <option value="FOOTBALL" <?php echo $var01_1; ?>>F&uacute;tbol de Campo</option>
+                                                            <option value="FUTSAL" <?php echo $var01_2; ?>>F&uacute;tbol de Sal&oacute;n</option>
+                                                            <option value="BEACH_SOCCER" <?php echo $var01_3; ?>>F&uacute;tbol de Playa</option>
                                                         </optgroup>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-5">
                                                 <div class="form-group">
                                                     <label for="var02">Competencia</label>
                                                     <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-3">
+                                            <div class="col-sm-12 col-md-2">
                                                 <div class="form-group">
                                                     <label for="var03">Lesi&oacute;n</label>
                                                     <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <optgroup label="Lesi&oacute;n">
-                                                            <option value="0">Todos</option>
-                                                            <option value="1">Ingresado</option>
-                                                            <option value="2">En Proceso</option>
-                                                            <option value="3">Finalizado</option>
+                                                            <option value="0" <?php echo $var03_0; ?>>Todos</option>
+                                                            <option value="1" <?php echo $var03_1; ?>>Ingresado</option>
+                                                            <option value="2" <?php echo $var03_2; ?>>En Proceso</option>
+                                                            <option value="3" <?php echo $var03_3; ?>>Finalizado</option>
                                                         </optgroup>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-2">
+                                                <div class="form-group">
+                                                    <label for="var04">Periodo</label>
+                                                    <input id="var04" name="var04" value="<?php echo $var04; ?>" type="number" min="2019" max="2030" class="form-control" style="width:100%; height:40px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-1">
                                                 <div class="form-group text-right">
                                                     <button type="submit" class="btn btn-info">VER</button>
                                                 </div>
@@ -124,6 +197,33 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info" style="background-color:#163562;">
+                                <h4 class="card-title" style="color:#fff;">Lesión x Estado</h4>
+                                <div id="chart01" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title">Lesión x Tipo</h4>
+                                <div id="chart02" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info" style="background-color:#163562;">
+                                <h4 class="card-title" style="color:#fff;">Lesión x Diagnostico</h4>
+                                <div id="chart03" style="height:300px;"></div>
                             </div>
                         </div>
                     </div>
@@ -172,23 +272,181 @@
         function getCompetencias(){
             var codDisciplina   = document.getElementById('var01');
             var selCompetencia  = document.getElementById('var02'); 
-            var xDATA           = '<?php echo json_encode($competenciaJSON); ?>';
-            var xJSON           = JSON.parseJSON(xDATA);
+            var selOption       = '<?php echo $var02; ?>';
+            var xDATA           = '<?php echo json_encode($competenciaJSON['data']); ?>';
+            var xJSON           = JSON.parse(xDATA);
                     
             while (selCompetencia.length > 0) {
                 selCompetencia.remove(0);
             }
 
             xJSON.forEach(element => {
-                console.log('val => '+ element.competicion_disciplina);
                 if (codDisciplina.value == element.competicion_disciplina) {
-                    var option  = document.createElement('option');
-                    option.value= element.competicion_codigo;
-                    option.text = element.competicion_nombre;
+                    var option      = document.createElement('option');
+                    option.value    = element.competicion_codigo;
+                    option.text     = element.competicion_nombre;
+
+                    if (selOption == element.competicion_codigo){
+                        option.selected = true;
+                    } else {
+                        option.selected = false;
+                    }
+                    
                     selCompetencia.add(option, null);
                 }
             });
         }
+
+        getCompetencias();
+
+        $(function() {
+            "use strict";
+
+            var chart01 = echarts.init(document.getElementById('chart01'));
+            var option01= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Lesión',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+                            {value: 20, name: 'Ingresado'},
+                            {value: 5, name: 'En Proceso'},
+                            {value: 32, name: 'Finalizado'}
+                        ]
+                    }
+                ]
+            };
+
+            var chart02 = echarts.init(document.getElementById('chart02'));
+            var option02= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Tipo',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($lesionJSON['code'] == 200){
+        foreach ($lesionJSON['data'] as $lesionKEY => $lesionVALUE) {
+?>
+            {value: 20, name: '<?php echo $lesionVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart03 = echarts.init(document.getElementById('chart03'));
+            var option03= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Diagnostico',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($diagnosticoJSON['code'] == 200){
+        foreach ($diagnosticoJSON['data'] as $diagnosticoKEY => $diagnosticoVALUE) {
+?>
+            {value: 20, name: '<?php echo $diagnosticoVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            chart01.setOption(option01);
+            chart02.setOption(option02);
+            chart03.setOption(option03);
+        });
     </script>
 </body>
 </html>
