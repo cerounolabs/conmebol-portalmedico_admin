@@ -338,7 +338,8 @@
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                //color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
                 calculable: true,
                 series: [
                     {   
@@ -381,7 +382,7 @@
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                color: ['#ffbc34', '#4fc3f7', '#212529', '#f62d51', '#2962FF', '#FFC400', '#006064', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
                 calculable: true,
                 series: [
                     {
@@ -415,7 +416,7 @@
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
                 calculable: true,
                 series: [
                     {   
@@ -464,7 +465,7 @@
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                color: ['#ffbc34', '#4fc3f7', '#212529', '#f62d51', '#2962FF', '#FFC400', '#006064', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
                 calculable: true,
                 series: [{
                     name: 'Diagnostico',
@@ -491,7 +492,7 @@
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                color: ['#4fc3f7', '#4798e8', '#1565c0'],
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
                 calculable: true,
                 series: [
                     {   
