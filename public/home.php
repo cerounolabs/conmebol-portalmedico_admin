@@ -35,12 +35,12 @@
         $var04 = date('Y');
     }
 
-    $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
-    $lesionJSON         = get_curl('000/dominio/LESIONTIPO');
-    $diagnosticoJSON    = get_curl('000/dominio/DIAGNOSTICOGRUPO');
-    $reincidenciaJSON   = get_curl('000/dominio/LESIONREINCIDENCIA');
-    $causaJSON          = get_curl('000/dominio/LESIONCAUSA');
-    $faltaJSON          = get_curl('000/dominio/LESIONFALTA');
+    $competenciaJSON        = get_curl('200/disciplina/'.$usu_04);
+    $lesionTipoJSON         = get_curl('000/dominio/LESIONTIPO');
+    $lesionDiagnosticoJSON  = get_curl('000/dominio/DIAGNOSTICOGRUPO');
+    $lesionReincidenciaJSON = get_curl('000/dominio/LESIONREINCIDENCIA');
+    $lesionCausaJSON        = get_curl('000/dominio/LESIONCAUSA');
+    $lesionFaltaJSON        = get_curl('000/dominio/LESIONFALTA');
 
     $var01_1 = '';
     $var01_2 = '';
@@ -342,7 +342,7 @@
                 calculable: true,
                 series: [
                     {   
-                        name: 'Lesión',
+                        name: 'Estado',
                         type: 'pie',
                         radius: ['60%', '85%'],
                         selectedMode: 'single',
@@ -411,10 +411,10 @@
                         },
                         data: [
 <?php
-    if ($lesionJSON['code'] == 200){
-        foreach ($lesionJSON['data'] as $lesionKEY => $lesionVALUE) {
+    if ($lesionTipoJSON['code'] == 200){
+        foreach ($lesionTipoJSON['data'] as $lesionTipoKEY => $lesionTipoVALUE) {
 ?>
-            {value: 20, name: '<?php echo $lesionVALUE['tipo_nombre_castellano']; ?>'},
+            {value: 20, name: '<?php echo $lesionTipoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -460,10 +460,10 @@
                         },
                         data: [
 <?php
-    if ($diagnosticoJSON['code'] == 200){
-        foreach ($diagnosticoJSON['data'] as $diagnosticoKEY => $diagnosticoVALUE) {
+    if ($lesionDiagnosticoJSON['code'] == 200){
+        foreach ($lesionDiagnosticoJSON['data'] as $lesionDiagnosticoKEY => $lesionDiagnosticoVALUE) {
 ?>
-            {value: 20, name: '<?php echo $diagnosticoVALUE['tipo_nombre_castellano']; ?>'},
+            {value: 20, name: '<?php echo $lesionDiagnosticoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -509,10 +509,10 @@
                         },
                         data: [
 <?php
-    if ($reincidenciaJSON['code'] == 200){
-        foreach ($reincidenciaJSON['data'] as $reincidenciaKEY => $reincidenciaVALUE) {
+    if ($lesionReincidenciaJSON['code'] == 200){
+        foreach ($lesionReincidenciaJSON['data'] as $lesionReincidenciaKEY => $lesionReincidenciaVALUE) {
 ?>
-            {value: 20, name: '<?php echo $reincidenciaVALUE['tipo_nombre_castellano']; ?>'},
+            {value: 20, name: '<?php echo $lesionReincidenciaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -558,10 +558,10 @@
                         },
                         data: [
 <?php
-    if ($causaJSON['code'] == 200){
-        foreach ($causaJSON['data'] as $causaKEY => $causaVALUE) {
+    if ($lesionCausaJSON['code'] == 200){
+        foreach ($lesionCausaJSON['data'] as $lesionCausaKEY => $lesionCausaVALUE) {
 ?>
-            {value: 20, name: '<?php echo $causaVALUE['tipo_nombre_castellano']; ?>'},
+            {value: 20, name: '<?php echo $lesionCausaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -607,10 +607,10 @@
                         },
                         data: [
 <?php
-    if ($faltaJSON['code'] == 200){
-        foreach ($faltaJSON['data'] as $faltaKEY => $faltaVALUE) {
+    if ($lesionFaltaJSON['code'] == 200){
+        foreach ($lesionFaltaJSON['data'] as $lesionFaltaKEY => $lesionFaltaVALUE) {
 ?>
-            {value: 20, name: '<?php echo $faltaVALUE['tipo_nombre_castellano']; ?>'},
+            {value: 20, name: '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
