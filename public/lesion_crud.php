@@ -44,33 +44,6 @@
     $dominioJSON        = get_curl('000');
     $subDominioJSON     = get_curl('100');
     $jugadorJSON        = get_curl('700/'.$valorCompetencia.'/'.$valorEquipo);
-    
-	switch($workModo){
-		case 'C':
-            $workReadonly	= '';
-            $workReadonly2	= '';
-			$workATitulo	= 'Agregar';
-			$workAStyle		= 'btn-info';
-			break;
-		case 'R':
-            $workReadonly	= 'disabled';
-            $workReadonly2	= 'disabled';
-			$workATitulo	= 'Ver';
-			$workAStyle		= 'btn-primary';
-			break;
-		case 'U':
-            $workReadonly	= '';
-            $workReadonly2	= 'disabled';
-			$workATitulo	= 'Actualizar';
-			$workAStyle		= 'btn-success';
-			break;
-		case 'D':
-            $workReadonly	= 'disabled';
-            $workReadonly2	= 'disabled';
-			$workATitulo	= 'Eliminar';
-			$workAStyle		= 'btn-danger';
-			break;
-    }
 ?>
 
 <!DOCTYPE html>
