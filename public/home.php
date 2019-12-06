@@ -36,12 +36,12 @@
     }
 
     $competenciaJSON        = get_curl('200/disciplina/'.$usu_04);
-    $lesionEstadoJSON       = get_curl('600/LESIONESTADO/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
-    $lesionTipoJSON         = get_curl('600/LESIONTIPO/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
-    $lesionDiagnosticoJSON  = get_curl('600/DIAGNOSTICOGRUPO/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
-    $lesionReincidenciaJSON = get_curl('600/LESIONREINCIDENCIA/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
-    $lesionCausaJSON        = get_curl('600/LESIONCAUSA/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
-    $lesionFaltaJSON        = get_curl('600/LESIONFALTA/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
+    $lesionEstadoJSON       = get_curl('600/LESIONESTADO/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionTipoJSON         = get_curl('600/LESIONTIPO/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionDiagnosticoJSON  = get_curl('600/DIAGNOSTICOGRUPO/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionReincidenciaJSON = get_curl('600/LESIONREINCIDENCIA/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionCausaJSON        = get_curl('600/LESIONCAUSA/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionFaltaJSON        = get_curl('600/LESIONFALTA/'.$usu_04.'/'.$var02.'/'.$var03);
 
     $var01_1 = '';
     $var01_2 = '';
@@ -186,9 +186,9 @@
                                                     <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <optgroup label="Lesi&oacute;n">
                                                             <option value="0" <?php echo $var03_0; ?>>Todos</option>
-                                                            <option value="1" <?php echo $var03_1; ?>>Ingresado</option>
-                                                            <option value="2" <?php echo $var03_2; ?>>En Proceso</option>
-                                                            <option value="3" <?php echo $var03_3; ?>>Finalizado</option>
+                                                            <option value="112" <?php echo $var03_1; ?>>Ingresado</option>
+                                                            <option value="114" <?php echo $var03_2; ?>>En Proceso</option>
+                                                            <option value="115" <?php echo $var03_3; ?>>Finalizado</option>
                                                         </optgroup>
                                                     </select>
                                                 </div>
@@ -601,7 +601,7 @@
                     ]
                 },
 
-                color: ['#006064', '#ffbc34', '#f62d51'],
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
  
                 series: [
 <?php

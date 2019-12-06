@@ -52,11 +52,11 @@
 	}
 
 	$result		= json_decode($result, true);
-echo json_encode($result);	
+
 	if ($work02 == 'D'){
-//		header('Location: ../../public/dominio.php?dominio='.$work03.'&code='.$result['code'].'&msg='.$result['message']);
+		header('Location: ../../public/dominio.php?dominio='.$work03.'&code='.$result['code'].'&msg='.$result['message']);
 	} else {
-//		header('Location: ../../public/dominio_crud.php?dominio='.$work03.'&mode='.$work02.'&codigo='.$work01.'&code='.$result['code'].'&msg='.$result['message']);
+		header('Location: ../../public/dominio_crud.php?dominio='.$work03.'&mode='.$work02.'&codigo='.$work01.'&code='.$result['code'].'&msg='.$result['message']);
 	}
 
 	ob_end_flush();
