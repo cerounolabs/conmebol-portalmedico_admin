@@ -10,51 +10,7 @@
     $val_02         = $_POST['val_02'];
     $val_03         = $_SERVER['REMOTE_ADDR'];
 
-    if ($val_01 == 'admin@conmebol.com' && $val_02 == 'conmebol2019'){
-        $_SESSION['log_01'] = $val_01;
-        $_SESSION['log_02'] = $val_02;
-        $_SESSION['log_03'] = $val_03;
-
-        $_SESSION['usu_01'] = 'ADMINISTRADOR';
-        $_SESSION['usu_02'] = 'CONMEBOL';
-        $_SESSION['usu_03'] = 'CONFEDERACIÓN SUDAMERICANA DE FÚTBOL';
-        $_SESSION['usu_04'] = 39393;
-        $_SESSION['usu_05'] = 11;
-
-        $_SESSION['expire'] = time() + 1800;
-
-        header('Location: ../../public/home.php');
-
-    } elseif ($val_01 == 'riverplate@conmebol.com' && $val_02 == 'conmebol2019') {
-        $_SESSION['log_01'] = $val_01;
-        $_SESSION['log_02'] = $val_02;
-        $_SESSION['log_03'] = $val_03;
-
-        $_SESSION['usu_01'] = 'ADMINISTRADOR';
-        $_SESSION['usu_02'] = 'RIVER PLATE';
-        $_SESSION['usu_03'] = 'CLUB ATLETICO RIVER PLATE';
-        $_SESSION['usu_04'] = 48593;
-        $_SESSION['usu_05'] = 10;
-
-        $_SESSION['expire'] = time() + 1800;
-
-        header('Location: ../../public/home.php');
-
-    } elseif ($val_01 == 'flamengo@conmebol.com' && $val_02 == 'conmebol2019') {
-        $_SESSION['log_01'] = $val_01;
-        $_SESSION['log_02'] = $val_02;
-        $_SESSION['log_03'] = $val_03;
-
-        $_SESSION['usu_01'] = 'ADMINISTRADOR';
-        $_SESSION['usu_02'] = 'FLAMENGO';
-        $_SESSION['usu_03'] = 'CLUBE DE REGATAS DO FLAMENGO';
-        $_SESSION['usu_04'] = 50627;
-        $_SESSION['usu_05'] = 10;
-
-        $_SESSION['expire'] = time() + 1800;
-
-        header('Location: ../../public/home.php');
-    } else { 
+    if (isset($val_01) && isset($val_02)){
         $dataJSON           = json_encode(
             array(
                 'usuario_var01' => $val_01,
@@ -69,15 +25,15 @@
         $resultJSON         = json_decode($resultJSON, true);
 
         if ($resultJSON['code'] === 200) {
-            $_SESSION['log_01'] = $val_01;
-            $_SESSION['log_02'] = $val_02;
+            $_SESSION['log_01'] = $resultJSON['data'][0]['persona_user'];
+            $_SESSION['log_02'] = $resultJSON['data'][0]['persona_email'];
             $_SESSION['log_03'] = $val_03;
     
-            $_SESSION['usu_01'] = $val_01;
-            $_SESSION['usu_02'] = $val_02;
-            $_SESSION['usu_03'] = $val_03;
-            $_SESSION['usu_04'] = 39393;
-            $_SESSION['usu_05'] = 10;
+            $_SESSION['usu_01'] = $resultJSON['data'][0]['persona_nombre'];
+            $_SESSION['usu_02'] = $resultJSON['data'][0]['equipo_nombre'];
+            $_SESSION['usu_03'] = $resultJSON['data'][0]['tipo_perfil_nombre'];
+            $_SESSION['usu_04'] = $resultJSON['data'][0]['equipo_codigo'];
+            $_SESSION['usu_05'] = $resultJSON['data'][0]['tipo_perfil_codigo'];
     
             $_SESSION['expire'] = time() + 600;
             
