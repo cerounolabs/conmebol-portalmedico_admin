@@ -135,36 +135,7 @@
                                	</li>
                             </ul>
                         </li>
-<!--
-                        <li class="sidebar-item">
-                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                           		<i class="icon-Ambulance"></i>
-                           		<span class="hide-menu"> Lesiones </span>
-                           	</a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                               		<a href="../public/competencia.php?tipo=LES&disciplina=FOOTBALL" class="sidebar-link">
-                               			<i class="mdi mdi-lesion"></i>
-                               			<span class="hide-menu"> F&uacute;tbol de Campo </span>
-                                    </a>
-                               	</li>
 
-                                <li class="sidebar-item">
-                               		<a href="../public/competencia.php?tipo=LES&disciplina=FUTSAL" class="sidebar-link">
-                               			<i class="mdi mdi-lesion"></i>
-                               			<span class="hide-menu"> F&uacute;tbol de Sal&oacute;n </span>
-                                    </a>
-                               	</li>
-
-                                <li class="sidebar-item">
-                               		<a href="../public/competencia.php?tipo=LES&disciplina=BEACH_SOCCER" class="sidebar-link">
-                               			<i class="mdi mdi-lesion"></i>
-                               			<span class="hide-menu"> F&uacute;tbol de Playa </span>
-                                    </a>
-                               	</li>
-                            </ul>
-                        </li>
--->
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="icon-Ambulance"></i>
@@ -230,7 +201,7 @@
                                	</li>
                             </ul>
                         </li>
-
+<!--
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Bar-Chart "></i>
@@ -245,7 +216,7 @@
                                	</li>
                             </ul>
                         </li>
-
+-->
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Business-ManWoman"></i>
@@ -267,317 +238,216 @@
                            	    <span class="hide-menu"> Par&aacute;metros </span>
                             </a>
 						    <ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
-                               	    <a href="../public/dominio.php?dominio=COMPETENCIACATEGORIA" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Competencia Categor&iacute;a</span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                               	    <a href="../public/dominio.php?dominio=CUERPOPARTE" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Cuerpo Parte</span>
-                               	    </a>
-                                </li>
-                                
-                                <li class="sidebar-item">
-                               	    <a href="../public/subdominio.php?dominio=CUERPOZONA" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Cuerpo Zona </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                               	    <a href="../public/dominio.php?dominio=CUERPOLUGAR" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Cuerpo Lugar </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                               	    <a href="../public/dominio.php?dominio=DIAGNOSTICOGRUPO" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Diagn&oacute;stico Grupo </span>
-                               	    </a>
-                                </li>
-                                
-                                <li class="sidebar-item">
-                               	    <a href="../public/subdominio.php?dominio=DIAGNOSTICOTIPO" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Diagn&oacute;stico Tipo</span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                               	    <a href="../public/dominio.php?dominio=DIAGNOSTICOTIEMPO" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Diagn&oacute;stico Tiempo </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                               	    <a href="../public/dominio.php?dominio=DIAGNOSTICORECUPERACION" class="sidebar-link">
-                               		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Diagn&oacute;stico Recuperaci&oacute;n </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=LESIONESTADO" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Lesi&oacute;n Estado </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=LESIONTIPO" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Lesi&oacute;n Tipo </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=LESIONORIGEN" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Lesi&oacute;n Origen </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=LESIONREINCIDENCIA" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Lesi&oacute;n Reincidencia </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=LESIONCAUSA" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Lesi&oacute;n Causa </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=LESIONFALTA" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Lesi&oacute;n Falta </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=CAMPOCLIMA" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Campo Clima </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=CAMPODISTANCIA" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Campo Distancia </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=CAMPOMINUTO" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Campo Minuto </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=CAMPOTRASLADO" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Campo Traslado </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=CAMPOTIPO" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Campo Juego </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=CAMPOPOSICION" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Campo Posici&oacute;n </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=USUARIOESTADO" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Usuario Estado </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=USUARIOACCESO" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Usuario Acceso </span>
-                               	    </a>
-                                </li>
-
-                                <li class="sidebar-item">
-                                    <a href="../public/dominio.php?dominio=USUARIOROL" class="sidebar-link">
-                               	        <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Usuario Rol </span>
-                               	    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                           	    <i class="icon-Security-Block"></i>
-                           	    <span class="hide-menu"> Auditor&iacute;a </span>
-                            </a>
-						    <ul aria-expanded="false" class="collapse first-level">                       
                                 <li class="sidebar-item"> 
                                     <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                                        <i class="mdi mdi-aud-parameto"></i> 
-                                        <span class="hide-menu"> Par&aacute;metros </span>
+                                        <i class="mdi mdi-competencia"></i> 
+                                        <span class="hide-menu"> Competencia </span>
                                     </a>
                                     <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
-                                                <span class="hide-menu"> Competencia Categoría </span>
+                                            <a href="../public/dominio.php?dominio=COMPETENCIACATEGORIA" class="sidebar-link">
+                                                <i class="mdi mdi-competencia"></i> 
+                                                <span class="hide-menu"> Competencia Categor&iacute;a</span>
                                             </a>
                                         </li>
-                                        
-                                        <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
-                                                <span class="hide-menu"> Partes del Cuerpo </span>
-                                            </a>
-                                        </li>
+                                    </ul>
+                                </li>
 
+                                <li class="sidebar-item"> 
+                                    <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                        <i class="mdi mdi-cuerpo"></i> 
+                                        <span class="hide-menu"> Cuerpo </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=CUERPOPARTE" class="sidebar-link">
+                                                <i class="mdi mdi-cuerpo"></i>
                                                 <span class="hide-menu"> Cuerpo Parte</span>
                                             </a>
                                         </li>
                                         
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/subdominio.php?dominio=CUERPOZONA" class="sidebar-link">
+                                                <i class="mdi mdi-cuerpo"></i>
                                                 <span class="hide-menu"> Cuerpo Zona </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=CUERPOLUGAR" class="sidebar-link">
+                                                <i class="mdi mdi-cuerpo"></i>
+                                                <span class="hide-menu"> Cuerpo Lugar </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-item"> 
+                                    <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                        <i class="mdi mdi-diagnostico"></i> 
+                                        <span class="hide-menu"> Diagn&oacute;stico </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse second-level">
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=DIAGNOSTICOGRUPO" class="sidebar-link">
+                                                <i class="mdi mdi-diagnostico"></i> 
+                                                <span class="hide-menu"> Diagn&oacute;stico Grupo </span>
                                             </a>
                                         </li>
                                         
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/subdominio.php?dominio=DIAGNOSTICOTIPO" class="sidebar-link">
+                                                <i class="mdi mdi-diagnostico"></i> 
                                                 <span class="hide-menu"> Diagn&oacute;stico Tipo</span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
-                                                <span class="hide-menu"> Diagn&oacute;stico Grupo </span>
-                                            </a>
-                                        </li>
-
-                                        <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=DIAGNOSTICOTIEMPO" class="sidebar-link">
+                                                <i class="mdi mdi-diagnostico"></i> 
                                                 <span class="hide-menu"> Diagn&oacute;stico Tiempo </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=DIAGNOSTICORECUPERACION" class="sidebar-link">
+                                                <i class="mdi mdi-diagnostico"></i> 
                                                 <span class="hide-menu"> Diagn&oacute;stico Recuperaci&oacute;n </span>
                                             </a>
                                         </li>
+                                    </ul>
+                                </li>
 
+                                <li class="sidebar-item"> 
+                                    <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                        <i class="mdi mdi-lesion"></i> 
+                                        <span class="hide-menu"> Lesi&oacute;n </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=LESIONESTADO" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
                                                 <span class="hide-menu"> Lesi&oacute;n Estado </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=LESIONTIPO" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
                                                 <span class="hide-menu"> Lesi&oacute;n Tipo </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
-                                                <span class="hide-menu"> Lesi&oacute;n Caracteristica </span>
+                                            <a href="../public/dominio.php?dominio=LESIONORIGEN" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
+                                                <span class="hide-menu"> Lesi&oacute;n Origen </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=LESIONREINCIDENCIA" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
                                                 <span class="hide-menu"> Lesi&oacute;n Reincidencia </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=LESIONCAUSA" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
                                                 <span class="hide-menu"> Lesi&oacute;n Causa </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=LESIONFALTA" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
                                                 <span class="hide-menu"> Lesi&oacute;n Falta </span>
                                             </a>
                                         </li>
+                                    </ul>
+                                </li>
 
+                                <li class="sidebar-item"> 
+                                    <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                        <i class="mdi mdi-campo"></i> 
+                                        <span class="hide-menu"> Campo </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=CAMPOCLIMA" class="sidebar-link">
+                                                <i class="mdi mdi-campo"></i> 
                                                 <span class="hide-menu"> Campo Clima </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=CAMPODISTANCIA" class="sidebar-link">
+                                                <i class="mdi mdi-campo"></i> 
                                                 <span class="hide-menu"> Campo Distancia </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=CAMPOMINUTO" class="sidebar-link">
+                                                <i class="mdi mdi-campo"></i> 
+                                                <span class="hide-menu"> Campo Minuto </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=CAMPOTRASLADO" class="sidebar-link">
+                                                <i class="mdi mdi-campo"></i> 
                                                 <span class="hide-menu"> Campo Traslado </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=CAMPOTIPO" class="sidebar-link">
+                                                <i class="mdi mdi-campo"></i>  
                                                 <span class="hide-menu"> Campo Juego </span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="javascript:void(0)" class="sidebar-link">
-                                                <i class="mdi aud-parameto"></i>
+                                            <a href="../public/dominio.php?dominio=CAMPOPOSICION" class="sidebar-link">
+                                                <i class="mdi mdi-campo"></i>  
                                                 <span class="hide-menu"> Campo Posici&oacute;n </span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
+
+                                <li class="sidebar-item"> 
+                                    <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                        <i class="mdi mdi-usuario"></i> 
+                                        <span class="hide-menu"> Usuario </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse second-level">
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=USUARIOESTADO" class="sidebar-link">
+                                                <i class="mdi mdi-usuario"></i>
+                                                <span class="hide-menu"> Usuario Estado </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=USUARIOACCESO" class="sidebar-link">
+                                                <i class="mdi mdi-usuario"></i>
+                                                <span class="hide-menu"> Usuario Acceso </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=USUARIOROL" class="sidebar-link">
+                                                <i class="mdi mdi-usuario"></i>
+                                                <span class="hide-menu"> Usuario Rol </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
-						</li>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

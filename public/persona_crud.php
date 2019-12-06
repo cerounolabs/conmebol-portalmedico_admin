@@ -3,6 +3,10 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
+    if ($usu_05 != 11 && $usu_05 != 9){
+        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+    }
+
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];
         $msgRest        = $_GET['msg'];
@@ -13,10 +17,6 @@
 
     if(isset($_GET['codigo'])){
         $workCodigo     = $_GET['codigo'];
-    }
-
-    if(isset($_GET['dominio'])){
-        $workDominio    = $_GET['dominio'];
     }
 
     if(isset($_GET['mode'])){
@@ -37,7 +37,7 @@
             $row_05         = $dataJSON['data'][0]['persona_nombre'];
             $row_06			= $dataJSON['data'][0]['persona_email'];
             $row_07         = $dataJSON['data'][0]['persona_user'];
-			$row_08			= 'conmebol2019';
+			$row_08			= $dataJSON['data'][0]['persona_contrasenha'];
             $row_09			= $dataJSON['data'][0]['persona_path'];
             $row_10			= $dataJSON['data'][0]['persona_telefono'];
             $row_11			= $dataJSON['data'][0]['persona_observacion'];
@@ -160,7 +160,6 @@
                                         <div class="form-group">
                                             <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="<?php echo $workCodigo; ?>" required readonly>
                                             <input id="workModo" name="workModo" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $workModo; ?>" required readonly>
-                                            <input id="workDominio" name="workDominio" class="form-control" type="hidden" placeholder="Dominio" value="<?php echo $workDominio; ?>" required readonly>
                                         </div>
                                         
                                         <div class="row pt-3">
@@ -350,7 +349,7 @@
                                         </div>
 
                                         <button type="submit" class="btn <?php echo $workAStyle; ?>"><?php echo $workATitulo; ?></button>
-                                        <a role="button" class="btn btn-dark" href="../public/persona.php?dominio=<?php echo $workDominio; ?>">Volver</a>
+                                        <a role="button" class="btn btn-dark" href="../public/persona.php">Volver</a>
                                     </form>
                                 </div>
                             </div>

@@ -33,7 +33,6 @@
 
     $work01         = $_POST['workCodigo'];
     $work02         = $_POST['workModo'];
-    $work03         = $_POST['workDominio'];
 
 	$log_01         = $_SESSION['log_01'];
     $log_03         = $_SESSION['log_03'];
@@ -74,9 +73,9 @@
 	$result		= json_decode($result, true);
 
 	if ($work02 == 'D'){
-		header('Location: ../../public/persona.php?dominio='.$work03.'&code='.$result['code'].'&msg='.$result['message']);
+		header('Location: ../../public/persona.php?code='.$result['code'].'&msg='.$result['message']);
 	} else {
-		header('Location: ../../public/persona_crud.php?dominio='.$work03.'&mode='.$work02.'&codigo='.$work01.'&code='.$result['code'].'&msg='.$result['message']);
+		header('Location: ../../public/persona_crud.php?mode='.$work02.'&codigo='.$work01.'&code='.$result['code'].'&msg='.$result['message']);
 	}
 
 	ob_end_flush();
