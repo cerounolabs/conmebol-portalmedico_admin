@@ -13,7 +13,7 @@
 	$val04      	= $_POST['var04'];
 	$val05      	= strtoupper($_POST['var05']);
 	$val06			= strtolower($_POST['var06']);
-	$val07          = strtoupper($_POST['var07']);
+	$val07          = strtoupper($_POST['var07']).''.$_SESSION['usu_04'];
 	$val08          = $_POST['var08'];
 
 	if (isset($_POST['var09'])){
@@ -35,7 +35,7 @@
     $work02         = $_POST['workModo'];
 
 	$log_01         = $_SESSION['log_01'];
-    $log_03         = $_SESSION['log_03'];
+	$log_03         = $_SESSION['log_03'];
 
     if (isset($val01) && isset($val02) && isset($val03) && isset($val04) && isset($val05) && isset($val12)) {
         $dataJSON = json_encode(
