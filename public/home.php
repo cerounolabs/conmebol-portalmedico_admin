@@ -36,11 +36,12 @@
     }
 
     $competenciaJSON        = get_curl('200/disciplina/'.$usu_04);
-    $lesionTipoJSON         = get_curl('000/dominio/LESIONTIPO');
-    $lesionDiagnosticoJSON  = get_curl('000/dominio/DIAGNOSTICOGRUPO');
-    $lesionReincidenciaJSON = get_curl('000/dominio/LESIONREINCIDENCIA');
-    $lesionCausaJSON        = get_curl('000/dominio/LESIONCAUSA');
-    $lesionFaltaJSON        = get_curl('000/dominio/LESIONFALTA');
+    $lesionEstadoJSON       = get_curl('600/LESIONESTADO/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
+    $lesionTipoJSON         = get_curl('600/LESIONTIPO/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
+    $lesionDiagnosticoJSON  = get_curl('600/DIAGNOSTICOGRUPO/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
+    $lesionReincidenciaJSON = get_curl('600/LESIONREINCIDENCIA/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
+    $lesionCausaJSON        = get_curl('600/LESIONCAUSA/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
+    $lesionFaltaJSON        = get_curl('600/LESIONFALTA/'.$usu_04.'/'.$var01.'/'.$var02.'/'.$var03);
 
     $var01_1 = '';
     $var01_2 = '';
@@ -166,6 +167,12 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-12 col-md-2">
+                                                <div class="form-group">
+                                                    <label for="var04">Periodo</label>
+                                                    <input id="var04" name="var04" value="<?php echo $var04; ?>" onchange="getCompetencias();" type="number" min="2019" max="2030" class="form-control" style="width:100%; height:40px;" required>
+                                                </div>
+                                            </div>
                                             <div class="col-sm-12 col-md-5">
                                                 <div class="form-group">
                                                     <label for="var02">Competencia</label>
@@ -184,12 +191,6 @@
                                                             <option value="3" <?php echo $var03_3; ?>>Finalizado</option>
                                                         </optgroup>
                                                     </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-2">
-                                                <div class="form-group">
-                                                    <label for="var04">Periodo</label>
-                                                    <input id="var04" name="var04" value="<?php echo $var04; ?>" type="number" min="2019" max="2030" class="form-control" style="width:100%; height:40px;" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-1">
@@ -301,7 +302,8 @@
     <script>
         function getCompetencias(){
             var codDisciplina   = document.getElementById('var01');
-            var selCompetencia  = document.getElementById('var02'); 
+            var selCompetencia  = document.getElementById('var02');
+            var selAnho         = document.getElementById('var04'); 
             var selOption       = '<?php echo $var02; ?>';
             var xDATA           = '<?php echo json_encode($competenciaJSON['data']); ?>';
             var xJSON           = JSON.parse(xDATA);
@@ -311,7 +313,8 @@
             }
 
             xJSON.forEach(element => {
-                if (codDisciplina.value == element.competicion_disciplina) {
+                console.log(selAnho.value + ' == ' + element.competicion_anho);
+                if (codDisciplina.value == element.competicion_disciplina && selAnho.value == element.competicion_anho) {
                     var option      = document.createElement('option');
                     option.value    = element.competicion_codigo;
                     option.text     = element.competicion_nombre;
@@ -368,9 +371,15 @@
                             }
                         },
                         data: [
-                            {value: 20, name: 'Ingresado'},
-                            {value: 5, name: 'En Proceso'},
-                            {value: 32, name: 'Finalizado'}
+<?php
+    if ($lesionEstadoJSON['code'] == 200){
+        foreach ($lesionEstadoJSON['data'] as $lesionEstadoKEY => $lesionEstadoVALUE) {
+?>
+            {value: <?php echo $lesionEstadoVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionEstadoVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
                         ]
                     }
                 ]
@@ -400,7 +409,7 @@
     if ($lesionTipoJSON['code'] === 200){
         foreach ($lesionTipoJSON['data'] as $lesionTipoKEY => $lesionTipoVALUE) {
 ?>
-                            {value: 20, name: '<?php echo $lesionTipoVALUE['tipo_nombre_castellano']; ?>'},
+                            {value: <?php echo $lesionTipoVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionTipoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -449,7 +458,7 @@
     if ($lesionReincidenciaJSON['code'] == 200){
         foreach ($lesionReincidenciaJSON['data'] as $lesionReincidenciaKEY => $lesionReincidenciaVALUE) {
 ?>
-            {value: 20, name: '<?php echo $lesionReincidenciaVALUE['tipo_nombre_castellano']; ?>'},
+            {value: <?php echo $lesionReincidenciaVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionReincidenciaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -477,7 +486,7 @@
     if ($lesionDiagnosticoJSON['code'] == 200){
         foreach ($lesionDiagnosticoJSON['data'] as $lesionDiagnosticoKEY => $lesionDiagnosticoVALUE) {
 ?>
-            {value: 20, name: '<?php echo $lesionDiagnosticoVALUE['tipo_nombre_castellano']; ?>'},
+            {value: <?php echo $lesionDiagnosticoVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionDiagnosticoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -525,7 +534,7 @@
     if ($lesionCausaJSON['code'] == 200){
         foreach ($lesionCausaJSON['data'] as $lesionCausaKEY => $lesionCausaVALUE) {
 ?>
-            {value: 20, name: '<?php echo $lesionCausaVALUE['tipo_nombre_castellano']; ?>'},
+            {value: <?php echo $lesionCausaVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionCausaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
     }
@@ -624,11 +633,11 @@
                         itemStyle: dataStyle,
                         data: [
                             {
-                                value: 20,
+                                value: <?php echo $lesionFaltaVALUE['tipo_cantidad']; ?>,
                                 name: '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>'
                             },
                             {
-                                value: 80,
+                                value: <?php echo (100 - $lesionFaltaVALUE['tipo_cantidad']); ?>,
                                 name: 'invisible',
                                 itemStyle: placeHolderStyle
                             }
