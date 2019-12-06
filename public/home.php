@@ -38,7 +38,7 @@
     $competenciaJSON        = get_curl('200/disciplina/'.$usu_04);
     $lesionEstadoJSON       = get_curl('600/LESIONESTADO/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionTipoJSON         = get_curl('600/LESIONTIPO/'.$usu_04.'/'.$var02.'/'.$var03);
-    $lesionDiagnosticoJSON  = get_curl('600/DIAGNOSTICOGRUPO/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionDiagnosticoJSON  = get_curl('600/DIAGNOSTICOTIPO/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionReincidenciaJSON = get_curl('600/LESIONREINCIDENCIA/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionCausaJSON        = get_curl('600/LESIONCAUSA/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionFaltaJSON        = get_curl('600/LESIONFALTA/'.$usu_04.'/'.$var02.'/'.$var03);
