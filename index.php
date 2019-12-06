@@ -133,6 +133,10 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
+    <!--toast -->
+    <script src="assets/libs/toastr/build/toastr.min.js"></script>
+    <script src="assets/extra-libs/toastr/toastr-init.js"></script>
+
     <script>
         $('[data-toggle="tooltip"]').tooltip();
         $(".preloader").fadeOut();
@@ -146,7 +150,7 @@
     </script>
 
 <?php  
-    if ($codeRest == 401) {
+    if ($codeRest == 204 || $codeRest == 401) {
 ?>
     <script>
         $(function() {

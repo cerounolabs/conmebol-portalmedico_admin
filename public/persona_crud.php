@@ -78,8 +78,8 @@
 			$workAStyle		= 'btn-success';
 			break;
 		case 'D':
-            $workReadonly	= 'disabled';
-            $workReadonly2	= 'disabled';
+            $workReadonly	= 'readonly';
+            $workReadonly2	= 'readonly';
 			$workATitulo	= 'Eliminar';
 			$workAStyle		= 'btn-danger';
 			break;
