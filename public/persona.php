@@ -3,6 +3,10 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
+    if ($usu_05 != 11 && $usu_05 != 9){
+        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+    }
+
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];
         $msgRest        = $_GET['msg'];
@@ -236,7 +240,7 @@
                     { data				: 'persona_usuario', name : 'persona_usuario'},
                     { data				: 'persona_fecha_hora', name : 'persona_fecha_hora'},
                     { data				: 'persona_ip', name : 'persona_ip'},
-                    { render			: function (data, type, full, meta) {return '<a href="../public/persona_crud.php?dominio=USUARIO&mode=R&codigo=' + full.persona_codigo + '" role="button" class="btn btn-primary" title="Ver"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?dominio=USUARIO&mode=U&codigo=' + full.persona_codigo + '" role="button" class="btn btn-success" title="Editar"><i class="ti-pencil"></i>&nbsp;</a></a>&nbsp;<a href="../public/persona_crud.php?dominio=USUARIO&mode=D&codigo=' + full.persona_codigo + '" role="button" class="btn btn-danger" title="Eliminar"><i class="ti-trash"></i>&nbsp;</a>';}},
+                    { render			: function (data, type, full, meta) {return '<a href="../public/persona_crud.php?mode=R&codigo=' + full.persona_codigo + '" role="button" class="btn btn-primary" title="Ver"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=U&codigo=' + full.persona_codigo + '" role="button" class="btn btn-success" title="Editar"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=D&codigo=' + full.persona_codigo + '" role="button" class="btn btn-danger" title="Eliminar"><i class="ti-trash"></i>&nbsp;</a>';}},
                 ]
             });
         });

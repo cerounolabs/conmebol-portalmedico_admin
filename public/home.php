@@ -36,6 +36,18 @@
     }
 
     $competenciaJSON        = get_curl('200/disciplina/'.$usu_04);
+
+    if (empty($var02)) {
+        if ($competenciaJSON['code'] == 200){
+            foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) {
+                if ($competenciaVALUE['competicion_anho'] == $var04){
+                    $var02 = $competenciaVALUE['competicion_codigo'];
+                    break;
+                }
+            }
+        }
+    }
+
     $lesionEstadoJSON       = get_curl('600/LESIONESTADO/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionTipoJSON         = get_curl('600/LESIONTIPO/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionDiagnosticoJSON  = get_curl('600/DIAGNOSTICOTIPO/'.$usu_04.'/'.$var02.'/'.$var03);
