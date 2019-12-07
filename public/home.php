@@ -54,6 +54,9 @@
     $lesionReincidenciaJSON = get_curl('600/LESIONREINCIDENCIA/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionCausaJSON        = get_curl('600/LESIONCAUSA/'.$usu_04.'/'.$var02.'/'.$var03);
     $lesionFaltaJSON        = get_curl('600/LESIONFALTA/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionPosicionJSON     = get_curl('600/CAMPOPOSICION/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionCuerpoZonaJSON   = get_curl('600/CUERPOZONA/'.$usu_04.'/'.$var02.'/'.$var03);
+    $lesionCuerpoLugarJSON  = get_curl('600/CUERPOLUGAR/'.$usu_04.'/'.$var02.'/'.$var03);
 
     $var01_1 = '';
     $var01_2 = '';
@@ -230,7 +233,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="card">
                             <div class="card-body analytics-info">
-                                <h4 class="card-title">Lesión x Tipo</h4>
+                                <h4 class="card-title" style="color:#163562;">Lesión x Tipo</h4>
                                 <div id="chart02" style="height:300px;"></div>
                             </div>
                         </div>
@@ -249,7 +252,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="card">
                             <div class="card-body analytics-info">
-                                <h4 class="card-title">Lesión x Diagnostico</h4>
+                                <h4 class="card-title" style="color:#163562;">Lesión x Diagnostico</h4>
                                 <div id="chart04" style="height:300px;"></div>
                             </div>
                         </div>
@@ -265,8 +268,35 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="card">
                             <div class="card-body analytics-info">
-                                <h4 class="card-title">Lesión x Amonestación</h4>
+                                <h4 class="card-title" style="color:#163562;">Lesión x Amonestación</h4>
                                 <div id="chart06" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info" style="background-color:#163562;">
+                                <h4 class="card-title" style="color:#fff;">Lesión x Posición</h4>
+                                <div id="chart07" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title" style="color:#163562;">Lesión x Zona del Cuerpo</h4>
+                                <div id="chart08" style="height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body analytics-info" style="background-color:#163562;">
+                                <h4 class="card-title" style="color:#fff;">Lesión x Lugar del Cuerpo</h4>
+                                <div id="chart09" style="height:300px;"></div>
                             </div>
                         </div>
                     </div>
@@ -353,7 +383,6 @@
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-                //color: ['#4fc3f7', '#4798e8', '#1565c0'],
                 color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
                 calculable: true,
                 series: [
@@ -663,12 +692,147 @@
                 ]
             };
 
+            var chart07 = echarts.init(document.getElementById('chart07'));
+            var option07= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Estado',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($lesionPosicionJSON['code'] == 200){
+        foreach ($lesionPosicionJSON['data'] as $lesionPosicionKEY => $lesionPosicionVALUE) {
+?>
+            {value: <?php echo $lesionPosicionVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionPosicionVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart08 = echarts.init(document.getElementById('chart08'));
+            var option08= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
+                calculable: true,
+                series: [
+                    {
+                        name: 'Tipo',
+                        type: 'pie',
+                        radius: ['15%', '73%'],
+                        center: ['50%', '57%'],
+                        roseType: 'area',
+                        width: '40%',
+                        height: '78%',
+                        x: '30%',
+                        y: '17.5%',
+                        data: [
+<?php
+    if ($lesionCuerpoZonaJSON['code'] === 200){
+        foreach ($lesionCuerpoZonaJSON['data'] as $lesionCuerpoZonaKEY => $lesionCuerpoZonaVALUE) {
+?>
+                            {value: <?php echo $lesionCuerpoZonaVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionCuerpoZonaVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
+            var chart09 = echarts.init(document.getElementById('chart09'));
+            var option09= {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                color: ['#ffbc34', '#4fc3f7', '#006064', '#f62d51', '#2962FF', '#212529', '#FFC400', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B'],
+                calculable: true,
+                series: [
+                    {   
+                        name: 'Reincidencia',
+                        type: 'pie',
+                        radius: ['60%', '85%'],
+                        selectedMode: 'single',
+                        x: '55%',
+                        y: '7.5%',
+                        width: '40%',
+                        height: '85%',
+                        funnelAlign: 'right',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    position: 'inner'
+                                },
+                                labelLine: {
+                                    show: false
+                                }
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: [
+<?php
+    if ($lesionCuerpoLugarJSON['code'] == 200){
+        foreach ($lesionCuerpoLugarJSON['data'] as $lesionCuerpoLugarKEY => $lesionCuerpoLugarVALUE) {
+?>
+            {value: <?php echo $lesionCuerpoLugarVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionCuerpoLugarVALUE['tipo_nombre_castellano']; ?>'},
+<?php
+        }
+    }
+?>
+                        ]
+                    }
+                ]
+            };
+
             chart01.setOption(option01);
             chart02.setOption(option02);
             chart03.setOption(option03);
             chart04.setOption(option04);
             chart05.setOption(option05);
             chart06.setOption(option06);
+            chart07.setOption(option07);
+            chart08.setOption(option08);
+            chart09.setOption(option09);
         });
     </script>
 </body>
