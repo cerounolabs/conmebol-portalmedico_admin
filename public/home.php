@@ -702,7 +702,7 @@
                 calculable: true,
                 series: [
                     {   
-                        name: 'Estado',
+                        name: 'Posicion',
                         type: 'pie',
                         radius: ['60%', '85%'],
                         selectedMode: 'single',
@@ -751,7 +751,7 @@
                 calculable: true,
                 series: [
                     {
-                        name: 'Tipo',
+                        name: 'Zona del Cuerpo',
                         type: 'pie',
                         radius: ['15%', '73%'],
                         center: ['50%', '57%'],
@@ -785,7 +785,7 @@
                 calculable: true,
                 series: [
                     {   
-                        name: 'Reincidencia',
+                        name: 'Lugar del Cuerpo',
                         type: 'pie',
                         radius: ['60%', '85%'],
                         selectedMode: 'single',
