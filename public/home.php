@@ -419,6 +419,10 @@
             {value: <?php echo $lesionEstadoVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionEstadoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                         ]
@@ -453,6 +457,10 @@
                             {value: <?php echo $lesionTipoVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionTipoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+                            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                         ]
@@ -502,6 +510,10 @@
             {value: <?php echo $lesionReincidenciaVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionReincidenciaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                         ]
@@ -530,6 +542,10 @@
             {value: <?php echo $lesionDiagnosticoVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionDiagnosticoVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                     ]
@@ -578,6 +594,10 @@
             {value: <?php echo $lesionCausaVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionCausaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                         ]
@@ -637,6 +657,10 @@
                         '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>',
 <?php
         }
+    } else {
+?>
+                        'No hay registro',
+<?php
     }
 ?>
                     ]
@@ -734,6 +758,10 @@
             {value: <?php echo $lesionPosicionVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionPosicionVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                         ]
@@ -768,6 +796,10 @@
                             {value: <?php echo $lesionCuerpoZonaVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionCuerpoZonaVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+                            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                         ]
@@ -817,6 +849,10 @@
             {value: <?php echo $lesionCuerpoLugarVALUE['tipo_cantidad']; ?>, name: '<?php echo $lesionCuerpoLugarVALUE['tipo_nombre_castellano']; ?>'},
 <?php
         }
+    } else {
+?>
+            {value: 0, name: 'No hay registro'},
+<?php
     }
 ?>
                         ]
