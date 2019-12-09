@@ -13,7 +13,7 @@
 	$val04      	= $_POST['var04'];
 	$val05      	= strtoupper($_POST['var05']);
 	$val06			= strtolower($_POST['var06']);
-	$val07          = strtoupper($_POST['var07']).''.$_SESSION['usu_04'];
+	$val07          = strtoupper($_POST['var07']).''.$val04;
 	$val08          = $_POST['var08'];
 
 	if (isset($_POST['var09'])){

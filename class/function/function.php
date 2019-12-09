@@ -82,6 +82,10 @@
                 $result = 'LESIÓN ESTADO';
                 break;
 
+            case 'LESIONEXAMEN':
+                $result = 'LESIÓN EXAMEN';
+                break;
+
             case 'LESIONTIPO':
                 $result = 'LESIÓN TIPO';
                 break;
