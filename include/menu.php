@@ -332,6 +332,13 @@
                                         </li>
 
                                         <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=LESIONEXAMEN" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
+                                                <span class="hide-menu"> Lesi&oacute;n Examen </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
                                             <a href="../public/dominio.php?dominio=LESIONTIPO" class="sidebar-link">
                                                 <i class="mdi mdi-lesion"></i> 
                                                 <span class="hide-menu"> Lesi&oacute;n Tipo </span>
