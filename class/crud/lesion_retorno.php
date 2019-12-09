@@ -71,7 +71,7 @@
 
 	$result		= json_decode($result, true);
 
-	header('Location: ../../public/lesion.php?tipo='.$work01.'&disciplina='.$work02.'&competencia='.$work03.'&equipo='.$work04.'&juego='.$work05.'&code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../public/lesion.php?code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>
