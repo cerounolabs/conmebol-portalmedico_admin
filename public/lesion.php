@@ -88,7 +88,7 @@
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
-                                            <tr class="bg-light">
+                                            <tr class="bg-conmebol">
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">FECHA</th>
                                                 <th class="border-top-0">ESTADO</th>

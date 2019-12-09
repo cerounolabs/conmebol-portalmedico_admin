@@ -96,7 +96,7 @@
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $valueDominio; ?>">
-                                            <tr class="bg-light">
+                                            <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">ORDEN</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">ESTADO</th>
@@ -110,7 +110,7 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">ACCI&Oacute;N</th>
                                             </tr>
 
-                                            <tr class="bg-light">
+                                            <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">INGLES</th>
                                                 <th class="border-top-0" style="text-align:center;">CASTELLANO</th>
                                                 <th class="border-top-0" style="text-align:center;">PORTUGUES</th>
