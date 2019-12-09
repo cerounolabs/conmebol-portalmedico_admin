@@ -166,7 +166,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="row">
