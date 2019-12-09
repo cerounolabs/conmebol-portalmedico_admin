@@ -11,7 +11,9 @@
         $msgRest        = '';
     }
 
-    $lesionJSON = get_curl('600/'.$usu_04);
+    $dominioJSON        = get_curl('000');
+    $subDominioJSON     = get_curl('100');
+    $lesionJSON         = get_curl('600/'.$usu_04);
 ?>
 
 <!DOCTYPE html>
@@ -111,8 +113,8 @@
                 </div>
 
                 <!-- Modal Procesar -->
-                <div id="modalprocesar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="prodesc">
+                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -216,10 +218,117 @@
                     { data				: 'tipo_cuerpo_zona_nombre_castellano', name : 'tipo_cuerpo_zona_nombre_castellano'},
                     { data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
                     { data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
-                    { render			: function (data, type, full, meta) {return '<a href="#" role="button" class="btn btn-primary" title="Ver"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="#" role="button" class="btn btn-success" title="Editar"><i class="ti-pencil"></i>&nbsp;</a></a>&nbsp;<a href="#" role="button" class="btn btn-warning" title="Retorno"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="#" role="button" class="btn btn-danger" title="Anular"><i class="ti-trash"></i>&nbsp;</a>';}},
+                    { render			: function (data, type, full, meta) {
+                        return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id);"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="setVer(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-success" title="Editar" data-toggle="modal" data-target="#modaldiv" onclick="setEditar(this.id);"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id);"><i class="ti-trash"></i>&nbsp;</a>';
+                    }},
                 ]
             });
         });
+
+        function setRetorno(rowLesion){
+            var codLes  = document.getElementById(rowLesion);
+            var html    =
+            '<div class="modal-content">'+
+            '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_retorno.php">'+
+            '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+            '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
+            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	    </div>'+
+            '	    <div class="modal-body" >'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var01">Examen complementario</label>'+
+<?php
+    if ($dominioJSON['code'] === 200){
+        $indExa = 1;
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONEXAMEN'){
+?>
+            '                       <div class="custom-control custom-checkbox">'+
+            '                           <input type="checkbox" class="custom-control-input" id="var01_<?php echo $indExa; ?>" name="var01_<?php echo $indExa; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>">'+
+            '                           <label class="custom-control-label" for="var01_<?php echo $indExa; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>'+
+            '                       </div>'+
+<?php
+                $indExa = $indExa + 1;
+            }
+        }
+    }
+?>
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var02">Fecha de retorno</label>'+
+            '                       <input id="var02" name="var02" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var03">Se precisa de Cirugia</label>'+
+            '                       <div class="custom-control custom-radio">'+
+            '                           <input type="radio" id="var03_1" name="var03" value="1" class="custom-control-input">'+
+            '                           <label class="custom-control-label" for="var03_1">NO</label>'+
+            '                       </div>'+
+            '                       <div class="custom-control custom-radio">'+
+            '                           <input type="radio" id="var03_2" name="var03" value="2" class="custom-control-input">'+
+            '                           <label class="custom-control-label" for="var03_2">SI</label>'+
+            '                       </div>'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var04">Diagn&oacute;stico Final</label>'+
+            '                       <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'DIAGNOSTICOGRUPO'){
+?>
+            '                           <optgroup label="<?php echo $dominioVALUE['tipo_nombre_castellano']; ?>">'+
+<?php
+                if ($subDominioJSON['code'] === 200){
+                    foreach ($subDominioJSON['data'] as $subDominioKEY => $subDominioVALUE) {
+                        if ($subDominioVALUE['tipo_sub_estado_codigo'] === 'A' && $subDominioVALUE['tipo_sub_dominio'] === 'DIAGNOSTICOTIPO' && $subDominioVALUE['tipo_codigo'] === $dominioVALUE['tipo_codigo']){
+?>
+            '                               <option value="<?php echo $subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>'+
+<?php
+                        }
+                    }
+                }
+            }
+        }
+    }
+?>
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '                <div class="col-sm-12">'+
+            '                    <div class="form-group">'+
+            '                        <label for="var05">Detalle su diagn&oacute;stico</label>'+
+            '                        <textarea id="var05" name="var05" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+            '                    </div>'+
+            '                </div>'+
+            '           </div>'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workCant" name="workCant" value="<?php echo $indExa; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+            '           </div>'+
+            '	    </div>'+
+            '	    <div class="modal-footer">'+
+            '           <button type="submit" class="btn btn-info">Guardar</button>'+
+            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	    </div>'+
+            '   </form>'+
+            '</div>';
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
     </script>
 </body>
 </html>
