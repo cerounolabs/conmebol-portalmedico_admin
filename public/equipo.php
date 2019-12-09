@@ -92,7 +92,7 @@
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="">
-                                            <tr class="bg-light">
+                                            <tr class="bg-conmebol">
                                                 <th class="border-top-0">EQUIPO C&Oacute;D.</th>
                                                 <th class="border-top-0">EQUIPO ESTADO</th>
                                                 <th class="border-top-0">EQUIPO TIPO</th>

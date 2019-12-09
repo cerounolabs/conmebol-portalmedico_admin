@@ -5353,6 +5353,10 @@ button.bg-light-warning:focus {
 .bg-white {
   background-color: #fff !important; }
 
+.bg-conmebol {
+  background-color: #005ea6 !important; 
+  color: #ffffff;}
+
 .bg-transparent {
   background-color: transparent !important; }
 
