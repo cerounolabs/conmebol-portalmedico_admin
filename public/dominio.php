@@ -55,6 +55,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
+                        <h4 class="page-title"><?php echo $usu_02.' - '.$usu_01; ?></h4>
                         <div class="d-flex align-items-center"></div>
                     </div>
                     <div class="col-7 align-self-center">
