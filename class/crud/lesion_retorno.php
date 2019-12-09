@@ -66,7 +66,7 @@
 				'auditoria_ip'									=> $log_03
 			));
 		
-		$result	= post_curl('650', $dataJSON);
+		$result	= put_curl('650', $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
