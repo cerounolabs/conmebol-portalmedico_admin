@@ -46,7 +46,8 @@ File: css
     table-layout: fixed;
     margin: 0;
     padding: 0;
-    list-style: none
+    list-style: none;
+    background-color: #005ea6;
 }
 
 .wizard-content .wizard>.steps>ul>li {
@@ -80,6 +81,7 @@ File: css
 
 .wizard-content .wizard>.steps>ul>li.current>a {
     color: #2f3d4a;
+    color: #ffffff;
     cursor: default
 }
 
