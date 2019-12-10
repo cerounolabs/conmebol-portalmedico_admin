@@ -13,7 +13,10 @@
 	<link href="../assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 	<link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
 	<link href="../assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
-    <link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
+	<link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
+	<link href="../assets/libs/nouislider/distribute/nouislider.min.css" rel="stylesheet">
+    <link href="../assets/extra-libs/nouislider/palette-noui.css" rel="stylesheet">
+    <link href="../assets/extra-libs/nouislider/noui-slider.min.css" rel="stylesheet">
 	<link href="../dist/css/style.css" rel="stylesheet">
 	<link href="../dist/css/custom.css" rel="stylesheet">
 	

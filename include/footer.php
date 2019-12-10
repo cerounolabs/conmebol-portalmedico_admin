@@ -93,3 +93,7 @@
     <!--Valitate JavaScript -->
     <script src="../assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="../assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <!--nouislider JavaScript -->
+    <script src="../assets/libs/wnumb/wNumb.js"></script>
+    <script src="../assets/libs/nouislider/distribute/nouislider.min.js"></script>

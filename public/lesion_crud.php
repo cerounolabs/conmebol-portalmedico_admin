@@ -253,9 +253,9 @@
                                                         <label>Temperatura</label>
                                                         <div class="input-group mb-3">
                                                             <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var102"><i class="ti-user"></i></span>
+                                                                <span class="input-group-text" id="basic-var102"><i class="ti-bolt-alt"></i></span>
                                                             </div>
-                                                            <input type="text" id="var102" name="var102" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102">
+                                                            <input type="number" id="var102" name="var102" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -308,7 +308,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+<!--
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
                                                         <label>Minuto</label>
@@ -320,7 +320,7 @@
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOMINUTO'){
 ?>
-                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
 <?php
             }
         }
@@ -328,6 +328,27 @@
 ?>
                                                             </select>
                                                         </div>
+                                                    </div>
+                                                </div>
+-->
+
+                                                <div class="col-sm-12 col-md-6 col-lg-9">
+                                                    <div class="form-group">
+                                                        <label>Minuto</label>
+                                                        <div class="row">
+                                                            <div class="col-11">
+                                                                <fieldset class="m-t-20">
+                                                                    <div class="form-group text-center">
+                                                                        <div id="var203_slider" class="m-r-30"></div>
+                                                                        </div>
+                                                                </fieldset>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <div class="input-group mb-3">
+                                                                    <input type="number" id="var203" name="var203" class="form-control" style="height:40px;" aria-describedby="basic-var203" required readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>   
                                                     </div>
                                                 </div>
                                             </div>
@@ -618,7 +639,7 @@
                                         <h6>Datos del Diagnóstico</h6>
                                         <section>
                                             <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-4">
                                                     <div class="form-group">
                                                         <label>Diagn&oacute;stico Tipo</label>
                                                         <div class="input-group mb-3">
@@ -648,7 +669,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-4">
                                                     <div class="form-group">
                                                         <label>Diagn&oacute;stico Recuperaci&oacute;n</label>
                                                         <div class="input-group mb-3">
@@ -670,7 +691,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                <div class="col-sm-12 col-md-6 col-lg-4">
                                                     <div class="form-group">
                                                         <label>Diagn&oacute;stico Tiempo</label>
                                                         <div class="input-group mb-3">
@@ -692,14 +713,11 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Diagn&oacute;stico Comentario</label>
                                                         <div class="input-group mb-3">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="basic-var404"><i class="ti-user"></i></span>
-                                                            </div>
-                                                            <input type="text" id="var404" name="var404" class="form-control" placeholder="Diagn&oacute;stico Comentario" style="height:40px;" aria-label="Diagn&oacute;stico Comentario" aria-describedby="basic-var404">
+                                                            <textarea id="var404" name="var404" class="form-control" rows="3" style="text-transform:uppercase;" aria-describedby="basic-var404" required></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -804,6 +822,28 @@
                     }
                 }
             })
+            
+            var minSlider = document.getElementById('var203_slider');
+
+            noUiSlider.create(minSlider, {
+                range: {
+                    'min': [0],
+                    'max': [120]
+                },
+                start: 0,
+                step: 1,
+                connect: 'lower',
+                orientation: 'horizontal',
+                pips: {
+                    mode: 'range',
+                    density: 1
+                }
+            });
+
+            var valueSlider = document.getElementById('var203');
+            minSlider.noUiSlider.on('update', function (values, handle) {
+                valueSlider.value = values[handle];
+            });
         </script>
     </body>
 </html>
