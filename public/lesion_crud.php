@@ -144,6 +144,7 @@
                                             </div>
 
                                             <div class="row pt-3">
+<!--
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
                                                         <label>Clima</label>
@@ -155,13 +156,41 @@
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOCLIMA'){
 ?>
-                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
 <?php
             }
         }
     }
 ?>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+-->
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Clima</label>
+                                                        <div class="input-group mb-3">
+<?php
+    if ($dominioJSON['code'] === 200){
+        $checked = 'checked';
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOCLIMA'){
+?>
+                                                            <div class="custom-control custom-radio" style="float:left;">
+                                                                <input type="radio" id="var101_<?php echo $dominioVALUE['tipo_codigo']; ?>" name="var101" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="custom-control-input" <?php echo $checked; ?>>
+                                                                
+                                                                <label class="custom-control-label" for="var101_<?php echo $dominioVALUE['tipo_codigo']; ?>"><img src="../<?php echo $dominioVALUE['tipo_path']; ?>" /> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
+                                                            </div>
+<?php
+                if ($checked == 'checked'){
+                    $checked = '';
+                }
+            }
+        }
+    }
+?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,6 +229,7 @@
                                                     </div>
                                                 </div>
 
+<!--
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
                                                         <label>Traslado</label>
@@ -211,13 +241,41 @@
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOTRASLADO'){
 ?>
-                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
 <?php
             }
         }
     }
 ?>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+-->
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Traslado</label>
+                                                        <div class="input-group mb-3">
+<?php
+    if ($dominioJSON['code'] === 200){
+        $checked = 'checked';
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOTRASLADO'){
+?>
+                                                            <div class="custom-control custom-radio" style="float:left;">
+                                                                <input type="radio" id="var104_<?php echo $dominioVALUE['tipo_codigo']; ?>" name="var104" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="custom-control-input" <?php echo $checked; ?>>
+                                                                
+                                                                <label class="custom-control-label" for="var104_<?php echo $dominioVALUE['tipo_codigo']; ?>"><img src="../<?php echo $dominioVALUE['tipo_path']; ?>" /> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
+                                                            </div>
+<?php
+                if ($checked == 'checked'){
+                    $checked = '';
+                }
+            }
+        }
+    }
+?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -248,29 +306,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                                    <div class="form-group">
-                                                        <label>Posici&oacute;n</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var202" name="var202" style="width:100%; height:40px;" aria-label="Posici&oacute;n" aria-describedby="basic-var202">
-                                                                <optgroup label="Posici&oacute;n">
-<?php
-    if ($dominioJSON['code'] === 200){
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOPOSICION'){
-?>
-                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
-<?php
-            }
-        }
-    }
-?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+                                                
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
                                                         <label>Minuto</label>
@@ -289,6 +325,59 @@
     }
 ?>
                                                             </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row pt-3">
+<!--
+                                                <div class="col-sm-12 col-md-6 col-lg-3">
+                                                    <div class="form-group">
+                                                        <label>Posici&oacute;n</label>
+                                                        <div class="input-group mb-3">
+                                                            <select class="custom-select form-control" id="var202" name="var202" style="width:100%; height:40px;" aria-label="Posici&oacute;n" aria-describedby="basic-var202">
+                                                                <optgroup label="Posici&oacute;n">
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOPOSICION'){
+?>
+                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+-->
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Posici&oacute;n</label>
+                                                        <div class="input-group mb-3">
+<?php
+    if ($dominioJSON['code'] === 200){
+        $checked = 'checked';
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOPOSICION'){
+?>
+                                                            <div class="custom-control custom-radio" style="float:left;">
+                                                                <input type="radio" id="var202_<?php echo $dominioVALUE['tipo_codigo']; ?>" name="var202" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="custom-control-input" <?php echo $checked; ?>>
+                                                                
+                                                                <label class="custom-control-label" for="var202_<?php echo $dominioVALUE['tipo_codigo']; ?>"><img src="../<?php echo $dominioVALUE['tipo_path']; ?>" /> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
+                                                            </div>
+<?php
+                if ($checked == 'checked'){
+                    $checked = '';
+                }
+            }
+        }
+    }
+?>
                                                         </div>
                                                     </div>
                                                 </div>
