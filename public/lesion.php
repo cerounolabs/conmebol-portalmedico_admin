@@ -317,6 +317,14 @@
                 '                    </div>'+
                 '                </div>'+
                 '           </div>'+
+                '           <div class="row pt-3">'+
+                '                <div class="col-sm-12">'+
+                '                    <div class="form-group">'+
+                '                        <label for="var07">Detalle su Tratamiento</label>'+
+                '                        <textarea id="var07" name="var07" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                '                    </div>'+
+                '                </div>'+
+                '           </div>'+
                 '           <div class="form-group">'+
                 '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '               <input id="workCant" name="workCant" value="<?php echo $indExa; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
