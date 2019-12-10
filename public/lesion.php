@@ -228,7 +228,7 @@
         function setRetorno(rowLesion, estLesion){
             var codLes  = document.getElementById(rowLesion);
 
-            if (estLesion == 112 || estLesion == 114) {
+            if (estLesion == 112) {
                 var html    =
                 '<div class="modal-content">'+
                 '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_retorno.php">'+
@@ -270,7 +270,7 @@
                 '                   <div class="form-group">'+
                 '                       <label for="var03">Se precisa de Cirugia</label>'+
                 '                       <div class="custom-control custom-radio">'+
-                '                           <input type="radio" id="var03_1" name="var03" value="1" class="custom-control-input">'+
+                '                           <input type="radio" id="var03_1" name="var03" value="1" class="custom-control-input" checked>'+
                 '                           <label class="custom-control-label" for="var03_1">NO</label>'+
                 '                       </div>'+
                 '                       <div class="custom-control custom-radio">'+
