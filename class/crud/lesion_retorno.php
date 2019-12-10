@@ -41,6 +41,7 @@
     $val03          = $_POST['var03'];
 	$val04      	= $_POST['var04'];
 	$val05      	= strtoupper($_POST['var05']);
+	$val06          = 114;
 	
 	$work01         = $_POST['workCodigo'];
 
@@ -60,6 +61,7 @@
 				'lesion_cirugia'								=> $val03,
 				'tipo_diagnostico_retorno_codigo'				=> $val04,
 				'diagnostico_retorno_observacion'				=> $val05,
+				'tipo_estado_codigo'							=> $val06,
 				
 				'auditoria_usuario'								=> $log_01,
 				'auditoria_fecha_hora'							=> date('Y-m-d H:i:s'),
