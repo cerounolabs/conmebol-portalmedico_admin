@@ -20,14 +20,14 @@
             array(
 				'lesion_codigo'									=> $work01,
 				'tipo_estado_codigo'							=> $val01,
-				'diagnostico_observacion'						=> $val02,
+				'lesion_observacion'							=> $val02,
 				
 				'auditoria_usuario'								=> $log_01,
 				'auditoria_fecha_hora'							=> date('Y-m-d H:i:s'),
 				'auditoria_ip'									=> $log_03
 			));
 		
-		$result	= put_curl('650/'.$work01, $dataJSON);
+		$result	= put_curl('602/'.$work01, $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
