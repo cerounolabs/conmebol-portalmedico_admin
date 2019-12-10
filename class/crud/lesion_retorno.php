@@ -58,15 +58,15 @@
 				'tipo_lesion_examen5_codigo'					=> $val01_5,
 				'lesion_fecha_retorno'							=> $val02,
 				'lesion_cirugia'								=> $val03,
-				'tipo_diagnostico_tipo_codigo'					=> $val04,
-				'diagnostico_observacion'						=> $val05,
+				'tipo_diagnostico_retorno_codigo'				=> $val04,
+				'diagnostico_retorno_observacion'				=> $val05,
 				
 				'auditoria_usuario'								=> $log_01,
 				'auditoria_fecha_hora'							=> date('Y-m-d H:i:s'),
 				'auditoria_ip'									=> $log_03
 			));
 		
-		$result	= put_curl('650', $dataJSON);
+		$result	= put_curl('601', $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
