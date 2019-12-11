@@ -372,6 +372,34 @@
                                                 <span class="hide-menu"> Lesi&oacute;n Falta </span>
                                             </a>
                                         </li>
+                                        <li class="sidebar-item"> 
+                                            <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                                <i class="mdi mdi-lesion"></i> 
+                                                <span class="hide-menu"> Lesi&oacute;n Concusi&oacute;n </span>
+                                            </a>
+                                            <ul aria-expanded="false" class="collapse second-level">
+                                                <li class="sidebar-item">
+                                                    <a href="../public/dominio.php?dominio=CONCUSIONSIGNO" class="sidebar-link">
+                                                        <i class="mdi mdi-lesion"></i> 
+                                                        <span class="hide-menu"> Concusi&oacute;n Signos</span>
+                                                    </a>
+                                                </li>
+
+                                                <li class="sidebar-item">
+                                                    <a href="../public/dominio.php?dominio=CONCUSIONMEMORIA" class="sidebar-link">
+                                                        <i class="mdi mdi-lesion"></i> 
+                                                        <span class="hide-menu"> Concusi&oacute;n Memoria</span>
+                                                    </a>
+                                                </li>
+
+                                                <li class="sidebar-item">
+                                                    <a href="../public/dominio.php?dominio=CONCUSIONSEGUIMIENTO" class="sidebar-link">
+                                                        <i class="mdi mdi-lesion"></i> 
+                                                        <span class="hide-menu"> Concusi&oacute;n Seguimiento</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
 
