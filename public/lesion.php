@@ -219,7 +219,7 @@
                     { data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
                     { data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
                     { render			: function (data, type, full, meta) {
-                        return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="setVer(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id);"><i class="ti-trash"></i>&nbsp;</a>';
+                        return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-success" title="Finalizar" data-toggle="modal" data-target="#modaldiv" onclick="setFinalizar(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-lock"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="setVer(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-trash"></i>&nbsp;</a>';
                     }},
                 ]
             });
@@ -360,34 +360,112 @@
             $("#modalcontent").append(html);
         }
 
-        function setAnular(rowLesion){
+        function setFinalizar(rowLesion, estLesion){
             var codLes  = document.getElementById(rowLesion);
-            var html    =
-            '<div class="modal-content">'+
-            '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_anular.php">'+
-            '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-            '		    <h4 class="modal-title" id="vcenter"> Anular Lesión </h4>'+
-            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-            '	    </div>'+
-            '	    <div class="modal-body" >'+
-            '           <div class="row pt-3">'+
-            '                <div class="col-sm-12">'+
-            '                    <div class="form-group">'+
-            '                        <label for="var02">Comentario</label>'+
-            '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-            '                    </div>'+
-            '                </div>'+
-            '           </div>'+
-            '           <div class="form-group">'+
-            '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-            '           </div>'+
-            '	    </div>'+
-            '	    <div class="modal-footer">'+
-            '           <button type="submit" class="btn btn-danger">Anular</button>'+
-            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-            '	    </div>'+
-            '   </form>'+
-            '</div>';
+
+            if (estLesion == 114) {
+                var html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_estado.php">'+
+                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                '		    <h4 class="modal-title" id="vcenter"> Finalizar Lesión </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="row pt-3">'+
+                '                <div class="col-sm-12">'+
+                '                    <div class="form-group">'+
+                '                        <label for="var02">Comentario</label>'+
+                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                '                    </div>'+
+                '                </div>'+
+                '           </div>'+
+                '           <div class="form-group">'+
+                '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workEstado" name="workEstado" value="115" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '           <button type="submit" class="btn btn-success">Finalizar</button>'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+            } else {
+                var html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="#">'+
+                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="form-group">'+
+                '               <h4 style="text-align:center;">PARA FINALIZAR LA LESIÓN EL ESTADO DEBE DE ESTAR EN "EN PROCESO". VERIFIQUE!</h4>'
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+            }
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function setAnular(rowLesion, estLesion){
+            var codLes  = document.getElementById(rowLesion);
+
+            if (estLesion == 112 || estLesion == 114) {
+                var html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_estado.php">'+
+                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                '		    <h4 class="modal-title" id="vcenter"> Anular Lesión </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="row pt-3">'+
+                '                <div class="col-sm-12">'+
+                '                    <div class="form-group">'+
+                '                        <label for="var02">Comentario</label>'+
+                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                '                    </div>'+
+                '                </div>'+
+                '           </div>'+
+                '           <div class="form-group">'+
+                '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workEstado" name="workEstado" value="121" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '           <button type="submit" class="btn btn-danger">Anular</button>'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+            } else {
+                var html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="#">'+
+                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="form-group">'+
+                '               <h4 style="text-align:center;">LA LESIÓN YA SE ENCUENTRA FINALIZADA NO SE PUEDE ANULAR. VERIFIQUE!</h4>'
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+            }
+
             $("#modalcontent").empty();
             $("#modalcontent").append(html);
         }
