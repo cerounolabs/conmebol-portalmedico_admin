@@ -222,7 +222,7 @@
                     { data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
                     { data				: 'lesion_fecha_retorno', name : 'lesion_fecha_retorno'},
                     { render			: function (data, type, full, meta) {
-                        return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-success" title="Finalizar" data-toggle="modal" data-target="#modaldiv" onclick="setFinalizar(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-lock"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="setVer(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-trash"></i>&nbsp;</a>';
+                        return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-success" title="Finalizar" data-toggle="modal" data-target="#modaldiv" onclick="setFinalizar(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-lock"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getVisualizar(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-trash"></i>&nbsp;</a>';
                     }},
                 ]
             });
@@ -468,6 +468,239 @@
                 '   </form>'+
                 '</div>';
             }
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function getVisualizar(rowLesion) {
+            var xDATA   = '<?php echo json_encode($lesionJSON['data']); ?>';
+            var xJSON   = JSON.parse(xDATA);
+            var codLes  = document.getElementById(rowLesion);
+            var html    = '';
+
+            xJSON.forEach(element => {
+                if (codLes.id == element.lesion_codigo) {
+                    html =
+                    '<div class="modal-content">'+
+                    '   <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		<h4 class="modal-title" id="vcenter"> Lesión </h4>'+
+                    '	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	</div>'+
+                    '   <div class="modal-body" >'+
+                    '       <div class="row pt-3">'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Traslado</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_traslado_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Clima</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_clima_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Temperatura</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.temperatura_numero+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Distancia</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_distancia_nombre_castellano+'" id="var102" name="var102" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '       </div>'+
+                    '       <div class="row pt-5">'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Jugador</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.jugador_nombre+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Posicion</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_posicion_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Minuto</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_minuto_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '       </div>'+
+                    '       <div class="row pt-5">'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Zona del Cuerpo</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_cuerpo_zona_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Lugar del Cuerpo</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_cuerpo_lugar_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Lesion Tipo</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_lesion_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Lesion Origen</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_lesion_origen_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Lesion Reincidencia</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_lesion_reincidencia_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Lesion Falta</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_lesion_falta_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Lesion Causa</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_lesion_causa_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '       </div>'+
+                    '       <div class="row pt-5">'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Diagnóstico Tipo</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_diagnostico_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Diagnóstico Recuperación</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_diagnostico_recuperacion_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Diagnóstico Tiempo</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_diagnostico_tiempo_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
+                    '                   <label>Diagnóstico Comentario</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_diagnostico_observacion+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '       </div>'+
+                    '	</div>'+
+                    '   <div class="modal-footer">'+
+                    '	    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '   </div>'+
+                    '</div>';
+                }
+            });
 
             $("#modalcontent").empty();
             $("#modalcontent").append(html);
