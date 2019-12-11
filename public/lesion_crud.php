@@ -54,9 +54,9 @@
         $fecAct = date('Y-m-d');
         $fecJue = $juegoJSON['data'][0]['juego_cierra'];
 
-        if ($fecJue <  $fecAct){
-            header('Location: ../public/home.php?code=401&msg=Ya no se puede realizar mas cargar de lesión de este encuentro!');
-        }
+//        if ($fecJue <  $fecAct){
+//            header('Location: ../public/home.php?code=401&msg=Ya no se puede realizar mas cargar de lesión de este encuentro!');
+//        }
     } else {
         header('Location: ../public/home.php?code=401&msg=Ya no se puede realizar mas cargar de lesión de este encuentro!');
     }
