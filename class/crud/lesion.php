@@ -83,10 +83,8 @@
 	}
 
 	$result		= json_decode($result, true);
-	echo json_encode($dataJSON);
-	echo "<br><br><br>";
-echo json_encode($result);
-//	header('Location: ../../public/lesion_crud.php?tipo='.$work01.'&disciplina='.$work02.'&competencia='.$work03.'&equipo='.$work04.'&juego='.$work05.'&code='.$result['code'].'&msg='.$result['message']);
+
+	header('Location: ../../public/lesion_crud.php?tipo='.$work01.'&disciplina='.$work02.'&competencia='.$work03.'&equipo='.$work04.'&juego='.$work05.'&code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>
