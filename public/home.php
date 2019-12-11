@@ -385,7 +385,6 @@
             }
 
             xJSON.forEach(element => {
-                console.log(selAnho.value + ' == ' + element.competicion_anho);
                 if (codDisciplina.value == element.competicion_disciplina && selAnho.value == element.competicion_anho) {
                     var option      = document.createElement('option');
                     option.value    = element.competicion_codigo;
