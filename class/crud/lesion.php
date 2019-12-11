@@ -17,7 +17,7 @@
 
 	$val201      	= $_POST['var201'];
 	$val202			= $_POST['var202'];
-	$val203         = $_POST['var203'];
+	$val203         = round($_POST['var203']);
 	$val204         = 113;
 
 	$val301      	= $_POST['var301'];
