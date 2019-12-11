@@ -48,6 +48,18 @@
     $dominioJSON        = get_curl('000');
     $subDominioJSON     = get_curl('100');
     $jugadorJSON        = get_curl('700/'.$valorCompetencia.'/'.$valorEquipo);
+    $juegoJSON          = get_curl('200/juego/'.$valorCompetencia.'/'.$valorEquipo.'/'.$valorJuego);
+
+    if ($juegoJSON['code'] == 200){
+        $fecAct = date('Y-m-d');
+        $fecJue = $juegoJSON['data'][0]['juego_cierra'];
+
+        if ($fecJue <  $fecAct){
+            header('Location: ../public/home.php?code=401&msg=Ya no se puede realizar mas cargar de lesión de este encuentro!');
+        }
+    } else {
+        header('Location: ../public/home.php?code=401&msg=Ya no se puede realizar mas cargar de lesión de este encuentro!');
+    }
 ?>
 
 <!DOCTYPE html>
