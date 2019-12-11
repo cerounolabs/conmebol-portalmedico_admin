@@ -106,6 +106,18 @@
                 $result = 'LESIÓN FALTA';
                 break;
 
+            case 'CONCUSIONSIGNO':
+                $result = 'CONCUSIÓN SIGNO';
+                break;
+
+            case 'CONCUSIONMEMORIA':
+                $result = 'CONCUSIÓN MEMORIA';
+                break;
+
+            case 'CONCUSIONSEGUIMIENTO':
+                $result = 'CONCUSIÓN SEGUIMIENTO';
+                break;
+
             case 'CAMPOCLIMA':
                 $result = 'CAMPO CLIMA';
                 break;
