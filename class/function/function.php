@@ -106,6 +106,10 @@
                 $result = 'LESIÓN FALTA';
                 break;
 
+            case 'CONCUSIONTIPO':
+                $result = 'CONCUSIÓN TIPO';
+                break;
+
             case 'CONCUSIONSIGNO':
                 $result = 'CONCUSIÓN SIGNO';
                 break;

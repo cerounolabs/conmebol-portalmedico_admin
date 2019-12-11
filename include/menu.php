@@ -379,9 +379,15 @@
                                             </a>
                                             <ul aria-expanded="false" class="collapse second-level">
                                                 <li class="sidebar-item">
+                                                    <a href="../public/dominio.php?dominio=CONCUSIONTIPO" class="sidebar-link">
+                                                        <i class="mdi mdi-lesion"></i> 
+                                                        <span class="hide-menu"> Concusi&oacute;n Tipo</span>
+                                                    </a>
+                                                </li>
+                                                <li class="sidebar-item">
                                                     <a href="../public/dominio.php?dominio=CONCUSIONSIGNO" class="sidebar-link">
                                                         <i class="mdi mdi-lesion"></i> 
-                                                        <span class="hide-menu"> Concusi&oacute;n Signos</span>
+                                                        <span class="hide-menu"> Concusi&oacute;n Signo</span>
                                                     </a>
                                                 </li>
 
