@@ -99,7 +99,7 @@
             break;
     }
 
-    $juegoJSON = get_curl('200/juego/top4/'.$var02.'/'.$usu_04);
+    $juegoJSON = get_curl('200/juegotop4/'.$var02.'/'.$usu_04);
 ?>
 
 <!DOCTYPE html>
