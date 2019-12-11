@@ -100,6 +100,7 @@
                                                 <th class="border-top-0">ZONA DEL CUERPO</th>
                                                 <th class="border-top-0">DIAGN&Oacute;STICO</th>
                                                 <th class="border-top-0">TIEMPO RECUPERACI&Oacute;N</th>
+                                                <th class="border-top-0">FECHA RETORNO</th>
                                                 <th class="border-top-0">ACCI&Oacute;N</th>
                                             </tr>
                                         </thead>
@@ -206,7 +207,8 @@
                     { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                     { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
                     { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-                    { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+                    { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
+                    { targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] }
                 ],
                 columns		: [
                     { data				: 'lesion_codigo', name : 'lesion_codigo'},
@@ -218,6 +220,7 @@
                     { data				: 'tipo_cuerpo_zona_nombre_castellano', name : 'tipo_cuerpo_zona_nombre_castellano'},
                     { data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
                     { data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
+                    { data				: 'lesion_fecha_retorno', name : 'lesion_fecha_retorno'},
                     { render			: function (data, type, full, meta) {
                         return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-success" title="Finalizar" data-toggle="modal" data-target="#modaldiv" onclick="setFinalizar(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-lock"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="setVer(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-trash"></i>&nbsp;</a>';
                     }},
