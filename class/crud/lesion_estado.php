@@ -11,6 +11,7 @@
 	$val02      	= strtoupper($_POST['var02']);
 	
 	$work01         = $_POST['workCodigo'];
+	$work02         = $_POST['workEstado'];
 
 	$log_01         = $_SESSION['log_01'];
     $log_03         = $_SESSION['log_03'];
@@ -19,7 +20,7 @@
         $dataJSON = json_encode(
             array(
 				'lesion_codigo'									=> $work01,
-				'tipo_estado_codigo'							=> $val01,
+				'tipo_estado_codigo'							=> $work02,
 				'lesion_observacion'							=> $val02,
 				
 				'auditoria_usuario'								=> $log_01,
