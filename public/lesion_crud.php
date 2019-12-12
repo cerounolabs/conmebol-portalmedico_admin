@@ -292,6 +292,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -320,6 +321,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -453,6 +455,9 @@
                         }
                     }
                 }
+?>
+                                                                </optgroup>
+<?php
             }
         }
     }
@@ -480,6 +485,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -503,6 +509,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -526,6 +533,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -549,6 +557,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -668,7 +677,7 @@
                                                     <div class="form-group">
                                                         <label>Diagn&oacute;stico Tipo</label>
                                                         <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var401" name="var401" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Tipo" aria-describedby="basic-var401" required>
+                                                            <select class="custom-select form-control" id="var401" name="var401" onblur="getDiagnostico(this.id);" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Tipo" aria-describedby="basic-var401" required>
                                                                 <option selected disabled>SELECCIONAR...</option>
 <?php
     if ($dominioJSON['code'] === 200){
@@ -686,6 +695,9 @@
                         }
                     }
                 }
+?>
+                                                                </optgroup>
+<?php
             }
         }
     }
@@ -713,6 +725,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -736,6 +749,7 @@
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -749,6 +763,135 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <div id="datCon01" class="row pt-5" style="display:none;">
+                                                <h4 class="page-title" style="width:100%;">TIPO</h4>
+<?php
+    if ($dominioJSON['code'] === 200){
+        $indConTip = 0;
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONTIPO'){
+?>
+                                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var501_S_<?php echo $indConTip; ?>" name="var501_<?php echo $indConTip; ?>" value="S">    
+                                                                <label class="custom-control-label" for="var501_S_<?php echo $indConTip; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var501_N_<?php echo $indConTip; ?>" name="var501_<?php echo $indConTip; ?>" value="N" checked>    
+                                                                <label class="custom-control-label" for="var501_N_<?php echo $indConTip; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<?php
+                $indConTip = $indConTip + 1;
+            }
+        }
+    }
+?>
+                                            </div>
+
+                                            <div id="datCon02" class="row pt-5" style="display:none;">
+                                                <h4 class="page-title" style="width:100%;">SIGNOS</h4>
+<?php
+    if ($dominioJSON['code'] === 200){
+        $indConSig = 0;
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONSIGNO'){
+?>
+                                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var502_S_<?php echo $indConSig; ?>" name="var502_<?php echo $indConSig; ?>" value="S">    
+                                                                <label class="custom-control-label" for="var502_S_<?php echo $indConSig; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var502_N_<?php echo $indConSig; ?>" name="var502_<?php echo $indConSig; ?>" value="N" checked>    
+                                                                <label class="custom-control-label" for="var502_N_<?php echo $indConSig; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<?php
+                $indConSig = $indConSig + 1;
+            }
+        }
+    }
+?>
+                                            </div>
+
+                                            <div id="datCon03" class="row pt-5" style="display:none;">
+                                                <h4 class="page-title" style="width:100%;">PRUEBA DE MEMORIA. PREGUNTE</h4>
+<?php
+    if ($dominioJSON['code'] === 200){
+        $indConMen = 0;
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONMEMORIA'){
+?>
+                                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var503_S_<?php echo $indConMen; ?>" name="var503_<?php echo $indConMen; ?>" value="S">    
+                                                                <label class="custom-control-label" for="var503_S_<?php echo $indConMen; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var503_N_<?php echo $indConMen; ?>" name="var503_<?php echo $indConMen; ?>" value="N" checked>    
+                                                                <label class="custom-control-label" for="var503_N_<?php echo $indConMen; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<?php
+                $indConMen = $indConMen + 1;
+            }
+        }
+    }
+?>
+                                            </div>
+
+                                            <div id="datCon04" class="row pt-5" style="display:none;">
+                                                <h4 class="page-title" style="width:100%;">SEGUIMIENTO</h4>
+
+<?php
+    if ($dominioJSON['code'] === 200){
+        $indConSeg = 0;
+
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONSEGUIMIENTO'){
+?>
+                                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                                    <div class="form-group">
+                                                        <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
+                                                        <div class="input-group mb-3">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var504_S_<?php echo $indConSeg; ?>" name="var504_<?php echo $indConSeg; ?>" value="S">    
+                                                                <label class="custom-control-label" for="var504_S_<?php echo $indConSeg; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var504_N_<?php echo $indConSeg; ?>" name="var504_<?php echo $indConSeg; ?>" value="N" checked>    
+                                                                <label class="custom-control-label" for="var504_N_<?php echo $indConSeg; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<?php
+                $indConSeg = $indConSeg + 1;
+            }
+        }
+    }
+?>
                                             </div>
                                         </section>
                                         <!-- Step 4 -->
@@ -872,6 +1015,26 @@
             minSlider.noUiSlider.on('update', function (values, handle) {
                 valueSlider.value = values[handle];
             });
+
+            function getDiagnostico(codTipo){
+                var codDiag = document.getElementById(codTipo);
+                var datCon1 = document.getElementById('datCon01');
+                var datCon2 = document.getElementById('datCon02');
+                var datCon3 = document.getElementById('datCon03');
+                var datCon4 = document.getElementById('datCon04');
+
+                if (codDiag.value == 32){
+                    datCon1.style.display   = '';
+                    datCon2.style.display   = '';
+                    datCon3.style.display   = '';
+                    datCon4.style.display   = '';
+                } else {
+                    datCon1.style.display = 'none';
+                    datCon2.style.display = 'none';
+                    datCon3.style.display = 'none';
+                    datCon4.style.display = 'none';
+                }
+            }
         </script>
     </body>
 </html>
