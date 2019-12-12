@@ -732,7 +732,7 @@
                             },
                             {
                                 value: <?php echo (100 - $lesionFaltaVALUE['tipo_cantidad']); ?>,
-                                name: 'invisible',
+                                name: '<?php echo $lesionFaltaVALUE['tipo_nombre_castellano']; ?>',
                                 itemStyle: placeHolderStyle
                             }
                         ]
