@@ -123,8 +123,8 @@
                 </div>
 
                 <!-- Modal Procesar -->
-                <div id="modalprocesar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="prodesc">
+                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -241,10 +241,65 @@
                     { data				: 'persona_usuario', name : 'persona_usuario'},
                     { data				: 'persona_fecha_hora', name : 'persona_fecha_hora'},
                     { data				: 'persona_ip', name : 'persona_ip'},
-                    { render			: function (data, type, full, meta) {return '<a href="../public/persona_crud.php?mode=R&codigo=' + full.persona_codigo + '" role="button" class="btn btn-primary" title="Ver"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=U&codigo=' + full.persona_codigo + '" role="button" class="btn btn-success" title="Editar"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=D&codigo=' + full.persona_codigo + '" role="button" class="btn btn-danger" title="Eliminar"><i class="ti-trash"></i>&nbsp;</a>';}},
+                    { render			: function (data, type, full, meta) {return '<a href="../public/persona_crud.php?mode=R&codigo=' + full.persona_codigo + '" role="button" class="btn btn-primary" title="Ver"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=U&codigo=' + full.persona_codigo + '" role="button" class="btn btn-success" title="Editar"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=D&codigo=' + full.persona_codigo + '" role="button" class="btn btn-danger" title="Eliminar"><i class="ti-trash"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.persona_codigo + '" value="' + full.persona_codigo + '" role="button" class="btn btn-warning" title="Resetear Contraseña" data-toggle="modal" data-target="#modaldiv" onclick="setChangePass(this.id);"><i class="ti-key"></i>&nbsp;</a>';}},
                 ]
             });
         });
+
+        function setChangePass(rowPersona){
+            var xDATA   = '<?php echo json_encode($personaJSON['data']); ?>';
+            var xJSON   = JSON.parse(xDATA);
+            var codPer  = document.getElementById(rowPersona);
+            var html    = '';
+
+            xJSON.forEach(element => {
+                if (codPer.id == element.persona_codigo) {
+                    html = 
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_contrasenha.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Reseteo de Contraseña </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="row pt-3">'+
+                    '               <div class="col-sm-12">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var06">EMAIL</label>'+
+                    '                       <input id="var06" name="var06" value="'+element.persona_email+'" class="form-control" type="email" style="text-transform:lowercase; height:40px;" required readonly>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    ''+
+                    '               <div class="col-sm-12">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var07">USUARIO</label>'+
+                    '                       <input id="var07" name="var07" value="'+element.persona_user+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required readonly>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    ''+
+                    '               <div class="col-sm-12">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var08">CONTRASE&Ntilde;A</label>'+
+                    '                       <input id="var08" name="var08" class="form-control" type="password" style="text-transform:uppercase; height:40px;" required>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    '           </div>'+
+                    '           <div class="form-group">'+
+                    '               <input id="workCodigo" name="workCodigo" value="'+element.persona_codigo+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-success">Confirmar</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                }
+            })
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
     </script>
 
 </body>
