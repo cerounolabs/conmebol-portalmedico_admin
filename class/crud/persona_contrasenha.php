@@ -12,7 +12,7 @@
 	$val08          = $_POST['var08'];
 
     $work01         = $_POST['workCodigo'];
-    $work02         = $_POST['workModo'];
+    $work02         = $_POST['workPage'];
 
 	$log_01         = $_SESSION['log_01'];
 	$log_03         = $_SESSION['log_03'];
@@ -33,7 +33,7 @@
 
 	$result		= json_decode($result, true);
 
-	header('Location: ../../public/persona.php?code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../public/'.$work02.'.php?code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>

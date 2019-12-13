@@ -117,8 +117,8 @@
                 </div>
 
                 <!-- Modal Procesar -->
-                <div id="modalprocesar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="prodesc">
+                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -235,6 +235,53 @@
                 ]
             });
         });
+
+        function setChangeCont(){
+            var html = 
+            '<div class="modal-content">'+
+            '   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_contrasenha.php">'+
+            '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+            '		    <h4 class="modal-title" id="vcenter"> Reseteo de Contraseña </h4>'+
+            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	    </div>'+
+            '	    <div class="modal-body" >'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var06">EMAIL</label>'+
+            '                       <input id="var06" name="var06" value="<?php echo $log_02; ?>" class="form-control" type="email" style="text-transform:lowercase; height:40px;" required readonly>'+
+            '                   </div>'+
+            '               </div>'+
+            ''+
+            '               <div class="col-sm-12">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var07">USUARIO</label>'+
+            '                       <input id="var07" name="var07" value="<?php echo $log_01; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required readonly>'+
+            '                   </div>'+
+            '               </div>'+
+            ''+
+            '               <div class="col-sm-12">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var08">CONTRASE&Ntilde;A</label>'+
+            '                       <input id="var08" name="var08" class="form-control" type="password" style="text-transform:uppercase; height:40px;" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="<?php echo $log_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workPage" name="workPage" value="home" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '           </div>'+
+            '	    </div>'+
+            '	    <div class="modal-footer">'+
+            '           <button type="submit" class="btn btn-success">Confirmar</button>'+
+            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	    </div>'+
+            '   </form>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
     </script>
 </body>
 </html>
