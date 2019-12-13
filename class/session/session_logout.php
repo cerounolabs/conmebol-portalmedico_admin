@@ -6,6 +6,7 @@
     unset($_SESSION['log_01']);
     unset($_SESSION['log_02']);
     unset($_SESSION['log_03']);
+    unset($_SESSION['log_04']);
     
     unset($_SESSION['usu_01']);
     unset($_SESSION['usu_02']);

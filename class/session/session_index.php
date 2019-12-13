@@ -28,6 +28,7 @@
             $_SESSION['log_01'] = $resultJSON['data'][0]['persona_user'];
             $_SESSION['log_02'] = $resultJSON['data'][0]['persona_email'];
             $_SESSION['log_03'] = $val_03;
+            $_SESSION['log_04'] = $resultJSON['data'][0]['persona_codigo'];
     
             $_SESSION['usu_01'] = $resultJSON['data'][0]['persona_nombre'];
             $_SESSION['usu_02'] = $resultJSON['data'][0]['equipo_nombre'];

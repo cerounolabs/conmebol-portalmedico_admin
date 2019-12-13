@@ -6,6 +6,7 @@
     $log_01 = $_SESSION['log_01'];
     $log_02 = $_SESSION['log_02'];
     $log_03 = $_SESSION['log_03'];
+    $log_04 = $_SESSION['log_04'];
 
     $usu_01 = $_SESSION['usu_01'];
     $usu_02 = $_SESSION['usu_02'];
