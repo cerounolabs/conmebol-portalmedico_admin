@@ -360,6 +360,13 @@
                                         </li>
 
                                         <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=LESIONRETIRO" class="sidebar-link">
+                                                <i class="mdi mdi-lesion"></i> 
+                                                <span class="hide-menu"> Lesi&oacute;n Retiro </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
                                             <a href="../public/dominio.php?dominio=LESIONCAUSA" class="sidebar-link">
                                                 <i class="mdi mdi-lesion"></i> 
                                                 <span class="hide-menu"> Lesi&oacute;n Causa </span>
@@ -379,11 +386,19 @@
                                             </a>
                                             <ul aria-expanded="false" class="collapse second-level">
                                                 <li class="sidebar-item">
+                                                    <a href="../public/dominio.php?dominio=CONCUSIONCUESTIONARIO" class="sidebar-link">
+                                                        <i class="mdi mdi-lesion"></i> 
+                                                        <span class="hide-menu"> Concusi&oacute;n Cuestionario</span>
+                                                    </a>
+                                                </li>
+
+                                                <li class="sidebar-item">
                                                     <a href="../public/dominio.php?dominio=CONCUSIONTIPO" class="sidebar-link">
                                                         <i class="mdi mdi-lesion"></i> 
                                                         <span class="hide-menu"> Concusi&oacute;n Tipo</span>
                                                     </a>
                                                 </li>
+
                                                 <li class="sidebar-item">
                                                     <a href="../public/dominio.php?dominio=CONCUSIONSIGNO" class="sidebar-link">
                                                         <i class="mdi mdi-lesion"></i> 

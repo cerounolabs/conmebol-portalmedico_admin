@@ -98,12 +98,20 @@
                 $result = 'LESIÓN REINCIDENCIA';
                 break;
 
+            case 'LESIONRETIRO':
+                $result = 'LESIÓN RETIRO';
+                break;
+
             case 'LESIONCAUSA':
                 $result = 'LESIÓN CAUSA';
                 break;
 
             case 'LESIONFALTA':
                 $result = 'LESIÓN FALTA';
+                break;
+
+            case 'CONCUSIONCUESTIONARIO':
+                $result = 'CONCUSIÓN CUESTIONARIO';
                 break;
 
             case 'CONCUSIONTIPO':

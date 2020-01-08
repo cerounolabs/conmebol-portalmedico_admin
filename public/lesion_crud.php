@@ -144,45 +144,6 @@
                                             <div class="row pt-3">
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <div class="input-group mb-3">
-                                                            <input type="hidden" id="workTipo" name="workTipo" value="<?php echo $valorTipo; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
-                                                            <input type="hidden" id="workDisciplina" name="workDisciplina" value="<?php echo $valorDisciplina; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
-                                                            <input type="hidden" id="workCompetencia" name="workCompetencia" value="<?php echo $valorCompetencia; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
-                                                            <input type="hidden" id="workEquipo" name="workEquipo" value="<?php echo $valorEquipo; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
-                                                            <input type="hidden" id="workJuego" name="workJuego" value="<?php echo $valorJuego; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-<!--
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                                    <div class="form-group">
-                                                        <label>Traslado</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var104" name="var104" style="width:100%; height:40px;" aria-label="Clima" aria-describedby="basic-var104" required>
-                                                                <optgroup label="Traslado" style="background-color:#005ea6; color:#fff;">
-                                                                    <option selected disabled>SELECCIONAR...</option>
-<?php
-    if ($dominioJSON['code'] === 200){
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOTRASLADO'){
-?>
-                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
-<?php
-            }
-        }
-    }
-?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
--->
-
-                                            <div class="row pt-3">
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                                    <div class="form-group">
                                                         <label>Traslado</label>
                                                         <div class="mb-3">
 <?php
@@ -208,31 +169,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-<!--
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                                    <div class="form-group">
-                                                        <label>Clima</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var101" name="var101" style="width:100%; height:40px;" aria-label="Clima" aria-describedby="basic-var101" required>
-                                                                <optgroup label="Clima" style="background-color:#005ea6; color:#fff;">
-                                                                    <option selected disabled>SELECCIONAR...</option>
-<?php
-    if ($dominioJSON['code'] === 200){
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOCLIMA'){
-?>
-                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
-<?php
-            }
-        }
-    }
-?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
--->
 
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
@@ -269,7 +205,7 @@
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text" id="basic-var102"><i class="ti-bolt-alt"></i></span>
                                                             </div>
-                                                            <input type="number" id="var102" name="var102" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required>
+                                                            <input type="number" id="var102" name="var102" value="20" min="0" max="100" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -326,30 +262,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-<!--
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                                    <div class="form-group">
-                                                        <label>Minuto</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var203" name="var203" style="width:100%; height:40px;" aria-label="Minuto" aria-describedby="basic-var203" required>
-                                                                <optgroup label="Minuto" style="background-color:#005ea6; color:#fff;">
-                                                                    <option selected disabled>SELECCIONAR...</option>
-<?php
-    if ($dominioJSON['code'] === 200){
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOMINUTO'){
-?>
-                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
-<?php
-            }
-        }
-    }
-?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
--->
 
                                                 <div class="col-sm-12 col-md-6 col-lg-9">
                                                     <div class="form-group">
@@ -373,31 +285,6 @@
                                             </div>
                                             
                                             <div class="row pt-3">
-<!--
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                                    <div class="form-group">
-                                                        <label>Posici&oacute;n</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var202" name="var202" style="width:100%; height:40px;" aria-label="Posici&oacute;n" aria-describedby="basic-var202" required>
-                                                                <optgroup label="Posici&oacute;n" style="background-color:#005ea6; color:#fff;">
-                                                                    <option selected disabled>SELECCIONAR...</option>
-<?php
-    if ($dominioJSON['code'] === 200){
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CAMPOPOSICION'){
-?>
-                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
-<?php
-            }
-        }
-    }
-?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
--->
-
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Posici&oacute;n</label>
@@ -562,30 +449,31 @@
                                                         </div>
                                                     </div>
                                                 </div>
-<!--
+
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
-                                                        <label>Lesi&oacute;n Falta</label>
+                                                        <label>Se retira del partido por Lesi&oacute;n</label>
                                                         <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var307" name="var307" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Falta" aria-describedby="basic-var307" required>
-                                                                <optgroup label="Lesi&oacute;n Falta" style="background-color:#005ea6; color:#fff;">
+                                                            <select class="custom-select form-control" id="var308" name="var308" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Reincidencia" aria-describedby="basic-var308" required>
+                                                                <optgroup label="Lesi&oacute;n Retiro" style="background-color:#005ea6; color:#fff;">
                                                                     <option selected disabled>SELECCIONAR...</option>
 <?php
     if ($dominioJSON['code'] === 200){
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONFALTA'){
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONRETIRO'){
 ?>
-                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
+                                                                    <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
 <?php
             }
         }
     }
 ?>
+                                                                </optgroup>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
--->
+
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
                                                         <label>Lesi&oacute;n Falta</label>
@@ -613,30 +501,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-<!--
-                                                <div class="col-sm-12 col-md-6 col-lg-3">
-                                                    <div class="form-group">
-                                                        <label>Lesi&oacute;n Causa</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var306" name="var306" style="width:100%; height:40px;" aria-label="Lesi&oacute;n Causa" aria-describedby="basic-var306" required>
-                                                                <optgroup label="Lesi&oacute;n Causa" style="background-color:#005ea6; color:#fff;">
-                                                                    <option selected disabled>SELECCIONAR...</option>
-<?php
-    if ($dominioJSON['code'] === 200){
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONCAUSA'){
-?>
-                                                                    <option value="<?php //echo $dominioVALUE['tipo_codigo']; ?>"><?php //echo $dominioVALUE['tipo_nombre_castellano']; ?></option>
-<?php
-            }
-        }
-    }
-?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
--->
+
                                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                                     <div class="form-group">
                                                         <label>Lesi&oacute;n Causa</label>
@@ -768,9 +633,9 @@
                                             <div id="datCon01" class="row pt-5" style="display:none;">
                                                 <h4 class="page-title" style="width:100%;">TIPO</h4>
 <?php
-    if ($dominioJSON['code'] === 200){
-        $indConTip = 0;
+    $indConTip = 0;
 
+    if ($dominioJSON['code'] === 200){
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONTIPO'){
 ?>
@@ -779,11 +644,11 @@
                                                         <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
                                                         <div class="input-group mb-3">
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var501_S_<?php echo $indConTip; ?>" name="var501_<?php echo $indConTip; ?>" value="S">    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var501_S_<?php echo $indConTip; ?>" name="var501_<?php echo $indConTip; ?>" value="S_<?php echo $dominioVALUE['tipo_codigo']; ?>">    
                                                                 <label class="custom-control-label" for="var501_S_<?php echo $indConTip; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var501_N_<?php echo $indConTip; ?>" name="var501_<?php echo $indConTip; ?>" value="N" checked>    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var501_N_<?php echo $indConTip; ?>" name="var501_<?php echo $indConTip; ?>" value="N_<?php echo $dominioVALUE['tipo_codigo']; ?>" checked>    
                                                                 <label class="custom-control-label" for="var501_N_<?php echo $indConTip; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                         </div>
@@ -800,9 +665,9 @@
                                             <div id="datCon02" class="row pt-5" style="display:none;">
                                                 <h4 class="page-title" style="width:100%;">SIGNOS</h4>
 <?php
-    if ($dominioJSON['code'] === 200){
-        $indConSig = 0;
+    $indConSig = 0;
 
+    if ($dominioJSON['code'] === 200){
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONSIGNO'){
 ?>
@@ -811,11 +676,11 @@
                                                         <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
                                                         <div class="input-group mb-3">
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var502_S_<?php echo $indConSig; ?>" name="var502_<?php echo $indConSig; ?>" value="S">    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var502_S_<?php echo $indConSig; ?>" name="var502_<?php echo $indConSig; ?>" value="S_<?php echo $dominioVALUE['tipo_codigo']; ?>">    
                                                                 <label class="custom-control-label" for="var502_S_<?php echo $indConSig; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var502_N_<?php echo $indConSig; ?>" name="var502_<?php echo $indConSig; ?>" value="N" checked>    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var502_N_<?php echo $indConSig; ?>" name="var502_<?php echo $indConSig; ?>" value="N_<?php echo $dominioVALUE['tipo_codigo']; ?>" checked>    
                                                                 <label class="custom-control-label" for="var502_N_<?php echo $indConSig; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                         </div>
@@ -832,9 +697,9 @@
                                             <div id="datCon03" class="row pt-5" style="display:none;">
                                                 <h4 class="page-title" style="width:100%;">PRUEBA DE MEMORIA. PREGUNTE</h4>
 <?php
-    if ($dominioJSON['code'] === 200){
-        $indConMen = 0;
+    $indConMen = 0;
 
+    if ($dominioJSON['code'] === 200){
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONMEMORIA'){
 ?>
@@ -843,11 +708,11 @@
                                                         <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
                                                         <div class="input-group mb-3">
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var503_S_<?php echo $indConMen; ?>" name="var503_<?php echo $indConMen; ?>" value="S">    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var503_S_<?php echo $indConMen; ?>" name="var503_<?php echo $indConMen; ?>" value="S_<?php echo $dominioVALUE['tipo_codigo']; ?>">    
                                                                 <label class="custom-control-label" for="var503_S_<?php echo $indConMen; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var503_N_<?php echo $indConMen; ?>" name="var503_<?php echo $indConMen; ?>" value="N" checked>    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var503_N_<?php echo $indConMen; ?>" name="var503_<?php echo $indConMen; ?>" value="N_<?php echo $dominioVALUE['tipo_codigo']; ?>" checked>    
                                                                 <label class="custom-control-label" for="var503_N_<?php echo $indConMen; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                         </div>
@@ -865,9 +730,9 @@
                                                 <h4 class="page-title" style="width:100%;">SEGUIMIENTO</h4>
 
 <?php
+    $indConSeg = 0;
+    
     if ($dominioJSON['code'] === 200){
-        $indConSeg = 0;
-
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'CONCUSIONSEGUIMIENTO'){
 ?>
@@ -876,11 +741,11 @@
                                                         <label><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>
                                                         <div class="input-group mb-3">
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var504_S_<?php echo $indConSeg; ?>" name="var504_<?php echo $indConSeg; ?>" value="S">    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var504_S_<?php echo $indConSeg; ?>" name="var504_<?php echo $indConSeg; ?>" value="S_<?php echo $dominioVALUE['tipo_codigo']; ?>">    
                                                                 <label class="custom-control-label" for="var504_S_<?php echo $indConSeg; ?>">&nbsp;SI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                             <div class="custom-control custom-radio">
-                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var504_N_<?php echo $indConSeg; ?>" name="var504_<?php echo $indConSeg; ?>" value="N" checked>    
+                                                                <input class="custom-control-input custom-radio-concusion" type="radio" id="var504_N_<?php echo $indConSeg; ?>" name="var504_<?php echo $indConSeg; ?>" value="N_<?php echo $dominioVALUE['tipo_codigo']; ?>" checked>    
                                                                 <label class="custom-control-label" for="var504_N_<?php echo $indConSeg; ?>">&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                                             </div>
                                                         </div>
@@ -895,6 +760,24 @@
                                             </div>
                                         </section>
                                         <!-- Step 4 -->
+
+                                        <div class="row pt-3">
+                                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                                <div class="form-group">
+                                                    <div class="input-group mb-3">
+                                                        <input type="hidden" id="workTipo" name="workTipo" value="<?php echo $valorTipo; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workDisciplina" name="workDisciplina" value="<?php echo $valorDisciplina; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workCompetencia" name="workCompetencia" value="<?php echo $valorCompetencia; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workEquipo" name="workEquipo" value="<?php echo $valorEquipo; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workJuego" name="workJuego" value="<?php echo $valorJuego; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workDiag1" name="workDiag1" value="<?php echo $indConTip; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workDiag2" name="workDiag2" value="<?php echo $indConSig; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workDiag3" name="workDiag3" value="<?php echo $indConMen; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                        <input type="hidden" id="workDiag4" name="workDiag4" value="<?php echo $indConSeg; ?>" class="form-control" placeholder="Temperatura ºC" style="height:40px;" aria-describedby="basic-var102">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -1009,6 +892,10 @@
                 },
                 start: 0,
                 step: 1,
+                tooltips: true,
+                format: wNumb({
+                    decimals: 0
+                }),
                 connect: 'lower',
                 orientation: 'horizontal',
                 pips: {
