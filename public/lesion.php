@@ -627,6 +627,17 @@
                     '           </div>'+
                     '           <div class="col-sm-12 col-md-6 col-lg-3">'+
                     '               <div class="form-group">'+
+                    '                   <label>Se retira del partido por Lesi&oacute;n</label>'+
+                    '                    <div class="input-group mb-3">'+
+                    '                        <div class="input-group-prepend">'+
+                    '                            <span class="input-group-text" id="basic-var102"><i class="ti-marker"></i></span>'+
+                    '                        </div>'+
+                    '                        <input type="text" value="'+element.tipo_lesion_retiro_nombre_castellano+'" class="form-control"  style="height:40px;" aria-label="Temperatura ºC" aria-describedby="basic-var102" required readonly>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="col-sm-12 col-md-6 col-lg-3">'+
+                    '               <div class="form-group">'+
                     '                   <label>Lesion Falta</label>'+
                     '                    <div class="input-group mb-3">'+
                     '                        <div class="input-group-prepend">'+

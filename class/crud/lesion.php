@@ -27,6 +27,7 @@
 	$val305			= $_POST['var305'];
 	$val306         = $_POST['var306'];
 	$val307      	= $_POST['var307'];
+	$val308      	= $_POST['var308'];
 
 	$val401         = $_POST['var401'];
     $val402         = $_POST['var402'];
@@ -38,6 +39,10 @@
 	$work03         = $_POST['workCompetencia'];
 	$work04         = $_POST['workEquipo'];
 	$work05         = $_POST['workJuego'];
+	$work06         = $_POST['workDiag1'];
+	$work07         = $_POST['workDiag2'];
+	$work08         = $_POST['workDiag3'];
+	$work09         = $_POST['workDiag4'];
 
 	$log_01         = $_SESSION['log_01'];
     $log_03         = $_SESSION['log_03'];
@@ -68,6 +73,7 @@
 				'tipo_lesion_reincidencia_codigo'				=> $val305,
 				'tipo_lesion_causa_codigo'						=> $val306,
 				'tipo_lesion_falta_codigo'						=> $val307,
+				'tipo_lesion_retiro_codigo'						=> $val308,
 
 				'tipo_diagnostico_tipo_codigo'					=> $val401,
 				'tipo_diagnostico_recuperacion_codigo'			=> $val402,
@@ -79,7 +85,97 @@
 				'auditoria_ip'									=> $log_03
 			));
 		
-		$result	= post_curl('600', $dataJSON);
+		$result		= post_curl('600', $dataJSON);
+		$resultJSON = json_decode($result, true);
+        $work00     = $resultJSON['codigo'];
+	}
+
+	for ($i=0; $i < $work06; $i++) { 
+		$row_00	= $_POST['var501_'.$i];
+
+		$pos	= strpos($row_00, '_');
+		$row_01	= substr($row_00, ($pos+1));
+		$row_02	= substr($row_00, 0, $pos);
+
+		$dataJSON = json_encode(
+            array(
+				'lesion_codigo'							=> $work00,
+				'tipo_codigo'							=> 150,
+				'pregunta_codigo'						=> $row_01,
+				'lesion_concusion_valor'				=> $row_02,
+				
+				'auditoria_usuario'						=> $log_01,
+				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
+				'auditoria_ip'							=> $log_03
+			));
+		
+//		$result1	= post_curl('601', $dataJSON);
+	}
+
+	for ($i=0; $i < $work07; $i++) { 
+		$row_00	= $_POST['var502_'.$i];
+
+		$pos	= strpos($row_00, '_');
+		$row_01	= substr($row_00, ($pos+1));
+		$row_02	= substr($row_00, 0, $pos);
+
+		$dataJSON = json_encode(
+            array(
+				'lesion_codigo'							=> $work00,
+				'tipo_codigo'							=> 151,
+				'pregunta_codigo'						=> $row_01,
+				'lesion_concusion_valor'				=> $row_02,
+				
+				'auditoria_usuario'						=> $log_01,
+				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
+				'auditoria_ip'							=> $log_03
+			));
+		
+//		$result2	= post_curl('601', $dataJSON);
+	}
+
+	for ($i=0; $i < $work08; $i++) { 
+		$row_00	= $_POST['var503_'.$i];
+
+		$pos	= strpos($row_00, '_');
+		$row_01	= substr($row_00, ($pos+1));
+		$row_02	= substr($row_00, 0, $pos);
+
+		$dataJSON = json_encode(
+            array(
+				'lesion_codigo'							=> $work00,
+				'tipo_codigo'							=> 152,
+				'pregunta_codigo'						=> $row_01,
+				'lesion_concusion_valor'				=> $row_02,
+				
+				'auditoria_usuario'						=> $log_01,
+				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
+				'auditoria_ip'							=> $log_03
+			));
+		
+//		$result3	= post_curl('601', $dataJSON);
+	}
+
+	for ($i=0; $i < $work09; $i++) { 
+		$row_00	= $_POST['var504_'.$i];
+
+		$pos	= strpos($row_00, '_');
+		$row_01	= substr($row_00, ($pos+1));
+		$row_02	= substr($row_00, 0, $pos);
+
+		$dataJSON = json_encode(
+            array(
+				'lesion_codigo'							=> $work00,
+				'tipo_codigo'							=> 153,
+				'pregunta_codigo'						=> $row_01,
+				'lesion_concusion_valor'				=> $row_02,
+				
+				'auditoria_usuario'						=> $log_01,
+				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
+				'auditoria_ip'							=> $log_03
+			));
+		
+//		$result4	= post_curl('601', $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
