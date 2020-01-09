@@ -98,7 +98,7 @@
                                 <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="setChangeCont();">
                                     <i class="ti-key m-r-5 m-l-5"></i> Cambiar contrase&ntilde;a</a>
                                 <a class="dropdown-item" href="../class/session/session_logout.php">
-                                    <i class="fa fa-power-off m-r-5 m-l-5"></i> Cerrar Secci&oacute;n</a>
+                                    <i class="fa fa-power-off m-r-5 m-l-5"></i> Cerrar Sesi&oacute;n</a>
                                 <div class="dropdown-divider"></div>
                             </div>
                         </li>
