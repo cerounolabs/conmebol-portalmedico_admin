@@ -574,10 +574,10 @@
 
                                                 <div class="col-sm-12 col-md-6 col-lg-4">
                                                     <div class="form-group">
-                                                        <label>Diagn&oacute;stico Recuperaci&oacute;n</label>
+                                                        <label>Tiempo de baja previsto</label>
                                                         <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var402" name="var402" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Recuperaci&oacute;n" aria-describedby="basic-var402" required>
-                                                                <optgroup label="Diagn&oacute;stico Recuperaci&oacute;n" style="background-color:#005ea6; color:#fff;">
+                                                            <select class="custom-select form-control col-6" id="var402" name="var402" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Recuperaci&oacute;n" aria-describedby="basic-var402" required>
+                                                                <optgroup label="Cantidad" style="background-color:#005ea6; color:#fff;">
                                                                     <option selected disabled>SELECCIONAR...</option>
 <?php
     if ($dominioJSON['code'] === 200){
@@ -592,16 +592,9 @@
 ?>
                                                                 </optgroup>
                                                             </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-6 col-lg-4">
-                                                    <div class="form-group">
-                                                        <label>Diagn&oacute;stico Tiempo</label>
-                                                        <div class="input-group mb-3">
-                                                            <select class="custom-select form-control" id="var403" name="var403" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Tiempo" aria-describedby="basic-var403" required>
-                                                                <optgroup label="Diagn&oacute;stico Tiempo" style="background-color:#005ea6; color:#fff;">
+                                                        
+                                                            <select class="custom-select form-control col-6" id="var403" name="var403" style="width:100%; height:40px;" aria-label="Diagn&oacute;stico Tiempo" aria-describedby="basic-var403" required>
+                                                                <optgroup label="Tiempo" style="background-color:#005ea6; color:#fff;">
                                                                     <option selected disabled>SELECCIONAR...</option>
 <?php
     if ($dominioJSON['code'] === 200){
