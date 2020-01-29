@@ -3,7 +3,7 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($usu_04 == 39393){
+    if ($usu_04 == 39393 && $_GET['categoria'] == 'OTHER'){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 
@@ -31,6 +31,12 @@
         $valorCompetencia   = $_GET['competencia'];
     } else {
         $valorCompetencia   = 0;
+    }
+
+    if(isset($_GET['categoria'])){
+        $valorCategoria     = $_GET['categoria'];
+    } else {
+        $valorCategoria     = 'OTHER';
     }
 
     if(isset($_GET['equipo'])){
@@ -111,7 +117,7 @@
                                             <a href="../public/competencia.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>">COMPETENCIAS</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../public/juego.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $valorCompetencia; ?>">JUEGOS</a>
+                                            <a href="../public/juego.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $valorCompetencia; ?>&categoria=<?php echo $valorCategoria; ?>">JUEGOS</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">LESI&Oacute;N</li>
                                     </ol>
