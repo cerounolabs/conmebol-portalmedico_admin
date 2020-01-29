@@ -29,6 +29,12 @@
         $valorCompetencia   = 0;
     }
 
+    if(isset($_GET['categoria'])){
+        $valorCategoria     = $_GET['categoria'];
+    } else {
+        $valorCategoria     = 'OTHER';
+    }
+
     $juegoJSON = get_curl('200/juego/'.$valorCompetencia.'/'.$usu_04);
 ?>
 
@@ -111,7 +117,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title"><?php echo $juegoVALUE['equipo_local_nombre'].' '.$juegoVALUE['equipo_local_resultado_final'].' <br> vs <br> '.$juegoVALUE['equipo_visitante_nombre'].' '.$juegoVALUE['equipo_visitante_resultado_final']; ?></h4>
                                         <p class="card-text"> FASE: <?php echo $juegoVALUE['juego_fase']; ?> <br> ESTADO: <?php echo $juegoVALUE['juego_estado']; ?> <br> HORARIO: <?php echo $juegoVALUE['juego_horario']; ?></p>
-                                        <a href="../public/lesion_crud.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $valorCompetencia; ?>&equipo=<?php echo $usu_04; ?>&juego=<?php echo $juegoVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Nueva Lesi&oacute;n</a>
+                                        <a href="../public/lesion_crud.php?tipo=<?php echo $valorTipo; ?>&disciplina=<?php echo $valorDisciplina; ?>&competencia=<?php echo $valorCompetencia; ?>&categoria=<?php echo $valorCategoria;?>&equipo=<?php echo $usu_04; ?>&juego=<?php echo $juegoVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Nueva Lesi&oacute;n</a>
                                     </div>
                                 </div>
                             </div>
