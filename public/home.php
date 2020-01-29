@@ -35,13 +35,16 @@
         $var04 = date('Y');
     }
 
+    $var05  = '';
+
     $competenciaJSON        = get_curl('200/disciplina/'.$usu_04);
 
     if (empty($var02)) {
         if ($competenciaJSON['code'] == 200){
             foreach ($competenciaJSON['data'] as $competenciaKEY => $competenciaVALUE) {
                 if ($competenciaVALUE['competicion_anho'] == $var04){
-                    $var02 = $competenciaVALUE['competicion_codigo'];
+                    $var02  = $competenciaVALUE['competicion_codigo'];
+                    $var05  = $competenciaVALUE['competicion_categoria_codigo'];
                     break;
                 }
             }
@@ -237,7 +240,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title"><?php echo $juegoVALUE['equipo_local_nombre'].' '.$juegoVALUE['equipo_local_resultado_final'].' <br> vs <br> '.$juegoVALUE['equipo_visitante_nombre'].' '.$juegoVALUE['equipo_visitante_resultado_final']; ?></h4>
                                         <p class="card-text"> FASE: <?php echo $juegoVALUE['juego_fase']; ?> <br> ESTADO: <?php echo $juegoVALUE['juego_estado']; ?> <br> HORARIO: <?php echo $juegoVALUE['juego_horario']; ?></p>
-                                        <a href="../public/lesion_crud.php?tipo=COM&disciplina=<?php echo $var01; ?>&competencia=<?php echo $var02; ?>&equipo=<?php echo $usu_04; ?>&juego=<?php echo $juegoVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Nueva Lesi&oacute;n</a>
+                                        <a href="../public/lesion_crud.php?tipo=COM&disciplina=<?php echo $var01; ?>&competencia=<?php echo $var02; ?>&categoria=<?php echo $var05; ?>&equipo=<?php echo $usu_04; ?>&juego=<?php echo $juegoVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6; position:absolute; bottom: 20px;">Nueva Lesi&oacute;n</a>
                                     </div>
                                 </div>
                             </div>
