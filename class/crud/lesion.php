@@ -100,16 +100,17 @@
 		$dataJSON = json_encode(
             array(
 				'lesion_codigo'							=> $work00,
-				'tipo_codigo'							=> 150,
-				'pregunta_codigo'						=> $row_01,
-				'lesion_concusion_valor'				=> $row_02,
+				'tipo_concusion_codigo'					=> 150,
+				'pregunta_concusion_codigo'				=> $row_01,
+				'lesion_concusion_respuesta'			=> $row_02,
+				'lesion_concusion_observacion'			=> '',
 				
 				'auditoria_usuario'						=> $log_01,
 				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
 				'auditoria_ip'							=> $log_03
 			));
 		
-//		$result1	= post_curl('601', $dataJSON);
+		$result1	= post_curl('601', $dataJSON);
 	}
 
 	for ($i=0; $i < $work07; $i++) { 
@@ -122,16 +123,17 @@
 		$dataJSON = json_encode(
             array(
 				'lesion_codigo'							=> $work00,
-				'tipo_codigo'							=> 151,
-				'pregunta_codigo'						=> $row_01,
-				'lesion_concusion_valor'				=> $row_02,
+				'tipo_concusion_codigo'					=> 151,
+				'pregunta_concusion_codigo'				=> $row_01,
+				'lesion_concusion_respuesta'			=> $row_02,
+				'lesion_concusion_observacion'			=> '',
 				
 				'auditoria_usuario'						=> $log_01,
 				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
 				'auditoria_ip'							=> $log_03
 			));
 		
-//		$result2	= post_curl('601', $dataJSON);
+		$result2	= post_curl('601', $dataJSON);
 	}
 
 	for ($i=0; $i < $work08; $i++) { 
@@ -144,16 +146,17 @@
 		$dataJSON = json_encode(
             array(
 				'lesion_codigo'							=> $work00,
-				'tipo_codigo'							=> 152,
-				'pregunta_codigo'						=> $row_01,
-				'lesion_concusion_valor'				=> $row_02,
+				'tipo_concusion_codigo'					=> 152,
+				'pregunta_concusion_codigo'				=> $row_01,
+				'lesion_concusion_respuesta'			=> $row_02,
+				'lesion_concusion_observacion'			=> '',
 				
 				'auditoria_usuario'						=> $log_01,
 				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
 				'auditoria_ip'							=> $log_03
 			));
 		
-//		$result3	= post_curl('601', $dataJSON);
+		$result3	= post_curl('601', $dataJSON);
 	}
 
 	for ($i=0; $i < $work09; $i++) { 
@@ -166,16 +169,17 @@
 		$dataJSON = json_encode(
             array(
 				'lesion_codigo'							=> $work00,
-				'tipo_codigo'							=> 153,
-				'pregunta_codigo'						=> $row_01,
-				'lesion_concusion_valor'				=> $row_02,
+				'tipo_concusion_codigo'					=> 153,
+				'pregunta_concusion_codigo'				=> $row_01,
+				'lesion_concusion_respuesta'			=> $row_02,
+				'lesion_concusion_observacion'			=> '',
 				
 				'auditoria_usuario'						=> $log_01,
 				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
 				'auditoria_ip'							=> $log_03
 			));
 		
-//		$result4	= post_curl('601', $dataJSON);
+		$result4	= post_curl('601', $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
