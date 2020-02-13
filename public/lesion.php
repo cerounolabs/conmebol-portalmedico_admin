@@ -475,6 +475,7 @@
 
         function getVisualizar(rowLesion) {
             var xDATA   = '<?php echo json_encode($lesionJSON['data']); ?>';
+            xDATA       = xDATA.replace(/\r\n/g, ' ');
             var xJSON   = JSON.parse(xDATA);
             var codLes  = document.getElementById(rowLesion);
             var html    = '';

@@ -291,9 +291,11 @@
         }
 
         function getInforme(codInf){
+            var codComp = document.getElementById('var03').value;
+
             switch (codInf) {
                 case 1:
-                    window.location = "../public/inflesion_xls.php";
+                    window.location = "../public/inflesion_xls.php?competencia=" + codComp;
                     break;
             }
         }
