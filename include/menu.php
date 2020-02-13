@@ -201,22 +201,22 @@
                                	</li>
                             </ul>
                         </li>
-<!--
+
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Bar-Chart "></i>
-                           		<span class="hide-menu"> Reportes </span>
+                           		<span class="hide-menu"> Informes </span>
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="javascript:void(0)" class="sidebar-link">
+                               		<a href="../public/inflesion.php" class="sidebar-link">
                                			<i class="mdi mdi-reporte"></i>
-                               			<span class="hide-menu"> Reportes </span>
+                               			<span class="hide-menu"> Lesiones </span>
                                     </a>
                                	</li>
                             </ul>
                         </li>
--->
+
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Business-ManWoman"></i>

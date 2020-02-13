@@ -147,6 +147,8 @@
             $("#loginform").slideUp();
             $("#recoverform").fadeIn();
         });
+
+        localStorage.clear();
     </script>
 
 <?php  
