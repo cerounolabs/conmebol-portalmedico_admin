@@ -11,7 +11,9 @@
         $msgRest        = '';
     }
 
-    $var04 = date('Y');
+    $var04              = date('Y');
+    $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
+    $lesionJSON         = get_curl('600/'.$usu_04);
 ?>
 
 <!DOCTYPE html>
@@ -220,7 +222,13 @@
 
     <script>
         if (localStorage.getItem('competenciaJSON') === null){
-            getJSON('competenciaJSON', '200/disciplina/<?php echo $usu_04; ?>');
+            localStorage.removeItem('competenciaJSON');
+            localStorage.setItem('competenciaJSON', JSON.stringify(<?php echo json_encode($competenciaJSON); ?>));
+        }
+
+        if (localStorage.getItem('lesionJSON') === null){
+            localStorage.removeItem('lesionJSON');
+            localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode($lesionJSON); ?>));
         }
 
         function setChangeCont(){
@@ -273,14 +281,14 @@
         function getCompetencias(){
             var codDisciplina   = document.getElementById('var01');
             var selAnho         = document.getElementById('var02');
-            var selCompetencia  = document.getElementById('var03'); 
-            var xJSON1          = JSON.parse(localStorage.getItem('competenciaJSON'))['data'];
+            var selCompetencia  = document.getElementById('var03');
+            var xJSON           = JSON.parse(localStorage.getItem('competenciaJSON'))['data'];
                     
             while (selCompetencia.length > 0) {
                 selCompetencia.remove(0);
             }
 
-            xJSON1.forEach(element => {
+            xJSON.forEach(element => {
                 if (codDisciplina.value == element.competicion_disciplina && selAnho.value == element.competicion_anho) {
                     var option      = document.createElement('option');
                     option.value    = element.competicion_codigo;
@@ -288,6 +296,20 @@
                     selCompetencia.add(option, null);
                 }
             });
+        }
+
+        function getLesion(){
+            var xJSON = JSON.parse(localStorage.getItem('lesionJSON'))['data'];;
+            var xCOMP = document.getElementById('var03').value;
+            var xDATA = [];
+
+            xJSON.forEach(element => {
+                if (element.competicion_codigo == xCOMP) {
+                    xDATA.push(element);
+                }
+            });
+
+            return xDATA;
         }
 
         function getInforme(codInf){
@@ -303,8 +325,7 @@
         getCompetencias();
 
         $(document).ready(function() {
-            var compData    = document.getElementById('var03').value;
-            var urlDominio  = 'http://api.conmebol.com/portalmedico/public/v1/600/<?php echo $usu_04; ?>/'+compData;
+            var xDATA       = getLesion();
             var tableData   = $('#tableLoad').DataTable(
                 {
                     processing	: true,
@@ -330,16 +351,7 @@
                             sPrevious: "Anterior"
                         },
                     },
-                    ajax		: {
-                        type				: 'GET',
-                        cache				: false,
-                        crossDomain			: true,
-                        crossOrigin			: true,
-                        contentType			: 'application/json; charset=utf-8',
-                        dataType			: 'json',
-                        url				    : urlDominio,
-                        dataSrc				: 'data'
-                    },
+                    data : xDATA,
                     columnDefs	: [
                         { targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
                         { targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
@@ -368,7 +380,8 @@
             );
 
             $('.form-group').change(function() {
-                tableData.ajax.url('http://api.conmebol.com/portalmedico/public/v1/600/<?php echo $usu_04; ?>/'+document.getElementById('var03').value).load();
+                var xDATA = getLesion();
+                tableData.clear().rows.add(xDATA).draw();
             });
         });
     </script>
