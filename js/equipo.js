@@ -1,22 +1,7 @@
 $(document).ready(function() {
 	var codigo		= document.getElementById('tableCodigo').className;	
 	var urlDominio	= 'http://api.conmebol.com/portalmedico/public/v1/300';
-	/*
-	$('#tableLoad thead tr').clone(true).appendTo('#tableLoad thead');
-		$('#tableLoad thead tr:eq(1) th').each( function (i) {
-		var title = $(this).text();
-		
-		$(this).html('<input type="text" placeholder="Filtrar '+title+'" />');
-		$('input', this).on('keyup change', function() {
-			if (table.column(i).search() !== this.value) {
-			table
-				.column(i)
-				.search(this.value)
-				.draw();
-			}
-		});
-	});
-	*/
+
 	$('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,

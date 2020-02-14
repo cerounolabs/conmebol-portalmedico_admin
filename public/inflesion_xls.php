@@ -180,6 +180,5 @@
     $writerXLS = IOFactory::createWriter($sheetXLS, 'Xls');
     $writerXLS->save('php://output');
     exit;
-
     ob_end_flush();
 ?>
