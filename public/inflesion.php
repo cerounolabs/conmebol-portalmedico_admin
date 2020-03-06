@@ -13,7 +13,6 @@
 
     $var04              = date('Y');
     $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
-    $lesionJSON         = get_curl('600/'.$usu_04);
 ?>
 
 <!DOCTYPE html>
@@ -221,14 +220,14 @@
     <script src="../js/api.js"></script>
 
     <script>
-        if (localStorage.getItem('competenciaJSON') === null){
+        if (localStorage.getItem('competenciaJSON') === 'null' || localStorage.getItem('competenciaJSON') === null){
             localStorage.removeItem('competenciaJSON');
             localStorage.setItem('competenciaJSON', JSON.stringify(<?php echo json_encode($competenciaJSON); ?>));
         }
 
-        if (localStorage.getItem('lesionJSON') === null){
+        if (localStorage.getItem('lesionJSON') === 'null' || localStorage.getItem('lesionJSON') === null ){
             localStorage.removeItem('lesionJSON');
-            localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode($lesionJSON); ?>));
+            localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode(get_curl('600/'.$usu_04)); ?>));
         }
 
         function setChangeCont(){
@@ -299,7 +298,7 @@
         }
 
         function getLesion(){
-            var xJSON = JSON.parse(localStorage.getItem('lesionJSON'))['data'];;
+            var xJSON = JSON.parse(localStorage.getItem('lesionJSON'))['data'];
             var xCOMP = document.getElementById('var03').value;
             var xDATA = [];
 
