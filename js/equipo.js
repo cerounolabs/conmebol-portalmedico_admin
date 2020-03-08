@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	var xJSON = JSON.parse(localStorage.getItem('equipoJSON'))['data'];
-	console.log(xJSON);
 
 	$('#tableLoad').DataTable({
 		processing	: true,

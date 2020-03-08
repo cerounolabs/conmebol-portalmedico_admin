@@ -895,16 +895,6 @@
             chart08.setOption(option08);
             chart09.setOption(option09);
         });
-
-        if (localStorage.getItem('lesionJSON') === 'null' || localStorage.getItem('lesionJSON') === null ){
-            localStorage.removeItem('lesionJSON');
-            localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode(get_curl('600/'.$usu_04)); ?>));
-        }
-
-        if (localStorage.getItem('equipoJSON') === 'null' || localStorage.getItem('equipoJSON') === null ){
-            localStorage.removeItem('equipoJSON');
-            localStorage.setItem('equipoJSON', JSON.stringify(<?php echo json_encode(get_curl('300')); ?>));
-        }
     </script>
 </body>
 </html>
