@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com/portalmedico/public/v1/400/equipo/'+codigo;
+	var xJSON = JSON.parse(localStorage.getItem('personaJSON'))['data'];
 
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -10,12 +9,12 @@ $(document).ready(function() {
 		lengthChange: true,
 		info		: true,
 		orderCellsTop: false,
-        fixedHeader	: false,
+		fixedHeader	: false,
 		language	: {
-            lengthMenu: "Mostrar _MENU_ registros por pagina",
-            zeroRecords: "Nothing found - sorry",
-            info: "Mostrando pagina _PAGE_ de _PAGES_",
-            infoEmpty: "No hay registros disponibles.",
+			lengthMenu: "Mostrar _MENU_ registros por pagina",
+			zeroRecords: "Nothing found - sorry",
+			info: "Mostrando pagina _PAGE_ de _PAGES_",
+			infoEmpty: "No hay registros disponibles.",
 			infoFiltered: "(Filtrado de _MAX_ registros totales)",
 			sZeroRecords: "No se encontraron resultados",
 			sSearch: "buscar",
@@ -25,17 +24,8 @@ $(document).ready(function() {
 				sNext:     "Siguiente",
 				sPrevious: "Anterior"
 			},
-        },
-		ajax		: {
-			type				: 'GET',
-			cache				: false,
-			crossDomain			: true,
-			crossOrigin			: true,
-			contentType			: 'application/json; charset=utf-8',
-			dataType			: 'json',
-			url				: urlDominio,
-			dataSrc				: 'data'
 		},
+		data		: xJSON,
 		columnDefs	: [
 			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
@@ -68,7 +58,7 @@ $(document).ready(function() {
 			{ data				: 'persona_usuario', name : 'persona_usuario'},
 			{ data				: 'persona_fecha_hora', name : 'persona_fecha_hora'},
 			{ data				: 'persona_ip', name : 'persona_ip'},
-			{ render			: function (data, type, full, meta) {return '<a href="../public/persona_crud.php?dominio=USUARIO&mode=R&codigo=' + full.persona_codigo + '" role="button" class="btn btn-primary" title="Ver"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?dominio=USUARIO&mode=U&codigo=' + full.persona_codigo + '" role="button" class="btn btn-success" title="Editar"><i class="ti-pencil"></i>&nbsp;</a></a>&nbsp;<a href="../public/persona_crud.php?dominio=USUARIO&mode=D&codigo=' + full.persona_codigo + '" role="button" class="btn btn-danger" title="Eliminar"><i class="ti-trash"></i>&nbsp;</a>';}},
+			{ render			: function (data, type, full, meta) {return '<a href="../public/persona_crud.php?mode=R&codigo=' + full.persona_codigo + '" role="button" class="btn btn-primary" title="Ver"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=U&codigo=' + full.persona_codigo + '" role="button" class="btn btn-success" title="Editar"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;<a href="../public/persona_crud.php?mode=D&codigo=' + full.persona_codigo + '" role="button" class="btn btn-danger" title="Eliminar"><i class="ti-trash"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.persona_codigo + '" value="' + full.persona_codigo + '" role="button" class="btn btn-warning" title="Resetear Contraseña" data-toggle="modal" data-target="#modaldiv" onclick="setChangePass(this.id);"><i class="ti-key"></i>&nbsp;</a>';}},
 		]
 	});
 });

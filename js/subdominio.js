@@ -1,7 +1,7 @@
-$(document).ready(function() {
-	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com/portalmedico/public/v1/100/dominio/'+codigo;
-	
+$(document).ready(function() {  
+	var codigo= document.getElementById('tableCodigo').className;	  
+	var xJSON = getSubDominio(codigo);
+
 	$('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,
@@ -10,10 +10,10 @@ $(document).ready(function() {
 		lengthChange: true,
 		info		: true,
 		language	: {
-            lengthMenu: "Mostrar _MENU_ registros por pagina",
-            zeroRecords: "Nothing found - sorry",
-            info: "Mostrando pagina _PAGE_ de _PAGES_",
-            infoEmpty: "No hay registros disponibles.",
+			lengthMenu: "Mostrar _MENU_ registros por pagina",
+			zeroRecords: "Nothing found - sorry",
+			info: "Mostrando pagina _PAGE_ de _PAGES_",
+			infoEmpty: "No hay registros disponibles.",
 			infoFiltered: "(Filtrado de _MAX_ registros totales)",
 			sZeroRecords: "No se encontraron resultados",
 			sSearch: "buscar",
@@ -23,17 +23,8 @@ $(document).ready(function() {
 				sNext:     "Siguiente",
 				sPrevious: "Anterior"
 			},
-        },
-		ajax		: {
-			type				: 'GET',
-			cache				: false,
-			crossDomain			: true,
-			crossOrigin			: true,
-			contentType			: 'application/json; charset=utf-8',
-			dataType			: 'json',
-			url				: urlDominio,
-			dataSrc				: 'data'
 		},
+		data		: xJSON,
 		columnDefs	: [
 			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
