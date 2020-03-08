@@ -6,6 +6,8 @@
     if ($usu_05 != 11 && $usu_05 != 9){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
+
+    $equipoJSON = get_curl('300');
 ?>
 
 <!DOCTYPE html>
@@ -151,7 +153,7 @@
         <script>
             if (localStorage.getItem('equipoJSON') === 'null' || localStorage.getItem('equipoJSON') === null ){
                 localStorage.removeItem('equipoJSON');
-                localStorage.setItem('equipoJSON', JSON.stringify(<?php echo json_encode(get_curl('300')); ?>));
+                localStorage.setItem('equipoJSON', JSON.stringify(<?php echo json_encode($equipoJSON); ?>));
             }
         </script>
 
