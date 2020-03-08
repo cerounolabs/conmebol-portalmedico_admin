@@ -3,14 +3,6 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if(isset($_GET['code'])){
-        $codeRest       = $_GET['code'];
-        $msgRest        = $_GET['msg'];
-    } else {
-        $codeRest       = 0;
-        $msgRest        = '';
-    }
-
     if(isset($_GET['tipo'])){
         $valorTipo          = $_GET['tipo'];
     } else {
@@ -162,77 +154,11 @@
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <div class="chat-windows"></div>
+
 <?php
     include '../include/footer.php';
-   
-    if ($codeRest == 200) {
-?>
-    <script>
-        $(function() {
-            toastr.success('<?php echo $msgRest; ?>', 'Correcto!');
-        });
-    </script>
-<?php
-    }
-            
-    if (($codeRest == 204) || ($codeRest == 401)) {
-?>
-    <script>
-        $(function() {
-            toastr.error('<?php echo $msgRest; ?>', 'Error!');
-        });
-    </script>
-<?php
-    }
 ?>
 
-    <script>
-        function setChangeCont(){
-            var html = 
-            '<div class="modal-content">'+
-            '   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_contrasenha.php">'+
-            '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-            '		    <h4 class="modal-title" id="vcenter"> Reseteo de Contraseña </h4>'+
-            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-            '	    </div>'+
-            '	    <div class="modal-body" >'+
-            '           <div class="row pt-3">'+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var06">EMAIL</label>'+
-            '                       <input id="var06" name="var06" value="<?php echo $log_02; ?>" class="form-control" type="email" style="text-transform:lowercase; height:40px;" required readonly>'+
-            '                   </div>'+
-            '               </div>'+
-            ''+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var07">USUARIO</label>'+
-            '                       <input id="var07" name="var07" value="<?php echo $log_01; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required readonly>'+
-            '                   </div>'+
-            '               </div>'+
-            ''+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var08">CONTRASE&Ntilde;A</label>'+
-            '                       <input id="var08" name="var08" class="form-control" type="password" style="text-transform:uppercase; height:40px;" required>'+
-            '                   </div>'+
-            '               </div>'+
-            '           </div>'+
-            '           <div class="form-group">'+
-            '               <input id="workCodigo" name="workCodigo" value="<?php echo $log_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-            '               <input id="workPage" name="workPage" value="home" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-            '           </div>'+
-            '	    </div>'+
-            '	    <div class="modal-footer">'+
-            '           <button type="submit" class="btn btn-success">Confirmar</button>'+
-            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-            '	    </div>'+
-            '   </form>'+
-            '</div>';
-
-            $("#modalcontent").empty();
-            $("#modalcontent").append(html);
-        }
-    </script>
-</body>
+        <script src="../js/api.js"></script>
+    </body>
 </html>

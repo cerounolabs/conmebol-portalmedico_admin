@@ -1,7 +1,6 @@
 $(document).ready(function() {
-	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com/portalmedico/public/v1/600/'+codigo;
-
+	var xJSON = JSON.parse(localStorage.getItem('lesionJSON'))['data'];
+	
 	$('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,
@@ -10,12 +9,12 @@ $(document).ready(function() {
 		lengthChange: true,
 		info		: true,
 		orderCellsTop: false,
-        fixedHeader	: false,
+		fixedHeader	: false,
 		language	: {
-            lengthMenu: "Mostrar _MENU_ registros por pagina",
-            zeroRecords: "Nothing found - sorry",
-            info: "Mostrando pagina _PAGE_ de _PAGES_",
-            infoEmpty: "No hay registros disponibles.",
+			lengthMenu: "Mostrar _MENU_ registros por pagina",
+			zeroRecords: "Nothing found - sorry",
+			info: "Mostrando pagina _PAGE_ de _PAGES_",
+			infoEmpty: "No hay registros disponibles.",
 			infoFiltered: "(Filtrado de _MAX_ registros totales)",
 			sZeroRecords: "No se encontraron resultados",
 			sSearch: "buscar",
@@ -25,17 +24,8 @@ $(document).ready(function() {
 				sNext:     "Siguiente",
 				sPrevious: "Anterior"
 			},
-        },
-		ajax		: {
-			type				: 'GET',
-			cache				: false,
-			crossDomain			: true,
-			crossOrigin			: true,
-			contentType			: 'application/json; charset=utf-8',
-			dataType			: 'json',
-			url				: urlDominio,
-			dataSrc				: 'data'
 		},
+		data		: xJSON,
 		columnDefs	: [
 			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
@@ -46,7 +36,8 @@ $(document).ready(function() {
 			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
 			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
 			{ targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
+			{ targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] }
 		],
 		columns		: [
 			{ data				: 'lesion_codigo', name : 'lesion_codigo'},
@@ -58,7 +49,10 @@ $(document).ready(function() {
 			{ data				: 'tipo_cuerpo_zona_nombre_castellano', name : 'tipo_cuerpo_zona_nombre_castellano'},
 			{ data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
 			{ data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
-			{ render			: function (data, type, full, meta) {return '<a href="#" role="button" class="btn btn-primary"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="#" role="button" class="btn btn-success"><i class="ti-pencil"></i>&nbsp;</a></a>&nbsp;<a href="#" role="button" class="btn btn-danger"><i class="ti-trash"></i>&nbsp;</a>';}},
+			{ data				: 'lesion_fecha_retorno', name : 'lesion_fecha_retorno'},
+			{ render			: function (data, type, full, meta) {
+				return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-success" title="Finalizar" data-toggle="modal" data-target="#modaldiv" onclick="setFinalizar(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-lock"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getVisualizar(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-trash"></i>&nbsp;</a>';
+			}},
 		]
 	});
 });

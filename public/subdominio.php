@@ -7,20 +7,10 @@
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 
-    if(isset($_GET['code'])){
-        $codeRest       = $_GET['code'];
-        $msgRest        = $_GET['msg'];
-    } else {
-        $codeRest       = 0;
-        $msgRest        = '';
-    }
-
     if(isset($_GET['dominio'])){
         $valueDominio   = $_GET['dominio'];
         $titleDominio   = getTitleDominioSub($valueDominio);
     }
-
-    $subDominioJSON = get_curl('100/dominio/'.$_GET['dominio']);
 ?>
 
 <!DOCTYPE html>
@@ -163,138 +153,20 @@
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <div class="chat-windows"></div>
+
 <?php
     include '../include/footer.php';
-   
-    if ($codeRest == 200) {
-?>
-    <script>
-        $(function() {
-            toastr.success('<?php echo $msgRest; ?>', 'Correcto!');
-        });
-    </script>
-<?php
-    }
-            
-    if (($codeRest == 204) || ($codeRest == 401)) {
-?>
-    <script>
-        $(function() {
-            toastr.error('<?php echo $msgRest; ?>', 'Error!');
-        });
-    </script>
-<?php
-    }
 ?>
     
-    <script>
-        $(document).ready(function() {           
-            $('#tableLoad').DataTable({
-                processing	: true,
-                destroy		: true,
-                searching	: true,
-                paging		: true,
-                lengthChange: true,
-                info		: true,
-                language	: {
-                    lengthMenu: "Mostrar _MENU_ registros por pagina",
-                    zeroRecords: "Nothing found - sorry",
-                    info: "Mostrando pagina _PAGE_ de _PAGES_",
-                    infoEmpty: "No hay registros disponibles.",
-                    infoFiltered: "(Filtrado de _MAX_ registros totales)",
-                    sZeroRecords: "No se encontraron resultados",
-                    sSearch: "buscar",
-                    oPaginate: {
-                        sFirst:    "Primero",
-                        sLast:     "Último",
-                        sNext:     "Siguiente",
-                        sPrevious: "Anterior"
-                    },
-                },
-                data		: <?php echo json_encode($subDominioJSON['data']); ?>,
-                columnDefs	: [
-                    { targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
-                    { targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
-                    { targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
-                    { targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-                    { targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
-                    { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
-                    { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
-                    { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-                    { targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
-                    { targets			: [10],	visible : false,searchable : false,	orderData : [10, 0]},
-                    { targets			: [11],	visible : false,searchable : false,	orderData : [11, 0]},
-                    { targets			: [12],	visible : false,searchable : false,	orderData : [12, 0]},
-                    { targets			: [13],	visible : false,searchable : false,	orderData : [13, 0]},
-                    { targets			: [14],	visible : true,	searchable : true,	orderData : [14, 0]}
-                ],
-                columns		: [
-                    { data				: 'tipo_sub_codigo', name : 'tipo_sub_codigo'},
-                    { data				: 'tipo_sub_orden', name : 'tipo_sub_orden'},
-                    { data				: 'tipo_sub_estado_nombre', name : 'tipo_sub_estado_nombre'},
-                    { data				: 'tipo_nombre_ingles', name : 'tipo_nombre_ingles'},
-                    { data				: 'tipo_nombre_castellano', name : 'tipo_nombre_castellano'},
-                    { data				: 'tipo_nombre_portugues', name : 'tipo_nombre_portugues'},
-                    { data				: 'tipo_sub_nombre_ingles', name : 'tipo_sub_nombre_ingles'},
-                    { data				: 'tipo_sub_nombre_castellano', name : 'tipo_sub_nombre_castellano'},
-                    { data				: 'tipo_sub_nombre_portugues', name : 'tipo_sub_nombre_portugues'},
-                    { data				: 'tipo_sub_dominio', name : 'tipo_sub_dominio'},
-                    { data				: 'tipo_sub_observacion', name : 'tipo_sub_observacion'},
-                    { data				: 'tipo_sub_usuario', name : 'tipo_sub_usuario'},
-                    { data				: 'tipo_sub_fecha_hora', name : 'tipo_sub_fecha_hora'},
-                    { data				: 'tipo_sub_ip', name : 'tipo_sub_ip'},
-                    { render			: function (data, type, full, meta) {return '<a href="../public/subdominio_crud.php?dominio='+ full.tipo_sub_dominio +'&mode=R&codigo=' + full.tipo_sub_codigo + '" role="button" class="btn btn-primary"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="../public/subdominio_crud.php?dominio='+ full.tipo_sub_dominio +'&mode=U&codigo=' + full.tipo_sub_codigo + '" role="button" class="btn btn-success"><i class="ti-pencil"></i>&nbsp;</a></a>&nbsp;<a href="../public/subdominio_crud.php?dominio='+ full.tipo_sub_dominio +'&mode=D&codigo=' + full.tipo_sub_codigo + '" role="button" class="btn btn-danger"><i class="ti-trash"></i>&nbsp;</a>';}},
-                ]
-            });
-        });
+        <script src="../js/api.js"></script>
+        
+        <script>
+            if (localStorage.getItem('subDominioJSON') === 'null' || localStorage.getItem('subDominioJSON') === null ){
+                localStorage.removeItem('subDominioJSON');
+                localStorage.setItem('subDominioJSON', JSON.stringify(<?php echo json_encode(get_curl('100')); ?>));
+            }
+        </script>
 
-        function setChangeCont(){
-            var html = 
-            '<div class="modal-content">'+
-            '   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_contrasenha.php">'+
-            '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-            '		    <h4 class="modal-title" id="vcenter"> Reseteo de Contraseña </h4>'+
-            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-            '	    </div>'+
-            '	    <div class="modal-body" >'+
-            '           <div class="row pt-3">'+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var06">EMAIL</label>'+
-            '                       <input id="var06" name="var06" value="<?php echo $log_02; ?>" class="form-control" type="email" style="text-transform:lowercase; height:40px;" required readonly>'+
-            '                   </div>'+
-            '               </div>'+
-            ''+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var07">USUARIO</label>'+
-            '                       <input id="var07" name="var07" value="<?php echo $log_01; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required readonly>'+
-            '                   </div>'+
-            '               </div>'+
-            ''+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var08">CONTRASE&Ntilde;A</label>'+
-            '                       <input id="var08" name="var08" class="form-control" type="password" style="text-transform:uppercase; height:40px;" required>'+
-            '                   </div>'+
-            '               </div>'+
-            '           </div>'+
-            '           <div class="form-group">'+
-            '               <input id="workCodigo" name="workCodigo" value="<?php echo $log_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-            '               <input id="workPage" name="workPage" value="home" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-            '           </div>'+
-            '	    </div>'+
-            '	    <div class="modal-footer">'+
-            '           <button type="submit" class="btn btn-success">Confirmar</button>'+
-            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-            '	    </div>'+
-            '   </form>'+
-            '</div>';
-
-            $("#modalcontent").empty();
-            $("#modalcontent").append(html);
-        }
-    </script>
-</body>
+        <script src="../js/subdominio.js"></script>
+    </body>
 </html>
