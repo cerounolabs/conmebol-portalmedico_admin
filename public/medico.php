@@ -86,7 +86,7 @@
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">IMAGEN</th>
-                                                <th class="border-top-0" style="text-align:center;">ti-star</th>
+                                                <th class="border-top-0" style="text-align:center;">COMPETENCIAS</th>
                                                 <th class="border-top-0" style="text-align:center;">EQUIPO</th>
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
                                                 <th class="border-top-0" style="text-align:center;">ACCESO</th>
@@ -96,6 +96,40 @@
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">EMAIL</th>
                                                 <th class="border-top-0" style="text-align:center;">TEL&Eacute;FONO</th>
+                                                <th class="border-top-0" style="text-align:center;">OBSERVACI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;">USUARIO</th>
+                                                <th class="border-top-0" style="text-align:center;">FECHA - HORA</th>
+                                                <th class="border-top-0" style="text-align:center;">IP</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h4 class="col-10 card-title">COMPETENCIA ASIGNADA</h4>
+                                    <h4 class="col-2 card-title" style="text-align: right;">
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="javascript:void(0)" role="button" title="Agregar" data-toggle="modal" data-target="#modaldiv" onclick="getCompetenciaMedico(this.id);"><i class="ti-plus"></i></a>
+                                	</h4>
+								</div>
+                                <div class="table-responsive">
+                                    <table id="tableLoadComp" class="table v-middle" style="width: 100%;">
+                                        <thead id="tableCodigoComp" class="<?php echo $usu_04; ?>">
+                                            <tr class="bg-conmebol">
+                                                <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
+                                                <th class="border-top-0" style="text-align:center;">IMAGEN</th>
+                                                <th class="border-top-0" style="text-align:center;">DISIPLINA</th>
+                                                <th class="border-top-0" style="text-align:center;">GENERO</th>
+                                                <th class="border-top-0" style="text-align:center;">COMPETENCIA</th>
                                                 <th class="border-top-0" style="text-align:center;">OBSERVACI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA - HORA</th>
@@ -155,6 +189,15 @@
             if (localStorage.getItem('medicoJSON') === 'null' || localStorage.getItem('medicoJSON') === null ){
                 localStorage.removeItem('medicoJSON');
                 localStorage.setItem('medicoJSON', JSON.stringify(<?php echo json_encode(get_curl('400/equipo/'.$usu_04)); ?>));
+            }
+
+            if (localStorage.getItem('competicionMedicoJSON') === 'null' || localStorage.getItem('competicionMedicoJSON') === null ){
+                localStorage.removeItem('competicionMedicoJSON');
+                localStorage.setItem('competicionMedicoJSON', JSON.stringify(<?php echo json_encode(get_curl('401/competicion')); ?>));
+            }
+
+            function setCompetenciaPersona(rowPersona){
+                
             }
         </script>
 

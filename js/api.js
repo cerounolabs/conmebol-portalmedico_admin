@@ -159,3 +159,18 @@ function getSubDominio(codDominio){
 
     return xDATA;
 }
+
+function getCompMedico(codPersona){
+    var xJSON = JSON.parse(localStorage.getItem('competicionMedicoJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            if (element.persona_codigo == codPersona) {
+                xDATA.push(element);
+            }
+        });
+    }
+console.log(xDATA);
+    return xDATA; 
+}
