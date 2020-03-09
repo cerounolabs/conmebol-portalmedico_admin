@@ -160,6 +160,21 @@ function getSubDominio(codDominio){
     return xDATA;
 }
 
+function getMedico(codEquipo, codTipo){
+    var xJSON = JSON.parse(localStorage.getItem('medicoJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            if (element.tipo_perfil_codigo == 10) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
 function getCompMedico(codPersona){
     var xJSON = JSON.parse(localStorage.getItem('competicionMedicoJSON'));
     var xDATA = [];
