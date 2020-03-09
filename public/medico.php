@@ -73,7 +73,7 @@
                 <!-- ============================================================== -->
                 <!-- basic table -->
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-sm-12 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
@@ -86,7 +86,7 @@
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">IMAGEN</th>
-                                                <th class="border-top-0" style="text-align:center;">COMPETENCIAS</th>
+                                                <th class="border-top-0" style="text-align:center;">VER</th>
                                                 <th class="border-top-0" style="text-align:center;">EQUIPO</th>
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
                                                 <th class="border-top-0" style="text-align:center;">ACCESO</th>
@@ -109,10 +109,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-12">
+                    <div class="col-sm-12 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">

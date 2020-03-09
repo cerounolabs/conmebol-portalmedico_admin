@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var xJSON = JSON.parse(localStorage.getItem('medicoJSON'))['data'];
+	var xJSON = getMedico(1, 10);
 	var xJSON1= getCompMedico(0);
 
 	$('#tableLoad').DataTable({
@@ -29,15 +29,15 @@ $(document).ready(function() {
 		data		: xJSON,
 		columnDefs	: [
 			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
-			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
+			{ targets			: [1],	visible : false,searchable : false,	orderData : [1, 0] },
 			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
-			{ targets			: [3],	visible : true, searchable : true,	orderData : [3, 0] },
-			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
+			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
+			{ targets			: [4],	visible : false,searchable : false,	orderData : [4, 0] },
 			{ targets			: [5],	visible : false,searchable : false,	orderData : [5, 0] },
-			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
-			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
+			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] },
+			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
 			{ targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
+			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
 			{ targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] },
 			{ targets			: [11],	visible : false,searchable : false,	orderData : [11, 0] },
 			{ targets			: [12],	visible : false,searchable : false,	orderData : [12, 0] },
@@ -70,10 +70,10 @@ $(document).ready(function() {
 	var tableData   = $('#tableLoadComp').DataTable({
 		processing	: true,
 		destroy		: true,
-		searching	: false,
-		paging		: false,
+		searching	: true,
+		paging		: true,
 		lengthChange: true,
-		info		: false,
+		info		: true,
 		orderCellsTop: false,
 		fixedHeader	: false,
 		language	: {
