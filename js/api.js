@@ -171,6 +171,6 @@ function getCompMedico(codPersona){
             }
         });
     }
-console.log(xDATA);
+
     return xDATA; 
 }

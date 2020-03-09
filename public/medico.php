@@ -118,7 +118,7 @@
                                 <div class="row">
                                     <h4 class="col-10 card-title">COMPETENCIA ASIGNADA</h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="javascript:void(0)" role="button" title="Agregar" data-toggle="modal" data-target="#modaldiv" onclick="getCompetenciaMedico(this.id);"><i class="ti-plus"></i></a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="javascript:void(0)" role="button" title="Agregar" data-toggle="modal" data-target="#modaldiv" onclick="setCompetenciaPersona();"><i class="ti-plus"></i></a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
@@ -127,7 +127,7 @@
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">IMAGEN</th>
-                                                <th class="border-top-0" style="text-align:center;">DISIPLINA</th>
+                                                <th class="border-top-0" style="text-align:center;">DISCIPLINA</th>
                                                 <th class="border-top-0" style="text-align:center;">GENERO</th>
                                                 <th class="border-top-0" style="text-align:center;">COMPETENCIA</th>
                                                 <th class="border-top-0" style="text-align:center;">OBSERVACI&Oacute;N</th>
@@ -191,13 +191,64 @@
                 localStorage.setItem('medicoJSON', JSON.stringify(<?php echo json_encode(get_curl('400/equipo/'.$usu_04)); ?>));
             }
 
+            if (localStorage.getItem('competenciaJSON') === 'null' || localStorage.getItem('competenciaJSON') === null ){
+                localStorage.removeItem('competenciaJSON');
+                localStorage.setItem('competenciaJSON', JSON.stringify(<?php echo json_encode(get_curl('200/disciplina/'.$usu_04)); ?>));
+            }
+
             if (localStorage.getItem('competicionMedicoJSON') === 'null' || localStorage.getItem('competicionMedicoJSON') === null ){
                 localStorage.removeItem('competicionMedicoJSON');
                 localStorage.setItem('competicionMedicoJSON', JSON.stringify(<?php echo json_encode(get_curl('401/competicion')); ?>));
             }
 
-            function setCompetenciaPersona(rowPersona){
-                
+            function setCompetenciaPersona(){
+                var codPers = localStorage.getItem('persona_codigo');
+                var xJSON   = JSON.parse(localStorage.getItem('competenciaJSON'))['data'];
+                var selComp = '';
+
+                xJSON.forEach(element => {
+                    selComp = selComp + '                               <option value="'+element.competicion_codigo+'">DISCIPLINA: '+ element.competicion_disciplina +' - COMPETENCIA: '+ element.competicion_nombre + ' - GENERO: ' + element.competicion_genero + ' - PERIODO: ' + element.competicion_anho +'</option>';
+                });
+
+                var html    = 
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_competencia.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Agregar Competencia </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="row pt-3">'+
+                    '               <div class="col-sm-12">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var02">Competencia</label>'+
+                    '                       <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+selComp+
+                    '                       </select>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var03">Comentario</label>'+
+                    '                        <textarea id="var03" name="var03" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="form-group">'+
+                    '               <input id="var01" name="var01" value="'+codPers+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workCodigo" name="workCodigo" value="0" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="medico" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-info">Agregar</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+
+                $("#modalcontent").empty();
+                $("#modalcontent").append(html);
             }
         </script>
 
