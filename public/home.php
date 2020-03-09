@@ -368,6 +368,11 @@
     <script src="../js/api.js"></script>
 
     <script>
+        if (localStorage.getItem('lesionJSON') === 'null' || localStorage.getItem('lesionJSON') === null ){
+            localStorage.removeItem('lesionJSON');
+            localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode(get_curl('600/'.$usu_04)); ?>));
+        }
+
         function getCompetencias(){
             var codDisciplina   = document.getElementById('var01');
             var selCompetencia  = document.getElementById('var02');
