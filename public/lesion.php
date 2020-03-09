@@ -3,8 +3,10 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
+    $var02              = date('Y');
     $dominioJSON        = get_curl('000');
     $subDominioJSON     = get_curl('100');
+    $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +73,46 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- basic table -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var01">Disciplina</label>
+                                                    <select id="var01" name="var01" onchange="getCompetencias();" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <optgroup label="Disciplina">
+                                                            <option value="FOOTBALL">F&uacute;tbol de Campo</option>
+                                                            <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
+                                                            <option value="BEACH_SOCCER">F&uacute;tbol de Playa</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var02">Periodo</label>
+                                                    <input id="var02" name="var02" value="<?php echo $var02; ?>" onchange="getCompetencias();" type="number" min="2019" max="<?php echo $var02; ?>" class="form-control" style="width:100%; height:40px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="var03">Competencia</label>
+                                                    <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -142,30 +184,79 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js"></script>
+        <script src="../js/api.js"></script>
     
-    <script>
-        if (localStorage.getItem('lesionJSON') === 'null' || localStorage.getItem('lesionJSON') === null ){
-            localStorage.removeItem('lesionJSON');
-            localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode(get_curl('600/'.$usu_04)); ?>));
-        }
+        <script>
+            if (localStorage.getItem('dominioJSON') === 'null' || localStorage.getItem('dominioJSON') === null ){
+                localStorage.removeItem('dominioJSON');
+                localStorage.setItem('dominioJSON', JSON.stringify(<?php echo json_encode(get_curl('000')); ?>));
+            }
 
-        function setRetorno(rowLesion, estLesion){
-            var codLes  = document.getElementById(rowLesion);
+            if (localStorage.getItem('subDominioJSON') === 'null' || localStorage.getItem('subDominioJSON') === null ){
+                localStorage.removeItem('subDominioJSON');
+                localStorage.setItem('subDominioJSON', JSON.stringify(<?php echo json_encode(get_curl('100')); ?>));
+            }
 
-            if (estLesion == 112) {
-                var html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_retorno.php">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="row pt-3">'+
-                '               <div class="col-sm-12 col-md-4">'+
-                '                   <div class="form-group">'+
-                '                       <label for="var01">Examen complementario</label>'+
+            if (localStorage.getItem('competenciaJSON') === 'null' || localStorage.getItem('competenciaJSON') === null){
+                localStorage.removeItem('competenciaJSON');
+                localStorage.setItem('competenciaJSON', JSON.stringify(<?php echo json_encode($competenciaJSON); ?>));
+            }
+
+            if (localStorage.getItem('lesionJSON') === 'null' || localStorage.getItem('lesionJSON') === null ){
+                localStorage.removeItem('lesionJSON');
+                localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode(get_curl('600/'.$usu_04)); ?>));
+            }
+
+            function getCompetencias(){
+                var codDisciplina   = document.getElementById('var01');
+                var selAnho         = document.getElementById('var02');
+                var selCompetencia  = document.getElementById('var03');
+                var xJSON           = JSON.parse(localStorage.getItem('competenciaJSON'))['data'];
+                    
+                while (selCompetencia.length > 0) {
+                    selCompetencia.remove(0);
+                }
+
+                xJSON.forEach(element => {
+                    if (codDisciplina.value == element.competicion_disciplina && selAnho.value == element.competicion_anho) {
+                        var option      = document.createElement('option');
+                        option.value    = element.competicion_codigo;
+                        option.text     = element.competicion_nombre;
+                        selCompetencia.add(option, null);
+                    }
+                });
+            }
+
+            function getLesion(){
+                var xJSON = JSON.parse(localStorage.getItem('lesionJSON'))['data'];
+                var xCOMP = document.getElementById('var03').value;
+                var xDATA = [];
+
+                xJSON.forEach(element => {
+                    if (element.competicion_codigo == xCOMP) {
+                        xDATA.push(element);
+                    }
+                });
+
+                return xDATA;
+            }
+
+            function setRetorno(rowLesion, estLesion){
+                var codLes  = document.getElementById(rowLesion);
+
+                if (estLesion == 112) {
+                    var html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_retorno.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="row pt-3">'+
+                    '               <div class="col-sm-12 col-md-4">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var01">Examen complementario</label>'+
 <?php
     if ($dominioJSON['code'] === 200){
         $indExa = 1;
@@ -173,55 +264,55 @@
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'LESIONEXAMEN'){
 ?>
-                '                       <div class="custom-control custom-checkbox">'+
-                '                           <input type="checkbox" class="custom-control-input" id="var01_<?php echo $indExa; ?>" name="var01_<?php echo $indExa; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>">'+
-                '                           <label class="custom-control-label" for="var01_<?php echo $indExa; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>'+
-                '                       </div>'+
+                    '                       <div class="custom-control custom-checkbox">'+
+                    '                           <input type="checkbox" class="custom-control-input" id="var01_<?php echo $indExa; ?>" name="var01_<?php echo $indExa; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>">'+
+                    '                           <label class="custom-control-label" for="var01_<?php echo $indExa; ?>"><?php echo $dominioVALUE['tipo_nombre_castellano']; ?></label>'+
+                    '                       </div>'+
 <?php
                 $indExa = $indExa + 1;
             }
         }
     }
 ?>
-                '                   </div>'+
-                '               </div>'+
-                '               <div class="col-sm-12 col-md-4">'+
-                '                   <div class="form-group">'+
-                '                       <label for="var02">Fecha de retorno</label>'+
-                '                       <input id="var02" name="var02" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
-                '                   </div>'+
-                '               </div>'+
-                '               <div class="col-sm-12 col-md-4">'+
-                '                   <div class="form-group">'+
-                '                       <label for="var03">Se precisa de Cirugia</label>'+
-                '                       <div class="custom-control custom-radio">'+
-                '                           <input type="radio" id="var03_1" name="var03" value="1" class="custom-control-input" checked>'+
-                '                           <label class="custom-control-label" for="var03_1">NO</label>'+
-                '                       </div>'+
-                '                       <div class="custom-control custom-radio">'+
-                '                           <input type="radio" id="var03_2" name="var03" value="2" class="custom-control-input">'+
-                '                           <label class="custom-control-label" for="var03_2">SI</label>'+
-                '                       </div>'+
-                '                   </div>'+
-                '               </div>'+
-                '           </div>'+
-                '           <div class="row pt-3">'+
-                '               <div class="col-sm-12">'+
-                '                   <div class="form-group">'+
-                '                       <label for="var04">Diagn&oacute;stico Final</label>'+
-                '                       <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+                    '                   </div>'+
+                    '               </div>'+
+                    '               <div class="col-sm-12 col-md-4">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var02">Fecha de retorno</label>'+
+                    '                       <input id="var02" name="var02" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
+                    '                   </div>'+
+                    '               </div>'+
+                    '               <div class="col-sm-12 col-md-4">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var03">Se precisa de Cirugia</label>'+
+                    '                       <div class="custom-control custom-radio">'+
+                    '                           <input type="radio" id="var03_1" name="var03" value="1" class="custom-control-input" checked>'+
+                    '                           <label class="custom-control-label" for="var03_1">NO</label>'+
+                    '                       </div>'+
+                    '                       <div class="custom-control custom-radio">'+
+                    '                           <input type="radio" id="var03_2" name="var03" value="2" class="custom-control-input">'+
+                    '                           <label class="custom-control-label" for="var03_2">SI</label>'+
+                    '                       </div>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    '           </div>'+
+                    '           <div class="row pt-3">'+
+                    '               <div class="col-sm-12">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var04">Diagn&oacute;stico Final</label>'+
+                    '                       <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
 <?php
     if ($dominioJSON['code'] === 200){
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'DIAGNOSTICOGRUPO'){
 ?>
-                '                           <optgroup label="<?php echo $dominioVALUE['tipo_nombre_castellano']; ?>">'+
+                    '                           <optgroup label="<?php echo $dominioVALUE['tipo_nombre_castellano']; ?>">'+
 <?php
                 if ($subDominioJSON['code'] === 200){
                     foreach ($subDominioJSON['data'] as $subDominioKEY => $subDominioVALUE) {
                         if ($subDominioVALUE['tipo_sub_estado_codigo'] === 'A' && $subDominioVALUE['tipo_sub_dominio'] === 'DIAGNOSTICOTIPO' && $subDominioVALUE['tipo_codigo'] === $dominioVALUE['tipo_codigo']){
 ?>
-                '                               <option value="<?php echo $subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>'+
+                    '                               <option value="<?php echo $subDominioVALUE['tipo_sub_codigo']; ?>"><?php echo $subDominioVALUE['tipo_sub_nombre_castellano']; ?></option>'+
 <?php
                         }
                     }
@@ -230,170 +321,170 @@
         }
     }
 ?>
-                '                       </select>'+
-                '                   </div>'+
-                '               </div>'+
-                '           </div>'+
-                '           <div class="row pt-3">'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var05">Detalle su diagn&oacute;stico</label>'+
-                '                        <textarea id="var05" name="var05" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '           </div>'+
-                '           <div class="row pt-3">'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var07">Detalle su Tratamiento</label>'+
-                '                        <textarea id="var07" name="var07" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '           </div>'+
-                '           <div class="form-group">'+
-                '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workCant" name="workCant" value="<?php echo $indExa; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '           <button type="submit" class="btn btn-info">Guardar</button>'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
-            } else {
+                    '                       </select>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    '           </div>'+
+                    '           <div class="row pt-3">'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var05">Detalle su diagn&oacute;stico</label>'+
+                    '                        <textarea id="var05" name="var05" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="row pt-3">'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var07">Detalle su Tratamiento</label>'+
+                    '                        <textarea id="var07" name="var07" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="form-group">'+
+                    '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workCant" name="workCant" value="<?php echo $indExa; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-info">Guardar</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                } else {
                 var html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="#">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <h4 style="text-align:center;">EL ESTADO DE LA LESIÓN NO PERMITE MAS MODIFICACIONES</h4>'
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="#">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <h4 style="text-align:center;">EL ESTADO DE LA LESIÓN NO PERMITE MAS MODIFICACIONES</h4>'
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                }
+
+                $("#modalcontent").empty();
+                $("#modalcontent").append(html);
             }
 
-            $("#modalcontent").empty();
-            $("#modalcontent").append(html);
-        }
+            function setFinalizar(rowLesion, estLesion){
+                var codLes  = document.getElementById(rowLesion);
 
-        function setFinalizar(rowLesion, estLesion){
-            var codLes  = document.getElementById(rowLesion);
+                if (estLesion == 114) {
+                    var html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_estado.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Finalizar Lesión </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="row pt-3">'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var02">Comentario</label>'+
+                    '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="form-group">'+
+                    '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workEstado" name="workEstado" value="115" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-success">Finalizar</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                } else {
+                    var html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="#">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <h4 style="text-align:center;">PARA FINALIZAR LA LESIÓN EL ESTADO DEBE DE ESTAR EN "EN PROCESO". VERIFIQUE!</h4>'
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                }
 
-            if (estLesion == 114) {
-                var html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_estado.php">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Finalizar Lesión </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="row pt-3">'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var02">Comentario</label>'+
-                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '           </div>'+
-                '           <div class="form-group">'+
-                '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workEstado" name="workEstado" value="115" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '           <button type="submit" class="btn btn-success">Finalizar</button>'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
-            } else {
-                var html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="#">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <h4 style="text-align:center;">PARA FINALIZAR LA LESIÓN EL ESTADO DEBE DE ESTAR EN "EN PROCESO". VERIFIQUE!</h4>'
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
+                $("#modalcontent").empty();
+                $("#modalcontent").append(html);
             }
 
-            $("#modalcontent").empty();
-            $("#modalcontent").append(html);
-        }
+            function setAnular(rowLesion, estLesion){
+                var codLes  = document.getElementById(rowLesion);
 
-        function setAnular(rowLesion, estLesion){
-            var codLes  = document.getElementById(rowLesion);
+                if (estLesion == 112 || estLesion == 114) {
+                    var html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_estado.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Anular Lesión </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="row pt-3">'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var02">Comentario</label>'+
+                    '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '           <div class="form-group">'+
+                    '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workEstado" name="workEstado" value="121" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-danger">Anular</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                } else {
+                    var html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="#">'+
+                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                    '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <h4 style="text-align:center;">LA LESIÓN YA SE ENCUENTRA FINALIZADA NO SE PUEDE ANULAR. VERIFIQUE!</h4>'
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                }
 
-            if (estLesion == 112 || estLesion == 114) {
-                var html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="../class/crud/lesion_estado.php">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Anular Lesión </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="row pt-3">'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var02">Comentario</label>'+
-                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '           </div>'+
-                '           <div class="form-group">'+
-                '               <input id="workCodigo" name="workCodigo" value="'+codLes.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workEstado" name="workEstado" value="121" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '           <button type="submit" class="btn btn-danger">Anular</button>'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
-            } else {
-                var html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="#">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Retorno de Lesión </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <h4 style="text-align:center;">LA LESIÓN YA SE ENCUENTRA FINALIZADA NO SE PUEDE ANULAR. VERIFIQUE!</h4>'
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
+                $("#modalcontent").empty();
+                $("#modalcontent").append(html);
             }
-
-            $("#modalcontent").empty();
-            $("#modalcontent").append(html);
-        }
 
             function getVisualizar(rowLesion) {
                 /*
@@ -641,6 +732,8 @@
                 $("#modalcontent").empty();
                 $("#modalcontent").append(html);
             }
+
+            getCompetencias();
         </script>
 
         <script src="../js/lesion.js"></script>

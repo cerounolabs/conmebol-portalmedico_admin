@@ -1,13 +1,14 @@
 $(document).ready(function() {
-	var xJSON = JSON.parse(localStorage.getItem('lesionJSON'))['data'];
+	var xJSON = getLesion();
 	
-	$('#tableLoad').DataTable({
+	var tableData   = $('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,
 		searching	: true,
 		paging		: true,
 		lengthChange: true,
 		info		: true,
+		order: [[ 1, "desc" ]],
 		orderCellsTop: false,
 		fixedHeader	: false,
 		language	: {
@@ -54,5 +55,10 @@ $(document).ready(function() {
 				return '<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-warning" title="Retorno" data-toggle="modal" data-target="#modaldiv" onclick="setRetorno(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-back-right"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-success" title="Finalizar" data-toggle="modal" data-target="#modaldiv" onclick="setFinalizar(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-lock"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-primary" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getVisualizar(this.id);"><i class="ti-eye"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="' + full.lesion_codigo + '" value="' + full.lesion_codigo + '" role="button" class="btn btn-danger" title="Anular" data-toggle="modal" data-target="#modaldiv" onclick="setAnular(this.id, ' + full.tipo_estado_codigo + ');"><i class="ti-trash"></i>&nbsp;</a>';
 			}},
 		]
+	});
+
+	$('.form-group').change(function() {
+		var xDATA = getLesion();
+		tableData.clear().rows.add(xDATA).draw();
 	});
 });
