@@ -201,6 +201,7 @@
 
             function setCompetenciaPersona(){
                 var codPers = localStorage.getItem('persona_codigo');
+                var nomPers = localStorage.getItem('persona_nombre');
                 var xJSON   = JSON.parse(localStorage.getItem('competenciaJSON'))['data'];
                 var selComp = '';
 
@@ -217,6 +218,13 @@
                     '	    </div>'+
                     '	    <div class="modal-body" >'+
                     '           <div class="row pt-3">'+
+                    '               <div class="col-sm-12">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var01_1">Médico</label>'+
+                    '                       <input id="var01_1" name="var01_1" class="form-control" type="text" value="'+nomPers+'" style="text-transform:uppercase; height:40px;" required readonly>'+
+                    '                       </select>'+
+                    '                    </div>'+
+                    '                </div>'+
                     '               <div class="col-sm-12">'+
                     '                   <div class="form-group">'+
                     '                       <label for="var02">Competencia</label>'+

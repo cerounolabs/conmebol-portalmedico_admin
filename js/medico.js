@@ -49,7 +49,7 @@ $(document).ready(function() {
 			{ data				: 'persona_codigo', name : 'persona_codigo'},
 			{ render			: function (data, type, full, meta) {return '<img src="../' + full.persona_path + '" height="50" />';}},
 			{ render			: function (data, type, full, meta) {
-				return '<button id="' + full.persona_codigo + '" value="' + full.persona_codigo + '" role="button" class="btn btn-primary" title="Competencia"><i class="ti-eye"></i>&nbsp;</button>';
+				return '<button id="' + full.persona_codigo + '" value="' + full.persona_nombre + '" role="button" class="btn btn-primary" title="Competencia"><i class="ti-eye"></i>&nbsp;</button>';
 			}},
 			{ data				: 'equipo_nombre', name : 'equipo_nombre'},
 			{ data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
@@ -118,9 +118,12 @@ $(document).ready(function() {
 
 	$('button').click(function() {
 		var xPers	= $(this).attr('id');
+		var nPers	= $(this).attr('value');
 		var xJSON1	= getCompMedico(xPers);
 		localStorage.removeItem('persona_codigo');
+		localStorage.removeItem('persona_nombre');
 		localStorage.setItem('persona_codigo', xPers);
+		localStorage.setItem('persona_nombre', nPers);
 		tableData.clear().rows.add(xJSON1).draw();
 	});
 });
