@@ -54,6 +54,10 @@
                 $result = 'COMPETENCIA CATEGORIA';
                 break;
 
+            case 'COVID19SINTOMA':
+                $result = 'COVID19 SINTOMAS';
+                break;
+
             case 'CUERPOPARTE':
                 $result = 'CUERPO PARTE';
                 break;
