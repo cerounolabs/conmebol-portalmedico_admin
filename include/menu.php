@@ -171,6 +171,21 @@
                                	</li>
                             </ul>
                         </li>
+
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        		<i class="icon-Neutron"></i>
+                        		<span class="hide-menu"> COVID19 </span>
+                        	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                            	<li class="sidebar-item">
+                               		<a href="../public/covid19.php" class="sidebar-link">
+                               			<i class="mdi mdi-covid19"></i>
+                               			<span class="hide-menu"> Pruebas COVID19 </span>
+                               		</a>
+                               	</li>
+                            </ul>
+                        </li>
                         
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
