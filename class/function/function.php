@@ -55,7 +55,15 @@
                 break;
 
             case 'COVID19SINTOMA':
-                $result = 'COVID19 SINTOMAS';
+                $result = 'COVID19 SINTOMA';
+                break;
+
+            case 'COVID19CARGO':
+                $result = 'COVID19 CARGO';
+                break;
+
+            case 'COVID19SEROLOGIA':
+                $result = 'COVID19 SEROLOGIA';
                 break;
 
             case 'CUERPOPARTE':

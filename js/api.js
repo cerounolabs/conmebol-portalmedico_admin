@@ -1,20 +1,23 @@
 const urlBASE   =  'http://api.conmebol.com/portalmedico/public/v1';
+const autBASE   =  'http://api.conmebol.com/portalmedico/public/v1';
 const xHTTP	    = new XMLHttpRequest();
 
-function getJSON(codJSON, codURL) {
+function getJSON(codJSON, codURL){
     var urlJSON = urlBASE + '/' + codURL;
 
-    $.ajax({
-        'async': false,
-        'type': "GET",
-        'global': false,
-        'dataType': 'json',
-        'url': urlJSON,
-        'success': function (data) {
+    xHTTP.open('GET', urlJSON, false);
+    xHTTP.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var xJSON = JSON.parse(this.responseText);
             localStorage.removeItem(codJSON);
-            localStorage.setItem(codJSON, JSON.stringify(data));
+            localStorage.setItem(codJSON, JSON.stringify(xJSON));
         }
-    });
+    };
+
+    xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
+//    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
+    xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+    xHTTP.send();
 }
 
 function postJSON(codPAGE, codURL, codPARS) {
@@ -188,4 +191,185 @@ function getCompMedico(codPersona){
     }
 
     return xDATA; 
+}
+
+function getCompetencia(codOrg, codDis, codPer){
+    if (localStorage.getItem('competenciaJSON') === null){
+        getJSON('competenciaJSON', '200/disciplina/' + codOrg);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('competenciaJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.competicion_disciplina == codDis && element.competicion_anho == codPer) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
+function getJuego(codOrg, codPer, codCom){
+    localStorage.removeItem('juegoJSON');
+
+    if (localStorage.getItem('juegoJSON') === null){
+        getJSON('juegoJSON', '200/juego/' + codCom + '/' + codOrg);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('juegoJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if ((element.competicion_codigo_padre == codCom || element.competicion_codigo == codCom) && element.competicion_anho == codPer) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
+function getEncuentro(codJue){
+    var xJSON = JSON.parse(localStorage.getItem('juegoJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.juego_codigo == codJue) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
+function getJugador(rowComp, rowEqui){
+    localStorage.removeItem('jugadorJSON');
+
+    if (localStorage.getItem('jugadorJSON') === null){
+        getJSON('jugadorJSON', '700/' + rowComp + '/' + rowEqui);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('jugadorJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.competicion_codigo == rowComp) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
+function changeDisciplina(rowOrga, rowAnho, rowDisc, rowComp) {
+    var selAnho = document.getElementById(rowAnho);
+    var selDisc = document.getElementById(rowDisc);
+    var selComp = document.getElementById(rowComp);
+    var xJSON   = getCompetencia(rowOrga, selDisc.value, selAnho.value);
+            
+    while (selComp.length > 0) {
+        selComp.remove(0);
+    }
+
+    var option      = document.createElement('option');
+    option.text     = 'SELECCIONAR...';
+    option.selected = true;
+    selComp.add(option, null);
+
+    xJSON.forEach(element => {
+        if (element.competicion_disciplina == selDisc.value && element.competicion_anho == selAnho.value) {
+            var option      = document.createElement('option');
+            option.value    = element.competicion_codigo;
+            option.text     = element.competicion_nombre;
+            selComp.add(option, null);
+        }
+    });
+}
+
+function changeCompetencia(rowOrga, rowAnho, rowComp, rowPart) {
+    var selAnho = document.getElementById(rowAnho);
+    var selComp = document.getElementById(rowComp);
+    var selPart = document.getElementById(rowPart);
+    var xJSON   = getJuego(rowOrga, selAnho.value, selComp.value);
+            
+    while (selPart.length > 0) {
+        selPart.remove(0);
+    }
+
+    var option      = document.createElement('option');
+    option.text     = 'SELECCIONAR...';
+    option.selected = true;
+    selPart.add(option, null);
+
+    xJSON.forEach(element => {
+        if ((element.competicion_codigo_padre == selComp.value || element.competicion_codigo == selComp.value) && element.competicion_anho == selAnho.value) {
+            var option      = document.createElement('option');
+            option.value    = element.juego_codigo;
+            option.text     = element.equipo_local_nombre + ' vs ' + element.equipo_visitante_nombre;
+            selPart.add(option, null);
+        }
+    });
+}
+
+function changeJuego(rowPart, rowEqui) {
+    var selPart = document.getElementById(rowPart);
+    var selEqui = document.getElementById(rowEqui);
+    var xJSON   = getEncuentro(selPart.value);
+            
+    while (selEqui.length > 0) {
+        selEqui.remove(0);
+    }
+
+    var option      = document.createElement('option');
+    option.text     = 'SELECCIONAR...';
+    option.selected = true;
+    selEqui.add(option, null);
+
+    xJSON.forEach(element => {
+        if (element.juego_codigo == selPart.value) {
+            var option      = document.createElement('option');
+            option.value    = element.equipo_local_codigo;
+            option.text     = element.equipo_local_nombre;
+            selEqui.add(option, null);
+
+            var option      = document.createElement('option');
+            option.value    = element.equipo_visitante_codigo;
+            option.text     = element.equipo_visitante_nombre;
+            selEqui.add(option, null);
+        }
+    });
+}
+
+function changeEquipo(rowComp, rowEqui, rowPers) {
+    var selComp = document.getElementById(rowComp);
+    var selEqui = document.getElementById(rowEqui);
+    var selPers = document.getElementById(rowPers);
+    var xJSON   = getJugador(selComp.value, selEqui.value);
+
+    while (selPers.length > 0) {
+        selPers.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'TODOS';
+    option.selected = true;
+    selPers.add(option, null);
+
+    xJSON.forEach(element => {
+        if (element.competicion_codigo == selComp.value) {
+            var option      = document.createElement('option');
+            option.value    = element.jugador_codigo;
+            option.text     = element.jugador_completo;
+            selPers.add(option, null);
+        }
+    });
 }
