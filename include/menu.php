@@ -277,7 +277,7 @@
                                         <li class="sidebar-item">
                                             <a href="../public/dominio.php?dominio=COVID19SINTOMA" class="sidebar-link">
                                                 <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Sint&oacute;mas</span>
+                                                <span class="hide-menu"> COVID19 Sint&oacute;ma</span>
                                             </a>
                                         </li>
 
@@ -285,13 +285,6 @@
                                             <a href="../public/dominio.php?dominio=COVID19CARGO" class="sidebar-link">
                                                 <i class="mdi mdi-competencia"></i> 
                                                 <span class="hide-menu"> COVID19 Cargo</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19PRUEBA" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Prueba</span>
                                             </a>
                                         </li>
 

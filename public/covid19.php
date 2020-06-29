@@ -2,6 +2,10 @@
     require '../class/function/curl_api.php';
     require '../class/function/function.php';
     require '../class/session/session_system.php';
+
+    if ($usu_05 != 9 && $usu_05 != 11 && $usu_05 != 157){
+//        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+    }
     
     $var04              = date('Y');
     $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
@@ -80,8 +84,14 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
-                                                    <label for="var01">Disciplina</label>
-                                                    <select id="var01" name="var01" onchange="getCompetencias();" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <label for="var01">Periodo</label>
+                                                    <input id="var01" name="var01" value="<?php echo $var04; ?>" onchange="" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var02">Disciplina</label>
+                                                    <select id="var02" name="var02" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <optgroup label="Disciplina">
                                                             <option value="FOOTBALL">F&uacute;tbol de Campo</option>
                                                             <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
@@ -92,21 +102,29 @@
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
-                                                    <label for="var02">Periodo</label>
-                                                    <input id="var02" name="var02" value="<?php echo $var04; ?>" onchange="getCompetencias();" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
                                                     <label for="var03">Competencia</label>
-                                                    <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var03" name="var03" onchange="changeCompetencia(<?php echo $usu_04; ?>, 'var01', 'var03', 'var04');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var04">Encuentro</label>
-                                                    <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var04" name="var04" onchange="changeJuego('var04', 'var05');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var05">Equipo</label>
+                                                    <select id="var05" name="var05" onchange="changeEquipo('var03', 'var05', 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var06">Jugador</label>
+                                                    <select id="var06" name="var06" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                     </select>
                                                 </div>
                                             </div>
@@ -125,7 +143,7 @@
                                 <div class="row">
                                     <h4 class="col-10 card-title">Pruebas COVID19</h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="" role="button" title="Agregar"><i class="ti-plus"></i></a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../public/covid19_crud.php" role="button" title="Agregar"><i class="ti-plus"></i></a>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-info dropdown-toggle" style="background-color:#005ea6; border-color:#005ea6;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Exportar
@@ -146,14 +164,10 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">JUEGO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">CARGO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="2">SINTOMAS</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="4">PRUEBAS</th>
                                             </tr>
 
                                             <tr class="bg-conmebol">
-                                                
-                                                <th class="border-top-0">PERSONAL</th>
-                                                <th class="border-top-0">FAMILIAR</th>
                                                 <th class="border-top-0">HISOPO</th>
                                                 <th class="border-top-0">RAPIDA</th>
                                                 <th class="border-top-0">IGM</th>
@@ -170,8 +184,8 @@
                 </div>
 
                 <!-- Modal Procesar -->
-                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
+                <div id="modal-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modal-content">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -206,125 +220,12 @@
 <?php
     include '../include/footer.php';
 ?>
+
     <script src="../js/api.js"></script>
-
     <script>
-        if (localStorage.getItem('competenciaJSON') === 'null' || localStorage.getItem('competenciaJSON') === null){
-            localStorage.removeItem('competenciaJSON');
-            localStorage.setItem('competenciaJSON', JSON.stringify(<?php echo json_encode($competenciaJSON); ?>));
-        }
-
-        if (localStorage.getItem('lesionJSON') === 'null' || localStorage.getItem('lesionJSON') === null ){
-            localStorage.removeItem('lesionJSON');
-            localStorage.setItem('lesionJSON', JSON.stringify(<?php echo json_encode(get_curl('600/'.$usu_04)); ?>));
-        }
-
-        function getCompetencias(){
-            var codDisciplina   = document.getElementById('var01');
-            var selAnho         = document.getElementById('var02');
-            var selCompetencia  = document.getElementById('var03');
-            var xJSON           = JSON.parse(localStorage.getItem('competenciaJSON'))['data'];
-                    
-            while (selCompetencia.length > 0) {
-                selCompetencia.remove(0);
-            }
-
-            xJSON.forEach(element => {
-                if (codDisciplina.value == element.competicion_disciplina && selAnho.value == element.competicion_anho) {
-                    var option      = document.createElement('option');
-                    option.value    = element.competicion_codigo;
-                    option.text     = element.competicion_nombre;
-                    selCompetencia.add(option, null);
-                }
-            });
-        }
-
-        function getLesion(){
-            var xJSON = JSON.parse(localStorage.getItem('lesionJSON'))['data'];
-            var xCOMP = document.getElementById('var03').value;
-            var xDATA = [];
-
-            xJSON.forEach(element => {
-                if (element.competicion_codigo == xCOMP) {
-                    xDATA.push(element);
-                }
-            });
-
-            return xDATA;
-        }
-
-        function getInforme(codInf){
-            var codComp = document.getElementById('var03').value;
-
-            switch (codInf) {
-                case 1:
-                    window.location = "../public/inflesion_xls.php?competencia=" + codComp;
-                    break;
-            }
-        }
-        
-        getCompetencias();
-
-        $(document).ready(function() {
-            var xDATA       = getLesion();
-            var tableData   = $('#tableLoad').DataTable(
-                {
-                    processing	: true,
-                    destroy		: true,
-                    searching	: false,
-                    paging		: false,
-                    lengthChange: true,
-                    info		: false,
-                    orderCellsTop: false,
-                    fixedHeader	: false,
-                    language	: {
-                        lengthMenu: "Mostrar _MENU_ registros por pagina",
-                        zeroRecords: "Nothing found - sorry",
-                        info: "Mostrando pagina _PAGE_ de _PAGES_",
-                        infoEmpty: "No hay registros disponibles.",
-                        infoFiltered: "(Filtrado de _MAX_ registros totales)",
-                        sZeroRecords: "No se encontraron resultados",
-                        sSearch: "buscar",
-                        oPaginate: {
-                            sFirst:    "Primero",
-                            sLast:     "Último",
-                            sNext:     "Siguiente",
-                            sPrevious: "Anterior"
-                        },
-                    },
-                    data : xDATA,
-                    columnDefs	: [
-                        { targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
-                        { targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
-                        { targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
-                        { targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-                        { targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
-                        { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
-                        { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
-                        { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-                        { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-                        { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
-                    ],
-                    columns		: [
-                        { data				: 'lesion_codigo', name : 'lesion_codigo'},
-                        { data				: 'lesion_fecha_alta', name : 'lesion_fecha_alta'},
-                        { data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
-                        { data				: 'juego_nombre', name : 'juego_nombre'},
-                        { data				: 'jugador_nombre', name : 'jugador_nombre'},
-                        { data				: 'tipo_lesion_nombre_castellano', name : 'tipo_lesion_nombre_castellano'},
-                        { data				: 'tipo_cuerpo_zona_nombre_castellano', name : 'tipo_cuerpo_zona_nombre_castellano'},
-                        { data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
-                        { data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
-                        { data				: 'lesion_fecha_retorno', name : 'lesion_fecha_retorno'},
-                    ]
-                }
-            );
-
-            $('.form-group').change(function() {
-                var xDATA = getLesion();
-                tableData.clear().rows.add(xDATA).draw();
-            });
-        });
+        changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
+        changeCompetencia(<?php echo $usu_04; ?>, 'var01', 'var03', 'var04');
+        changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var002', 'var003');
     </script>
 </body>
 </html>
