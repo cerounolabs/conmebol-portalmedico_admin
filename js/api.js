@@ -1,5 +1,5 @@
-const urlBASE   =  'http://api.conmebol.com/portalmedico/public/v1';
-const autBASE   =  'http://api.conmebol.com/portalmedico/public/v1';
+const urlBASE   = 'http://api.conmebol.com/portalmedico/public/v1';
+const autBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 const xHTTP	    = new XMLHttpRequest();
 
 function getJSON(codJSON, codURL){
@@ -10,12 +10,12 @@ function getJSON(codJSON, codURL){
         if (this.readyState == 4 && this.status == 200) {
             var xJSON = JSON.parse(this.responseText);
             localStorage.removeItem(codJSON);
-            localStorage.setItem(codJSON, JSON.stringify(xJSON));
+            localStorage.setItem(codJSON, JSON.stringify(xJSON)); 
         }
     };
 
     xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
-//    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.send();
 }
@@ -23,6 +23,7 @@ function getJSON(codJSON, codURL){
 function postJSON(codPAGE, codURL, codPARS) {
     var urlJSON = urlBASE + '/' + codURL;
 
+    xHTTP.open('POST', urlJSON, true);
     xHTTP.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var xJSON = JSON.parse(this.responseText);
@@ -30,7 +31,8 @@ function postJSON(codPAGE, codURL, codPARS) {
         }
     };
     
-    xHTTP.open('POST', urlJSON);
+    xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.send(codPARS);
 }
