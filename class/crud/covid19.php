@@ -121,7 +121,7 @@
 			$result1	= post_curl('800/prueba', $dataJSON);
 	}
 
-	header('Location: ../../public/covid19_crud.php?code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../covid19/prueba_crud.php?code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>

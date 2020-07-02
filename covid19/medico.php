@@ -4,7 +4,7 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 11 && $usu_05 != 9){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../covid19/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 ?>
 
@@ -82,7 +82,7 @@
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoadCMed" class="table v-middle" style="width: 100%;">
-                                        <thead id="tableLoadDMed" class="10">
+                                        <thead id="tableLoadDMed" class="157">
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">IMAGEN</th>
@@ -121,7 +121,7 @@
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoadCComp" class="table v-middle" style="width: 100%;">
-                                        <thead id="tableLoadDComp" class="<?php echo $usu_04; ?>">
+                                        <thead id="tableLoadCComp" class="<?php echo $usu_04; ?>">
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">IMAGEN</th>

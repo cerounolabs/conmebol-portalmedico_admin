@@ -15,7 +15,7 @@ function getJSON(codJSON, codURL){
     };
 
     xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
-    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.send();
 }
@@ -32,7 +32,7 @@ function postJSON(codPAGE, codURL, codPARS) {
     };
     
     xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
-    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.send(codPARS);
 }
@@ -139,15 +139,21 @@ function setChangePass(rowPersona){
     $("#modalcontent").append(html);
 }
 
-function getDominio(codDominio){
-    var xJSON = JSON.parse(localStorage.getItem('dominioJSON'))['data'];
+function getDominio(codDom){
+    if (localStorage.getItem('dominioJSON') === null){
+        getJSON('dominioJSON', '000');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('dominioJSON'));
     var xDATA = [];
 
-    xJSON.forEach(element => {
-        if (element.tipo_dominio == codDominio) {
-            xDATA.push(element);
-        }
-    });
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.tipo_dominio == codDom) {
+                xDATA.push(element);
+            }
+        });
+    }
 
     return xDATA;
 }
@@ -171,7 +177,7 @@ function getMedico(codEquipo, codTipo){
        
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
-            if (element.tipo_perfil_codigo == 10) {
+            if (element.tipo_perfil_codigo == codTipo) {
                 xDATA.push(element);
             }
         });
@@ -264,6 +270,31 @@ function getJugador(rowComp, rowEqui){
         xJSON['data'].forEach(element => {
             if (element.competicion_codigo == rowComp) {
                 xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
+function getEquipo(rowPerf, rowEqui){
+    if (localStorage.getItem('equipoJSON') === null){
+        getJSON('equipoJSON', '300');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('jugadorJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (rowPerf != 157) {
+                xDATA.push(element);
+            } else {
+                if (element.equipo_codigo == rowEqui) {
+                    xDATA.push(element);
+                } else {
+                    
+                }
             }
         });
     }
@@ -372,6 +403,55 @@ function changeEquipo(rowComp, rowEqui, rowPers) {
             option.value    = element.jugador_codigo;
             option.text     = element.jugador_completo;
             selPers.add(option, null);
+        }
+    });
+}
+
+function changeEquipo02(rowInput, rowDom) {
+    var selDom  = document.getElementById(rowDom);
+    var selItem = document.getElementById(rowInput);
+    var xJSON   = getEquipo(selDom.value);
+
+    while (selItem.length > 0) {
+        selItem.remove(0);
+    }
+
+    var option      = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'SELECCIONAR';
+    option.selected = true;
+    selItem.add(option, null);
+
+    xJSON.forEach(element => {
+        if (element.competicion_codigo == selComp.value) {
+            var option      = document.createElement('option');
+            option.value    = element.equipo_codigo;
+            option.text     = element.equipo_nombre;
+            selItem.add(option, null);
+        }
+    });
+}
+
+function selDominio(rowInput, rowDom){
+    var selItem = document.getElementById(rowInput);
+    var xJSON   = getDominio(rowDom);
+
+    while (selItem.length > 0) {
+        selItem.remove(0);
+    }
+
+    var option      = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'SELECCIONAR';
+    option.selected = true;
+    selItem.add(option, null);
+
+    xJSON.forEach(element => {
+        if (element.tipo_dominio == rowDom) {
+            var option      = document.createElement('option');
+            option.value    = element.tipo_codigo;
+            option.text     = element.tipo_nombre_castellano;
+            selItem.add(option, null);
         }
     });
 }
