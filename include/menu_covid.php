@@ -178,7 +178,7 @@
                         		<span class="hide-menu"> COVID19 </span>
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
-                                <li class="sidebar-item">
+                            	<li class="sidebar-item">
                                		<a href="../covid19/medico.php" class="sidebar-link">
                                			<i class="mdi mdi-covid19"></i>
                                			<span class="hide-menu"> Vincular M&eacute;dico </span>

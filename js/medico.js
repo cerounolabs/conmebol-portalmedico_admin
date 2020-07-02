@@ -1,8 +1,20 @@
 $(document).ready(function() {
-	var xJSON = getMedico(1, 10);
-	var xJSON1= getCompMedico(0);
+	var codigo	= document.getElementById('tableLoadDMed').className;
+	var xJSON 	= getMedico(1, codigo);
+	var xJSON1	= getCompMedico(0);
+	var col03	= true;
 
-	$('#tableLoad').DataTable({
+	switch (codigo) {
+		case '10':
+			col03 = true;
+			break;
+	
+		case '157':
+			col03 = false;
+			break;
+	}
+
+	$('#tableLoadCMed').DataTable({
 		processing	: true,
 		destroy		: true,
 		searching	: true,
@@ -31,7 +43,7 @@ $(document).ready(function() {
 			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
 			{ targets			: [1],	visible : false,searchable : false,	orderData : [1, 0] },
 			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
-			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
+			{ targets			: [3],	visible : col03,searchable : col03,	orderData : [3, 0] },
 			{ targets			: [4],	visible : false,searchable : false,	orderData : [4, 0] },
 			{ targets			: [5],	visible : false,searchable : false,	orderData : [5, 0] },
 			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] },
@@ -67,7 +79,7 @@ $(document).ready(function() {
 		]
 	});
 
-	var tableData   = $('#tableLoadComp').DataTable({
+	var tableData   = $('#tableLoadCComp').DataTable({
 		processing	: true,
 		destroy		: true,
 		searching	: true,
