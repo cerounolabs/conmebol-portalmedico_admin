@@ -144,7 +144,8 @@
                                 <div class="row">
                                     <h4 class="col-10 card-title">COVID Control 01</h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../covid19/control_01_crud.php" role="button" title="Agregar"><i class="ti-plus"></i></a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../covid19/control_01_1_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../covid19/control_01_2_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">

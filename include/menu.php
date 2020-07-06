@@ -312,6 +312,13 @@
                                                 <span class="hide-menu"> COVID19 Serolog&iacute;a</span>
                                             </a>
                                         </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=COVID19ANTMEDICO" class="sidebar-link">
+                                                <i class="mdi mdi-competencia"></i> 
+                                                <span class="hide-menu"> COVID19 Ant. M&eacute;dicos</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -553,6 +560,13 @@
                                             <a href="../public/dominio.php?dominio=USUARIOACCESO" class="sidebar-link">
                                                 <i class="mdi mdi-usuario"></i>
                                                 <span class="hide-menu"> Usuario Acceso </span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=USUARIOMODULO" class="sidebar-link">
+                                                <i class="mdi mdi-usuario"></i>
+                                                <span class="hide-menu"> Usuario M&oacute;dulo </span>
                                             </a>
                                         </li>
 
