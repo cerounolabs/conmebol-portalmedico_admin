@@ -7,22 +7,23 @@
     
     require '../../class/function/curl_api.php';
 
-    $val01          = $_POST['var101'];
-    $val02          = $_POST['var102'];
-    $val03          = $_POST['var103'];
-	$val04      	= $_POST['var104'];
-	$val05      	= $_POST['var105'];
-	$val06			= $_POST['var106'];
+    $val01          = $_POST['var101'];	//PERIODO
+    $val02          = $_POST['var102'];	//DISCIPLINA
+    $val03          = $_POST['var103'];	//COMPETENCIA
+	$val04      	= $_POST['var104'];	//ENCUENTRO
+	$val05      	= $_POST['var105'];	//EQUIPO
+	$val06			= $_POST['var106'];	//PERSONA
 
-	$val07          = $_POST['var201'];
-	$val08          = $_POST['var202'];
-	$val09          = $_POST['var203'];
+	$val07          = $_POST['var201'];	//FECHA PRUEBA
+	$val08          = $_POST['var202'];	//PERSONA ADULTA
+	$val09          = $_POST['var203'];	//PERSONA MENORES
 
     $work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
 	$work03         = $_POST['workSPers'];
 	$work04         = $_POST['workSFam'];
 	$work05         = $_POST['workSerologia'];
+	$work06         = $_POST['workPage'];
 
 	$log_01         = $_SESSION['log_01'];
 	$log_03         = $_SESSION['log_03'];
@@ -61,6 +62,7 @@
 		}
 	}
 
+	//SINTOMAS PERSONALES
 	for ($i=0; $i < $work03; $i++) {
 		$val101		= $_POST['var2041_'.$i];
 
@@ -83,6 +85,7 @@
 			$result1	= post_curl('800/prueba', $dataJSON);
 	}
 
+	//SINTOMAS FAMILIARES
 	for ($i=0; $i < $work04; $i++) { 
 		$val111		= $_POST['var2051_'.$i];
 
@@ -105,6 +108,7 @@
 			$result1	= post_curl('800/prueba', $dataJSON);
 	}
 
+	//SEROLOGIA
 	for ($i=0; $i < $work05; $i++) { 
 		$val121		= $_POST['var3011_'.$i];
 		$val122		= $_POST['var3012_'.$i];
@@ -121,7 +125,7 @@
 			$result1	= post_curl('800/prueba', $dataJSON);
 	}
 
-	header('Location: ../../covid19/prueba_crud.php?code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../covid19/'.$work06.'?code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>

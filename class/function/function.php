@@ -66,6 +66,10 @@
                 $result = 'COVID19 SEROLOGIA';
                 break;
 
+            case 'COVID19ANTMEDICO':
+                $result = 'COVID19 ANTECEDENTES M&Eacute;DICOS';
+                break;
+
             case 'CUERPOPARTE':
                 $result = 'CUERPO PARTE';
                 break;
@@ -172,6 +176,10 @@
 
             case 'USUARIOACCESO':
                 $result = 'USUARIO ACCESO';
+                break;
+
+            case 'USUARIOMODULO':
+                $result = 'USUARIO MÓDULO';
                 break;
 
             case 'USUARIOROL':
