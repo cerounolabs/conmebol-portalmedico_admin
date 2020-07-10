@@ -58,7 +58,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../covid19/home.php">HOME</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">COVID CONTROL 01</li>
+                                    <li class="breadcrumb-item active" aria-current="page">ANT. M&Eacute;DICO</li>
                                 </ol>
                             </nav>
                         </div>
@@ -92,7 +92,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var02">Disciplina</label>
-                                                    <select id="var02" name="var02" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var01', this.id, 'var03');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var02" name="var02" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <optgroup label="Disciplina">
                                                             <option value="FOOTBALL">F&uacute;tbol de Campo</option>
                                                             <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
@@ -152,16 +152,20 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
                                             <tr class="bg-conmebol">
-                                                <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
-                                                <th class="border-top-0" style="text-align:center;">PRUEBA FEC.</th>
-                                                <th class="border-top-0" style="text-align:center;">ESTADO</th>
-                                                <th class="border-top-0" style="text-align:center;">DISCIPLINA</th>
-                                                <th class="border-top-0" style="text-align:center;">COMPETENCIA</th>
-                                                <th class="border-top-0" style="text-align:center;">ENCUENTRO</th>
-                                                <th class="border-top-0" style="text-align:center;">EQUIPO</th>
-                                                <th class="border-top-0" style="text-align:center;">JUGADOR</th>
-                                                <th class="border-top-0" style="text-align:center;">ALTA USU.</th>
-                                                <th class="border-top-0" style="text-align:center;">ALTA FEC.</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">C&Oacute;DIGO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">FECHA</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">ESTADO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">JUEGO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">CARGO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="4">PRUEBAS</th>
+                                            </tr>
+
+                                            <tr class="bg-conmebol">
+                                                <th class="border-top-0">HISOPO</th>
+                                                <th class="border-top-0">RAPIDA</th>
+                                                <th class="border-top-0">IGM</th>
+                                                <th class="border-top-0">IGG</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -212,11 +216,10 @@
 ?>
 
     <script src="../js/api.js"></script>
-    <script src="../js/control_01.js"></script>
     <script>
         changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
         changeCompetencia(<?php echo $usu_04; ?>, 'var01', 'var03', 'var04');
-//        changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
+        changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var002', 'var003');
     </script>
 </body>
 </html>

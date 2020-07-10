@@ -455,3 +455,22 @@ function selDominio(rowInput, rowDom){
         }
     });
 }
+
+function getControl01(rowOrga, ){
+    if (localStorage.getItem('covid19JSON') === null){
+        getJSON('covid19JSON', '800/covid/'+rowOrga);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('covid19JSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    console.log(xDATA);
+
+    return xDATA;
+}

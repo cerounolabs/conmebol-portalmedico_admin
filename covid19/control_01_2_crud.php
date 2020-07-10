@@ -77,20 +77,20 @@
                     <!-- Start Page Content -->
                     <!-- ============================================================== -->
                     <!-- row -->
-                    <form method="post" action="../class/crud/control_01_2_crud.php" class="validation-wizard wizard-circle m-t-40">
+                    <form method="post" action="../class/crud/control_01_2_crud.php" class="validation-wizard wizard-circle">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var101">Periodo</label>
                                                         <input id="var101" name="var101" value="<?php echo $var04; ?>" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var102">Disciplina</label>
                                                         <select id="var102" name="var102" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var101', 'var102', 'var103');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
@@ -102,32 +102,31 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var103">Competencia</label>
                                                         <select id="var103" name="var103" onchange="changeCompetencia(<?php echo $usu_04; ?>, 'var101', 'var103', 'var104');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var104">Encuentro</label>
                                                         <select id="var104" name="var104" onchange="changeJuego('var104', 'var105');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var105">Equipo</label>
-                                                        <select id="var105" name="var105" onchange="changeEquipo('var103', 'var105', 'var106');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <select id="var105" name="var105" onchange="changeEquipo('var103', 'var105', 'var201');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var106">Persona</label>
-                                                        <select id="var106" name="var106" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        </select>
+                                                        <label for="var106">Fecha Prueba</label>
+                                                        <input id="var106" name="var106" class="form-control" type="date" style="text-transform:lowercase; height:40px;" placeholder="FECHA" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,14 +142,15 @@
                                     <div class="card-body" style="background-color:#ffffff; color:#005ea6;">
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-6">
                                                     <div class="form-group">
-                                                        <label for="var201">Fecha Prueba</label>
-                                                        <input id="var201" name="var201" class="form-control" type="date" style="text-transform:lowercase; height:40px;" placeholder="FECHA" required>
+                                                        <label for="var201">Persona</label>
+                                                        <select id="var201" name="var201" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        </select>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-3">
                                                     <div class="form-group">
                                                         <label for="var202">Personas Adultas</label>
                                                         <select id="var202" name="var202" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
@@ -171,7 +171,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12 col-md-4">
+                                                <div class="col-sm-12 col-md-3">
                                                     <div class="form-group">
                                                         <label for="var203">Personas Menores</label>
                                                         <select id="var203" name="var203" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
@@ -194,64 +194,6 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="var204">S&iacute;ntomas Personales</label>
-<?php
-    if ($dominioJSON['code'] === 200){
-        $indSinPers = 0;
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19SINTOMA'){
-?>
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input id="var2041_<?php echo $indSinPers; ?>" name="var2041_<?php echo $indSinPers; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                            <input type="checkbox" class="custom-control-input" id="var2042_<?php echo $indSinPers; ?>" name="var2042_<?php echo $indSinPers; ?>">
-                                                            <label class="custom-control-label" for="var2042_<?php echo $indSinPers; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
-                                                        </div>
-<?php
-                $indSinPers = $indSinPers + 1;
-            }
-        }
-    }
-?>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="var205">S&iacute;ntomas Familiares</label>
-<?php
-    if ($dominioJSON['code'] === 200){
-        $indSinFam = 0;
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19SINTOMA'){
-?>
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input id="var2051_<?php echo $indSinFam; ?>" name="var2051_<?php echo $indSinFam; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                            <input type="checkbox" class="custom-control-input" id="var2052_<?php echo $indSinFam; ?>" name="var2052_<?php echo $indSinFam; ?>">
-                                                            <label class="custom-control-label" for="var2052_<?php echo $indSinFam; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
-                                                        </div>
-<?php
-                $indSinFam = $indSinFam + 1;
-            }
-        }
-    }
-?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
-                                        <div class="form-body">
-                                            <div class="row">
 <?php
     if ($dominioJSON['code'] === 200){
         $indSerolgia = 0;
@@ -260,9 +202,9 @@
 ?>
                                                 <div class="col-sm-12 col-md-3">
                                                     <div class="form-group">
-                                                        <input id="var3011_<?php echo $indSerolgia; ?>" name="var3011_<?php echo $indSerolgia; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                        <label for="var3012_<?php echo $indSerolgia; ?>"> Serolog&iacute;a <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
-                                                        <select id="var3012_<?php echo $indSerolgia; ?>" name="var3012_<?php echo $indSerolgia; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <input id="var2041_<?php echo $indSerolgia; ?>" name="var2041_<?php echo $indSerolgia; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
+                                                        <label for="var2042_<?php echo $indSerolgia; ?>"> Serolog&iacute;a <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
+                                                        <select id="var2042_<?php echo $indSerolgia; ?>" name="var2042_<?php echo $indSerolgia; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
                                                                 <option value="N">NO</option>
                                                                 <option value="S">SI</option>
@@ -276,6 +218,54 @@
         }
     }
 ?>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="var205">S&iacute;ntomas Personales</label>
+<?php
+    if ($dominioJSON['code'] === 200){
+        $indSinPers = 0;
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19SINTOMA'){
+?>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input id="var2051_<?php echo $indSinPers; ?>" name="var2051_<?php echo $indSinPers; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
+                                                            <input type="checkbox" class="custom-control-input" id="var2052_<?php echo $indSinPers; ?>" name="var2052_<?php echo $indSinPers; ?>">
+                                                            <label class="custom-control-label" for="var2052_<?php echo $indSinPers; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
+                                                        </div>
+<?php
+                $indSinPers = $indSinPers + 1;
+            }
+        }
+    }
+?>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="var206">S&iacute;ntomas Familiares</label>
+<?php
+    if ($dominioJSON['code'] === 200){
+        $indSinFam = 0;
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19SINTOMA'){
+?>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input id="var2061_<?php echo $indSinFam; ?>" name="var2061_<?php echo $indSinFam; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
+                                                            <input type="checkbox" class="custom-control-input" id="var2062_<?php echo $indSinFam; ?>" name="var2062_<?php echo $indSinFam; ?>">
+                                                            <label class="custom-control-label" for="var2062_<?php echo $indSinFam; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
+                                                        </div>
+<?php
+                $indSinFam = $indSinFam + 1;
+            }
+        }
+    }
+?>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

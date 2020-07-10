@@ -1,15 +1,16 @@
 $(document).ready(function() {
-    var xDATA       = getLesion();
+    var codigo	    = document.getElementById('tableCodigo').className;
+    var xDATA       = getControl01(codigo);
     var tableData   = $('#tableLoad').DataTable(
         {
             processing	: true,
             destroy		: true,
-            searching	: false,
-            paging		: false,
+            searching	: true,
+            paging		: true,
             lengthChange: true,
-            info		: false,
-            orderCellsTop: false,
-            fixedHeader	: false,
+            info		: true,
+            orderCellsTop: true,
+            fixedHeader	: true,
             language	: {
                 lengthMenu: "Mostrar _MENU_ registros por pagina",
                 zeroRecords: "Nothing found - sorry",
@@ -39,22 +40,22 @@ $(document).ready(function() {
                 { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
             ],
             columns		: [
-                { data				: 'lesion_codigo', name : 'lesion_codigo'},
-                { data				: 'lesion_fecha_alta', name : 'lesion_fecha_alta'},
-                { data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
+                { data				: 'covid19_codigo', name : 'covid19_codigo'},
+                { data				: 'covid19_fecha', name : 'covid19_fecha'},
+                { data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
+                { data				: 'disciplina_codigo', name : 'disciplina_codigo'},
+                { data				: 'competicion_nombre', name : 'competicion_nombre'},
                 { data				: 'juego_nombre', name : 'juego_nombre'},
+                { data				: 'equipo_nombre', name : 'equipo_nombre'},
                 { data				: 'jugador_nombre', name : 'jugador_nombre'},
-                { data				: 'tipo_lesion_nombre_castellano', name : 'tipo_lesion_nombre_castellano'},
-                { data				: 'tipo_cuerpo_zona_nombre_castellano', name : 'tipo_cuerpo_zona_nombre_castellano'},
-                { data				: 'tipo_diagnostico_nombre_castellano', name : 'tipo_diagnostico_nombre_castellano'},
-                { data				: 'tipo_diagnostico_recuperacion', name : 'tipo_diagnostico_recuperacion'},
-                { data				: 'lesion_fecha_retorno', name : 'lesion_fecha_retorno'},
+                { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
+                { data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
             ]
         }
     );
 
     $('.form-group').change(function() {
-        var xDATA = getLesion();
+        var xDATA = getControl01();
         tableData.clear().rows.add(xDATA).draw();
     });
 });
