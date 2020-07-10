@@ -12,9 +12,9 @@
     $val03          = $_POST['var103'];	//COMPETENCIA
 	$val04      	= $_POST['var104'];	//ENCUENTRO
 	$val05      	= $_POST['var105'];	//EQUIPO
-	$val06			= $_POST['var106'];	//PERSONA
+	$val06			= $_POST['var106'];	//FECHA PRUEBA
 
-	$val07          = $_POST['var201'];	//FECHA PRUEBA
+	$val07          = $_POST['var201'];	//PERSONA
 	$val08          = $_POST['var202'];	//PERSONA ADULTA
 	$val09          = $_POST['var203'];	//PERSONA MENORES
 
@@ -36,9 +36,9 @@
 				'competicion_codigo'			=> $val03,
 				'encuentro_codigo'				=> $val04,
 				'equipo_codigo'					=> $val05,
-				'jugador_codigo'				=> $val06,
+				'jugador_codigo'				=> $val07,
 				'covid19_periodo'				=> $val01,
-				'covid19_fecha'					=> $val07,
+				'covid19_fecha'					=> $val06,
 				'covid19_persona_adulta'		=> $val08,
 				'covid19_persona_menor'			=> $val09,
                 'covid19_observacion'			=> '',
@@ -62,11 +62,28 @@
 		}
 	}
 
+	//SEROLOGIA
+	for ($i=0; $i < $work05; $i++) { 
+		$val121		= $_POST['var2041_'.$i];
+		$val122		= $_POST['var2042_'.$i];
+		$dataJSON	= json_encode(
+			array(
+				'covid19_codigo'				=> $work01,
+				'tipo_prueba_codigo'			=> $val121,
+				'covid19_prueba_valor'			=> $val122,
+				'auditoria_usuario'				=> $log_01,
+				'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),
+				'auditoria_ip'					=> $log_03
+			));
+
+			$result1	= post_curl('800/prueba', $dataJSON);
+	}
+
 	//SINTOMAS PERSONALES
 	for ($i=0; $i < $work03; $i++) {
-		$val101		= $_POST['var2041_'.$i];
+		$val101		= $_POST['var2051_'.$i];
 
-		if (isset($_POST['var2042_'.$i])){
+		if (isset($_POST['var2052_'.$i])){
 			$val102 = 'checked';
 		} else {
 			$val102 = '';
@@ -100,23 +117,6 @@
 				'covid19_codigo'				=> $work01,
 				'tipo_prueba_codigo'			=> $val111,
 				'covid19_prueba_valor'			=> $val112,
-				'auditoria_usuario'				=> $log_01,
-				'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),
-				'auditoria_ip'					=> $log_03
-			));
-
-			$result1	= post_curl('800/prueba', $dataJSON);
-	}
-
-	//SEROLOGIA
-	for ($i=0; $i < $work05; $i++) { 
-		$val121		= $_POST['var3011_'.$i];
-		$val122		= $_POST['var3012_'.$i];
-		$dataJSON	= json_encode(
-            array(
-				'covid19_codigo'				=> $work01,
-				'tipo_prueba_codigo'			=> $val121,
-				'covid19_prueba_valor'			=> $val122,
 				'auditoria_usuario'				=> $log_01,
 				'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),
 				'auditoria_ip'					=> $log_03

@@ -324,6 +324,42 @@
 
                                 <li class="sidebar-item"> 
                                     <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                        <i class="mdi mdi-competencia"></i> 
+                                        <span class="hide-menu"> COVID19 </span>
+                                    </a>
+                                    <ul aria-expanded="false" class="collapse second-level">
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=COVID19SINTOMA" class="sidebar-link">
+                                                <i class="mdi mdi-competencia"></i> 
+                                                <span class="hide-menu"> COVID19 Sint&oacute;ma</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=COVID19CARGO" class="sidebar-link">
+                                                <i class="mdi mdi-competencia"></i> 
+                                                <span class="hide-menu"> COVID19 Cargo</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=COVID19SEROLOGIA" class="sidebar-link">
+                                                <i class="mdi mdi-competencia"></i> 
+                                                <span class="hide-menu"> COVID19 Serolog&iacute;a</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=COVID19ANTMEDICO" class="sidebar-link">
+                                                <i class="mdi mdi-competencia"></i> 
+                                                <span class="hide-menu"> COVID19 Ant. M&eacute;dicos</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-item"> 
+                                    <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
                                         <i class="mdi mdi-cuerpo"></i> 
                                         <span class="hide-menu"> Cuerpo </span>
                                     </a>
