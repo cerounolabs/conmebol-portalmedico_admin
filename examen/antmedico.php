@@ -4,7 +4,7 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 9 && $usu_05 != 11 && $usu_05 != 157){
-//        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
     
     $var04              = date('Y');
@@ -36,7 +36,15 @@
     <div id="main-wrapper">
 
 <?php
-    	include '../include/menu_covid.php';
+    switch ($usu_05) {
+        case 157:
+            include '../include/menu_examen.php';
+            break;
+        
+        default:
+            include '../include/menu.php';
+            break;
+    }
 ?>
        
         <!-- Page wrapper  -->
@@ -56,9 +64,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../covid19/home.php">HOME</a>
+                                        <a href="../examen/home.php">HOME</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">ANT. M&Eacute;DICO</li>
+                                    <li class="breadcrumb-item active" aria-current="page">ANTECEDENTE M&Eacute;DICO PERSONAL</li>
                                 </ol>
                             </nav>
                         </div>
@@ -80,6 +88,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                <div class="row">
+                                    <h4 class="col-12 card-title">FILTRO DE B&Uacute;SQUEDA</h4>
+								</div>
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="row">
@@ -92,7 +103,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var02">Disciplina</label>
-                                                    <select id="var02" name="var02" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var02" name="var02" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var01', this.id, 'var03');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <optgroup label="Disciplina">
                                                             <option value="FOOTBALL">F&uacute;tbol de Campo</option>
                                                             <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
@@ -142,30 +153,25 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">COVID Control 01</h4>
+                                    <h4 class="col-6 card-title">ANTECEDENTE M&Eacute;DICO PERSONAL</h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../covid19/control_01_1_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../covid19/control_01_2_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
                                             <tr class="bg-conmebol">
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">C&Oacute;DIGO</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">FECHA</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">ESTADO</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">JUEGO</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">CARGO</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="4">PRUEBAS</th>
-                                            </tr>
-
-                                            <tr class="bg-conmebol">
-                                                <th class="border-top-0">HISOPO</th>
-                                                <th class="border-top-0">RAPIDA</th>
-                                                <th class="border-top-0">IGM</th>
-                                                <th class="border-top-0">IGG</th>
+                                                <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
+                                                <th class="border-top-0" style="text-align:center;">PRUEBA FEC.</th>
+                                                <th class="border-top-0" style="text-align:center;">ESTADO</th>
+                                                <th class="border-top-0" style="text-align:center;">DISCIPLINA</th>
+                                                <th class="border-top-0" style="text-align:center;">COMPETENCIA</th>
+                                                <th class="border-top-0" style="text-align:center;">ENCUENTRO</th>
+                                                <th class="border-top-0" style="text-align:center;">EQUIPO</th>
+                                                <th class="border-top-0" style="text-align:center;">JUGADOR</th>
+                                                <th class="border-top-0" style="text-align:center;">ALTA USU.</th>
+                                                <th class="border-top-0" style="text-align:center;">ALTA FEC.</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -216,10 +222,10 @@
 ?>
 
     <script src="../js/api.js"></script>
+    <script src="../js/antmedico.js"></script>
     <script>
         changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
         changeCompetencia(<?php echo $usu_04; ?>, 'var01', 'var03', 'var04');
-        changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var002', 'var003');
     </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 9 && $usu_05 != 11 && $usu_05 != 157){
-//        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
     
     $var04              = date('Y');
@@ -88,6 +88,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                <div class="row">
+                                    <h4 class="col-12 card-title">FILTRO DE B&Uacute;SQUEDA</h4>
+								</div>
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="row">
