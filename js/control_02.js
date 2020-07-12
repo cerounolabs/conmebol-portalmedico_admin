@@ -6,7 +6,7 @@ $(document).ready(function() {
     var codEncu     = document.getElementById('var04').value;
     var codEqui     = document.getElementById('var05').value;
     var codPers     = document.getElementById('var06').value;
-    var xDATA       = getCovidControl(174, codigo, codAnho, codDisc, codComp, codEncu, codEqui, codPers);
+    var xDATA       = getCovidControl(175, codigo, codAnho, codDisc, codComp, codEncu, codEqui, codPers);
     var tableData   = $('#tableLoad').DataTable(
         {
             processing	: true,
@@ -43,7 +43,8 @@ $(document).ready(function() {
                 { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                 { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
                 { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-                { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+                { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
+                { targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] }
             ],
             columns		: [
                 { data				: 'covid19_codigo', name : 'covid19_codigo'},
@@ -52,6 +53,7 @@ $(document).ready(function() {
                 { data				: 'disciplina_codigo', name : 'disciplina_codigo'},
                 { data				: 'competicion_nombre', name : 'competicion_nombre'},
                 { data				: 'juego_nombre', name : 'juego_nombre'},
+                { data				: 'covid19_ciudad', name : 'covid19_ciudad'},
                 { data				: 'equipo_nombre', name : 'equipo_nombre'},
                 { data				: 'jugador_nombre', name : 'jugador_nombre'},
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
@@ -68,7 +70,7 @@ $(document).ready(function() {
         var codEncu     = document.getElementById('var04').value;
         var codEqui     = document.getElementById('var05').value;
         var codPers     = document.getElementById('var06').value;
-        var xDATA       = getCovidControl(174, codigo, codAnho, codDisc, codComp, codEncu, codEqui, codPers);
+        var xDATA       = getCovidControl(175, codigo, codAnho, codDisc, codComp, codEncu, codEqui, codPers);
         tableData.clear().rows.add(xDATA).draw();
     });
 });

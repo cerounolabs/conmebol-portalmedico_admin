@@ -175,30 +175,24 @@
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                         		<i class="icon-Neutron"></i>
-                        		<span class="hide-menu"> COVID19 </span>
+                        		<span class="hide-menu"> Examen M&eacute;dico </span>
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                               		<a href="../covid19/medico.php" class="sidebar-link">
-                               			<i class="mdi mdi-covid19"></i>
-                               			<span class="hide-menu"> Vincular M&eacute;dico </span>
-                               		</a>
-                               	</li>
-                                <li class="sidebar-item">
-                               		<a href="../covid19/control_01.php" class="sidebar-link">
-                               			<i class="mdi mdi-covid19"></i>
+                               		<a href="../examen/control_01.php" class="sidebar-link">
+                               			<i class="mdi mdi-examen"></i>
                                			<span class="hide-menu"> COVID Control 1 </span>
                                		</a>
                                	</li>
                                 <li class="sidebar-item">
-                               		<a href="../covid19/control_01.php" class="sidebar-link">
-                               			<i class="mdi mdi-covid19"></i>
+                               		<a href="../examen/control_02.php" class="sidebar-link">
+                               			<i class="mdi mdi-examen"></i>
                                			<span class="hide-menu"> COVID Control 2 </span>
                                		</a>
                                	</li>
                                 <li class="sidebar-item">
-                               		<a href="../covid19/control_01.php" class="sidebar-link">
-                               			<i class="mdi mdi-covid19"></i>
+                               		<a href="../examen/control_03.php" class="sidebar-link">
+                               			<i class="mdi mdi-examen"></i>
                                			<span class="hide-menu"> COVID Control 3 </span>
                                		</a>
                                	</li>
@@ -229,8 +223,15 @@
                             	<li class="sidebar-item">
                                		<a href="../public/medico.php" class="sidebar-link">
                                			<i class="mdi mdi-medico"></i>
-                               			<span class="hide-menu"> Medicos </span>
+                               			<span class="hide-menu"> M&eacute;dico Torneo </span>
                                     </a>
+                               	</li>
+                                
+                                <li class="sidebar-item">
+                               		<a href="../public/medico.php" class="sidebar-link">
+                               			<i class="mdi mdi-covid19"></i>
+                               			<span class="hide-menu"> M&eacute;dico COVID </span>
+                               		</a>
                                	</li>
                             </ul>
                         </li>
@@ -293,45 +294,16 @@
                                     </a>
                                     <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19SINTOMA" class="sidebar-link">
+                                            <a href="../public/dominio.php?dominio=COVID19TIPO" class="sidebar-link">
                                                 <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Sint&oacute;ma</span>
+                                                <span class="hide-menu"> COVID19 Tipo</span>
                                             </a>
                                         </li>
 
-                                        <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19CARGO" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Cargo</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19SEROLOGIA" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Serolog&iacute;a</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19ANTMEDICO" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Ant. M&eacute;dicos</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="sidebar-item"> 
-                                    <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                                        <i class="mdi mdi-competencia"></i> 
-                                        <span class="hide-menu"> COVID19 </span>
-                                    </a>
-                                    <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
                                             <a href="../public/dominio.php?dominio=COVID19SINTOMA" class="sidebar-link">
                                                 <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Sint&oacute;ma</span>
+                                                <span class="hide-menu"> COVID19 S&iacute;ntomas</span>
                                             </a>
                                         </li>
 

@@ -34,7 +34,15 @@
         <!-- ============================================================== -->
         <div id="main-wrapper">
 <?php
-        include '../include/menu.php';
+    switch ($usu_05) {
+        case 157:
+            include '../include/menu_examen.php';
+            break;
+        
+        default:
+            include '../include/menu.php';
+            break;
+    }
 ?>
         
             <!-- Page wrapper  -->
@@ -57,7 +65,7 @@
                                             <a href="../public/home.php">HOME</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../covid19/control_01.php">COVID19</a>
+                                            <a href="../examen/control_01.php">COVID CONTROL 01</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE PRUEBA</li>
                                     </ol>
@@ -286,7 +294,7 @@
                                     </div>
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
-                                        <a role="button" class="btn btn-dark" href="../covid19/control_01.php?"> Volver </a>
+                                        <a role="button" class="btn btn-dark" href="../examen/control_01.php"> Volver </a>
                                     </div>
                                 </div>
                             </div>

@@ -54,8 +54,12 @@
                 $result = 'COMPETENCIA CATEGORIA';
                 break;
 
+            case 'COVID19TIPO':
+                $result = 'COVID19 TIPO';
+                break;
+
             case 'COVID19SINTOMA':
-                $result = 'COVID19 SINTOMA';
+                $result = 'COVID19 SÍNTOMAS';
                 break;
 
             case 'COVID19CARGO':
@@ -63,7 +67,7 @@
                 break;
 
             case 'COVID19SEROLOGIA':
-                $result = 'COVID19 SEROLOGIA';
+                $result = 'COVID19 SEROLOGÍA';
                 break;
 
             case 'COVID19ANTMEDICO':
