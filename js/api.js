@@ -313,6 +313,7 @@ function changeDisciplina(rowOrga, rowAnho, rowDisc, rowComp) {
     }
 
     var option      = document.createElement('option');
+    option.value    = 0;
     option.text     = 'SELECCIONAR...';
     option.selected = true;
     selComp.add(option, null);
@@ -338,6 +339,7 @@ function changeCompetencia(rowOrga, rowAnho, rowComp, rowPart) {
     }
 
     var option      = document.createElement('option');
+    option.value    = 0;
     option.text     = 'SELECCIONAR...';
     option.selected = true;
     selPart.add(option, null);
@@ -362,6 +364,7 @@ function changeJuego(rowPart, rowEqui) {
     }
 
     var option      = document.createElement('option');
+    option.value    = 0;
     option.text     = 'SELECCIONAR...';
     option.selected = true;
     selEqui.add(option, null);
@@ -456,9 +459,9 @@ function selDominio(rowInput, rowDom){
     });
 }
 
-function getControl01(rowOrga, ){
+function getCovidControl(rowTipo, rowOrga, rowAnho, rowDisc, rowComp, rowEncu, rowEqui, rowPers){
     if (localStorage.getItem('covid19JSON') === null){
-        getJSON('covid19JSON', '800/covid/'+rowOrga);
+        getJSON('covid19JSON', '800/covid19/prueba/'+rowOrga);
     }
 
     var xJSON = JSON.parse(localStorage.getItem('covid19JSON'));
@@ -466,11 +469,198 @@ function getControl01(rowOrga, ){
     
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-            xDATA.push(element);
+            if (element.competicion_anho == rowAnho && element.tipo_covid19_codigo == rowTipo){
+                if (rowDisc == 0) {
+                    if (rowComp == 0) {
+                        if (rowEncu == 0) {
+                            if (rowEqui == 0) {
+                                if (rowPers == 0) {
+                                    xDATA.push(element);
+                                } else {
+                                    if (element.jugador_codigo == rowPers){
+                                        xDATA.push(element);
+                                    }
+                                }
+                            } else {
+                                if (element.equipo_codigo == rowEqui) {
+                                    if (rowPers == 0) {
+                                        xDATA.push(element);
+                                    } else {
+                                        if (element.jugador_codigo == rowPers){
+                                            xDATA.push(element);
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if (element.juego_codigo == rowEncu) {
+                                if (rowEqui == 0) {
+                                    if (rowPers == 0) {
+                                        xDATA.push(element);
+                                    } else {
+                                        if (element.jugador_codigo == rowPers){
+                                            xDATA.push(element);
+                                        }
+                                    }
+                                } else {
+                                    if (element.equipo_codigo == rowEqui) {
+                                        if (rowPers == 0) {
+                                            xDATA.push(element);
+                                        } else {
+                                            if (element.jugador_codigo == rowPers){
+                                                xDATA.push(element);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if (element.competicion_codigo == rowComp) {
+                            if (rowEncu == 0) {
+                                if (rowEqui == 0) {
+                                    if (rowPers == 0) {
+                                        xDATA.push(element);
+                                    } else {
+                                        if (element.jugador_codigo == rowPers){
+                                            xDATA.push(element);
+                                        }
+                                    }
+                                } else {
+                                    if (element.equipo_codigo == rowEqui) {
+                                        if (rowPers == 0) {
+                                            xDATA.push(element);
+                                        } else {
+                                            if (element.jugador_codigo == rowPers){
+                                                xDATA.push(element);
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (element.juego_codigo == rowEncu) {
+                                    if (rowEqui == 0) {
+                                        if (rowPers == 0) {
+                                            xDATA.push(element);
+                                        } else {
+                                            if (element.jugador_codigo == rowPers){
+                                                xDATA.push(element);
+                                            }
+                                        }
+                                    } else {
+                                        if (element.equipo_codigo == rowEqui) {
+                                            if (rowPers == 0) {
+                                                xDATA.push(element);
+                                            } else {
+                                                if (element.jugador_codigo == rowPers){
+                                                    xDATA.push(element);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if (element.disciplina_codigo == rowDisc) {
+                        if (rowComp == 0) {
+                            if (rowEncu == 0) {
+                                if (rowEqui == 0) {
+                                    if (rowPers == 0) {
+                                        xDATA.push(element);
+                                    } else {
+                                        if (element.jugador_codigo == rowPers){
+                                            xDATA.push(element);
+                                        }
+                                    }
+                                } else {
+                                    if (element.equipo_codigo == rowEqui) {
+                                        if (rowPers == 0) {
+                                            xDATA.push(element);
+                                        } else {
+                                            if (element.jugador_codigo == rowPers){
+                                                xDATA.push(element);
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (element.juego_codigo == rowEncu) {
+                                    if (rowEqui == 0) {
+                                        if (rowPers == 0) {
+                                            xDATA.push(element);
+                                        } else {
+                                            if (element.jugador_codigo == rowPers){
+                                                xDATA.push(element);
+                                            }
+                                        }
+                                    } else {
+                                        if (element.equipo_codigo == rowEqui) {
+                                            if (rowPers == 0) {
+                                                xDATA.push(element);
+                                            } else {
+                                                if (element.jugador_codigo == rowPers){
+                                                    xDATA.push(element);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if (element.competicion_codigo == rowComp) {
+                                if (rowEncu == 0) {
+                                    if (rowEqui == 0) {
+                                        if (rowPers == 0) {
+                                            xDATA.push(element);
+                                        } else {
+                                            if (element.jugador_codigo == rowPers){
+                                                xDATA.push(element);
+                                            }
+                                        }
+                                    } else {
+                                        if (element.equipo_codigo == rowEqui) {
+                                            if (rowPers == 0) {
+                                                xDATA.push(element);
+                                            } else {
+                                                if (element.jugador_codigo == rowPers){
+                                                    xDATA.push(element);
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if (element.juego_codigo == rowEncu) {
+                                        if (rowEqui == 0) {
+                                            if (rowPers == 0) {
+                                                xDATA.push(element);
+                                            } else {
+                                                if (element.jugador_codigo == rowPers){
+                                                    xDATA.push(element);
+                                                }
+                                            }
+                                        } else {
+                                            if (element.equipo_codigo == rowEqui) {
+                                                if (rowPers == 0) {
+                                                    xDATA.push(element);
+                                                } else {
+                                                    if (element.jugador_codigo == rowPers){
+                                                        xDATA.push(element);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }    
+                    }
+                }
+            }
+            
         });
     }
-
-    console.log(xDATA);
 
     return xDATA;
 }

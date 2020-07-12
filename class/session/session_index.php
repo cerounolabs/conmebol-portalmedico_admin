@@ -37,8 +37,16 @@
             $_SESSION['usu_05'] = $resultJSON['data'][0]['tipo_perfil_codigo'];
     
             $_SESSION['expire'] = time() + 600;
-            
-            header('Location: ../../public/home.php');
+
+            switch ($_SESSION['usu_05']) {
+                case '157':
+                    header('Location: ../../examen/control_01.php');
+                    break;
+                
+                default:
+                    header('Location: ../../public/home.php');
+                    break;
+            }
         } else {
             $val_01             = NULL;
             $val_02             = NULL;

@@ -13,6 +13,9 @@
 	$val04      	= $_POST['var104'];		//ENCUENTRO
 	$val05      	= $_POST['var105'];		//EQUIPO
 	$val06			= $_POST['var106'];		//FECHA PRUEBA
+	$val11			= $_POST['var107'];		//CIUDAD
+	$val12			= $_POST['var108'];		//FECHA LLEGADA
+	$val13			= $_POST['var109'];		//FECHA SALIDA
 
     $work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
@@ -35,7 +38,7 @@
 			$dataJSON = json_encode(
 				array(
 					'tipo_estado_codigo'			=> 'A',
-					'tipo_covid19_codigo'			=> 174,
+					'tipo_covid19_codigo'			=> 176,
 					'disciplina_codigo'				=> $val02,
 					'competicion_codigo'			=> $val03,
 					'encuentro_codigo'				=> $val04,
@@ -43,9 +46,11 @@
 					'jugador_codigo'				=> $val07,
 					'covid19_periodo'				=> $val01,
 					'covid19_fecha_1'				=> $val06,
+					'covid19_fecha_2'				=> $val12,
+					'covid19_fecha_3'				=> $val13,
 					'covid19_persona_adulta'		=> $val08,
 					'covid19_persona_menor'			=> $val09,
-					'covid19_ciudad'				=> '',
+					'covid19_ciudad'				=> $val11,
 					'covid19_observacion'			=> '',
 					'auditoria_usuario'				=> $log_01,
 					'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),

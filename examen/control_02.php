@@ -36,7 +36,15 @@
     <div id="main-wrapper">
 
 <?php
-    	include '../include/menu_covid.php';
+    switch ($usu_05) {
+        case 157:
+            include '../include/menu_examen.php';
+            break;
+        
+        default:
+            include '../include/menu.php';
+            break;
+    }
 ?>
        
         <!-- Page wrapper  -->
@@ -56,9 +64,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../covid19/home.php">HOME</a>
+                                        <a href="../examen/home.php">HOME</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">COVID CONTROL 01</li>
+                                    <li class="breadcrumb-item active" aria-current="page">COVID CONTROL 02</li>
                                 </ol>
                             </nav>
                         </div>
@@ -80,6 +88,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                <div class="row">
+                                    <h4 class="col-12 card-title">FILTRO DE B&Uacute;SQUEDA</h4>
+								</div>
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="row">
@@ -142,10 +153,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">COVID Control 01</h4>
+                                    <h4 class="col-6 card-title">COVID Control 02</h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../covid19/control_01_1_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../covid19/control_01_2_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_02_1_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_02_2_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
@@ -158,6 +169,7 @@
                                                 <th class="border-top-0" style="text-align:center;">DISCIPLINA</th>
                                                 <th class="border-top-0" style="text-align:center;">COMPETENCIA</th>
                                                 <th class="border-top-0" style="text-align:center;">ENCUENTRO</th>
+                                                <th class="border-top-0" style="text-align:center;">CIUDAD</th>
                                                 <th class="border-top-0" style="text-align:center;">EQUIPO</th>
                                                 <th class="border-top-0" style="text-align:center;">JUGADOR</th>
                                                 <th class="border-top-0" style="text-align:center;">ALTA USU.</th>
@@ -212,11 +224,10 @@
 ?>
 
     <script src="../js/api.js"></script>
-    <script src="../js/control_01.js"></script>
+    <script src="../js/control_02.js"></script>
     <script>
         changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
         changeCompetencia(<?php echo $usu_04; ?>, 'var01', 'var03', 'var04');
-//        changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
     </script>
 </body>
 </html>
