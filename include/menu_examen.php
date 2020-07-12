@@ -121,6 +121,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
+<!--
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                         		<i class="icon-Car-Wheel"></i>
@@ -135,13 +136,19 @@
                                	</li>
                             </ul>
                         </li>
-
+-->
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                         		<i class="icon-Neutron"></i>
                         		<span class="hide-menu"> Examen M&eacute;dico </span>
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                               		<a href="../examen/antmedico.php" class="sidebar-link">
+                               			<i class="mdi mdi-examen"></i>
+                               			<span class="hide-menu"> Ant. M&eacute;dico</span>
+                               		</a>
+                               	</li>
                                 <li class="sidebar-item">
                                		<a href="../examen/control_01.php" class="sidebar-link">
                                			<i class="mdi mdi-covid19"></i>

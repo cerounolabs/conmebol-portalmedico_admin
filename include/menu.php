@@ -179,6 +179,12 @@
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
+                               		<a href="../examen/antmedico.php" class="sidebar-link">
+                               			<i class="mdi mdi-examen"></i>
+                               			<span class="hide-menu"> Ant. M&eacute;dico</span>
+                               		</a>
+                               	</li>
+                                <li class="sidebar-item">
                                		<a href="../examen/control_01.php" class="sidebar-link">
                                			<i class="mdi mdi-examen"></i>
                                			<span class="hide-menu"> COVID Control 1 </span>
