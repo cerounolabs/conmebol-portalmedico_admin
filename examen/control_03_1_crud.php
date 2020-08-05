@@ -312,7 +312,7 @@
                             '                                   <div class="col-sm-12 col-md-3">'+
                             '                                       <div class="form-group">'+
                             '                                           <input id="var2041_<?php echo $indSerolgia; ?>_'+ cantReg +'" name="var2041_<?php echo $indSerolgia; ?>_'+ cantReg +'" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" required readonly>'+
-                            '                                           <label for="var2042_<?php echo $indSerolgia; ?>_'+ cantReg +'"> Serolog&iacute;a <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>'+
+                            '                                           <label for="var2042_<?php echo $indSerolgia; ?>_'+ cantReg +'"> TEST <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>'+
                             '                                           <select id="var2042_<?php echo $indSerolgia; ?>_'+ cantReg +'" name="var2042_<?php echo $indSerolgia; ?>_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
                             '                                               <optgroup label="Presento">'+
                             '                                                   <option value="N">NO</option>'+

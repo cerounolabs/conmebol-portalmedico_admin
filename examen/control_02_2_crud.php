@@ -217,7 +217,7 @@
                                                 <div class="col-sm-12 col-md-3">
                                                     <div class="form-group">
                                                         <input id="var2041_<?php echo $indSerolgia; ?>" name="var2041_<?php echo $indSerolgia; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                        <label for="var2042_<?php echo $indSerolgia; ?>"> Serolog&iacute;a <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
+                                                        <label for="var2042_<?php echo $indSerolgia; ?>"> TEST <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
                                                         <select id="var2042_<?php echo $indSerolgia; ?>" name="var2042_<?php echo $indSerolgia; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
                                                                 <option value="N">NO</option>
