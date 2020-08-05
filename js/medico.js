@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var codigo	= document.getElementById('tableLoadDMed').className;
-	var xJSON 	= getMedico(1, codigo);
-	var xJSON1	= getCompMedico(0);
+	var xJSON 	= getMedico(codigo);
+	var xJSON1	= getCompMedico(0, 0);
 	var col03	= true;
 
 	switch (codigo) {
@@ -10,7 +10,7 @@ $(document).ready(function() {
 			break;
 	
 		case '157':
-			col03 = false;
+			col03 = true;
 			break;
 	}
 
@@ -129,9 +129,10 @@ $(document).ready(function() {
 	});
 
 	$('button').click(function() {
+		var xTip	= document.getElementById('tableLoadDComp').className;
 		var xPers	= $(this).attr('id');
 		var nPers	= $(this).attr('value');
-		var xJSON1	= getCompMedico(xPers);
+		var xJSON1	= getCompMedico(xPers, xTip);
 		localStorage.removeItem('persona_codigo');
 		localStorage.removeItem('persona_nombre');
 		localStorage.setItem('persona_codigo', xPers);

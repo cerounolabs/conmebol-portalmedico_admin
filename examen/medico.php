@@ -4,7 +4,7 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 11 && $usu_05 != 9){
-        header('Location: ../covid19/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 ?>
 
@@ -121,7 +121,7 @@
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoadCComp" class="table v-middle" style="width: 100%;">
-                                        <thead id="tableLoadCComp" class="<?php echo $usu_04; ?>">
+                                        <thead id="tableLoadDComp" class="169">
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">IMAGEN</th>
@@ -184,21 +184,22 @@
     <script src="../js/api.js"></script>
         
         <script>
+/*
             if (localStorage.getItem('medicoJSON') === 'null' || localStorage.getItem('medicoJSON') === null ){
                 localStorage.removeItem('medicoJSON');
-                localStorage.setItem('medicoJSON', JSON.stringify(<?php echo json_encode(get_curl('400/equipo/'.$usu_04)); ?>));
+                localStorage.setItem('medicoJSON', JSON.stringify(<?php //echo json_encode(get_curl('400/equipo/'.$usu_04)); ?>));
             }
-
+*/
             if (localStorage.getItem('competenciaJSON') === 'null' || localStorage.getItem('competenciaJSON') === null ){
                 localStorage.removeItem('competenciaJSON');
                 localStorage.setItem('competenciaJSON', JSON.stringify(<?php echo json_encode(get_curl('200/disciplina/'.$usu_04)); ?>));
             }
-
+/*
             if (localStorage.getItem('competicionMedicoJSON') === 'null' || localStorage.getItem('competicionMedicoJSON') === null ){
                 localStorage.removeItem('competicionMedicoJSON');
-                localStorage.setItem('competicionMedicoJSON', JSON.stringify(<?php echo json_encode(get_curl('401/competicion')); ?>));
+                localStorage.setItem('competicionMedicoJSON', JSON.stringify(<?php //echo json_encode(get_curl('401/competicion')); ?>));
             }
-
+*/
             function setCompetenciaPersona(){
                 var codPers = localStorage.getItem('persona_codigo');
                 var nomPers = localStorage.getItem('persona_nombre');
@@ -235,7 +236,7 @@
                     '                <div class="col-sm-12">'+
                     '                    <div class="form-group">'+
                     '                        <label for="var03">Comentario</label>'+
-                    '                        <textarea id="var03" name="var03" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                        <textarea id="var03" name="var03" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
                     '                    </div>'+
                     '                </div>'+
                     '           </div>'+
@@ -243,7 +244,8 @@
                     '               <input id="var01" name="var01" value="'+codPers+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workCodigo" name="workCodigo" value="0" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="medico" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="examen/medico" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workModulo" name="workModulo" value="169" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '           </div>'+
                     '	    </div>'+
                     '	    <div class="modal-footer">'+

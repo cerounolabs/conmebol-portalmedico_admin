@@ -14,6 +14,7 @@
     $work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
 	$work03         = $_POST['workPage'];
+	$work04         = $_POST['workModulo'];
 
 	$log_01         = $_SESSION['log_01'];
 	$log_03         = $_SESSION['log_03'];
@@ -22,6 +23,7 @@
         $dataJSON = json_encode(
             array(
 				'competicion_codigo'				=> $val02,
+				'tipo_modulo_codigo'				=> $work04,
 				'persona_codigo'					=> $val01,
                 'competicion_persona_observacion'	=> $val03,
 				'auditoria_usuario'					=> $log_01,
@@ -43,8 +45,8 @@
 	}
 
 	$result		= json_decode($result, true);
-
-	header('Location: ../../public/'.$work03.'.php?code='.$result['code'].'&msg='.$result['message']);
+	
+	header('Location: ../../'.$work03.'.php?code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>

@@ -163,7 +163,7 @@
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19ANTMEDICO'){
 ?>
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <input id="var2021_<?php echo $indAMed; ?>" name="var2021_<?php echo $indAMed; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
                                                         <label for="var2022_<?php echo $indAMed; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>

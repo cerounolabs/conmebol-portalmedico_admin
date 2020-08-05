@@ -171,7 +171,11 @@ function getSubDominio(codDominio){
     return xDATA;
 }
 
-function getMedico(codEquipo, codTipo){
+function getMedico(codTipo){
+    if (localStorage.getItem('medicoJSON') === null){
+        getJSON('medicoJSON', '400');
+    }
+
     var xJSON = JSON.parse(localStorage.getItem('medicoJSON'));
     var xDATA = [];
        
@@ -186,13 +190,17 @@ function getMedico(codEquipo, codTipo){
     return xDATA; 
 }
 
-function getCompMedico(codPersona){
+function getCompMedico(codPers, codTip){
+    if (localStorage.getItem('competicionMedicoJSON') === null){
+        getJSON('competicionMedicoJSON', '401/competicion');
+    }
+
     var xJSON = JSON.parse(localStorage.getItem('competicionMedicoJSON'));
     var xDATA = [];
        
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
-            if (element.persona_codigo == codPersona) {
+            if (element.persona_codigo == codPers && element.tipo_modulo_codigo == codTip) {
                 xDATA.push(element);
             }
         });

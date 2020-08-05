@@ -243,7 +243,8 @@
                     '               <input id="var01" name="var01" value="'+codPers+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workCodigo" name="workCodigo" value="0" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="medico" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="public/medico" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workModulo" name="workModulo" value="168" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '           </div>'+
                     '	    </div>'+
                     '	    <div class="modal-footer">'+
