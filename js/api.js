@@ -469,7 +469,7 @@ function selDominio(rowInput, rowDom){
 
 function getCovidControl(rowTipo, rowOrga, rowAnho, rowDisc, rowComp, rowEncu, rowEqui, rowPers){
     if (localStorage.getItem('covid19JSON') === null){
-        getJSON('covid19JSON', '800/covid19/prueba/'+rowOrga);
+        getJSON('covid19JSON', '801/covid19/prueba/'+rowOrga);
     }
 
     var xJSON = JSON.parse(localStorage.getItem('covid19JSON'));

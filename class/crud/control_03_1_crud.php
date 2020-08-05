@@ -59,15 +59,15 @@
 
 			switch($work02){
 				case 'C':
-					$result	= post_curl('800/covid19/prueba', $dataJSON);
+					$result	= post_curl('801/covid19/prueba', $dataJSON);
 					$result	= json_decode($result, true);
 					$work01 = $result['codigo'];
 					break;
 				case 'U':
-					$result	= put_curl('800/covid19/prueba/'.$work01, $dataJSON);
+					$result	= put_curl('801/covid19/prueba/'.$work01, $dataJSON);
 					break;
 				case 'D':
-					$result	= delete_curl('800/covid19/prueba/'.$work01, $dataJSON);
+					$result	= delete_curl('801/covid19/prueba/'.$work01, $dataJSON);
 					break;
 			}
 
@@ -84,7 +84,7 @@
 						'auditoria_ip'					=> $log_03
 					));
 		
-				$result1	= post_curl('800/covid19/examen', $dataJSON);
+				$result1	= post_curl('801/covid19/examen', $dataJSON);
 			}
 
 			for ($j=0; $j < $work03; $j++) {
@@ -106,7 +106,7 @@
 						'auditoria_ip'					=> $log_03
 					));
 		
-				$result1	= post_curl('800/covid19/examen', $dataJSON);
+				$result1	= post_curl('801/covid19/examen', $dataJSON);
 			}
 
 			for ($j=0; $j < $work04; $j++) {
@@ -128,7 +128,7 @@
 						'auditoria_ip'					=> $log_03
 					));
 		
-				$result1	= post_curl('800/covid19/examen', $dataJSON);
+				$result1	= post_curl('801/covid19/examen', $dataJSON);
 			}
 		}
 	}
