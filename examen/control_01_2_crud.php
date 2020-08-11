@@ -4,11 +4,24 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 
-    $var04          = date('Y');
+    if(isset($_GET['competicion'])){
+        $valorCompeticion   = $_GET['competicion'];
+    } else {
+        $valorCompeticion   = 0;
+    }
+
+    if(isset($_GET['encuentro'])){
+        $valorEncuentro     = $_GET['encuentro'];
+    } else {
+        $valorEncuentro     = 0;
+    }
+
     $dominioJSON    = get_curl('000');
+    $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
+    $equipoJSON     = get_curl('200/competicion/equipo/'.$usu_04.'/'.$valorCompeticion);
 ?>
 
 <!DOCTYPE html>
@@ -62,12 +75,18 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../public/home.php">HOME</a>
+                                            <a href="../examen/home.php">HOME</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/control_01.php">COVID CONTROL 01</a>
+                                            <a href="../examen/competicion.php">COMPETICIONES</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">ALTA DE PRUEBA</li>
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                        </li>
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            <a href="../examen/control_01.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">COVID19 TEST</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -246,7 +265,7 @@
                                     </div>
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
-                                        <a role="button" class="btn btn-dark" href="../examen/control_01.php"> Volver </a>
+                                        <a role="button" class="btn btn-dark" href="../examen/control_01.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
                                     </div>
                                 </div>
                             </div>

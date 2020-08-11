@@ -75,12 +75,18 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../public/home.php">HOME</a>
+                                            <a href="../examen/home.php">HOME</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/control_01.php">COVID CONTROL 01</a>
+                                            <a href="../examen/competicion.php">COMPETICIONES</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">ALTA DE PRUEBA</li>
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                        </li>
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            <a href="../examen/control_01.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">COVID19 TEST</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -168,7 +174,7 @@
                                     </div>
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
-                                        <a role="button" class="btn btn-dark" href="../examen/control_01.php"> Volver </a>
+                                        <a role="button" class="btn btn-dark" href="../examen/control_01.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
                                     </div>
                                 </div>
                             </div>
