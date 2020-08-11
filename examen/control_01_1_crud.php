@@ -4,11 +4,24 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 
-    $var04          = date('Y');
+    if(isset($_GET['competicion'])){
+        $valorCompeticion   = $_GET['competicion'];
+    } else {
+        $valorCompeticion   = 0;
+    }
+
+    if(isset($_GET['encuentro'])){
+        $valorEncuentro     = $_GET['encuentro'];
+    } else {
+        $valorEncuentro     = 0;
+    }
+
     $dominioJSON    = get_curl('000');
+    $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
+    $equipoJSON     = get_curl('200/competicion/equipo/'.$usu_04.'/'.$valorCompeticion);
 ?>
 
 <!DOCTYPE html>
@@ -90,51 +103,45 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                        <div class="row">
+                                            <h4 class="col-12 card-title">DATOS DEL ENCUENTRO</h4>
+								        </div>
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var101">Periodo</label>
-                                                        <input id="var101" name="var101" value="<?php echo $var04; ?>" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
+                                                        <label> Competicion </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_fase']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var102">Disciplina</label>
-                                                        <select id="var102" name="var102" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var101', 'var102', 'var103');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Disciplina">
-                                                                <option value="FOOTBALL">F&uacute;tbol de Campo</option>
-                                                                <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
-                                                                <option value="BEACH_SOCCER">F&uacute;tbol de Playa</option>
-                                                            </optgroup>
-                                                        </select>
+                                                        <label> Rival </label>
+                                                        <input class="form-control" value="<?php $rival = ($juegoJSON['data'][0]['equipo_local_codigo'] == $usu_04) ? str_replace('"', '', $juegoJSON['data'][0]['equipo_visitante_nombre']) : str_replace('"', '', $juegoJSON['data'][0]['equipo_local_nombre']); echo $rival; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Rival" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var103">Competencia</label>
-                                                        <select id="var103" name="var103" onchange="changeCompetencia(<?php echo $usu_04; ?>, 'var101', 'var103', 'var104');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        </select>
+                                                        <label> Fecha </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_horario']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Fecha" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var104">Encuentro</label>
-                                                        <select id="var104" name="var104" onchange="changeJuego('var104', 'var105');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        </select>
+                                                        <label> Ciudad </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_ciudad']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Ciudad" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var105">Equipo</label>
-                                                        <select id="var105" name="var105" onchange="loadDiv('var105', 'var103');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        </select>
+                                                        <label> Estadio </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_estadio']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Estadio" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var106">Fecha Prueba</label>
-                                                        <input id="var106" name="var106" class="form-control" type="date" style="text-transform:lowercase; height:40px;" placeholder="FECHA" required>
+                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
+                                                        <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -218,7 +225,7 @@
                 var selEqu  = document.getElementById(var01);
                 var selCom  = document.getElementById(var02);
                 var xJSON   = getJugador(selCom.value, selEqu.value);
-                var xJSON1  = getDominio('COVID19SINTOMA');
+                var xJSON1  = getDominio('EXAMENMEDICOCOVID19SINTOMA');
                 var cantReg = 0;
 
                 xJSON1.forEach(element1 => {

@@ -9,6 +9,8 @@ $(document).ready(function() {
 		paging		: true,
 		lengthChange: true,
 		info		: true,
+		order		: [[ 1, "asc" ]],
+		orderCellsTop: true,
 		language	: {
 			lengthMenu: "Mostrar _MENU_ registros por pagina",
 			zeroRecords: "Nothing found - sorry",

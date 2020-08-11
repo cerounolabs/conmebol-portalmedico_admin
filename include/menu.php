@@ -150,22 +150,22 @@
                                	</li>
 
                                 <li class="sidebar-item">
-                               		<a href="../public/competencia.php?tipo=COM&disciplina=FOOTBALL" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
+                               		<a href="../public/competicion.php?tipo=COM&disciplina=FOOTBALL" class="sidebar-link">
+                               			<i class="mdi mdi-competicion"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Campo </span>
                                     </a>
                                	</li>
 
                                 <li class="sidebar-item">
-                               		<a href="../public/competencia.php?tipo=COM&disciplina=FUTSAL" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
+                               		<a href="../public/competicion.php?tipo=COM&disciplina=FUTSAL" class="sidebar-link">
+                               			<i class="mdi mdi-competicion"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Sal&oacute;n </span>
                                     </a>
                                	</li>
 
                                 <li class="sidebar-item">
-                               		<a href="../public/competencia.php?tipo=COM&disciplina=BEACH_SOCCER" class="sidebar-link">
-                               			<i class="mdi mdi-competencia"></i>
+                               		<a href="../public/competicion.php?tipo=COM&disciplina=BEACH_SOCCER" class="sidebar-link">
+                               			<i class="mdi mdi-competicion"></i>
                                			<span class="hide-menu"> F&uacute;tbol de Playa </span>
                                     </a>
                                	</li>
@@ -175,7 +175,7 @@
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                         		<i class="icon-Neutron"></i>
-                        		<span class="hide-menu"> Examen M&eacute;dico (Capacitaci&oacute;n) </span>
+                        		<span class="hide-menu"> Examen M&eacute;dico </span>
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
@@ -229,14 +229,14 @@
                             	<li class="sidebar-item">
                                		<a href="../public/medico.php" class="sidebar-link">
                                			<i class="mdi mdi-medico"></i>
-                               			<span class="hide-menu"> M&eacute;dico Torneo </span>
+                               			<span class="hide-menu"> Lesiones </span>
                                     </a>
                                	</li>
                                 
                                 <li class="sidebar-item">
                                		<a href="../examen/medico.php" class="sidebar-link">
                                			<i class="mdi mdi-covid19"></i>
-                               			<span class="hide-menu"> M&eacute;dico COVID </span>
+                               			<span class="hide-menu"> Examenes Medicos </span>
                                		</a>
                                	</li>
                             </ul>
@@ -280,14 +280,14 @@
 						    <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item"> 
                                     <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                                        <i class="mdi mdi-competencia"></i> 
-                                        <span class="hide-menu"> Competencia </span>
+                                        <i class="mdi mdi-competicion"></i> 
+                                        <span class="hide-menu"> Competici&oacute;n </span>
                                     </a>
                                     <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COMPETENCIACATEGORIA" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> Competencia Categor&iacute;a</span>
+                                            <a href="../public/dominio.php?dominio=COMPETICIONCATEGORIA" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
+                                                <span class="hide-menu"> Competici&oacute;n Categor&iacute;a</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -295,42 +295,42 @@
 
                                 <li class="sidebar-item"> 
                                     <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                                        <i class="mdi mdi-competencia"></i> 
-                                        <span class="hide-menu"> COVID19 </span>
+                                        <i class="mdi mdi-competicion"></i> 
+                                        <span class="hide-menu"> Examen M&eacute;dico </span>
                                     </a>
                                     <ul aria-expanded="false" class="collapse second-level">
                                         <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19TIPO" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Tipo</span>
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICOTIPO" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
+                                                <span class="hide-menu"> Tipo</span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19SINTOMA" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 S&iacute;ntomas</span>
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICOANTMEDICO" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
+                                                <span class="hide-menu"> Ant. M&eacute;dicos</span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19CARGO" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICOCOVID19CARGO" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
                                                 <span class="hide-menu"> COVID19 Cargo</span>
                                             </a>
                                         </li>
 
                                         <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19SEROLOGIA" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICOCOVID19SEROLOGIA" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
                                                 <span class="hide-menu"> COVID19 Serolog&iacute;a</span>
                                             </a>
                                         </li>
-
+                                        
                                         <li class="sidebar-item">
-                                            <a href="../public/dominio.php?dominio=COVID19ANTMEDICO" class="sidebar-link">
-                                                <i class="mdi mdi-competencia"></i> 
-                                                <span class="hide-menu"> COVID19 Ant. M&eacute;dicos</span>
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICOCOVID19SINTOMA" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
+                                                <span class="hide-menu"> COVID19 S&iacute;ntomas</span>
                                             </a>
                                         </li>
                                     </ul>
