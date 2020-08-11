@@ -4,11 +4,20 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
-    
-    $var04              = date('Y');
-    $competenciaJSON    = get_curl('200/disciplina/'.$usu_04);
+
+    if(isset($_GET['competicion'])){
+        $valorCompeticion   = $_GET['competicion'];
+    } else {
+        $valorCompeticion   = 0;
+    }
+
+    if(isset($_GET['encuentro'])){
+        $valorEncuentro     = $_GET['encuentro'];
+    } else {
+        $valorEncuentro     = 0;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +75,13 @@
                                     <li class="breadcrumb-item">
                                         <a href="../examen/home.php">HOME</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">COVID CONTROL 01</li>
+                                    <li class="breadcrumb-item" aria-current="page">
+                                        <a href="../examen/competicion.php">COMPETICIONES</a>
+                                    </li>
+                                    <li class="breadcrumb-item" aria-current="page">
+                                        <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">COVID19 TEST</li>
                                 </ol>
                             </nav>
                         </div>
@@ -87,76 +102,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
-                                <div class="row">
-                                    <h4 class="col-12 card-title">FILTRO DE B&Uacute;SQUEDA</h4>
-								</div>
-                                <form action="#">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var01">Periodo</label>
-                                                    <input id="var01" name="var01" value="<?php echo $var04; ?>" onchange="" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var02">Disciplina</label>
-                                                    <select id="var02" name="var02" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var01', this.id, 'var03');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        <optgroup label="Disciplina">
-                                                            <option value="FOOTBALL">F&uacute;tbol de Campo</option>
-                                                            <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
-                                                            <option value="BEACH_SOCCER">F&uacute;tbol de Playa</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var03">Competencia</label>
-                                                    <select id="var03" name="var03" onchange="changeCompetencia(<?php echo $usu_04; ?>, 'var01', 'var03', 'var04');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var04">Encuentro</label>
-                                                    <select id="var04" name="var04" onchange="changeJuego('var04', 'var05');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var05">Equipo</label>
-                                                    <select id="var05" name="var05" onchange="changeEquipo('var03', 'var05', 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var06">Jugador</label>
-                                                    <select id="var06" name="var06" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">COVID Control 01</h4>
+                                    <h4 class="col-6 card-title">COVID19 Test</h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_01_1_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_01_2_crud.php" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_01_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_01_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
@@ -223,10 +174,11 @@
 ?>
 
     <script src="../js/api.js"></script>
-    <script src="../js/control_01.js"></script>
     <script>
-        changeDisciplina(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
-        changeCompetencia(<?php echo $usu_04; ?>, 'var01', 'var03', 'var04');
+        const _codPers = <?php echo $log_04; ?>;
+        const _codEqui = <?php echo $usu_04; ?>;
+        const _codEncu = <?php echo $valorEncuentro; ?>;
     </script>
+    <script src="../js/control_01.js"></script>
 </body>
 </html>

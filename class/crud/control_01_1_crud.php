@@ -23,7 +23,7 @@
 	$log_03         = $_SESSION['log_03'];
 
 	if (isset($val01) && isset($val02) && isset($val03) && isset($val04) && isset($val05) && isset($val06)) {
-		for ($i=0; $i < $work07; $i++) {
+		for ($i=0; $i <= $work07; $i++) {
 			$val07          = $_POST['var201_'.$i];		//JUGADOR
 			$val08          = $_POST['var202_'.$i];		//PERSONA ADULTA
 			$val09          = $_POST['var203_'.$i];		//PERSONA MENORES

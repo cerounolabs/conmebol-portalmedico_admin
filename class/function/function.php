@@ -12,7 +12,7 @@
     }
 
     function getImagenBase64($var01, $var02, $var03){
-        $path   = '../imagen/competencia/img_'.$var02;
+        $path   = '../imagen/competicion/img_'.$var02;
         $ext    = '';
         $imgFile= '';
         $result = '';
@@ -50,28 +50,28 @@
 
     function getTitleDominio($var01){
         switch ($var01) {
-            case 'COMPETENCIACATEGORIA':
-                $result = 'COMPETENCIA CATEGORIA';
+            case 'COMPETICIONCATEGORIA':
+                $result = 'COMPETICION CATEGORIA';
                 break;
 
-            case 'COVID19TIPO':
-                $result = 'COVID19 TIPO';
+            case 'EXAMENMEDICOTIPO':
+                $result = 'EXAMEN MÉDICO TIPO';
                 break;
 
-            case 'COVID19SINTOMA':
-                $result = 'COVID19 SÍNTOMAS';
+            case 'EXAMENMEDICOANTMEDICO':
+                $result = 'EXAMEN MÉDICO ANTECEDENTES M&Eacute;DICOS';
                 break;
 
-            case 'COVID19CARGO':
-                $result = 'COVID19 CARGO';
+            case 'EXAMENMEDICOCOVID19CARGO':
+                $result = 'EXAMEN MÉDICO COVID19 CARGO';
                 break;
 
-            case 'COVID19SEROLOGIA':
-                $result = 'COVID19 SEROLOGÍA';
+            case 'EXAMENMEDICOCOVID19SEROLOGIA':
+                $result = 'EXAMEN MÉDICO COVID19 SEROLOGÍA';
                 break;
 
-            case 'COVID19ANTMEDICO':
-                $result = 'COVID19 ANTECEDENTES M&Eacute;DICOS';
+            case 'EXAMENMEDICOCOVID19SINTOMA':
+                $result = 'EXAMEN MÉDICO COVID19 SÍNTOMAS';
                 break;
 
             case 'CUERPOPARTE':

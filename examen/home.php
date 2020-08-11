@@ -121,7 +121,15 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-    	include '../include/menu.php';
+    switch ($usu_05) {
+        case 157:
+            include '../include/menu_examen.php';
+            break;
+        
+        default:
+            include '../include/menu.php';
+            break;
+    }
 ?>
        
         <!-- Page wrapper  -->
@@ -141,7 +149,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../covid19/home.php">HOME</a>
+                                        <a href="../examen/home.php">HOME</a>
                                     </li>
                                 </ol>
                             </nav>

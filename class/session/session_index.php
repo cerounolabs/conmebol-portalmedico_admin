@@ -40,7 +40,7 @@
 
             switch ($_SESSION['usu_05']) {
                 case '157':
-                    header('Location: ../../examen/control_01.php');
+                    header('Location: ../../examen/competicion.php');
                     break;
                 
                 default:
@@ -52,7 +52,7 @@
             $val_02             = NULL;
             $val_03             = NULL;
     
-            header('Location: ../../index.php?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
+            header('Location: ../../?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
         }
     }
 ?>

@@ -4,11 +4,24 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 
-    $var04          = date('Y');
+    if(isset($_GET['competicion'])){
+        $valorCompeticion   = $_GET['competicion'];
+    } else {
+        $valorCompeticion   = 0;
+    }
+
+    if(isset($_GET['encuentro'])){
+        $valorEncuentro     = $_GET['encuentro'];
+    } else {
+        $valorEncuentro     = 0;
+    }
+
     $dominioJSON    = get_curl('000');
+    $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
+    $equipoJSON     = get_curl('200/competicion/equipo/'.$usu_04.'/'.$valorCompeticion);
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +75,16 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../public/home.php">HOME</a>
+                                            <a href="../examen/home.php">HOME</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/control_01.php">COVID CONTROL 01</a>
+                                            <a href="../examen/competicion.php">COMPETICI&Oacute;N</a>
+                                        </li>
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                        </li>
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">ANTECEDENTE M&Eacute;DICO</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE PRUEBA</li>
                                     </ol>
@@ -85,56 +104,50 @@
                     <!-- Start Page Content -->
                     <!-- ============================================================== -->
                     <!-- row -->
-                    <form method="post" action="../class/crud/control_01_2_crud.php" class="validation-wizard wizard-circle">
+                    <form method="post" action="../class/crud/antmedico_1_crud.php" class="validation-wizard wizard-circle">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                        <div class="row">
+                                            <h4 class="col-12 card-title">DATOS DEL ENCUENTRO</h4>
+								        </div>
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var101">Periodo</label>
-                                                        <input id="var101" name="var101" value="<?php echo $var04; ?>" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
+                                                        <label> Competicion </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_fase']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var102">Disciplina</label>
-                                                        <select id="var102" name="var102" onchange="changeDisciplina(<?php echo $usu_04; ?>, 'var101', 'var102', 'var103');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Disciplina">
-                                                                <option value="FOOTBALL">F&uacute;tbol de Campo</option>
-                                                                <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
-                                                                <option value="BEACH_SOCCER">F&uacute;tbol de Playa</option>
-                                                            </optgroup>
-                                                        </select>
+                                                        <label> Rival </label>
+                                                        <input class="form-control" value="<?php $rival = ($juegoJSON['data'][0]['equipo_local_codigo'] == $usu_04) ? str_replace('"', '', $juegoJSON['data'][0]['equipo_visitante_nombre']) : str_replace('"', '', $juegoJSON['data'][0]['equipo_local_nombre']); echo $rival; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Rival" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var103">Competencia</label>
-                                                        <select id="var103" name="var103" onchange="changeCompetencia(<?php echo $usu_04; ?>, 'var101', 'var103', 'var104');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        </select>
+                                                        <label> Fecha </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_horario']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Fecha" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var104">Encuentro</label>
-                                                        <select id="var104" name="var104" onchange="changeJuego('var104', 'var105');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        </select>
+                                                        <label> Ciudad </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_ciudad']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Ciudad" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var105">Equipo</label>
-                                                        <select id="var105" name="var105" onchange="changeEquipo('var103', 'var105', 'var201');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        </select>
+                                                        <label> Estadio </label>
+                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_estadio']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Estadio" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var106">Fecha Prueba</label>
-                                                        <input id="var106" name="var106" class="form-control" type="date" style="text-transform:lowercase; height:40px;" placeholder="FECHA" required>
+                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
+                                                        <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,76 +156,38 @@
                                 </div>
                             </div>
                         </div>
+<?php
+    if ($equipoJSON['code'] === 200){
+        $cantReg = 0;
 
+        foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) {
+?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body" style="background-color:#ffffff; color:#005ea6;">
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-6">
+                                                <div class="col-sm-12 col-md-12">
                                                     <div class="form-group">
-                                                        <label for="var201">Persona</label>
-                                                        <select id="var201" name="var201" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <label for="var101_<?php echo $cantReg; ?>">Persona</label>
+                                                        <select id="var101_<?php echo $cantReg; ?>" name="var101_<?php echo $cantReg; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido'].', POS. '.$equipoVALUE['jugador_posicion'].', NRO. '.$equipoVALUE['jugador_numero']; ?></option>
                                                         </select>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="var202">Personas Adultas</label>
-                                                        <select id="var202" name="var202" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Cantidad">
-                                                                <option value="0">Vive solo</option>
-                                                                <option value="1">1 Persona</option>
-                                                                <option value="2">2 Persona</option>
-                                                                <option value="3">3 Persona</option>
-                                                                <option value="4">4 Persona</option>
-                                                                <option value="5">5 Persona</option>
-                                                                <option value="6">6 Persona</option>
-                                                                <option value="7">7 Persona</option>
-                                                                <option value="8">8 Persona</option>
-                                                                <option value="9">9 Persona</option>
-                                                                <option value="10">10 Persona</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="var203">Personas Menores</label>
-                                                        <select id="var203" name="var203" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Cantidad">
-                                                                <option value="0">Vive solo</option>
-                                                                <option value="1">1 Persona</option>
-                                                                <option value="2">2 Persona</option>
-                                                                <option value="3">3 Persona</option>
-                                                                <option value="4">4 Persona</option>
-                                                                <option value="5">5 Persona</option>
-                                                                <option value="6">6 Persona</option>
-                                                                <option value="7">7 Persona</option>
-                                                                <option value="8">8 Persona</option>
-                                                                <option value="9">9 Persona</option>
-                                                                <option value="10">10 Persona</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
 <?php
-    if ($dominioJSON['code'] === 200){
-        $indSerolgia = 0;
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'EXAMENCOVID19SEROLOGIA'){
+            if ($dominioJSON['code'] === 200){
+                $indAntMed = 0;
+
+                foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+                    if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'EXAMENMEDICOANTMEDICO'){
 ?>
-                                                <div class="col-sm-12 col-md-3">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <input id="var2041_<?php echo $indSerolgia; ?>" name="var2041_<?php echo $indSerolgia; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                        <label for="var2042_<?php echo $indSerolgia; ?>"> TEST <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
-                                                        <select id="var2042_<?php echo $indSerolgia; ?>" name="var2042_<?php echo $indSerolgia; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <input id="var1031_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" name="var1031_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
+                                                        <label for="var1032_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
+                                                        <select id="var1032_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" name="var1032_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
                                                                 <option value="N">NO</option>
                                                                 <option value="S">SI</option>
@@ -221,10 +196,10 @@
                                                     </div>
                                                 </div>
 <?php
-                $indSerolgia = $indSerolgia + 1;
+                        $indAntMed = $indAntMed + 1;
+                    }
+                }
             }
-        }
-    }
 ?>
                                             </div>
                                         </div>
@@ -232,21 +207,30 @@
                                 </div>
                             </div>
                         </div>
-
+<?php
+            $cantReg = $cantReg + 1;
+        }
+    }
+?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="form-group">
-                                        <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="" required readonly>
+                                        <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="0" required readonly>
                                         <input id="workModo" name="workModo" class="form-control" type="hidden" placeholder="Modo" value="C" required readonly>
-                                        <input id="workPage" name="workPage" class="form-control" type="hidden" placeholder="Modo" value="control_01_2_crud.php" required readonly>
-                                        <input id="workSPers" name="workSPers" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSinPers; ?>" required readonly>
-                                        <input id="workSFam" name="workSFam" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSinFam; ?>" required readonly>
-                                        <input id="workSerologia" name="workSerologia" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSerolgia; ?>" required readonly>
+                                        <input id="workPage" name="workPage" class="form-control" type="hidden" placeholder="Modo" value="antmedico_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
+                                        <input id="workAntMedico" name="workAntMedico" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indAntMed; ?>" required readonly>
+                                        <input id="workCompeticion" name="workCompeticion" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
+                                        <input id="workEncuentro" name="workEncuentro" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $valorEncuentro; ?>" required readonly>
+                                        <input id="workEquipo" name="workEquipo" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $usu_04; ?>" required readonly>
+                                        <input id="workAntExamen" name="workAntExamen" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
+                                        <input id="workEstado" name="workEstado" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
+                                        <input id="workTipo" name="workTipo" class="form-control" type="hidden" placeholder="Modo" value="177" required readonly>
+                                        <input id="workCRegistro" name="workCRegistro" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $cantReg; ?>" required readonly>
                                     </div>
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
-                                        <a role="button" class="btn btn-dark" href="../examen/control_01.php"> Volver </a>
+                                        <a role="button" class="btn btn-dark" href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion;?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
                                     </div>
                                 </div>
                             </div>
@@ -292,9 +276,5 @@
 ?>
 
         <script src="../js/api.js"></script>
-        <script>
-            changeDisciplina(<?php echo $usu_04; ?>, 'var101', 'var102', 'var103');
-            changeCompetencia(<?php echo $usu_04; ?>, 'var101', 'var103', 'var104');
-        </script>
     </body>
 </html>

@@ -1,12 +1,5 @@
 $(document).ready(function() {
-    var codigo	    = document.getElementById('tableCodigo').className;
-    var codAnho     = document.getElementById('var01').value;
-    var codDisc     = document.getElementById('var02').value;
-    var codComp     = document.getElementById('var03').value;
-    var codEncu     = document.getElementById('var04').value;
-    var codEqui     = document.getElementById('var05').value;
-    var codPers     = document.getElementById('var06').value;
-    var xDATA       = getCovidControl(177, codigo, codAnho, codDisc, codComp, codEncu, codEqui, codPers);
+    var xDATA       = getExamenPrueba(177, _codEncu, _codEqui, _codPers);
     var tableData   = $('#tableLoad').DataTable(
         {
             processing	: true,
@@ -41,35 +34,57 @@ $(document).ready(function() {
                 { targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
                 { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
                 { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
-                { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-                { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-                { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+                { targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
+                { targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
+                { targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
+                { targets			: [10],	visible : true, searchable : true,	orderData : [10, 0] }
             ],
             columns		: [
-                { data				: 'covid19_codigo', name : 'covid19_codigo'},
-                { data				: 'covid19_fecha_1', name : 'covid19_fecha_1'},
-                { data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
-                { data				: 'disciplina_codigo', name : 'disciplina_codigo'},
+                { data				: 'examen_codigo', name : 'examen_codigo'},
+                { data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
+                { data				: 'examen_fecha_1', name : 'examen_fecha_1'},
                 { data				: 'competicion_nombre', name : 'competicion_nombre'},
-                { data				: 'juego_nombre', name : 'juego_nombre'},
+                { data				: 'encuentro_nombre', name : 'encuentro_nombre'},
                 { data				: 'equipo_nombre', name : 'equipo_nombre'},
                 { data				: 'jugador_nombre', name : 'jugador_nombre'},
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
                 { data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
+                { data				: 'auditoria_ip', name : 'auditoria_ip'},
+                { render            : 
+                    function (data, type, full, meta) {
+                        var btnDSP  = '<button onclick="" title="Ver" type="button" class="btn btn-primary btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-eye"></i></button>';
+                        var btnUPD  = '<button onclick="" title="Editar" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
+                        var btnDLT  = '<button onclick="" title="Eliminar" type="button" class="btn btn-danger btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-eraser"></i></button>';
+                        var btnAUD  = '<button onclick="" title="Auditoria" type="button" class="btn btn-warning btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-user-secret"></i></button>';
+                        return (btnDSP + '&nbsp;' + btnUPD + '&nbsp;' + btnDLT + '&nbsp;' + btnAUD);
+                    }
+                },
             ]
         }
     );
 
     $('.form-group').change(function() {
-        var codigo	    = document.getElementById('tableCodigo').className;
-        var codAnho     = document.getElementById('var01').value;
-        var codDisc     = document.getElementById('var02').value;
-        var codComp     = document.getElementById('var03').value;
-        var codEncu     = document.getElementById('var04').value;
-        var codEqui     = document.getElementById('var05').value;
-        var codPers     = document.getElementById('var06').value;
-        var xDATA       = getCovidControl(177, codigo, codAnho, codDisc, codComp, codEncu, codEqui, codPers);
+        var xDATA       = getExamenPrueba(177, _codEncu, _codEqui, _codPers);
         tableData.clear().rows.add(xDATA).draw();
     });
 });
 
+
+function getExamenPrueba(codTipo, codEncu, codEqui, codPers) {
+    if (localStorage.getItem('examenPruebaJSON') === null){
+        getJSON('examenPruebaJSON', '801/examen/prueba/'+ codEqui +'/'+ codEncu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('examenPruebaJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
