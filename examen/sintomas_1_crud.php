@@ -228,7 +228,7 @@
             function loadDiv() {
                 var html    = '';
                 var selSer  = '';
-                var xJSON   = getExamenJugador(<?php echo $valorCompeticion; ?>, <?php echo $usu_04; ?>, 206);
+                var xJSON   = getExamenJugador(<?php echo $valorCompeticion; ?>, <?php echo $usu_04; ?>, 206, <?php echo $valorEncuentro; ?>);
                 var xJSON1  = getDominio('EXAMENMEDICOCOVID19SINTOMA');
                 var cantReg = 0;
 
@@ -237,7 +237,7 @@
 						selSer = selSer + '                               <option value="'+ element1.tipo_codigo +'">'+ element1.tipo_nombre_castellano +'</option>';
 					}
 				});
-console.log(xJSON);
+
                 xJSON.forEach(element => {
                         html = html +
                             '            <div class="row">'+

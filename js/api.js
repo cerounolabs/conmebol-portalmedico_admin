@@ -283,11 +283,11 @@ function getJugador(rowComp, rowEqui){
     return xDATA; 
 }
 
-function getExamenJugador(rowComp, rowEqui, rowTipo){
+function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu){
     localStorage.removeItem('examenJugadorJSON');
 
     if (localStorage.getItem('examenJugadorJSON') === null){
-        getJSON('examenJugadorJSON', '200/competicion/equipo/alta/' + rowEqui + '/' + rowComp + '/' + rowTipo);
+        getJSON('examenJugadorJSON', '200/competicion/equipo/alta/' + rowEqui + '/' + rowComp + '/' + rowTipo + '/' + rowEncu);
     }
 
     var xJSON = JSON.parse(localStorage.getItem('examenJugadorJSON'));

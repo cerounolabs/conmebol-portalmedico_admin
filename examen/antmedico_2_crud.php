@@ -21,7 +21,7 @@
 
     $dominioJSON    = get_curl('000');
     $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
-    $equipoJSON     = get_curl('200/competicion/equipo/alta/'.$usu_04.'/'.$valorCompeticion.'/177');
+    $equipoJSON     = get_curl('200/competicion/equipo/alta/'.$usu_04.'/'.$valorCompeticion.'/177/'.$valorEncuentro);
 ?>
 
 <!DOCTYPE html>
