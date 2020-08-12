@@ -240,7 +240,7 @@
             function loadDiv() {
                 var html    = '';
                 var selSer  = '';
-                var xJSON   = getExamenJugador(<?php echo $valorCompeticion; ?>, <?php echo $usu_04; ?>, 174);
+                var xJSON   = getExamenJugador(<?php echo $valorCompeticion; ?>, <?php echo $usu_04; ?>, 174, <?php echo $valorEncuentro; ?>);
                 var xJSON1  = getDominio('EXAMENMEDICOCOVID19SINTOMA');
                 var cantReg = 0;
 
