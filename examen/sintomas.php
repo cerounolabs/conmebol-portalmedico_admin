@@ -81,7 +81,7 @@
                                     <li class="breadcrumb-item" aria-current="page">
                                         <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">COVID19 TEST</li>
+                                    <li class="breadcrumb-item active" aria-current="page">S&Iacute;NTOMAS</li>
                                 </ol>
                             </nav>
                         </div>
@@ -104,10 +104,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">COVID19 Test</h4>
+                                    <h4 class="col-6 card-title"> S&Iacute;NTOMAS </h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_01_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/control_01_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/sintomas_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/sintomas_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL </a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
@@ -115,15 +115,16 @@
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
-                                                <th class="border-top-0" style="text-align:center;">PRUEBA FEC.</th>
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
-                                                <th class="border-top-0" style="text-align:center;">DISCIPLINA</th>
-                                                <th class="border-top-0" style="text-align:center;">COMPETENCIA</th>
+                                                <th class="border-top-0" style="text-align:center;">FEC. TEST</th>
+                                                <th class="border-top-0" style="text-align:center;">COMPETICI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;">ENCUENTRO</th>
                                                 <th class="border-top-0" style="text-align:center;">EQUIPO</th>
                                                 <th class="border-top-0" style="text-align:center;">JUGADOR</th>
                                                 <th class="border-top-0" style="text-align:center;">ALTA USU.</th>
                                                 <th class="border-top-0" style="text-align:center;">ALTA FEC.</th>
+                                                <th class="border-top-0" style="text-align:center;">ALTA IP</th>
+                                                <th class="border-top-0" style="text-align:center; width:160px;">ACCI&Oacute;N</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -179,6 +180,6 @@
         const _codEqui = <?php echo $usu_04; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
     </script>
-    <script src="../js/control_01.js"></script>
+    <script src="../js/sintomas.js"></script>
 </body>
 </html>

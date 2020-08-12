@@ -8,13 +8,16 @@
     }
 
     if(isset($_GET['competicion'])){
-        $valorCompeticion               = $_GET['competicion'];
-        $_SESSION['competicion_padre']  =  $_GET['competicion'];
+        $valorCompeticion   = $_GET['competicion'];
     } else {
         $valorCompeticion   = 0;
     }
 
-    $encuentroJSON  = get_curl('200/competicion/encuentro/'.$usu_04.'/'.$valorCompeticion);
+    if(isset($_GET['encuentro'])){
+        $valorEncuentro     = $_GET['encuentro'];
+    } else {
+        $valorEncuentro     = 0;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +43,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper">
+
 <?php
     switch ($usu_05) {
         case 157:
@@ -74,7 +78,10 @@
                                     <li class="breadcrumb-item" aria-current="page">
                                         <a href="../examen/competicion.php">COMPETICIONES</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">ENCUENTROS</li>
+                                    <li class="breadcrumb-item" aria-current="page">
+                                        <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">COVID19 TEST</li>
                                 </ol>
                             </nav>
                         </div>
@@ -94,35 +101,52 @@
                 <!-- basic table -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="row">
-<?php
-    if ($encuentroJSON['code'] === 200) {
-        foreach ($encuentroJSON['data'] as $encuentroKEY => $encuentroVALUE) { 
-?>
-                            <div class="col-sm-12 col-md-4 col-lg-4">
-                                <div class="card" style="height:250px;">
-                                    <div class="card-body">
-                                        <h4 class="card-title"><?php echo $encuentroVALUE['equipo_local_nombre'].' '.$encuentroVALUE['equipo_local_resultado_final'].' <br> vs <br> '.$encuentroVALUE['equipo_visitante_nombre'].' '.$encuentroVALUE['equipo_visitante_resultado_final']; ?></h4>
-                                        <p class="card-text"> FASE: <?php echo $encuentroVALUE['juego_fase']; ?> <br> ESTADO: <?php echo $encuentroVALUE['juego_estado']; ?> <br> HORARIO: <?php echo $encuentroVALUE['juego_horario']; ?></p>
-                                        <div style="position:absolute; bottom:1.25rem; left:1.25rem;">
-                                            <a href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;">Test COVID19</a>
-                                            <a href="../examen/sintomas.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;">Test S&iacute;ntomas</a>
-                                            <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;">Test Ant. M&eacute;dico</a>
-                                        </div>
-                                    </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h4 class="col-6 card-title">COVID19 Test</h4>
+                                    <h4 class="col-6 card-title" style="text-align: right;">
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/covid19_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA MASIVA</a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/covid19_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>" role="button" title="Agregar"><i class="ti-plus"></i> ALTA INDIVIDUAL</a>
+                                	</h4>
+								</div>
+                                <div class="table-responsive">
+                                    <table id="tableLoad" class="table v-middle" style="width: 100%;">
+                                        <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
+                                            <tr class="bg-conmebol">
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">C&Oacute;DIGO</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="2">TEST</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">COMPETICI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">ENCUENTRO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">EQUIPO</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="3">LABORATORIO</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="3">AUDITORIA</th>
+                                                <th class="border-top-0" style="text-align:center; width:160px;" rowspan="2">ACCI&Oacute;N</th>
+                                            </tr>
+                                            <tr class="bg-conmebol">
+                                                <th class="border-top-0" style="text-align:center;">ESTADO</th>
+                                                <th class="border-top-0" style="text-align:center;">FECHA</th>
+                                                <th class="border-top-0" style="text-align:center;">NOMBRE</th>
+                                                <th class="border-top-0" style="text-align:center;">FEC. ENVIO</th>
+                                                <th class="border-top-0" style="text-align:center;">FEC. RECEPCI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;">USUARIO</th>
+                                                <th class="border-top-0" style="text-align:center;">FECHA HORA</th>
+                                                <th class="border-top-0" style="text-align:center;">IP</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-<?php
-        }
-    }
-?>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Modal Procesar -->
-                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
+                <div id="modal-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modal-content">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -158,6 +182,12 @@
     include '../include/footer.php';
 ?>
 
-        <script src="../js/api.js"></script>
-    </body>
+    <script src="../js/api.js"></script>
+    <script>
+        const _codPers = <?php echo $log_04; ?>;
+        const _codEqui = <?php echo $usu_04; ?>;
+        const _codEncu = <?php echo $valorEncuentro; ?>;
+    </script>
+    <script src="../js/covid19.js"></script>
+</body>
 </html>
