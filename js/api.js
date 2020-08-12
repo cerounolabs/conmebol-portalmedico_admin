@@ -268,7 +268,7 @@ function getJugador(rowComp, rowEqui){
     localStorage.removeItem('jugadorJSON');
 
     if (localStorage.getItem('jugadorJSON') === null){
-        getJSON('jugadorJSON', '700/' + rowComp + '/' + rowEqui);
+        getJSON('jugadorJSON', '200/competicion/equipo/' + rowEqui + '/' + rowComp);
     }
 
     var xJSON = JSON.parse(localStorage.getItem('jugadorJSON'));
@@ -276,9 +276,26 @@ function getJugador(rowComp, rowEqui){
     
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-            if (element.competicion_codigo == rowComp) {
-                xDATA.push(element);
-            }
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getExamenJugador(rowComp, rowEqui, rowTipo){
+    localStorage.removeItem('examenJugadorJSON');
+
+    if (localStorage.getItem('examenJugadorJSON') === null){
+        getJSON('examenJugadorJSON', '200/competicion/equipo/alta/' + rowEqui + '/' + rowComp + '/' + rowTipo);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('examenJugadorJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
         });
     }
 
@@ -671,4 +688,37 @@ function getCovidControl(rowTipo, rowOrga, rowAnho, rowDisc, rowComp, rowEncu, r
     }
 
     return xDATA;
+}
+
+function selectJugador(codJud, inpPos, inpNro, codEqui, codComp){
+    var elemJug = document.getElementById(codJud);
+    var elemPos = document.getElementById(inpPos);
+    var elemNro = document.getElementById(inpNro);
+    var xJSON   = getJugador(codComp, codEqui);
+
+    xJSON.forEach(element => {
+        if (element.jugador_codigo == elemJug.value) {
+            elemPos.value = element.jugador_posicion;
+            elemNro.value = 'NRO. ' + element.jugador_numero;
+        }
+    });
+}
+
+function getExamenPrueba(codTipo, codEncu, codEqui) {
+    if (localStorage.getItem('examenPruebaJSON') === null){
+        getJSON('examenPruebaJSON', '801/examen/prueba/'+ codEqui +'/'+ codEncu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('examenPruebaJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
 }

@@ -21,7 +21,6 @@
 
     $dominioJSON    = get_curl('000');
     $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
-    $equipoJSON     = get_curl('200/competicion/equipo/'.$usu_04.'/'.$valorCompeticion);
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +83,7 @@
                                             <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/control_01.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">COVID19 TEST</a>
+                                            <a href="../examen/sintomas.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">S&Iacute;NTOMAS TEST</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
                                     </ol>
@@ -104,7 +103,7 @@
                     <!-- Start Page Content -->
                     <!-- ============================================================== -->
                     <!-- row -->
-                    <form method="post" action="../class/crud/control_01_1_crud.php" class="validation-wizard wizard-circle">
+                    <form method="post" action="../class/crud/sintomas_1_crud.php" class="validation-wizard wizard-circle">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -165,16 +164,20 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="form-group">
-                                        <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="" required readonly>
+                                        <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="0" required readonly>
                                         <input id="workModo" name="workModo" class="form-control" type="hidden" placeholder="Modo" value="C" required readonly>
-                                        <input id="workPage" name="workPage" class="form-control" type="hidden" placeholder="Modo" value="control_01_1_crud.php" required readonly>
-                                        <input id="workSPers" name="workSPers" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSinPers; ?>" required readonly>
-                                        <input id="workSFam" name="workSFam" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSinFam; ?>" required readonly>
-                                        <input id="workSerologia" name="workSerologia" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSerolgia; ?>" required readonly>
+                                        <input id="workPage" name="workPage" class="form-control" type="hidden" placeholder="Modo" value="sintomas_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
+                                        <input id="workAntMedico" name="workAntMedico" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indAntMed; ?>" required readonly>
+                                        <input id="workCompeticion" name="workCompeticion" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
+                                        <input id="workEncuentro" name="workEncuentro" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $valorEncuentro; ?>" required readonly>
+                                        <input id="workEquipo" name="workEquipo" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $usu_04; ?>" required readonly>
+                                        <input id="workAntExamen" name="workAntExamen" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
+                                        <input id="workEstado" name="workEstado" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
+                                        <input id="workTipo" name="workTipo" class="form-control" type="hidden" placeholder="Modo" value="206" required readonly>
                                     </div>
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
-                                        <a role="button" class="btn btn-dark" href="../examen/control_01.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
+                                        <a role="button" class="btn btn-dark" href="../examen/sintomas.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
                                     </div>
                                 </div>
                             </div>
@@ -222,15 +225,10 @@
         <script src="../js/api.js"></script>
 
         <script>
-            changeDisciplina(<?php echo $usu_04; ?>, 'var101', 'var102', 'var103');
-            changeCompetencia(<?php echo $usu_04; ?>, 'var101', 'var103', 'var104');
-
-            function loadDiv(var01, var02) {
+            function loadDiv() {
                 var html    = '';
                 var selSer  = '';
-                var selEqu  = document.getElementById(var01);
-                var selCom  = document.getElementById(var02);
-                var xJSON   = getJugador(selCom.value, selEqu.value);
+                var xJSON   = getExamenJugador(<?php echo $valorCompeticion; ?>, <?php echo $usu_04; ?>, 206);
                 var xJSON1  = getDominio('EXAMENMEDICOCOVID19SINTOMA');
                 var cantReg = 0;
 
@@ -239,7 +237,7 @@
 						selSer = selSer + '                               <option value="'+ element1.tipo_codigo +'">'+ element1.tipo_nombre_castellano +'</option>';
 					}
 				});
-
+console.log(xJSON);
                 xJSON.forEach(element => {
                         html = html +
                             '            <div class="row">'+
@@ -248,67 +246,37 @@
                             '                       <div class="card-body" style="background-color:#ffffff; color:#005ea6;">'+
                             '                           <div class="form-body">'+
                             '                               <div class="row">'+
-                            '                                   <div class="col-sm-12 col-md-6">'+
+                            '                                   <div class="col-sm-12 col-md-4">'+
                             '                                       <div class="form-group">'+
-                            '                                           <label for="var201_'+ cantReg +'">Nombre</label>'+
-                            '                                           <select id="var201_'+ cantReg +'" name="var201_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+                            '                                           <label for="var101_'+ cantReg +'">Nombre</label>'+
+                            '                                           <select id="var101_'+ cantReg +'" name="var101_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
                             '                                                   <option value="'+ element.jugador_codigo +'"> '+ element.jugador_completo +'</option>'+
                             '                                           </select>'+
                             '                                       </div>'+
                             '                                   </div>'+
-                            '                                   <div class="col-sm-12 col-md-3">'+
+                            '                                   <div class="col-sm-12 col-md-4">'+
                             '                                       <div class="form-group">'+
-                            '                                           <label for="var202_'+ cantReg +'">Personas Adultas</label>'+
-                            '                                           <select id="var202_'+ cantReg +'" name="var202_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
-                            '                                               <optgroup label="Cantidad">'+
-                            '                                                   <option value="0">Vive solo</option>'+
-                            '                                                   <option value="1">1 Persona</option>'+
-                            '                                                   <option value="2">2 Persona</option>'+
-                            '                                                   <option value="3">3 Persona</option>'+
-                            '                                                   <option value="4">4 Persona</option>'+
-                            '                                                   <option value="5">5 Persona</option>'+
-                            '                                                   <option value="6">6 Persona</option>'+
-                            '                                                   <option value="7">7 Persona</option>'+
-                            '                                                   <option value="8">8 Persona</option>'+
-                            '                                                   <option value="9">9 Persona</option>'+
-                            '                                                   <option value="10">10 Persona</option>'+
-                            '                                               </optgroup>'+
-                            '                                           </select>'+
+                            '                                           <label>Posición</label>'+
+                            '                                           <input value="'+ element.jugador_posicion +'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
                             '                                       </div>'+
                             '                                   </div>'+
-                            '                                   <div class="col-sm-12 col-md-3">'+
+                            '                                   <div class="col-sm-12 col-md-4">'+
                             '                                       <div class="form-group">'+
-                            '                                           <label for="var203_'+ cantReg +'"> Personas Menores </label>'+
-                            '                                           <select id="var203_'+ cantReg +'" name="var203_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
-                            '                                               <optgroup label="Cantidad">'+
-                            '                                                   <option value="0">Vive solo</option>'+
-                            '                                                   <option value="1">1 Persona</option>'+
-                            '                                                   <option value="2">2 Persona</option>'+
-                            '                                                   <option value="3">3 Persona</option>'+
-                            '                                                   <option value="4">4 Persona</option>'+
-                            '                                                   <option value="5">5 Persona</option>'+
-                            '                                                   <option value="6">6 Persona</option>'+
-                            '                                                   <option value="7">7 Persona</option>'+
-                            '                                                   <option value="8">8 Persona</option>'+
-                            '                                                   <option value="9">9 Persona</option>'+
-                            '                                                   <option value="10">10 Persona</option>'+
-                            '                                               </optgroup>'+
-                            '                                           </select>'+
+                            '                                           <label>Nro Camiseta</label>'+
+                            '                                           <input value="'+ element.jugador_numero +'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
                             '                                       </div>'+
                             '                                   </div>'+
-                            '                               </div>'+
-                            '                               <div class="row">'+
 <?php
     if ($dominioJSON['code'] === 200){
         $indSerolgia = 0;
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19SEROLOGIA'){
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'EXAMENMEDICOCOVID19SINTOMA'){
 ?>
-                            '                                   <div class="col-sm-12 col-md-3">'+
+                            '                                   <div class="col-sm-12 col-md-4">'+
                             '                                       <div class="form-group">'+
-                            '                                           <input id="var2041_<?php echo $indSerolgia; ?>_'+ cantReg +'" name="var2041_<?php echo $indSerolgia; ?>_'+ cantReg +'" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" required readonly>'+
-                            '                                           <label for="var2042_<?php echo $indSerolgia; ?>_'+ cantReg +'"> TEST <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>'+
-                            '                                           <select id="var2042_<?php echo $indSerolgia; ?>_'+ cantReg +'" name="var2042_<?php echo $indSerolgia; ?>_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+                            '                                           <input id="var1051_<?php echo $indSerolgia; ?>_'+ cantReg +'" name="var1051_<?php echo $indSerolgia; ?>_'+ cantReg +'" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" required readonly>'+
+                            '                                           <label for="var1052_<?php echo $indSerolgia; ?>_'+ cantReg +'"> SÍNTOMAS <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>'+
+                            '                                           <select id="var1052_<?php echo $indSerolgia; ?>_'+ cantReg +'" name="var1052_<?php echo $indSerolgia; ?>_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
                             '                                               <optgroup label="Presento">'+
                             '                                                   <option value="N">NO</option>'+
                             '                                                   <option value="S">SI</option>'+
@@ -323,60 +291,12 @@
     }
 ?>
                             '                               </div>'+
-                            '                               <div class="row">'+
-                            '                                   <div class="col-sm-12 col-md-6">'+
-                            '                                       <div class="form-group">'+
-                            '                                           <label for="var205_'+ cantReg +'">S&iacute;ntomas Personales</label>'+
-<?php
-    if ($dominioJSON['code'] === 200){
-        $indSinPers = 0;
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19SINTOMA'){
-?>
-                            '                                           <div class="custom-control custom-checkbox">'+
-                            '                                               <input id="var2051_<?php echo $indSinPers; ?>_'+ cantReg +'" name="var2051_<?php echo $indSinPers; ?>_'+ cantReg +'" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                            '                                               <input type="checkbox" class="custom-control-input" id="var2052_<?php echo $indSinPers; ?>_'+ cantReg +'" name="var2052_<?php echo $indSinPers; ?>_'+ cantReg +'">'+
-                            '                                               <label class="custom-control-label" for="var2052_<?php echo $indSinPers; ?>_'+ cantReg +'"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>'+
-                            '                                           </div>'+
-<?php
-                $indSinPers = $indSinPers + 1;
-            }
-        }
-    }
-?>
-                            '                                       </div>'+
-                            '                                   </div>'+
-                            '                                   <div class="col-sm-12 col-md-6">'+
-                            '                                       <div class="form-group">'+
-                            '                                           <label for="var206_'+ cantReg +'">S&iacute;ntomas Familiares</label>'+
-<?php
-    if ($dominioJSON['code'] === 200){
-        $indSinFam = 0;
-        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COVID19SINTOMA'){
-?>
-                            '                                           <div class="custom-control custom-checkbox">'+
-                            '                                               <input id="var2061_<?php echo $indSinFam; ?>_'+ cantReg +'" name="var2061_<?php echo $indSinFam; ?>_'+ cantReg +'" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                            '                                               <input type="checkbox" class="custom-control-input" id="var2062_<?php echo $indSinFam; ?>_'+ cantReg +'" name="var2062_<?php echo $indSinFam; ?>_'+ cantReg +'">'+
-                            '                                               <label class="custom-control-label" for="var2062_<?php echo $indSinFam; ?>_'+ cantReg +'"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>'+
-                            '                                           </div>'+
-<?php
-                $indSinFam = $indSinFam + 1;
-            }
-        }
-    }
-?>
-                            '                                       </div>'+
-                            '                                   </div>'+
-                            '                               </div>'+
                             '                           </div>'+
                             '                       </div>'+
                             '                   </div>'+
                             '               </div>'+
                             '               <div class="form-group">'+
-                            '                   <input id="workSPers" name="workSPers_'+ cantReg +'" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSinPers; ?>" required readonly>'+
-                            '                   <input id="workSFam" name="workSFam_'+ cantReg +'" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSinFam; ?>" required readonly>'+
-                            '                   <input id="workSerologia" name="workSerologia_'+ cantReg +'" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSerolgia; ?>" required readonly>'+
+                            '                   <input id="workSerologia" name="workSintomas_'+ cantReg +'" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSerolgia; ?>" required readonly>'+
                             '               </div>'+
                             '            </div>';
 
@@ -385,12 +305,14 @@
 
                 html = html +
                     '               <div class="form-group">'+
-                    '                   <input id="workCJug" name="workCJug" class="form-control" type="hidden" placeholder="Modo" value="'+ cantReg +'" required readonly>'+
+                    '                   <input id="workCRegistro" name="workCRegistro" class="form-control" type="hidden" placeholder="Modo" value="'+ cantReg +'" required readonly>'+
                     '               </div>';
 
                 $("#divjugador").empty();
                 $("#divjugador").append(html);
             }
+
+            loadDiv();
         </script>
     </body>
 </html>

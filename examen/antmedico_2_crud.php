@@ -21,7 +21,7 @@
 
     $dominioJSON    = get_curl('000');
     $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
-    $equipoJSON     = get_curl('200/competicion/equipo/'.$usu_04.'/'.$valorCompeticion);
+    $equipoJSON     = get_curl('200/competicion/equipo/alta/'.$usu_04.'/'.$valorCompeticion.'/177');
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +86,7 @@
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">ANTECEDENTE M&Eacute;DICO</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">ALTA DE PRUEBA</li>
+                                        <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -144,6 +144,12 @@
                                                         <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_estadio']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Estadio" readonly>
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
+                                                        <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -157,15 +163,15 @@
                                     <div class="card-body" style="background-color:#ffffff; color:#005ea6;">
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-sm-12 col-md-8">
+                                                <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var101">Persona</label>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var101_1', 'var101_2', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
 <?php
     if ($equipoJSON['code'] === 200){
         foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) {
 ?>
-                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido'].', POS. '.$equipoVALUE['jugador_posicion'].', NRO. '.$equipoVALUE['jugador_numero']; ?></option>
+                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido']; ?></option>
 <?php
         }
     }
@@ -173,12 +179,21 @@
                                                         </select>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
-                                                        <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
+                                                        <label for="var101_1">Posición</label>
+                                                        <input id="var101_1" name="var101_1" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var101_2">Nro Camiseta</label>
+                                                        <input id="var101_2" name="var101_2" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
+                                                    </div>
+                                                </div>
+
 <?php
     if ($dominioJSON['code'] === 200){
         $indAntMed = 0;
