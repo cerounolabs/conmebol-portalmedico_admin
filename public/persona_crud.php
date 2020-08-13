@@ -245,7 +245,7 @@
 <?php
     if($dominioJSON['code'] === 200){
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COMPETENCIACATEGORIA'){
+            if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'COMPETICIONCATEGORIA'){
                 if ($dominioVALUE['tipo_codigo'] === $row_12){
                     $selected = 'selected';
                 } else {
