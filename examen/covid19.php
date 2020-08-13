@@ -145,8 +145,8 @@
                 </div>
 
                 <!-- Modal Procesar -->
-                <div id="modal-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="modal-content">
+                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
                     </div>
                 </div>
                 <!-- Modal Procesar -->

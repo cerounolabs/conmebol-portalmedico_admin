@@ -193,6 +193,18 @@
                                                         <input id="var101_2" name="var101_2" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var108">CONVOCADO</label>
+                                                        <select id="var108" name="var108" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                            <optgroup label="Esta convocado para el encuentro?">
+                                                                <option value="N"> NO </option>
+                                                                <option value="S"> SI </option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
 
 <?php
     if ($dominioJSON['code'] === 200){

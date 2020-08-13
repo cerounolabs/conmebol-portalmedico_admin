@@ -30,14 +30,14 @@ $(document).ready(function() {
                 { targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
                 { targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
                 { targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
-                { targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-                { targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
+                { targets			: [3],	visible : false,searchable : false,	orderData : [3, 0] },
+                { targets			: [4],	visible : false,searchable : false,	orderData : [4, 0] },
                 { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
                 { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                 { targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
                 { targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
                 { targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
-                { targets			: [10],	visible : true, searchable : true,	orderData : [10, 0] }
+                { targets			: [10],	visible : false,searchable : false,	orderData : [10, 0] }
             ],
             columns		: [
                 { data				: 'examen_codigo', name : 'examen_codigo'},
@@ -56,7 +56,7 @@ $(document).ready(function() {
                         var btnUPD  = '<button onclick="" title="Editar" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
                         var btnDLT  = '<button onclick="" title="Eliminar" type="button" class="btn btn-danger btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-eraser"></i></button>';
                         var btnAUD  = '<button onclick="" title="Auditoria" type="button" class="btn btn-warning btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-user-secret"></i></button>';
-                        return (btnDSP + '&nbsp;' + btnUPD + '&nbsp;' + btnDLT + '&nbsp;' + btnAUD);
+                        return (btnDSP + '&nbsp;' + btnUPD + '&nbsp;' + btnAUD);
                     }
                 },
             ]

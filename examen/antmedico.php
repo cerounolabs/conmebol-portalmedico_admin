@@ -116,7 +116,7 @@
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
-                                                <th class="border-top-0" style="text-align:center;">FEC. TEST</th>
+                                                <th class="border-top-0" style="text-align:center;">FECHA CARGA</th>
                                                 <th class="border-top-0" style="text-align:center;">COMPETICI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;">ENCUENTRO</th>
                                                 <th class="border-top-0" style="text-align:center;">EQUIPO</th>

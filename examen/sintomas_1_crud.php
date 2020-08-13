@@ -145,7 +145,7 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
+                                                        <label for="var102"> Fecha de S&iacute;ntomas </label>
                                                         <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
                                                     </div>
                                                 </div>
@@ -264,6 +264,15 @@
                             '                                       <div class="form-group">'+
                             '                                           <label>Nro Camiseta</label>'+
                             '                                           <input value="'+ element.jugador_numero +'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                            '                                       </div>'+
+                            '                                   </div>'+
+                            '                                   <div class="col-sm-12 col-md-4">'+
+                            '                                       <div class="form-group">'+
+                            '                                           <label for="var108_'+ cantReg +'">CONVOCADO</label>'+
+                            '                                           <select id="var108_'+ cantReg +'" name="var108_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+                            '                                                   <option value="N"> NO </option>'+
+                            '                                                   <option value="S"> SI </option>'+
+                            '                                           </select>'+
                             '                                       </div>'+
                             '                                   </div>'+
 <?php
