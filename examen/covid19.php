@@ -120,7 +120,7 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">ENCUENTRO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">EQUIPO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="3">LABORATORIO</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="4">LABORATORIO</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">AUDITORIA</th>
                                                 <th class="border-top-0" style="text-align:center; width:160px;" rowspan="2">ACCI&Oacute;N</th>
                                             </tr>
@@ -130,6 +130,7 @@
                                                 <th class="border-top-0" style="text-align:center;">NOMBRE</th>
                                                 <th class="border-top-0" style="text-align:center;">FEC. ENVIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FEC. RECEPCI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;">RESULTADO</th>
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA HORA</th>
                                                 <th class="border-top-0" style="text-align:center;">IP</th>
