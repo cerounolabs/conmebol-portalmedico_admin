@@ -45,6 +45,7 @@
 					'examen_fecha_3'				=> '',
 					'examen_persona_adulta'			=> 0,
 					'examen_persona_menor'			=> 0,
+					'examen_convocado'				=> '',
 					'examen_adjunto'				=> '',
 					'examen_observacion'			=> '',
 					'auditoria_usuario'				=> $log_01,

@@ -31,6 +31,7 @@
 			$val101			= $_POST['var101_'.$i];
 			$val103			= $_POST['var103_'.$i];
 			$val104			= $_POST['var104_'.$i];
+			$val108			= $_POST['var108_'.$i];
 			
 			$work12         = $_POST['workSerologia_'.$i];
 
@@ -49,6 +50,7 @@
 					'examen_fecha_3'				=> '',
 					'examen_persona_adulta'			=> $val103,
 					'examen_persona_menor'			=> $val104,
+					'examen_convocado'				=> $val108,
 					'examen_adjunto'				=> $val106,
 					'examen_observacion'			=> '',
 					'auditoria_usuario'				=> $log_01,

@@ -342,6 +342,15 @@
         }
     }
 ?>
+                            '                                   <div class="col-sm-12 col-md-4">'+
+                            '                                       <div class="form-group">'+
+                            '                                           <label for="var108_'+ cantReg +'">CONVOCADO</label>'+
+                            '                                           <select id="var108_'+ cantReg +'" name="var108_'+ cantReg +'" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+                            '                                                   <option value="N"> NO </option>'+
+                            '                                                   <option value="S"> SI </option>'+
+                            '                                           </select>'+
+                            '                                       </div>'+
+                            '                                   </div>'+
                             '                               </div>'+
                             '                           </div>'+
                             '                       </div>'+

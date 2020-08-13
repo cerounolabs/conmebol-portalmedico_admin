@@ -9,10 +9,11 @@
 
     $val101			= $_POST['var101'];
     $val102			= $_POST['var102'];
-    $val103			= $_POST['var103'];
-	$val104			= $_POST['var104'];
+    $val103			= 0;
+	$val104			= 0;
 	$val106			= $_POST['var106'];
 	$val107			= $_POST['var107'];
+	$val108			= $_POST['var108'];
 
     $work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
@@ -28,7 +29,7 @@
 	$log_01         = $_SESSION['log_01'];
 	$log_03         = $_SESSION['log_03'];
 
-    if (isset($val101) && isset($val102) && isset($val103) && isset($val104)) {
+    if (isset($val101) && isset($val102)) {
         $dataJSON = json_encode(
             array(
 				'tipo_estado_codigo'			=> $work09,
@@ -44,6 +45,7 @@
 				'examen_fecha_3'				=> '',
 				'examen_persona_adulta'			=> $val103,
 				'examen_persona_menor'			=> $val104,
+				'examen_convocado'				=> $val108,
 				'examen_adjunto'				=> $val106,
 				'examen_observacion'			=> '',
 				'auditoria_usuario'				=> $log_01,

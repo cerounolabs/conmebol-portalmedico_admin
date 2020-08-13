@@ -110,7 +110,7 @@
                                 <div class="card">
                                     <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
                                         <div class="row">
-                                            <h4 class="col-12 card-title">DATOS DEL ENCUENTRO</h4>
+                                            <h4 class="col-12 card-title">DATOS DEL EQUIPO</h4>
 								        </div>
                                         <div class="form-body">
                                             <div class="row">
@@ -146,8 +146,8 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
-                                                        <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
+                                                        <label for="var102"> Fecha de Registro </label>
+                                                        <input id="var102" name="var102" value="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required readonly>
                                                     </div>
                                                 </div>
                                             </div>

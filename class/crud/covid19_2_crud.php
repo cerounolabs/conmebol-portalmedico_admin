@@ -13,6 +13,7 @@
 	$val104			= $_POST['var104'];
 	$val106			= $_POST['var106'];
 	$val107			= $_POST['var107'];
+	$val108			= $_POST['var108'];
 
     $work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
@@ -44,6 +45,7 @@
 				'examen_fecha_3'				=> '',
 				'examen_persona_adulta'			=> $val103,
 				'examen_persona_menor'			=> $val104,
+				'examen_convocado'				=> $val108,
 				'examen_adjunto'				=> $val106,
 				'examen_observacion'			=> '',
 				'auditoria_usuario'				=> $log_01,

@@ -110,49 +110,28 @@
                                 <div class="card">
                                     <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
                                         <div class="row">
-                                            <h4 class="col-12 card-title">DATOS DEL ENCUENTRO</h4>
+                                            <h4 class="col-12 card-title">DATOS DEL EQUIPO</h4>
 								        </div>
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label> Competicion </label>
-                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_fase']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
+                                                        <label> Equipo </label>
+                                                        <input class="form-control" value="<?php $rival = ($juegoJSON['data'][0]['equipo_local_codigo'] == $usu_04) ? str_replace('"', '', $juegoJSON['data'][0]['equipo_local_nombre']) : str_replace('"', '', $juegoJSON['data'][0]['equipo_visitante_nombre']); echo $rival; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label> Rival </label>
-                                                        <input class="form-control" value="<?php $rival = ($juegoJSON['data'][0]['equipo_local_codigo'] == $usu_04) ? str_replace('"', '', $juegoJSON['data'][0]['equipo_visitante_nombre']) : str_replace('"', '', $juegoJSON['data'][0]['equipo_local_nombre']); echo $rival; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Rival" readonly>
+                                                        <label> Usuario de Registro </label>
+                                                        <input class="form-control" value="<?php echo $usu_01; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label> Fecha </label>
-                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_horario']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Fecha" readonly>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label> Ciudad </label>
-                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_ciudad']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Ciudad" readonly>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label> Estadio </label>
-                                                        <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_estadio']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Estadio" readonly>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
-                                                        <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
+                                                        <label for="var102"> Fecha de Registro </label>
+                                                        <input id="var102" name="var102" value="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,7 +143,7 @@
 <?php
     if ($equipoJSON['code'] === 200){
         $cantReg = 0;
-
+        
         foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) {
 ?>
                         <div class="row">
@@ -177,7 +156,7 @@
                                                     <div class="form-group">
                                                         <label for="var101_<?php echo $cantReg; ?>">Persona</label>
                                                         <select id="var101_<?php echo $cantReg; ?>" name="var101_<?php echo $cantReg; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido'] ?></option>
+                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido']; ?></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -207,7 +186,7 @@
                                                     <div class="form-group">
                                                         <input id="var1031_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" name="var1031_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
                                                         <label for="var1032_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
-                                                        <select id="var1032_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" name="var1032_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <select id="var1033_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" name="var1033_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
                                                                 <option value="N">NO</option>
                                                                 <option value="S">SI</option>
@@ -232,21 +211,22 @@
         }
     }
 ?>
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="form-group">
-                                        <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="0" required readonly>
-                                        <input id="workModo" name="workModo" class="form-control" type="hidden" placeholder="Modo" value="C" required readonly>
-                                        <input id="workPage" name="workPage" class="form-control" type="hidden" placeholder="Modo" value="antmedico_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
-                                        <input id="workAntMedico" name="workAntMedico" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indAntMed; ?>" required readonly>
-                                        <input id="workCompeticion" name="workCompeticion" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
-                                        <input id="workEncuentro" name="workEncuentro" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $valorEncuentro; ?>" required readonly>
-                                        <input id="workEquipo" name="workEquipo" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $usu_04; ?>" required readonly>
-                                        <input id="workAntExamen" name="workAntExamen" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
-                                        <input id="workEstado" name="workEstado" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
-                                        <input id="workTipo" name="workTipo" class="form-control" type="hidden" placeholder="Modo" value="177" required readonly>
-                                        <input id="workCRegistro" name="workCRegistro" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $cantReg; ?>" required readonly>
+                                        <input id="workCodigo"      name="workCodigo"       class="form-control" type="hidden" value="0" required readonly>
+                                        <input id="workModo"        name="workModo"         class="form-control" type="hidden" value="C" required readonly>
+                                        <input id="workPage"        name="workPage"         class="form-control" type="hidden" value="antmedico_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
+                                        <input id="workAntMedico"   name="workAntMedico"    class="form-control" type="hidden" value="<?php echo $indAntMed; ?>" required readonly>
+                                        <input id="workCompeticion" name="workCompeticion"  class="form-control" type="hidden" value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
+                                        <input id="workEncuentro"   name="workEncuentro"    class="form-control" type="hidden" value="<?php echo $valorEncuentro; ?>" required readonly>
+                                        <input id="workEquipo"      name="workEquipo"       class="form-control" type="hidden" value="<?php echo $usu_04; ?>" required readonly>
+                                        <input id="workAntExamen"   name="workAntExamen"    class="form-control" type="hidden" value="0" required readonly>
+                                        <input id="workEstado"      name="workEstado"       class="form-control" type="hidden" value="0" required readonly>
+                                        <input id="workTipo"        name="workTipo"         class="form-control" type="hidden" value="177" required readonly>
+                                        <input id="workCRegistro"   name="workCRegistro"    class="form-control" type="hidden" value="<?php echo $cantReg; ?>" required readonly>
                                     </div>
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
