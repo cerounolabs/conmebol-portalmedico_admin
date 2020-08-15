@@ -33,18 +33,13 @@
     </head>
 
     <body>
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- Main wrapper - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+
         <div id="main-wrapper">
 <?php
     switch ($usu_05) {
@@ -57,19 +52,15 @@
             break;
     }
 ?>
-        
-            <!-- Page wrapper  -->
-            <!-- ============================================================== -->
+
             <div class="page-wrapper">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
                 <div class="page-breadcrumb">
                     <div class="row">
                         <div class="col-5 align-self-center">
                             <h4 class="page-title"><?php echo $usu_02.' - '.$usu_01; ?></h4>
                             <div class="d-flex align-items-center"></div>
                         </div>
+
                         <div class="col-7 align-self-center">
                             <div class="d-flex no-block justify-content-end align-items-center">
                                 <nav aria-label="breadcrumb">
@@ -77,15 +68,19 @@
                                         <li class="breadcrumb-item">
                                             <a href="../examen/home.php">HOME</a>
                                         </li>
+
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../examen/competicion.php">COMPETICI&Oacute;N</a>
                                         </li>
+
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
                                         </li>
+
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">ANTECEDENTE M&Eacute;DICO</a>
                                         </li>
+
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
                                     </ol>
                                 </nav>
@@ -93,17 +88,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Container fluid  -->
-                <!-- ============================================================== -->
+
                 <div class="container-fluid">
-                    <!-- ============================================================== -->
-                    <!-- Start Page Content -->
-                    <!-- ============================================================== -->
-                    <!-- row -->
                     <form method="post" action="../class/crud/antmedico_1_crud.php" class="validation-wizard wizard-circle">
                         <div class="row">
                             <div class="col-12">
@@ -112,26 +98,27 @@
                                         <div class="row">
                                             <h4 class="col-12 card-title">DATOS DEL EQUIPO</h4>
 								        </div>
+
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label> Equipo </label>
+                                                        <label> Equipo de registro </label>
                                                         <input class="form-control" value="<?php $rival = ($juegoJSON['data'][0]['equipo_local_codigo'] == $usu_04) ? str_replace('"', '', $juegoJSON['data'][0]['equipo_local_nombre']) : str_replace('"', '', $juegoJSON['data'][0]['equipo_visitante_nombre']); echo $rival; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label> Usuario de Registro </label>
+                                                        <label> Usuario de registro </label>
                                                         <input class="form-control" value="<?php echo $usu_01; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var102"> Fecha de Registro </label>
-                                                        <input id="var102" name="var102" value="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required readonly>
+                                                        <label for="var100"> Fecha de registro </label>
+                                                        <input id="var100" name="var100" value="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,6 +127,7 @@
                                 </div>
                             </div>
                         </div>
+
 <?php
     if ($equipoJSON['code'] === 200){
         $cantReg = 0;
@@ -163,39 +151,46 @@
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Posición</label>
-                                                        <input value="<?php echo $equipoVALUE['jugador_posicion']; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
+                                                        <label for="var102_<?php echo $cantReg; ?>">Posición</label>
+                                                        <input id="var102_<?php echo $cantReg; ?>" name="var102_<?php echo $cantReg; ?>" value="<?php echo $equipoVALUE['jugador_posicion']; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Nro Camiseta</label>
+                                                        <label for="var103_<?php echo $cantReg; ?>">Camiseta nro.</label>
                                                         <input value="<?php echo $equipoVALUE['jugador_numero']; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
 
 <?php
             if ($dominioJSON['code'] === 200){
-                $indAntMed = 0;
+                $indexTest = 0;
 
                 foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
                     if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'EXAMENMEDICOANTMEDICO'){
 ?>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <input id="var1031_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" name="var1031_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                        <label for="var1032_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>"> <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
-                                                        <select id="var1033_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" name="var1033_<?php echo $indAntMed; ?>_<?php echo $cantReg; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <input id="var1041_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>" name="var1041_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
+                                                        <label for="var1042_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>"> <?php echo ucfirst(strtolower($dominioVALUE['tipo_nombre_castellano'])); ?> </label>
+                                                        <select id="var1042_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>" name="var1042_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
-                                                                <option value="N">NO</option>
-                                                                <option value="S">SI</option>
+                                                                <option value="NO">NO</option>
+                                                                <option value="SI">SI</option>
                                                             </optgroup>
                                                         </select>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-sm-12 col-md-8">
+                                                    <div class="form-group">
+                                                        <label for="var1043_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>">Comentario</label>
+                                                        <input id="var1043_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>" name="var1043_<?php echo $indexTest; ?>_<?php echo $cantReg; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
+                                                    </div>
+                                                </div>
 <?php
-                        $indAntMed = $indAntMed + 1;
+                        $indexTest = $indexTest + 1;
                     }
                 }
             }
@@ -216,18 +211,19 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="form-group">
-                                        <input id="workCodigo"      name="workCodigo"       class="form-control" type="hidden" value="0" required readonly>
-                                        <input id="workModo"        name="workModo"         class="form-control" type="hidden" value="C" required readonly>
-                                        <input id="workPage"        name="workPage"         class="form-control" type="hidden" value="antmedico_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
-                                        <input id="workAntMedico"   name="workAntMedico"    class="form-control" type="hidden" value="<?php echo $indAntMed; ?>" required readonly>
-                                        <input id="workCompeticion" name="workCompeticion"  class="form-control" type="hidden" value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
-                                        <input id="workEncuentro"   name="workEncuentro"    class="form-control" type="hidden" value="<?php echo $valorEncuentro; ?>" required readonly>
-                                        <input id="workEquipo"      name="workEquipo"       class="form-control" type="hidden" value="<?php echo $usu_04; ?>" required readonly>
-                                        <input id="workAntExamen"   name="workAntExamen"    class="form-control" type="hidden" value="0" required readonly>
-                                        <input id="workEstado"      name="workEstado"       class="form-control" type="hidden" value="0" required readonly>
-                                        <input id="workTipo"        name="workTipo"         class="form-control" type="hidden" value="177" required readonly>
-                                        <input id="workCRegistro"   name="workCRegistro"    class="form-control" type="hidden" value="<?php echo $cantReg; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workCodigo"       name="workCodigo"       value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workModo"         name="workModo"         value="C" required readonly>
+                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="antmedico_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
+                                        <input class="form-control" type="hidden" id="workTest"         name="workTest"         value="<?php echo $indexTest; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $usu_04; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workAntExamen"    name="workAntExamen"    value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="177" required readonly>
+                                        <input class="form-control" type="hidden" id="workRegistro"     name="workRegistro"     value="<?php echo $cantReg; ?>" required readonly>
                                     </div>
+
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
                                         <a role="button" class="btn btn-dark" href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion;?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
@@ -243,32 +239,14 @@
                         </div>
                     </div>
                     <!-- Modal Procesar -->
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Right sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- .right-sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- End Right sidebar -->
-                    <!-- ============================================================== -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Container fluid  -->
-                <!-- ============================================================== -->
+
 <?php
     include '../include/development.php';
 ?>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Page wrapper  -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Wrapper -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
+
         <div class="chat-windows"></div>
         
 <?php
