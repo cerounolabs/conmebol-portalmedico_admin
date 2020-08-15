@@ -33,18 +33,13 @@
     </head>
 
     <body>
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- Main wrapper - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+
         <div id="main-wrapper">
 <?php
     switch ($usu_05) {
@@ -57,19 +52,15 @@
             break;
     }
 ?>
-        
-            <!-- Page wrapper  -->
-            <!-- ============================================================== -->
+
             <div class="page-wrapper">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
                 <div class="page-breadcrumb">
                     <div class="row">
                         <div class="col-5 align-self-center">
                             <h4 class="page-title"><?php echo $usu_02.' - '.$usu_01; ?></h4>
                             <div class="d-flex align-items-center"></div>
                         </div>
+
                         <div class="col-7 align-self-center">
                             <div class="d-flex no-block justify-content-end align-items-center">
                                 <nav aria-label="breadcrumb">
@@ -77,15 +68,19 @@
                                         <li class="breadcrumb-item">
                                             <a href="../examen/home.php">HOME</a>
                                         </li>
+
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../examen/competicion.php">COMPETICIONES</a>
                                         </li>
+
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
                                         </li>
+
                                         <li class="breadcrumb-item" aria-current="page">
                                             <a href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">COVID19 TEST</a>
                                         </li>
+
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
                                     </ol>
                                 </nav>
@@ -93,17 +88,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Container fluid  -->
-                <!-- ============================================================== -->
+
                 <div class="container-fluid">
-                    <!-- ============================================================== -->
-                    <!-- Start Page Content -->
-                    <!-- ============================================================== -->
-                    <!-- row -->
                     <form method="post" action="../class/crud/covid19_2_crud.php" class="validation-wizard wizard-circle">
                         <div class="row">
                             <div class="col-12">
@@ -112,6 +98,7 @@
                                         <div class="row">
                                             <h4 class="col-12 card-title">DATOS DEL ENCUENTRO</h4>
 								        </div>
+
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
@@ -120,34 +107,58 @@
                                                         <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_fase']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label> Rival </label>
                                                         <input class="form-control" value="<?php $rival = ($juegoJSON['data'][0]['equipo_local_codigo'] == $usu_04) ? str_replace('"', '', $juegoJSON['data'][0]['equipo_visitante_nombre']) : str_replace('"', '', $juegoJSON['data'][0]['equipo_local_nombre']); echo $rival; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Rival" readonly>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label> Fecha </label>
                                                         <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_horario']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Fecha" readonly>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label> Ciudad </label>
                                                         <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_ciudad']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Ciudad" readonly>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label> Estadio </label>
                                                         <input class="form-control" value="<?php echo $juegoJSON['data'][0]['juego_estadio']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Estadio" readonly>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var102"> Fecha Realizaci&oacute;n de Test </label>
-                                                        <input id="var102" name="var102" max="<?php echo date('Y-m-d'); ?>" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var100"> Fecha realizaci&oacute;n de test </label>
+                                                        <input id="var100" name="var100" max="<?php echo date('Y-m-d'); ?>" onblur="inputChange('var100', 'var109');" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Test" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var108"> Laboratorio de test </label>
+                                                        <input id="var108" name="var108" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="Laboratorio de test" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var109"> Envio al laboratorio </label>
+                                                        <input id="var109" name="var109" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Envio al laboratorio" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,7 +177,7 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var101">Persona</label>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var101_1', 'var101_2', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
 <?php
     if ($equipoJSON['code'] === 200){
         foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) {
@@ -182,42 +193,21 @@
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Posición</label>
-                                                        <input id="var101_1" name="var101_1" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
+                                                        <label>Posici&oacute;n</label>
+                                                        <input id="var102" name="var102" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Nro Camiseta</label>
-                                                        <input id="var101_2" name="var101_2" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
+                                                        <label>Camiseta nro.</label>
+                                                        <input id="var103" name="var103" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var103">Personas Adultas</label>
-                                                        <select id="var103" name="var103" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Cantidad">
-                                                                <option value="0">Vive solo</option>
-                                                                <option value="1">1 Persona</option>
-                                                                <option value="2">2 Persona</option>
-                                                                <option value="3">3 Persona</option>
-                                                                <option value="4">4 Persona</option>
-                                                                <option value="5">5 Persona</option>
-                                                                <option value="6">6 Persona</option>
-                                                                <option value="7">7 Persona</option>
-                                                                <option value="8">8 Persona</option>
-                                                                <option value="9">9 Persona</option>
-                                                                <option value="10">10 Persona</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="var104">Personas Menores</label>
+                                                        <label for="var104">Personas adultas</label>
                                                         <select id="var104" name="var104" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Cantidad">
                                                                 <option value="0">Vive solo</option>
@@ -236,55 +226,70 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var105">Personas menores</label>
+                                                        <select id="var105" name="var105" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                            <optgroup label="Cantidad">
+                                                                <option value="0">Vive solo</option>
+                                                                <option value="1">1 Persona</option>
+                                                                <option value="2">2 Persona</option>
+                                                                <option value="3">3 Persona</option>
+                                                                <option value="4">4 Persona</option>
+                                                                <option value="5">5 Persona</option>
+                                                                <option value="6">6 Persona</option>
+                                                                <option value="7">7 Persona</option>
+                                                                <option value="8">8 Persona</option>
+                                                                <option value="9">9 Persona</option>
+                                                                <option value="10">10 Persona</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var106">Convocado</label>
+                                                        <select id="var106" name="var106" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                            <optgroup label="Convocado">
+                                                                <option value="NO">NO</option>
+                                                                <option value="SI">SI</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
 <?php
     if ($dominioJSON['code'] === 200){
-        $indSerolgia = 0;
+        $indexTest = 0;
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
             if ($dominioVALUE['tipo_estado_codigo'] === 'A' && $dominioVALUE['tipo_dominio'] === 'EXAMENMEDICOCOVID19SEROLOGIA'){
 ?>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <input id="var1051_<?php echo $indSerolgia; ?>" name="var1051_<?php echo $indSerolgia; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                        <label for="var1052_<?php echo $indSerolgia; ?>"> TEST <?php echo $dominioVALUE['tipo_nombre_castellano']; ?> </label>
-                                                        <select id="var1052_<?php echo $indSerolgia; ?>" name="var1052_<?php echo $indSerolgia; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <input id="var1071_<?php echo $indexTest; ?>" name="var1071_<?php echo $indexTest; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
+                                                        <label for="var1072_<?php echo $indexTest; ?>"> Test <?php echo ucfirst(strtolower($dominioVALUE['tipo_nombre_castellano'])); ?> </label>
+                                                        <select id="var1072_<?php echo $indexTest; ?>" name="var1072_<?php echo $indexTest; ?>" onchange="inputValid('var1072_<?php echo $indexTest; ?>', var1073_<?php echo $indexTest; ?>);" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
-                                                                <option value="N">NO</option>
-                                                                <option value="S">SI</option>
+                                                                <option value="NO">NO</option>
+                                                                <option value="SI">SI</option>
                                                             </optgroup>
                                                         </select>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-sm-12 col-md-8">
+                                                    <div class="form-group">
+                                                        <label for="var1073_<?php echo $indexTest; ?>">Comentario</label>
+                                                        <input id="var1073_<?php echo $indexTest; ?>" name="var1073_<?php echo $indexTest; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
+                                                    </div>
+                                                </div>
 <?php
-                $indSerolgia = $indSerolgia + 1;
+                $indexTest = $indexTest + 1;
             }
         }
     }
 ?>
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Laboratorio de Test</label>
-                                                        <input id="var106" name="var106" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="Laboratorio de Test" required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Envio al Laboratorio</label>
-                                                        <input id="var107" name="var107" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Envio al Laboratorio" required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="var108">CONVOCADO</label>
-                                                        <select id="var108" name="var108" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Esta convocado para el encuentro?">
-                                                                <option value="N"> NO </option>
-                                                                <option value="S"> SI </option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -296,17 +301,19 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="form-group">
-                                        <input id="workCodigo" name="workCodigo" class="form-control" type="hidden" placeholder="Codigo" value="0" required readonly>
-                                        <input id="workModo" name="workModo" class="form-control" type="hidden" placeholder="Modo" value="C" required readonly>
-                                        <input id="workPage" name="workPage" class="form-control" type="hidden" placeholder="Modo" value="covid19_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
-                                        <input id="workSerologia" name="workSerologia" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $indSerolgia; ?>" required readonly>
-                                        <input id="workCompeticion" name="workCompeticion" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
-                                        <input id="workEncuentro" name="workEncuentro" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $valorEncuentro; ?>" required readonly>
-                                        <input id="workEquipo" name="workEquipo" class="form-control" type="hidden" placeholder="Modo" value="<?php echo $usu_04; ?>" required readonly>
-                                        <input id="workAntExamen" name="workAntExamen" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
-                                        <input id="workEstado" name="workEstado" class="form-control" type="hidden" placeholder="Modo" value="0" required readonly>
-                                        <input id="workTipo" name="workTipo" class="form-control" type="hidden" placeholder="Modo" value="174" required readonly>
+                                        <input class="form-control" type="hidden" id="workCodigo"       name="workCodigo"       value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workModo"         name="workModo"         value="C" required readonly>
+                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="covid19_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
+                                        <input class="form-control" type="hidden" id="workTest"         name="workTest"         value="<?php echo $indexTest; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $usu_04; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workAntExamen"    name="workAntExamen"    value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="174" required readonly>
+                                        <input class="form-control" type="hidden" id="workRegistro"     name="workRegistro"     value="0" required readonly>
                                     </div>
+
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
                                         <a role="button" class="btn btn-dark" href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
@@ -322,32 +329,15 @@
                         </div>
                     </div>
                     <!-- Modal Procesar -->
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Right sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- .right-sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- End Right sidebar -->
-                    <!-- ============================================================== -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Container fluid  -->
-                <!-- ============================================================== -->
+
 <?php
     include '../include/development.php';
 ?>
+
             </div>
-            <!-- ============================================================== -->
-            <!-- End Page wrapper  -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Wrapper -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
+
         <div class="chat-windows"></div>
         
 <?php

@@ -139,6 +139,26 @@ function setChangePass(rowPersona){
     $("#modalcontent").append(html);
 }
 
+function inputChange (rowOld, rowNew) {
+    var inpOld = document.getElementById(rowOld);
+    var inpNew = document.getElementById(rowNew);
+
+    inpNew.value = inpOld.value;
+}
+
+function inputValid (rowOld, rowNew) {
+    var inpOld = document.getElementById(rowOld);
+    var inpNew = document.getElementById(rowNew.id);
+
+    if (inpOld.value == 'SI') {
+        inpNew.readOnly = false;
+    } else {
+        inpNew.readOnly = true;
+    }
+
+    
+}
+
 function getDominio(codDom){
     if (localStorage.getItem('dominioJSON') === null){
         getJSON('dominioJSON', '000');
@@ -699,7 +719,7 @@ function selectJugador(codJud, inpPos, inpNro, codEqui, codComp){
     xJSON.forEach(element => {
         if (element.jugador_codigo == elemJug.value) {
             elemPos.value = element.jugador_posicion;
-            elemNro.value = 'NRO. ' + element.jugador_numero;
+            elemNro.value = element.jugador_numero;
         }
     });
 }
