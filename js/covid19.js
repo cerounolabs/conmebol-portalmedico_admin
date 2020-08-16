@@ -57,14 +57,29 @@ $(document).ready(function() {
 				{ data				: 'examen_laboratorio_resultado', name : 'examen_laboratorio_resultado'},
 				{ render            : 
                     function (data, type, full, meta) {
-                        var btnUPD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 3);" title="Laboratorio" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
-                        return (btnUPD + '&nbsp;');
+						var btnUPD	= '';
+						var btnIMG  = '';
+
+						if (full.tipo_estado_codigo == 207) {
+							btnUPD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 3);" title="Laboratorio" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
+						}
+
+						if (full.examen_laboratorio_adjunto != '') {
+							btnIMG  = '<a href="http://portalmedico.conmebol.com/'+ full.examen_laboratorio_adjunto +'" target="_blank" title="Adjunto" type="button" class="btn btn-warning btn-icon btn-circle"><i class="fa fa-image"></i></a>';
+						}
+
+                        return (btnUPD + '&nbsp;' + btnIMG);
                     }
                 },
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
                 { data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
                 { data				: 'auditoria_ip', name : 'auditoria_ip'},
-            ]
+            ],
+			createdRow : function( row, data, dataIndex ) {
+				if (data['examen_laboratorio_resultado'] == 'SI' ) {        
+					$(row).addClass('bg-danger text-white');
+				}
+			}
         }
     );
 
