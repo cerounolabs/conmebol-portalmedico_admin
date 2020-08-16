@@ -38,10 +38,10 @@ $(document).ready(function() {
                 { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
 				{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
 				{ targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] },
-                { targets			: [11],	visible : false,searchable : false,	orderData : [11, 0] },
+                { targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0] },
                 { targets			: [12],	visible : false,searchable : false,	orderData : [12, 0] },
                 { targets			: [13],	visible : false,searchable : false,	orderData : [13, 0] },
-                { targets			: [14],	visible : true, searchable : true,	orderData : [14, 0] }
+                { targets			: [14],	visible : false,searchable : false,	orderData : [14, 0] }
             ],
             columns		: [
                 { data				: 'examen_codigo', name : 'examen_codigo'},
@@ -50,23 +50,20 @@ $(document).ready(function() {
                 { data				: 'competicion_nombre', name : 'competicion_nombre'},
                 { data				: 'encuentro_nombre', name : 'encuentro_nombre'},
                 { data				: 'equipo_nombre', name : 'equipo_nombre'},
-                { data				: 'jugador_nombre', name : 'jugador_nombre'},
-                { data				: 'examen_adjunto', name : 'examen_adjunto'},
-                { data				: 'examen_fecha_2', name : 'examen_fecha_2'},
-				{ data				: 'examen_fecha_3', name : 'examen_fecha_3'},
-				{ data				: 'examen_observacion', name : 'examen_observacion'},
-                { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
-                { data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
-                { data				: 'auditoria_ip', name : 'auditoria_ip'},
-                { render            : 
+                { data				: 'persona_nombre', name : 'persona_nombre'},
+                { data				: 'examen_laboratorio_nombre', name : 'examen_laboratorio_nombre'},
+                { data				: 'examen_laboratorio_fecha_envio', name : 'examen_laboratorio_fecha_envio'},
+				{ data				: 'examen_laboratorio_fecha_recepcion', name : 'examen_laboratorio_fecha_recepcion'},
+				{ data				: 'examen_laboratorio_test', name : 'examen_laboratorio_test'},
+				{ render            : 
                     function (data, type, full, meta) {
-                        var btnDSP  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 2);" title="Ver" type="button" class="btn btn-primary btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-eye"></i></button>';
-                        var btnUPD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 3);" title="Editar" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
-                        var btnDLT  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 4);" title="Eliminar" type="button" class="btn btn-danger btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-eraser"></i></button>';
-                        var btnAUD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 5);" title="Auditoria" type="button" class="btn btn-warning btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-user-secret"></i></button>';
+                        var btnUPD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 3);" title="Laboratorio" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
                         return (btnUPD + '&nbsp;');
                     }
                 },
+                { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
+                { data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
+                { data				: 'auditoria_ip', name : 'auditoria_ip'},
             ]
         }
     );
@@ -135,191 +132,94 @@ function setExamenCovid(codElem, codAcc){
 			break;
 	}
 
-	if (codAcc == 1) {
-		html = 
-			'<div class="modal-content">'+
-			'   <form id="form" data-parsley-validate method="post" action="../class/crud/dominio.php">'+
-			'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
-			'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
-			'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-			'	    </div>'+
-			'	    <div class="modal-body" >'+
-			'           <div class="form-group">'+
-			'               <input id="workDominio" name="workDominio" value="' + codDom + '" class="form-control" type="hidden" required readonly>'+
-			'               <input id="workCodigo" name="workCodigo" value="0" class="form-control" type="hidden" required readonly>'+
-			'               <input id="workModo" name="workModo" value="'+ bodyMod +'" class="form-control" type="hidden" required readonly>'+
-			'               <input id="workPage" name="workPage" value="dominio" class="form-control" type="hidden" required readonly>'+
-			'           </div>'+
-			'           <div class="row pt-3">'+
-			'               <div class="col-sm-12 col-md-6">'+
-			'                   <div class="form-group">'+
-			'                       <label for="var01">ESTADO</label>'+
-			'                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" '+ bodyOnl +'>'+
-			'                           <optgroup label="Estado">'+
-			'                               <option value="1">ACTIVO</option>'+
-			'                               <option value="2">INACTIVO</option>'+
-			'                               <option value="3">BLOQUEADO</option>'+
-			'                           </optgroup>'+
-			'                       </select>'+
-			'                   </div>'+
-			'               </div>'+
-			'               <div class="col-sm-12 col-md-6">'+
-			'                   <div class="form-group">'+
-			'                       <label for="var02">FECHA RECEPCIÓN</label>'+
-			'                       <input id="var02" name="var02" value="" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fecha Recepción">'+
-			'                   </div>'+
-			'               </div>'+
-			'               <div class="col-sm-12 col-md-12">'+
-			'                   <div class="form-group">'+
-			'                       <label for="var03">TIPO</label>'+
-			'                       <input id="var03" name="var03" value="" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="TIPO" required '+ bodyOnl +'>'+
-			'                   </div>'+
-			'               </div>'+
-			'               <div class="col-sm-12 col-md-12">'+
-			'                   <div class="form-group">'+
-			'                       <label for="var04">PATH</label>'+
-			'                       <input id="var04" name="var04" value="" class="form-control" type="text" style="text-transform:lowercase; height:40px;" placeholder="PATH" '+ bodyOnl +'>'+
-			'                   </div>'+
-			'               </div>'+
-			'               <div class="col-sm-12">'+
-			'                   <div class="form-group">'+
-			'                       <label for="var05">OBSERVACIÓN</label>'+
-			'                       <textarea id="var05" name="var05" value="" class="form-control" rows="5" style="text-transform:uppercase;" '+ bodyOnl +'></textarea>'+
-			'                   </div>'+
-			'               </div>'+
-			'           </div>'+
-			'	    </div>'+
-			'	    <div class="modal-footer">'+ bodyBot +
-			'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-			'	    </div>'+
-			'   </form>'+
-			'</div>';
-	} else if (codAcc > 1 && codAcc < 5) {
-		xJSON.forEach(element => {
-			if (element.examen_codigo == codElem) {
-				html = 
-					'<div class="modal-content">'+
-					'   <form id="form" data-parsley-validate method="post" action="">'+
-					'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
-					'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
-					'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-					'	    </div>'+
-					'	    <div class="modal-body" >'+
-					'           <div class="form-group">'+
-					'               <input id="workDominio" name="workDominio" value="' + codDom + '" class="form-control" type="hidden" required readonly>'+
-					'               <input id="workCodigo" name="workCodigo" value="'+ element.tipo_codigo +'" class="form-control" type="hidden" required readonly>'+
-					'               <input id="workModo" name="workModo" value="'+ bodyMod +'" class="form-control" type="hidden" required readonly>'+
-					'               <input id="workPage" name="workPage" value="dominio" class="form-control" type="hidden" required readonly>'+
-					'           </div>'+
-					'           <div class="row pt-3">'+
-					'               <div class="col-sm-12 col-md-6">'+
-					'                   <div class="form-group">'+
-					'                       <label for="var01">RESULTADO DEL TEST</label>'+
-					'                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" '+ bodyOnl +'>'+
-					'                           <optgroup label="Estado">'+
-					'                               <option value="NO">NEGATIVO</option>'+
-					'                               <option value="SI">POSITIVO</option>'+
-					'                           </optgroup>'+
-					'                       </select>'+
-					'                   </div>'+
-					'               </div>'+
-					'               <div class="col-sm-12 col-md-6">'+
-					'                   <div class="form-group">'+
-					'                       <label for="var02">FECHA RECEPCIÓN DE</label>'+
-					'                       <input id="var02" name="var02" value="" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="FECHA RECEPCIÓN" '+ bodyOnl +'>'+
-					'                   </div>'+
-					'               </div>'+
-					'               <div class="col-sm-12 col-md-6">'+
-					'                   <div class="form-group">'+
-					'                       <label for="var01">INGRESA A CUARENTENA?</label>'+
-					'                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" '+ bodyOnl +'>'+
-					'                           <optgroup label="Estado">'+
-					'                               <option value="NO">NO</option>'+
-					'                               <option value="SI">SI</option>'+
-					'                           </optgroup>'+
-					'                       </select>'+
-					'                   </div>'+
-					'               </div>'+
-					'               <div class="col-sm-12 col-md-6">'+
-					'                   <div class="form-group">'+
-					'                       <label for="var01">NUEVO TEST DE CONTROL?</label>'+
-					'                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" '+ bodyOnl +'>'+
-					'                           <optgroup label="Estado">'+
-					'                               <option value="NO">NO</option>'+
-					'                               <option value="SI">SI</option>'+
-					'                           </optgroup>'+
-					'                       </select>'+
-					'                   </div>'+
-					'               </div>'+
-					'               <div class="col-sm-12 col-md-12">'+
-					'                   <div class="form-group">'+
-					'                       <label for="var02">ADJUNTAR RESULTADO</label>'+
-					'                       <input id="var02" name="var02" value="" class="form-control" type="file" style="text-transform:uppercase; height:40px;" placeholder="Fecha Recepción">'+
-					'                   </div>'+
-					'               </div>'+
-					'               <div class="col-sm-12">'+
-					'                   <div class="form-group">'+
-					'                       <label for="var05">OBSERVACIÓN</label>'+
-					'                       <textarea id="var05" name="var05" value="" class="form-control" rows="5" style="text-transform:uppercase;" '+ bodyOnl +'></textarea>'+
-					'                   </div>'+
-					'               </div>'+
-					'           </div>'+
-					'	    </div>'+
-					'	    <div class="modal-footer">'+ bodyBot +
-					'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-					'	    </div>'+
-					'   </form>'+
-					'</div>';
-			}
-		});
-	} else if (codAcc == 5) {
-		aJSON.forEach(element => {
-			rowDominio = rowDominio + 
-			'					<tr style="text-align:center;">'+
-			'						<td class="border-top-0">'+ element.auditoria_metodo +'</td>'+
-			'						<td class="border-top-0">'+ element.auditoria_usuario +'</td>'+
-			'						<td class="border-top-0">'+ element.auditoria_fecha_hora +'</td>'+
-			'						<td class="border-top-0">'+ element.auditoria_ip +'</td>'+
-			'						<td class="border-top-0">'+ element.tipo_orden +'</td>'+
-			'						<td class="border-top-0">'+ element.tipo_path +'</td>'+
-			'						<td class="border-top-0">'+ element.tipo_estado_castellano +'</td>'+
-			'						<td class="border-top-0">'+ element.tipo_nombre_castellano +'</td>'+
-			'						<td class="border-top-0">'+ element.tipo_observacion +'</td>'+
-			'					</tr>';
-		});
-
-		html = 
-		'<div class="modal-content">'+
-		'   <form id="form" data-parsley-validate method="post" action="../class/crud/dominio.php">'+
-		'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
-		'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
-		'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-		'	    </div>'+
-		'	    <div class="modal-body" >'+
-		'			<table id="tableLoad" class="table v-middle" style="width: 100%;">'+
-		'				<thead id="tableAuditoria">'+
-		'					<tr class="bg-conmebol" style="text-align:center;">'+
-		'						<th class="border-top-0">M&Eacute;TODO</th>'+
-		'						<th class="border-top-0">USUARIO</th>'+
-		'						<th class="border-top-0">FECHA HORA</th>'+
-		'						<th class="border-top-0">IP</th>'+
-		'						<th class="border-top-0">ORDEN</th>'+
-		'						<th class="border-top-0">IMAGEN</th>'+
-		'						<th class="border-top-0">ESTADO</th>'+
-		'						<th class="border-top-0">TIPO</th>'+
-		'						<th class="border-top-0">DOMINIO</th>'+
-		'						<th class="border-top-0">OBSERVACI&Oacute;N</th>'+
-		'					</tr>'+
-		'				</thead>'+
-		'				<tbody>'+rowDominio+
-		'				</tbody>'+
-		'			</table>'+
-		'	    </div>'+
-		'	    <div class="modal-footer">'+ bodyBot +
-		'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-		'	    </div>'+
-		'   </form>'+
-		'</div>';
+	switch (codAcc) {
+		case 3:
+			xJSON.forEach(element => {
+				if (element.examen_codigo == codElem) {
+					html = 
+						'<div class="modal-content">'+
+						'   <form id="form" data-parsley-validate method="post" action="">'+
+						'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
+						'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
+						'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+						'	    </div>'+
+						'	    <div class="modal-body" >'+
+						'           <div class="form-group">'+
+						'               <input id="workCodigo" name="workCodigo" value="'+ element.examen_codigo +'" class="form-control" type="hidden" required readonly>'+
+						'               <input id="workModo" name="workModo" value="'+ bodyMod +'" class="form-control" type="hidden" required readonly>'+
+						'               <input id="workPage" name="workPage" value="covid19.php?competicion='+ _codComp +'&encuentro='+ _codEncu +'&" class="form-control" type="hidden" required readonly>'+
+						'           </div>'+
+						'           <div class="row pt-3">'+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var01">Recepción del test</label>'+
+						'                       <input id="var01" name="var01" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Recepción del test" required>'+
+						'                   </div>'+
+						'               </div>'+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var02">Resultado del test</label>'+
+						'                       <select id="var02" name="var02" class="select2 form-control custom-select" onchange="inputSelect(this.id, var04); inputSelect(this.id, var05); inputValid(this.id, var06);" style="width:100%; height:40px;">'+
+						'                           <optgroup label="Resultado">'+
+						'                               <option value="NO">NEGATIVO</option>'+
+						'                               <option value="SI">POSITIVO</option>'+
+						'                           </optgroup>'+
+						'                       </select>'+
+						'                   </div>'+
+						'               </div>'+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var03">Adjuntar resultado</label>'+
+						'                       <input id="var03" name="var03" class="form-control" type="file" style="text-transform:uppercase; height:40px;" placeholder="Resultado">'+
+						'                   </div>'+
+						'               </div>'+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var04">Ingresa a cuarentena?</label>'+
+						'                       <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;" disabled>'+
+						'                           <optgroup label="Estado">'+
+						'                               <option value="NO">NO</option>'+
+						'                               <option value="SI">SI</option>'+
+						'                           </optgroup>'+
+						'                       </select>'+
+						'                   </div>'+
+						'               </div>'+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var05">Nuevo test?</label>'+
+						'                       <select id="var05" name="var05" class="select2 form-control custom-select" style="width:100%; height:40px;" disabled>'+
+						'                           <optgroup label="Estado">'+
+						'                               <option value="NO">NO</option>'+
+						'                               <option value="SI">SI</option>'+
+						'                           </optgroup>'+
+						'                       </select>'+
+						'                   </div>'+
+						'               </div>'+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var06">Inicio de aislamiento</label>'+
+						'                       <input id="var06" name="var06" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Inicio de aislamiento" readonly>'+
+						'                   </div>'+
+						'               </div>'+
+						'               <div class="col-sm-12">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var07">Comentario</label>'+
+						'                       <textarea id="var07" name="var07" class="form-control" rows="5" style="text-transform:uppercase;"></textarea>'+
+						'                   </div>'+
+						'               </div>'+
+						'           </div>'+
+						'	    </div>'+
+						'	    <div class="modal-footer">'+ bodyBot +
+						'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+						'	    </div>'+
+						'   </form>'+
+						'</div>';
+				}
+			});
+			break;
+	
+		default:
+			break;
 	}
 
 	$("#modalcontent").empty();

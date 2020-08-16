@@ -12,7 +12,6 @@
 	$work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
 	$work03         = $_POST['workPage'];
-	$work04         = $_POST['workTest'];
 	$work05         = $_POST['workCompeticion'];
 	$work06         = $_POST['workEncuentro'];
 	$work07         = $_POST['workEquipo'];
@@ -30,6 +29,8 @@
 			$val102			= $_POST['var102_'.$i];
 			$val103			= $_POST['var103_'.$i];
 
+			$work04         = $_POST['workTest_'.$i];
+
 			$dataJSON = json_encode(
 				array(
 					'tipo_estado_codigo'			=> $work09,
@@ -37,11 +38,11 @@
 					'competicion_codigo'			=> $work05,
 					'encuentro_codigo'				=> $work06,
 					'equipo_codigo'					=> $work07,
-					'jugador_codigo'				=> $val101,
+					'persona_codigo'				=> $val101,
 					'examen_anterior_codigo'		=> $work08,
 					'examen_fecha_1'				=> $val100,
-					'jugador_posicion'				=> $val102,
-					'jugador_camiseta'				=> $val103,
+					'examen_persona_posicion'		=> $val102,
+					'examen_persona_camiseta'		=> $val103,
 					'examen_observacion'			=> '',
 					'auditoria_usuario'				=> $log_01,
 					'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),
@@ -54,9 +55,11 @@
 					$result	= json_decode($result, true);
 					$work01 = $result['codigo'];
 					break;
+
 				case 'U':
 					$result	= put_curl('801/examen/prueba/'.$work01, $dataJSON);
 					break;
+
 				case 'D':
 					$result	= delete_curl('801/examen/prueba/'.$work01, $dataJSON);
 					break;

@@ -120,9 +120,8 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">ENCUENTRO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">EQUIPO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="4">LABORATORIO</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="5">LABORATORIO</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">AUDITORIA</th>
-                                                <th class="border-top-0" style="text-align:center; width:160px;" rowspan="2">ACCI&Oacute;N</th>
                                             </tr>
                                             <tr class="bg-conmebol">
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
@@ -130,7 +129,8 @@
                                                 <th class="border-top-0" style="text-align:center;">NOMBRE</th>
                                                 <th class="border-top-0" style="text-align:center;">FEC. ENVIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FEC. RECEPCI&Oacute;N</th>
-                                                <th class="border-top-0" style="text-align:center;">RESULTADO</th>
+                                                <th class="border-top-0" style="text-align:center;">POSITIVO</th>
+                                                <th class="border-top-0" style="text-align:center;">&nbsp;</th>
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA HORA</th>
                                                 <th class="border-top-0" style="text-align:center;">IP</th>
@@ -187,6 +187,7 @@
     <script>
         const _codPers = <?php echo $log_04; ?>;
         const _codEqui = <?php echo $usu_04; ?>;
+        const _codComp = <?php echo $valorCompeticion; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
     </script>
     <script src="../js/covid19.js"></script>

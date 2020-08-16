@@ -158,5 +158,8 @@
 ?>
 
         <script src="../js/api.js"></script>
+        <script>
+            localStorage.removeItem('examenPruebaJSON');
+        </script>
     </body>
 </html>

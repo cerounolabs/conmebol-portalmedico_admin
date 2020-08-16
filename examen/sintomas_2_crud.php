@@ -158,7 +158,7 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var101">Persona</label>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var101_1', 'var101_2', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
 <?php
     if ($equipoJSON['code'] === 200){
         foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) {
