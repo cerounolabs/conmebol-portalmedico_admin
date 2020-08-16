@@ -46,7 +46,7 @@ $(document).ready(function() {
                 { data				: 'competicion_nombre', name : 'competicion_nombre'},
                 { data				: 'encuentro_nombre', name : 'encuentro_nombre'},
                 { data				: 'equipo_nombre', name : 'equipo_nombre'},
-                { data				: 'jugador_nombre', name : 'jugador_nombre'},
+                { data				: 'persona_nombre', name : 'persona_nombre'},
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
                 { data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
                 { data				: 'auditoria_ip', name : 'auditoria_ip'},

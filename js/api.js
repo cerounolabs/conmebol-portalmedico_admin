@@ -159,6 +159,19 @@ function inputValid (rowOld, rowNew) {
     
 }
 
+function inputSelect (rowOld, rowNew) {
+    var inpOld = document.getElementById(rowOld);
+    var inpNew = document.getElementById(rowNew.id);
+
+    if (inpOld.value == 'SI') {
+        inpNew.disabled = false;
+    } else {
+        inpNew.disabled = true;
+    }
+
+    
+}
+
 function getDominio(codDom){
     if (localStorage.getItem('dominioJSON') === null){
         getJSON('dominioJSON', '000');

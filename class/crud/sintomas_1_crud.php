@@ -9,7 +9,7 @@
 	
 	$val100			= $_POST['var100'];
 
-    $work01         = $_POST['workCodigo'];
+	$work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
 	$work03         = $_POST['workPage'];
 	$work05         = $_POST['workCompeticion'];
@@ -39,12 +39,12 @@
 					'competicion_codigo'			=> $work05,
 					'encuentro_codigo'				=> $work06,
 					'equipo_codigo'					=> $work07,
-					'jugador_codigo'				=> $val101,
+					'persona_codigo'				=> $val101,
 					'examen_anterior_codigo'		=> $work08,
 					'examen_fecha_1'				=> $val100,
-					'jugador_convocado'				=> $val104,
-					'jugador_posicion'				=> $val102,
-					'jugador_camiseta'				=> $val103,
+					'examen_persona_convocado'		=> $val104,
+					'examen_persona_posicion'		=> $val102,
+					'examen_persona_camiseta'		=> $val103,
 					'examen_observacion'			=> '',
 					'auditoria_usuario'				=> $log_01,
 					'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),
@@ -57,9 +57,11 @@
 					$result	= json_decode($result, true);
 					$work01 = $result['codigo'];
 					break;
+
 				case 'U':
 					$result	= put_curl('801/examen/prueba/'.$work01, $dataJSON);
 					break;
+
 				case 'D':
 					$result	= delete_curl('801/examen/prueba/'.$work01, $dataJSON);
 					break;
@@ -91,7 +93,7 @@
 		$code 	= 204;
 		$msg	= 'Error. Algún esta vacio, verifique';
 	}
-
+	
 	header('Location: ../../examen/'.$work03.'code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();

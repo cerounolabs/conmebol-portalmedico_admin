@@ -38,25 +38,25 @@
 
 			$dataJSON = json_encode(
 				array(
-					'tipo_estado_codigo'			=> $work09,
-					'tipo_examen_codigo'			=> $work10,
-					'competicion_codigo'			=> $work05,
-					'encuentro_codigo'				=> $work06,
-					'equipo_codigo'					=> $work07,
-					'jugador_codigo'				=> $val101,
-					'examen_anterior_codigo'		=> $work08,
-					'examen_fecha_1'				=> $val100,
-					'examen_persona_adulta'			=> $val104,
-					'examen_persona_menor'			=> $val105,
-					'jugador_convocado'				=> $val106,
-					'jugador_posicion'				=> $val102,
-					'jugador_camiseta'				=> $val103,
-					'laboratorio_nombre'			=> $val108,
-					'laboratorio_fecha_envio'		=> $val109,
-					'examen_observacion'			=> '',
-					'auditoria_usuario'				=> $log_01,
-					'auditoria_fecha_hora'			=> date('Y-m-d H:i:s'),
-					'auditoria_ip'					=> $log_03
+					'tipo_estado_codigo'				=> $work09,
+					'tipo_examen_codigo'				=> $work10,
+					'competicion_codigo'				=> $work05,
+					'encuentro_codigo'					=> $work06,
+					'equipo_codigo'						=> $work07,
+					'persona_codigo'					=> $val101,
+					'examen_anterior_codigo'			=> $work08,
+					'examen_fecha_1'					=> $val100,
+					'examen_persona_adulta'				=> $val104,
+					'examen_cantidad_menor'				=> $val105,
+					'examen_persona_convocado'			=> $val106,
+					'examen_persona_posicion'			=> $val102,
+					'examen_persona_camiseta'			=> $val103,
+					'examen_laboratorio_nombre'			=> $val108,
+					'examen_laboratorio_fecha_envio'	=> $val109,
+					'examen_observacion'				=> '',
+					'auditoria_usuario'					=> $log_01,
+					'auditoria_fecha_hora'				=> date('Y-m-d H:i:s'),
+					'auditoria_ip'						=> $log_03
 				));
 
 			switch($work02){
@@ -65,9 +65,11 @@
 					$result	= json_decode($result, true);
 					$work01 = $result['codigo'];
 					break;
+
 				case 'U':
 					$result	= put_curl('801/examen/prueba/'.$work01, $dataJSON);
 					break;
+					
 				case 'D':
 					$result	= delete_curl('801/examen/prueba/'.$work01, $dataJSON);
 					break;
