@@ -65,7 +65,7 @@
 
         if ($target_ban == true) {
             if (move_uploaded_file($_FILES['var102']['tmp_name'], $target_dir.''.$target_file)) {
-                $val102     = $target_file;
+                $val102     = 'imagen/examencovid19/'.$target_file;
                 $target_msn = $target_file;
                 $target_ban = true;
             } else {

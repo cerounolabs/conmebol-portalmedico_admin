@@ -130,7 +130,7 @@
                                                 <th class="border-top-0" style="text-align:center;">FEC. ENVIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FEC. RECEPCI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;">POSITIVO</th>
-                                                <th class="border-top-0" style="text-align:center;">&nbsp;</th>
+                                                <th class="border-top-0" style="text-align:center; width:80px;">&nbsp;</th>
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA HORA</th>
                                                 <th class="border-top-0" style="text-align:center;">IP</th>
