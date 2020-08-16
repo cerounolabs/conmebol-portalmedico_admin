@@ -309,7 +309,7 @@
                                         <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $usu_04; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workAntExamen"    name="workAntExamen"    value="0" required readonly>
-                                        <input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="207" required readonly>
                                         <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="174" required readonly>
                                         <input class="form-control" type="hidden" id="workRegistro"     name="workRegistro"     value="0" required readonly>
                                     </div>
