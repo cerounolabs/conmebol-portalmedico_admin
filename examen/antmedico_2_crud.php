@@ -175,7 +175,7 @@
                                                     <div class="form-group">
                                                         <input id="var1041_<?php echo $indexTest; ?>" name="var1041_<?php echo $indexTest; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
                                                         <label for="var1042_<?php echo $indexTest; ?>"> <?php echo ucfirst(strtolower($dominioVALUE['tipo_nombre_castellano'])); ?> </label>
-                                                        <select id="var1042_<?php echo $indexTest; ?>" name="var1042_<?php echo $indexTest; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <select id="var1042_<?php echo $indexTest; ?>" name="var1042_<?php echo $indexTest; ?>" onchange="inputValid(this.id, var1043_<?php echo $indexTest; ?>);" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
                                                                 <option value="NO">NO</option>
                                                                 <option value="SI">SI</option>

@@ -179,27 +179,9 @@
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                               		<a href="../examen/antmedico.php" class="sidebar-link">
+                               		<a href="../examen/competicion.php" class="sidebar-link">
                                			<i class="mdi mdi-examen"></i>
-                               			<span class="hide-menu"> Ant. M&eacute;dico</span>
-                               		</a>
-                               	</li>
-                                <li class="sidebar-item">
-                               		<a href="../examen/control_01.php" class="sidebar-link">
-                               			<i class="mdi mdi-examen"></i>
-                               			<span class="hide-menu"> COVID Control 1 </span>
-                               		</a>
-                               	</li>
-                                <li class="sidebar-item">
-                               		<a href="../examen/control_02.php" class="sidebar-link">
-                               			<i class="mdi mdi-examen"></i>
-                               			<span class="hide-menu"> COVID Control 2 </span>
-                               		</a>
-                               	</li>
-                                <li class="sidebar-item">
-                               		<a href="../examen/control_03.php" class="sidebar-link">
-                               			<i class="mdi mdi-examen"></i>
-                               			<span class="hide-menu"> COVID Control 3 </span>
+                               			<span class="hide-menu"> Competici&oacute;n </span>
                                		</a>
                                	</li>
                             </ul>
