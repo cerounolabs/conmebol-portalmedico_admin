@@ -314,6 +314,13 @@
                                         </li>
 
                                         <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICOCOVID19ESTADO" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
+                                                <span class="hide-menu"> COVID19 Estado</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
                                             <a href="../public/dominio.php?dominio=EXAMENMEDICOCOVID19CARGO" class="sidebar-link">
                                                 <i class="mdi mdi-competicion"></i> 
                                                 <span class="hide-menu"> COVID19 Cargo</span>
