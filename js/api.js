@@ -298,8 +298,6 @@ function getEncuentro(codJue){
 }
 
 function getJugador(rowComp, rowEqui){
-    localStorage.removeItem('jugadorJSON');
-
     if (localStorage.getItem('jugadorJSON') === null){
         getJSON('jugadorJSON', '200/competicion/equipo/' + rowEqui + '/' + rowComp);
     }
@@ -324,6 +322,25 @@ function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu){
     }
 
     var xJSON = JSON.parse(localStorage.getItem('examenJugadorJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getExamenOficial(rowComp, rowEqui, rowTipo, rowEncu){
+    localStorage.removeItem('examenOficialJSON');
+
+    if (localStorage.getItem('examenOficialJSON') === null){
+        getJSON('examenOficialJSON', '200/competicion/oficial/alta/' + rowEqui + '/' + rowComp + '/' + rowTipo + '/' + rowEncu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('examenOficialJSON'));
     var xDATA = [];
     
     if (xJSON['code'] == 200) {

@@ -160,6 +160,7 @@
         <script src="../js/api.js"></script>
         <script>
             localStorage.removeItem('examenPruebaJSON');
+            localStorage.removeItem('jugadorJSON');
         </script>
     </body>
 </html>
