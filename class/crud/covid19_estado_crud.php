@@ -10,8 +10,8 @@
 
     $val100			= $_POST['var100'];
 	$val101			= $_POST['var101'];
-	$val102			= $_POST['var102'];
-	$val103			= '';
+	$val102			= '';
+	$val103			= $_POST['var103'];
 	$val104			= $_POST['var104'];
 	$val105			= $_POST['var105'];
 	$val106			= $_POST['var106'];
@@ -22,21 +22,22 @@
 	$work04         = $_POST['workEstado'];
 
 	$log_01         = $_SESSION['log_01'];
-	$log_03         = $_SESSION['log_03'];
-
-	if (!empty($_FILES['var103']['tmp_name'])) {
+    $log_03         = $_SESSION['log_03'];
+    
+    if (!empty($_FILES['var102']['tmp_name'])) {
         $target_msn     = '';
         $target_nam     = getFechaHora();
+        $target_ban     = false;
         $target_dir     = '../../imagen/examencovid19/';
-        $target_file    = $target_dir.basename($_FILES['var103']['name']);
+        $target_file    = $target_dir.basename($_FILES['var102']['name']);
         $imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $target_file    = $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-            if ($_FILES['var103']['type'] == 'application/pdf') {
-                $check = $_FILES['var103']['size'];
+            if ($_FILES['var102']['type'] == 'application/pdf') {
+                $check = $_FILES['var102']['size'];
             } else {
-                $check = getimagesize($_FILES['var103']['tmp_name']);
+                $check = getimagesize($_FILES['var102']['tmp_name']);
             }
 
             if($check !== false) {
@@ -52,7 +53,7 @@
             $target_ban = false;
         }
         
-        if ($_FILES['var103']['size'] > 20000001 && $target_ban == true) {
+        if ($_FILES['var102']['size'] > 20000001 && $target_ban == true) {
             $target_msn = 'ERROR: El archivo es muy pesado, sobrepasa lo permitido de 20MB. Verifique!';
             $target_ban = false;
         }
@@ -63,8 +64,8 @@
         }
 
         if ($target_ban == true) {
-            if (move_uploaded_file($_FILES['var103']['tmp_name'], $target_dir.''.$target_file)) {
-                $val103     = $target_file;
+            if (move_uploaded_file($_FILES['var102']['tmp_name'], $target_dir.''.$target_file)) {
+                $val102     = $target_file;
                 $target_msn = $target_file;
                 $target_ban = true;
             } else {
@@ -97,10 +98,10 @@
 		$result	= put_curl('801/examen/prueba/'.$work01, $dataJSON);
 		$result	= json_decode($result, true);
 		$code 	= $result['code'];
-		$msg	= $result['message'];
-	}
-	
-	header('Location: ../../examen/'.$work03.'code='.$code.'&msg='.$msg);
+        $msg	= $result['message'];
+    }
+    
+    header('Location: ../../examen/'.$work03.'code='.$code.'&msg='.$msg);
 
 	ob_end_flush();
 ?>
