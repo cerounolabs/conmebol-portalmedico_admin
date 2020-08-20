@@ -19,6 +19,12 @@
         $valorEncuentro     = 0;
     }
 
+    if(isset($_GET['tipo'])){
+        $valorTipo          = $_GET['tipo'];
+    } else {
+        $valorTipo          = 'P';
+    }
+
     $dominioJSON    = get_curl('000');
     $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
     $equipoJSON     = get_curl('200/competicion/equipo/alta/'.$usu_04.'/'.$valorCompeticion.'/177/'.$valorEncuentro);
@@ -137,12 +143,21 @@
                                                     <div class="form-group">
                                                         <label for="var101">Persona</label>
                                                         <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
+                                                            <option selected disabled>SELECCIONAR...</option>
 <?php
     if ($equipoJSON['code'] === 200){
         foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) {
+            if ($usu_04 == 39393) {
 ?>
                                                             <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido']; ?></option>
 <?php
+            } else {
+                if ($equipoVALUE['jugador_tipo'] == $valorTipo) {
+?>
+                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido']; ?></option>
+<?php
+                }
+            }
         }
     }
 ?>
@@ -209,7 +224,7 @@
                                     <div class="form-group">
                                         <input class="form-control" type="hidden" id="workCodigo"       name="workCodigo"       value="0" required readonly>
                                         <input class="form-control" type="hidden" id="workModo"         name="workModo"         value="C" required readonly>
-                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
+                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
                                         <input class="form-control" type="hidden" id="workTest"         name="workTest"         value="<?php echo $indexTest; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>

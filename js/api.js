@@ -314,7 +314,7 @@ function getJugador(rowComp, rowEqui){
     return xDATA; 
 }
 
-function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu){
+function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu, rowPlay){
     localStorage.removeItem('examenJugadorJSON');
 
     if (localStorage.getItem('examenJugadorJSON') === null){
@@ -325,9 +325,18 @@ function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu){
     var xDATA = [];
     
     if (xJSON['code'] == 200) {
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
+        if (rowEqui === 39393) {
+            xJSON['data'].forEach(element => {
+                xDATA.push(element);
+            });
+        } else {
+            xJSON['data'].forEach(element => {
+                if (element.jugador_tipo == rowPlay){
+                    xDATA.push(element);
+                }
+            });
+        }
+        
     }
 
     return xDATA; 
