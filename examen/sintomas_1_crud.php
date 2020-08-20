@@ -19,6 +19,12 @@
         $valorEncuentro     = 0;
     }
 
+    if(isset($_GET['tipo'])){
+        $valorTipo          = $_GET['tipo'];
+    } else {
+        $valorTipo          = 'P';
+    }
+
     $dominioJSON    = get_curl('000');
     $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
 ?>
@@ -158,7 +164,7 @@
                                     <div class="form-group">
                                         <input class="form-control" type="hidden" id="workCodigo"       name="workCodigo"       value="0" required readonly>
                                         <input class="form-control" type="hidden" id="workModo"         name="workModo"         value="C" required readonly>
-                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="sintomas_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&" required readonly>
+                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="sintomas_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
                                         <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $usu_04; ?>" required readonly>
@@ -201,7 +207,7 @@
         <script>
             function loadDiv() {
                 var html    = '';
-                var xJSON   = getExamenJugador(<?php echo $valorCompeticion; ?>, <?php echo $usu_04; ?>, 206, <?php echo $valorEncuentro; ?>);
+                var xJSON   = getExamenJugador(<?php echo $valorCompeticion; ?>, <?php echo $usu_04; ?>, 206, <?php echo $valorEncuentro; ?>, '<?php echo $valorTipo; ?>');
                 var cantReg = 0;
 
                 xJSON.forEach(element => {
