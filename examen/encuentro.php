@@ -107,7 +107,7 @@
                                             <a href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> COVID19 </a>
                                             <a href="../examen/sintomas.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> S&iacute;ntomas </a>
                                             <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> Ant. M&eacute;dico </a>
-                                            <a href="../examen/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> PRE-ENCUENTRO </a>
+                                            <a href="../examen/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> Pre-Encuentro </a>
                                         </div>
                                     </div>
                                 </div>
