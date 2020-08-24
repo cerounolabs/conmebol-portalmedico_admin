@@ -106,8 +106,18 @@
                                 <div class="row">
                                     <h4 class="col-6 card-title">ANTECEDENTE M&Eacute;DICO </h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
+<?php
+    if ($usu_04 == 39393){
+?>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
+<?php
+    } else {
+?>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA DELEGADOS </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
+<?php
+    }
+?>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
