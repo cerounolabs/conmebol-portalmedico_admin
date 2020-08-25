@@ -183,7 +183,17 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var101">Persona</label>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
+<?php
+    if ($usu_04 == 39393) {
+?>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>, '<?php echo $valorTipo ?>');" style="width:100%; height:40px;" required>
+<?php
+    } else {
+?>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>, '<?php echo $valorTipo ?>');" style="width:100%; height:40px;" required>
+<?php
+    }
+?>
                                                             <option selected disabled>SELECCIONAR...</option>
 <?php
     if ($equipoJSON['code'] === 200){
@@ -360,5 +370,6 @@
 ?>
 
         <script src="../js/api.js"></script>
+        <script src="../js/select.js"></script>
     </body>
 </html>

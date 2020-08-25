@@ -315,17 +315,15 @@ function getJugador(rowComp, rowEqui){
 }
 
 function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu, rowPlay){
-    localStorage.removeItem('examenJugadorJSON');
-
     if (localStorage.getItem('examenJugadorJSON') === null){
         getJSON('examenJugadorJSON', '200/competicion/equipo/alta/' + rowEqui + '/' + rowComp + '/' + rowTipo + '/' + rowEncu);
     }
 
     var xJSON = JSON.parse(localStorage.getItem('examenJugadorJSON'));
     var xDATA = [];
-    
+        
     if (xJSON['code'] == 200) {
-        if (rowEqui === 39393) {
+        if (rowEqui == 39393) {
             xJSON['data'].forEach(element => {
                 xDATA.push(element);
             });
@@ -336,7 +334,6 @@ function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu, rowPlay){
                 }
             });
         }
-        
     }
 
     return xDATA; 
@@ -754,7 +751,7 @@ function selectJugador(codJud, inpPos, inpNro, codEqui, codComp){
     var elemPos = document.getElementById(inpPos);
     var elemNro = document.getElementById(inpNro);
     var xJSON   = getJugador(codComp, codEqui);
-
+    
     xJSON.forEach(element => {
         if (element.jugador_codigo == elemJug.value) {
             elemPos.value = element.jugador_posicion;
@@ -767,10 +764,10 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     if (localStorage.getItem('examenPruebaJSON') === null){
         getJSON('examenPruebaJSON', '801/examen/prueba/'+ codEqui +'/'+ codEncu);
     }
-
+    
     var xJSON = JSON.parse(localStorage.getItem('examenPruebaJSON'));
     var xDATA = [];
-       
+    
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
             if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
@@ -780,4 +777,8 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     }
 
     return xDATA; 
+}
+
+function removeItem(codITEM){
+    localStorage.removeItem(codITEM);
 }

@@ -16,6 +16,7 @@
 	$val106			= $_POST['var106'];
 	$val108			= $_POST['var108'];
 	$val109			= $_POST['var109'];
+	$val110			= $_POST['var110'];
 	
 	$work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
@@ -39,7 +40,7 @@
 				'tipo_examen_codigo'				=> $work10,
 				'competicion_codigo'				=> $work05,
 				'encuentro_codigo'					=> $work06,
-				'equipo_codigo'						=> $work07,
+				'equipo_codigo'						=> $val110,
 				'persona_codigo'					=> $val101,
 				'examen_anterior_codigo'			=> $work08,
 				'examen_fecha_1'					=> $val100,
