@@ -111,7 +111,7 @@
 ?>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
 <?php
-    } else if ($usu_04 == 39393 && $usu_05 == 9) {
+    } elseif ($usu_04 == 39393 && $usu_05 == 9) {
 ?>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA DELEGADOS </a>
@@ -184,6 +184,7 @@
 <?php
     include '../include/development.php';
 ?>
+
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -205,6 +206,8 @@
         const _codEqui = <?php echo $usu_04; ?>;
         const _codComp = <?php echo $valorCompeticion; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
+
+        localStorage.removeItem('examenJugadorJSON');
     </script>
     <script src="../js/preencuentro.js"></script>
 </body>

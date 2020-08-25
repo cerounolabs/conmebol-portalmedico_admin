@@ -107,11 +107,11 @@
                                     <h4 class="col-6 card-title"> S&Iacute;NTOMAS </h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
 <?php
-    if ($usu_04 == 39393 && $usu_05 == 157){
+    if ($usu_04 == 39393 && $usu_05 == 157) {
 ?>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/sintomas_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
 <?php
-    } else if ($usu_04 == 39393 && $usu_05 == 9) {
+    } elseif ($usu_04 == 39393 && $usu_05 == 9) {
 ?>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/sintomas_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/sintomas_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA DELEGADOS </a>

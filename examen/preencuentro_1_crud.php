@@ -182,7 +182,7 @@
                                     <div class="form-group">
                                         <input class="form-control" type="hidden" id="workCodigo"       name="workCodigo"       value="0" required readonly>
                                         <input class="form-control" type="hidden" id="workModo"         name="workModo"         value="C" required readonly>
-                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="covid19_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
+                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="preencuentro_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
                                         <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $usu_04; ?>" required readonly>
