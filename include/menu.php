@@ -179,6 +179,13 @@
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
+                               		<a href="../examen/competicion_2.php" class="sidebar-link">
+                               			<i class="mdi mdi-examen"></i>
+                               			<span class="hide-menu"> Pre-Competici&oacute;n </span>
+                               		</a>
+                               	</li>
+                                   
+                                <li class="sidebar-item">
                                		<a href="../examen/competicion.php" class="sidebar-link">
                                			<i class="mdi mdi-examen"></i>
                                			<span class="hide-menu"> Competici&oacute;n </span>
