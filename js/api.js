@@ -767,7 +767,7 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     
     var xJSON = JSON.parse(localStorage.getItem('examenPruebaJSON'));
     var xDATA = [];
-    
+
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
             if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
