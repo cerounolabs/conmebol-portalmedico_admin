@@ -13,18 +13,13 @@
         $valorCompeticion   = 0;
     }
 
-    if(isset($_GET['encuentro'])){
-        $valorEncuentro     = $_GET['encuentro'];
-    } else {
-        $valorEncuentro     = 0;
-    }
-
     if(isset($_GET['tipo'])){
         $valorTipo          = $_GET['tipo'];
     } else {
         $valorTipo          = 'P';
     }
 
+    $valorEncuentro = 0;
     $dominioJSON    = get_curl('000');
     $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
 ?>
@@ -75,15 +70,11 @@
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/competicion.php">COMPETICI&Oacute;N</a>
+                                            <a href="../examen/competicion_3.php">COMPETICI&Oacute;N</a>
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
-                                        </li>
-
-                                        <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">ANTECEDENTE M&Eacute;DICO</a>
+                                            <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>">ANTECEDENTE M&Eacute;DICO</a>
                                         </li>
 
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
@@ -143,8 +134,8 @@
                                     <div class="form-group">
                                         <input class="form-control" type="hidden" id="workCodigo"       name="workCodigo"       value="0" required readonly>
                                         <input class="form-control" type="hidden" id="workModo"         name="workModo"         value="C" required readonly>
-                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="antmedico_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
-                                        <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
+                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="antmedico_1_crud.php?competicion=<?php echo $valorCompeticion; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
+                                        <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $valorCompeticion; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $usu_04; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workAntExamen"    name="workAntExamen"    value="0" required readonly>
@@ -154,7 +145,7 @@
 
                                     <div class="card-body" style="">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
-                                        <a role="button" class="btn btn-dark" href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion;?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
+                                        <a role="button" class="btn btn-dark" href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion;?>"> Volver </a>
                                     </div>
                                 </div>
                             </div>
