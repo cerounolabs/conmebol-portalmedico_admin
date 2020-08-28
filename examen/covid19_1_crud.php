@@ -83,7 +83,7 @@
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">COVID19 TEST</a>
+                                            <a href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">CONTROL DE TEST</a>
                                         </li>
 
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>

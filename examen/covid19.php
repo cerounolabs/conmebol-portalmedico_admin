@@ -81,7 +81,7 @@
                                     <li class="breadcrumb-item" aria-current="page">
                                         <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">COVID19 TEST</li>
+                                    <li class="breadcrumb-item active" aria-current="page">CONTROL DE TEST</li>
                                 </ol>
                             </nav>
                         </div>
@@ -104,7 +104,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">COVID19 Test</h4>
+                                    <h4 class="col-6 card-title">Control de TEST</h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
 <?php
     if ($usu_04 == 39393 && $usu_05 == 157){
