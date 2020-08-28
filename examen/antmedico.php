@@ -76,10 +76,7 @@
                                         <a href="../examen/home.php">HOME</a>
                                     </li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../examen/competicion.php">COMPETICIONES</a>
-                                    </li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                        <a href="../examen/competicion_3.php">COMPETICIONES</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">ANTECEDENTE M&Eacute;DICO</li>
                                 </ol>
@@ -109,18 +106,18 @@
 <?php
     if ($usu_04 == 39393 && $usu_05 == 157){
 ?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
 <?php
     } elseif ($usu_04 == 39393 && $usu_05 == 9) {
 ?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA DELEGADOS </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA DELEGADOS </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
 <?php
     } else {
 ?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA DELEGADOS </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA DELEGADOS </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/antmedico_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
 <?php
     }
 ?>

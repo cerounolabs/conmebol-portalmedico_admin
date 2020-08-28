@@ -142,6 +142,12 @@
                         		<span class="hide-menu"> Examen M&eacute;dico </span>
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                               		<a href="../examen/competicion_3.php" class="sidebar-link">
+                               			<i class="mdi mdi-examen"></i>
+                               			<span class="hide-menu"> Ant. Médico </span>
+                               		</a>
+                               	</li>
                                 <li class="sidebar-item">
                                		<a href="../examen/competicion.php" class="sidebar-link">
                                			<i class="mdi mdi-examen"></i>
