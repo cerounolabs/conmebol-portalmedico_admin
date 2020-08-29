@@ -85,20 +85,24 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="">
                                             <tr class="bg-conmebol">
-                                                <th class="border-top-0">EQUIPO C&Oacute;D.</th>
-                                                <th class="border-top-0">EQUIPO ESTADO</th>
-                                                <th class="border-top-0">EQUIPO TIPO</th>
-                                                <th class="border-top-0">EQUIPO</th>
-                                                <th class="border-top-0">EQUIPO ABR.</th>
-                                                <th class="border-top-0">EQUIPO PA&Iacute;S</th>
-                                                <th class="border-top-0">EQUIPO REGI&Oacute;N</th>
-                                                <th class="border-top-0">EQUIPO CIUDAD</th>
-                                                <th class="border-top-0">EQUIPO C&Oacute;DIGO POSTAL</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N C&Oacute;D.</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N ABR.</th>
-                                                <th class="border-top-0">ORGANIZACI&Oacute;N IMAGEN</th>
-                                                <th class="border-top-0">&Uacute;LTIMA ACT.</th>
+                                                <th class="border-top-0 text-center" colspan="9">EQUIPO</th>
+                                                <th class="border-top-0 text-center" rowspan="2">&Uacute;LTIMA ACT.</th>
+                                                <th class="border-top-0 text-center" colspan="4">ORGANIZACI&Oacute;N</th>
+                                            </tr>
+                                            <tr class="bg-conmebol">
+                                                <th class="border-top-0 text-center">C&Oacute;D.</th>
+                                                <th class="border-top-0 text-center">ESTADO</th>
+                                                <th class="border-top-0 text-center">TIPO</th>
+                                                <th class="border-top-0 text-center">EQUIPO</th>
+                                                <th class="border-top-0 text-center">ABR.</th>
+                                                <th class="border-top-0 text-center">PA&Iacute;S</th>
+                                                <th class="border-top-0 text-center">REGI&Oacute;N</th>
+                                                <th class="border-top-0 text-center">CIUDAD</th>
+                                                <th class="border-top-0 text-center">C&Oacute;DIGO POSTAL</th>
+                                                <th class="border-top-0 text-center">C&Oacute;D.</th>
+                                                <th class="border-top-0 text-center">ORGANIZACI&Oacute;N</th>
+                                                <th class="border-top-0 text-center">ABR.</th>
+                                                <th class="border-top-0 text-center">IMAGEN</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -187,11 +191,11 @@
                         { targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] },
                         { targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
                         { targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
-                        { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
+                        { targets			: [9],	visible : true, searchable : true,	orderData : [9, 0] },
                         { targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] },
                         { targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0] },
                         { targets			: [12],	visible : true,	searchable : true,	orderData : [12, 0] },
-                        { targets			: [13],	visible : false,searchable : false,	orderData : [13, 0] }
+                        { targets			: [13],	visible : true,	searchable : true,	orderData : [13, 0] },
                     ],
                     columns		: [
                         { data				: 'equipo_codigo', name : 'equipo_codigo'},
@@ -203,11 +207,11 @@
                         { data				: 'equipo_region', name : 'equipo_region'},
                         { data				: 'equipo_ciudad', name : 'equipo_ciudad'},
                         { data				: 'equipo_postal_codigo', name : 'equipo_postal_codigo'},
+                        { data				: 'equipo_ultima_actualizacion', name : 'equipo_ultima_actualizacion'},
                         { data				: 'organizacion_codigo', name : 'organizacion_codigo'},
                         { data				: 'organizacion_nombre', name : 'organizacion_nombre'},
                         { data				: 'organizacion_nombre_corto', name : 'organizacion_nombre_corto'},
-                        { render			: function (data, type, full, meta) {return '<img src="../' + full.organizacion_imagen_path + '" height="50" />';}},
-                        { data				: 'equipo_ultima_actualizacion', name : 'equipo_ultima_actualizacion'},
+                        { render			: function (data, type, full, meta) {return '<img src="http://portalmedico.conmebol.com/' + full.organizacion_imagen_path + '" height="50" />';}},
                     ]
                 });
             });

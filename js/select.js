@@ -13,14 +13,23 @@ function selectEquipo(rowComp, rowEncu, rowEqui, rowTipo, rowPlay, rowPers) {
     option.selected = true;
     selPers.add(option, null);
 
-    xJSON.forEach(element => {
-        if (element.competicion_codigo == rowComp) {
+    if (selEqui.value == 39393 && rowPlay == 'O' && rowTipo == 210) {
+        xJSON.forEach(element => {
             var option      = document.createElement('option');
             option.value    = element.jugador_codigo;
             option.text     = element.jugador_completo;
             selPers.add(option, null);
-        }
-    });
+        });
+    } else {
+        xJSON.forEach(element => {
+            if (element.competicion_codigo == rowComp) {
+                var option      = document.createElement('option');
+                option.value    = element.jugador_codigo;
+                option.text     = element.jugador_completo;
+                selPers.add(option, null);
+            }
+        });
+    }
 }
 
 function selectJugador2(rowJud, inpPos, inpNro, rowEqui, rowComp, rowEncu, rowTipo, rowPlay){

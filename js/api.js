@@ -321,7 +321,7 @@ function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu, rowPlay){
 
     var xJSON = JSON.parse(localStorage.getItem('examenJugadorJSON'));
     var xDATA = [];
-        
+    
     if (xJSON['code'] == 200) {
         if (rowEqui == 39393) {
             xJSON['data'].forEach(element => {

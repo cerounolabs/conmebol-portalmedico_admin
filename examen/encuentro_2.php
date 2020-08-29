@@ -94,6 +94,18 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="card" style="height:250px;">
+                                    <div class="card-body">
+                                        <h4 class="card-title">OFICIALES, M&Eacute;DICOS, ARBITROS, DELEGADOS</h4>
+                                        <p class="card-text"> CONMEBOL - CONFEDERACI&Oacute;N SUDAMERICANA DE F&Uacute;TBOL <br/> <img src="http://portalmedico.conmebol.com/imagen/organizacion/img_39393.png" style="height:100px;"></p>
+                                        <div style="position:absolute; bottom:1.25rem; left:1.25rem;">
+                                            <a href="../examen/precompeticion.php?competicion=<?php echo $valorCompeticion; ?>&equipo=<?php echo $usu_04; ?>" class="btn btn-info" style="background-color:#005ea6;"> Pre-Competici&oacute;n </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 <?php
     if ($equipoJSON['code'] === 200) {
         foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) { 

@@ -27,7 +27,13 @@
 
     $valorEncuentro = 0;
     $dominioJSON    = get_curl('000');
-    $equipoJSON     = get_curl('100/equipo/codigo/'.$valorEquipo);
+
+    if ($valorEquipo == 39393) {
+        $equipoJSON     = get_curl('100/equipo/codigo/1');
+    } else {
+        $equipoJSON     = get_curl('100/equipo/codigo/'.$valorEquipo);
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -118,7 +124,7 @@
                                                     <div class="form-group">
                                                         <label for="var110"> Equipo </label>
                                                         <select id="var110" name="var110" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <option value="<?php echo $equipoJSON['data'][0]['equipo_codigo']; ?>"> <?php echo $equipoJSON['data'][0]['equipo_nombre']; ?> </option>
+                                                            <option value="<?php echo $valorEquipo; ?>"> <?php echo $equipoJSON['data'][0]['equipo_nombre']; ?> </option>
                                                         </select>
                                                     </div>
                                                 </div>
