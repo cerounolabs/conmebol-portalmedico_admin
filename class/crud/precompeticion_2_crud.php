@@ -11,8 +11,8 @@
 	$val101			= $_POST['var101'];
 	$val102			= $_POST['var102'];
 	$val103			= $_POST['var103'];
-	$val104			= $_POST['var104'];
-	$val105			= $_POST['var105'];
+	$val104			= 0;//$_POST['var104'];
+	$val105			= 0;//$_POST['var105'];
 	$val106			= $_POST['var106'];
 	$val108			= $_POST['var108'];
 	$val109			= $_POST['var109'];

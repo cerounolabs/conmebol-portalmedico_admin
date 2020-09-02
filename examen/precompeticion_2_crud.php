@@ -189,7 +189,7 @@
                                                         <input id="var103" name="var103" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
-
+<!--
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var104">Personas adultas</label>
@@ -231,7 +231,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-
+-->
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var106">Convocado</label>
@@ -241,6 +241,16 @@
                                                                 <option value="SI">SI</option>
                                                             </optgroup>
                                                         </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
                                                     </div>
                                                 </div>
 

@@ -14,7 +14,8 @@
 	$val103			= $_POST['var103'];
 	$val104			= $_POST['var104'];
 	$val105			= $_POST['var105'];
-	$val106			= $_POST['var106'];
+    $val106			= $_POST['var106'];
+    $val107			= $_POST['var107'];
 	
 	$work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
@@ -88,8 +89,9 @@
 				'examen_laboratorio_adjunto'			=> $val102,
 				'examen_laboratorio_cuarentena'			=> $val103,
 				'examen_laboratorio_test'				=> $val104,
-				'examen_laboratorio_fecha_aislamiento'	=> $val105,
-				'examen_laboratorio_observacion'		=> $val106,
+                'examen_laboratorio_fecha_aislamiento'	=> $val105,
+                'examen_laboratorio_fecha_finaliza'     => $val106,
+				'examen_laboratorio_observacion'		=> $val107,
 				'auditoria_usuario'						=> $log_01,
 				'auditoria_fecha_hora'					=> date('Y-m-d H:i:s'),
 				'auditoria_ip'							=> $log_03
