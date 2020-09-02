@@ -190,7 +190,7 @@ function setExamenCovid(codElem, codAcc){
 						'                   </div>'+
 						'               </div>'+
 						''+
-						'               <div class="col-sm-12 col-md-4">'+
+						'               <div class="col-sm-12 col-md-3">'+
 						'                   <div class="form-group">'+
 						'                       <label for="var103">Ingresa a cuarentena?</label>'+
 						'                       <select id="var103" name="var103" class="select2 form-control custom-select" style="width:100%; height:40px;" disabled>'+
@@ -202,7 +202,7 @@ function setExamenCovid(codElem, codAcc){
 						'                   </div>'+
 						'               </div>'+
 						''+
-						'               <div class="col-sm-12 col-md-4">'+
+						'               <div class="col-sm-12 col-md-3">'+
 						'                   <div class="form-group">'+
 						'                       <label for="var104">Nuevo test?</label>'+
 						'                       <select id="var104" name="var104" class="select2 form-control custom-select" style="width:100%; height:40px;" disabled>'+
@@ -214,17 +214,24 @@ function setExamenCovid(codElem, codAcc){
 						'                   </div>'+
 						'               </div>'+
 						''+
-						'               <div class="col-sm-12 col-md-4">'+
+						'               <div class="col-sm-12 col-md-3">'+
 						'                   <div class="form-group">'+
 						'                       <label for="var105">Inicio de aislamiento</label>'+
 						'                       <input id="var105" name="var105" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Inicio de aislamiento" readonly>'+
 						'                   </div>'+
 						'               </div>'+
 						''+
+						'               <div class="col-sm-12 col-md-3">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var106">Fin de aislamiento</label>'+
+						'                       <input id="var106" name="var106" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fin de aislamiento" readonly>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
 						'               <div class="col-sm-12">'+
 						'                   <div class="form-group">'+
-						'                       <label for="var106">Comentario</label>'+
-						'                       <textarea id="var106" name="var106" class="form-control" rows="5" style="text-transform:uppercase;"></textarea>'+
+						'                       <label for="var107">Comentario</label>'+
+						'                       <textarea id="var107" name="var107" class="form-control" rows="5" style="text-transform:uppercase;"></textarea>'+
 						'                   </div>'+
 						'               </div>'+
 						'           </div>'+
