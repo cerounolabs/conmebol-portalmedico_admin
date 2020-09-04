@@ -67,3 +67,48 @@ function selectJugador2(rowJud, inpPos, inpNro, rowEqui, rowComp, rowEncu, rowTi
         }
     });
 }
+
+function selectTipoExamen(rowInp) {
+    var selInp  = document.getElementById(rowInp);
+    var xJSON   = getDominio('EXAMENMEDICOTIPO');
+    console.log(xJSON);
+
+    while (selInp.length > 0) {
+        selInp.remove(0);
+    }
+
+    var option      = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'SELECCIONAR...';
+    option.selected = true;
+    selInp.add(option, null);
+
+    xJSON.forEach(element => {
+        if (element.tipo_estado_codigo == 'A') {
+            var option      = document.createElement('option');
+            option.value    = element.tipo_codigo;
+            option.text     = element.tipo_nombre_castellano;
+            selInp.add(option, null);
+        }
+    });
+}
+
+function selectCompetencias(rowOrg, rowDisc, rowAnho, rowInp){
+    var selDisc     = document.getElementById(rowDisc);
+    var selAnho     = document.getElementById(rowAnho);
+    var selInp      = document.getElementById(rowInp);
+    var xJSON       = getCompetencia(rowOrg, selDisc.value, selAnho.value)
+            
+    while (selInp.length > 0) {
+        selInp.remove(0);
+    }
+
+    xJSON.forEach(element => {
+        if (selDisc.value == element.competicion_disciplina && selAnho.value == element.competicion_anho) {
+            var option      = document.createElement('option');
+            option.value    = element.competicion_codigo;
+            option.text     = element.competicion_nombre;
+            selInp.add(option, null);
+        }
+    });
+}
