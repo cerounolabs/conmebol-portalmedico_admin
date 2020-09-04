@@ -243,6 +243,13 @@
                                			<span class="hide-menu"> Lesiones </span>
                                     </a>
                                	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/infexamen.php" class="sidebar-link">
+                               			<i class="mdi mdi-reporte"></i>
+                               			<span class="hide-menu"> Examen M&eacute;dico </span>
+                                    </a>
+                               	</li>
                             </ul>
                         </li>
 
