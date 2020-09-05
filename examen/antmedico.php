@@ -78,7 +78,7 @@
                                     <li class="breadcrumb-item" aria-current="page">
                                         <a href="../examen/competicion_3.php">COMPETICIONES</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">ANTECEDENTE M&Eacute;DICO</li>
+                                    <li class="breadcrumb-item active" aria-current="page">ANTECEDENTES M&Eacute;DICOS</li>
                                 </ol>
                             </nav>
                         </div>
@@ -101,7 +101,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">ANTECEDENTE M&Eacute;DICO </h4>
+                                    <h4 class="col-6 card-title">ANTECEDENTES M&Eacute;DICOS </h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
 <?php
     if ($usu_04 == 39393 && $usu_05 == 157){

@@ -145,7 +145,7 @@
                             <li class="sidebar-item">
                                		<a href="../examen/competicion_3.php" class="sidebar-link">
                                			<i class="mdi mdi-examen"></i>
-                               			<span class="hide-menu"> Ant. Médico </span>
+                               			<span class="hide-menu"> Antecedentes Médicos </span>
                                		</a>
                                	</li>
                                 <li class="sidebar-item">
