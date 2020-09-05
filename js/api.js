@@ -204,17 +204,36 @@ function getSubDominio(codDominio){
     return xDATA;
 }
 
-function getMedico(codTipo){
-    if (localStorage.getItem('medicoJSON') === null){
-        getJSON('medicoJSON', '400');
+function getMedicoUsuario(){
+    if (localStorage.getItem('medicoUsuarioJSON') === null){
+        getJSON('medicoUsuarioJSON', '400/medico/usuario');
     }
 
-    var xJSON = JSON.parse(localStorage.getItem('medicoJSON'));
+    var xJSON = JSON.parse(localStorage.getItem('medicoUsuarioJSON'));
     var xDATA = [];
        
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
-            if (element.tipo_perfil_codigo == codTipo) {
+            if (element.tipo_estado_codigo == 5) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
+function getMedicoCompeticion(codPersona, codModulo){
+    if (localStorage.getItem('medicoCompeticionJSON') === null){
+        getJSON('medicoCompeticionJSON', '400/medico/competicion');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('medicoCompeticionJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            if (element.persona_codigo == codPersona && element.tipo_modulo_codigo == codModulo) {
                 xDATA.push(element);
             }
         });
@@ -255,6 +274,23 @@ function getCompetencia(codOrg, codDis, codPer){
             if (element.competicion_disciplina == codDis && element.competicion_anho == codPer) {
                 xDATA.push(element);
             }
+        });
+    }
+
+    return xDATA; 
+}
+
+function getCompetenciaListado(){
+    if (localStorage.getItem('competenciaJSON') === null){
+        getJSON('competenciaJSON', '200/competicion/listado/cabecera');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('competenciaJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
         });
     }
 

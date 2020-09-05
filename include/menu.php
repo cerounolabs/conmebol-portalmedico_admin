@@ -216,14 +216,14 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="../public/medico.php" class="sidebar-link">
+                               		<a href="../public/medico.php?codigo=168" class="sidebar-link">
                                			<i class="mdi mdi-medico"></i>
                                			<span class="hide-menu"> Lesiones </span>
                                     </a>
                                	</li>
                                 
                                 <li class="sidebar-item">
-                               		<a href="../examen/medico.php" class="sidebar-link">
+                               		<a href="../public/medico.php?codigo=169" class="sidebar-link">
                                			<i class="mdi mdi-covid19"></i>
                                			<span class="hide-menu"> Examenes Medicos </span>
                                		</a>

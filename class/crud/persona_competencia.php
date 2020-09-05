@@ -46,7 +46,7 @@
 
 	$result		= json_decode($result, true);
 	
-	header('Location: ../../'.$work03.'.php?code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>

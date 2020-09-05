@@ -186,11 +186,11 @@
 <?php
     if ($usu_04 == 39393) {
 ?>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>, '<?php echo $valorTipo ?>');" style="width:100%; height:40px;" required>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>, <?php echo $valorEncuentro; ?>, 174, '<?php echo $valorTipo; ?>');" style="width:100%; height:40px;" required>
 <?php
     } else {
 ?>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>, '<?php echo $valorTipo ?>');" style="width:100%; height:40px;" required>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 174, '<?php echo $valorTipo; ?>');" style="width:100%; height:40px;" required>
 <?php
     }
 ?>

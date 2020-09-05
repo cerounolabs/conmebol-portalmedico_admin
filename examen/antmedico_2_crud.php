@@ -21,8 +21,8 @@
 
     $valorEncuentro = 0;
     $dominioJSON    = get_curl('000');
-    $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
-    $equipoJSON     = get_curl('200/competicion/equipo/alta/'.$usu_04.'/'.$valorCompeticion.'/177/'.$valorEncuentro);
+    $equipoJSON     = get_curl('100/equipo/codigo/'.$usu_04);
+    $personaJSON    = get_curl('200/competicion/equipo/alta/'.$usu_04.'/'.$valorCompeticion.'/177/'.$valorEncuentro);
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +101,7 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label> Organizaci&oacute;n </label>
-                                                        <input class="form-control" value="<?php echo $equipoJSON['data'][0]['organizacion_nombre']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Organización" readonly>
+                                                        <input class="form-control" value="<?php echo $equipoJSON['data'][0]['organizacion_nombre'].' - '.$equipoJSON['data'][0]['organizacion_nombre_corto']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Organización" readonly>
                                                     </div>
                                                 </div>
 
@@ -115,8 +115,8 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label> Equipo de registro </label>
-                                                        <input class="form-control" value="<?php $rival = ($juegoJSON['data'][0]['equipo_local_codigo'] == $usu_04) ? str_replace('"', '', $juegoJSON['data'][0]['equipo_local_nombre']) : str_replace('"', '', $juegoJSON['data'][0]['equipo_visitante_nombre']); echo $rival; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
+                                                        <label> Ciudad </label>
+                                                        <input class="form-control" value="<?php echo $equipoJSON['data'][0]['equipo_pais'].' - '.$equipoJSON['data'][0]['equipo_region']; ?>" type="text" style="text-transform:uppercase; height:40px;" placeholder="Competicion" readonly>
                                                     </div>
                                                 </div>
 
@@ -149,19 +149,19 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var101">Persona</label>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>);" style="width:100%; height:40px;" required>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', <?php echo $usu_04; ?>, <?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 177, '<?php echo $valorTipo; ?>');" style="width:100%; height:40px;" required>
                                                             <option selected disabled>SELECCIONAR...</option>
 <?php
-    if ($equipoJSON['code'] === 200){
-        foreach ($equipoJSON['data'] as $equipoKEY => $equipoVALUE) {
+    if ($personaJSON['code'] === 200){
+        foreach ($personaJSON['data'] as $personaKEY => $personaVALUE) {
             if ($usu_04 == 39393) {
 ?>
-                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido']; ?></option>
+                                                            <option value="<?php echo $personaVALUE['jugador_codigo']; ?>"><?php echo $personaVALUE['jugador_nombre'].' '.$personaVALUE['jugador_apellido']; ?></option>
 <?php
             } else {
-                if ($equipoVALUE['jugador_tipo'] == $valorTipo) {
+                if ($personaVALUE['jugador_tipo'] == $valorTipo) {
 ?>
-                                                            <option value="<?php echo $equipoVALUE['jugador_codigo']; ?>"><?php echo $equipoVALUE['jugador_nombre'].' '.$equipoVALUE['jugador_apellido']; ?></option>
+                                                            <option value="<?php echo $personaVALUE['jugador_codigo']; ?>"><?php echo $personaVALUE['jugador_nombre'].' '.$personaVALUE['jugador_apellido']; ?></option>
 <?php
                 }
             }
@@ -272,5 +272,6 @@
 ?>
 
         <script src="../js/api.js"></script>
+        <script src="../js/select.js"></script>
     </body>
 </html>
