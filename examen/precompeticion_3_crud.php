@@ -71,7 +71,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../examen/home.php">HOME</a>
+                                            <a href="javascript:void(0)">HOME</a>
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
