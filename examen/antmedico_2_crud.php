@@ -75,7 +75,7 @@
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>">ANTECEDENTE M&Eacute;DICO</a>
+                                            <a href="../examen/antmedico.php?competicion=<?php echo $valorCompeticion; ?>">ANTECEDENTES M&Eacute;DICOS</a>
                                         </li>
 
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
