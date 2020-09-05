@@ -73,7 +73,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../examen/home.php">HOME</a>
+                                        <a href="javascript:void(0)">HOME</a>
                                     </li>
                                     <li class="breadcrumb-item" aria-current="page">
                                         <a href="../examen/competicion.php">COMPETICIONES</a>
@@ -143,9 +143,9 @@
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA</th>
                                                 <th class="border-top-0" style="text-align:center;">NOMBRE</th>
-                                                <th class="border-top-0" style="text-align:center;">FEC. ENVIO</th>
-                                                <th class="border-top-0" style="text-align:center;">FEC. RECEPCI&Oacute;N</th>
-                                                <th class="border-top-0" style="text-align:center;">POSITIVO</th>
+                                                <th class="border-top-0" style="text-align:center;">FECHA ENVIO</th>
+                                                <th class="border-top-0" style="text-align:center;">FECHA RECEPCI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;">RESULTADO</th>
                                                 <th class="border-top-0" style="text-align:center; width:80px;">&nbsp;</th>
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA HORA</th>

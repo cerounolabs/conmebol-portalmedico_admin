@@ -71,7 +71,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../examen/home.php">HOME</a>
+                                            <a href="javascript:void(0)">HOME</a>
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
@@ -280,7 +280,7 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <input id="var1071_<?php echo $indexTest; ?>" name="var1071_<?php echo $indexTest; ?>" value="<?php echo $dominioVALUE['tipo_codigo']; ?>" class="form-control" type="hidden" placeholder="Modo" required readonly>
-                                                        <label for="var1072_<?php echo $indexTest; ?>"> Test <?php echo ucfirst(strtolower($dominioVALUE['tipo_nombre_castellano'])); ?> </label>
+                                                        <label for="var1072_<?php echo $indexTest; ?>"> TEST <?php echo strtoupper($dominioVALUE['tipo_nombre_castellano']); ?> </label>
                                                         <select id="var1072_<?php echo $indexTest; ?>" name="var1072_<?php echo $indexTest; ?>" onchange="inputValid('var1072_<?php echo $indexTest; ?>', var1073_<?php echo $indexTest; ?>);" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Presento">
                                                                 <option value="NO">NO</option>
