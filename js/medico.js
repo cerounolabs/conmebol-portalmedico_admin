@@ -1,20 +1,9 @@
 $(document).ready(function() {
-	var codigo	= document.getElementById('tableLoadDMed').className;
-	var xJSON 	= getMedico(codigo);
-	var xJSON1	= getCompMedico(0, 0);
+	var xJSON 	= getMedicoUsuario();
+	var xJSON1	= getMedicoCompeticion(0, 0);
 	var col03	= true;
 
-	switch (codigo) {
-		case '10':
-			col03 = true;
-			break;
-	
-		case '157':
-			col03 = true;
-			break;
-	}
-
-	$('#tableLoadCMed').DataTable({
+	var tablePers	= $('#tableLoadCMed').DataTable({
 		processing	: true,
 		destroy		: true,
 		searching	: true,
@@ -59,10 +48,14 @@ $(document).ready(function() {
 		],
 		columns		: [
 			{ data				: 'persona_codigo', name : 'persona_codigo'},
-			{ render			: function (data, type, full, meta) {return '<img src="../' + full.persona_path + '" height="50" />';}},
 			{ render			: function (data, type, full, meta) {
-				return '<button id="' + full.persona_codigo + '" value="' + full.persona_nombre + '" role="button" class="btn btn-primary" title="Competencia"><i class="ti-eye"></i>&nbsp;</button>';
-			}},
+					return '<img src="http://portalmedico.conmebol.com/' + full.persona_path + '" height="50" />';
+				}
+			},
+			{ render			: function (data, type, full, meta) {
+					return '<button id="' + full.persona_codigo + '" value="' + full.persona_nombre + '" role="button" class="btn btn-primary" title="Competicion"><i class="ti-eye"></i>&nbsp;</button>';
+				}
+			},
 			{ data				: 'equipo_nombre', name : 'equipo_nombre'},
 			{ data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
 			{ data				: 'tipo_acceso_nombre_castellano', name : 'tipo_acceso_nombre_castellano'},
@@ -79,7 +72,7 @@ $(document).ready(function() {
 		]
 	});
 
-	var tableData   = $('#tableLoadCComp').DataTable({
+	var tableComp   = $('#tableLoadCComp').DataTable({
 		processing	: true,
 		destroy		: true,
 		searching	: true,
@@ -117,7 +110,10 @@ $(document).ready(function() {
 		],
 		columns		: [
 			{ data				: 'persona_codigo', name : 'persona_codigo'},
-			{ render			: function (data, type, full, meta) {return '<img src="../' + full.competicion_imagen_path + '" height="50" />';}},
+			{ render			: function (data, type, full, meta) {
+					return '<img src="http://portalmedico.conmebol.com/' + full.competicion_imagen_path + '" height="50" />';
+				}
+			},
 			{ data				: 'competicion_disciplina', name : 'competicion_disciplina'},
 			{ data				: 'competicion_genero', name : 'competicion_genero'},
 			{ data				: 'competicion_nombre', name : 'competicion_nombre'},
@@ -128,15 +124,83 @@ $(document).ready(function() {
 		]
 	});
 
-	$('button').click(function() {
-		var xTip	= document.getElementById('tableLoadDComp').className;
-		var xPers	= $(this).attr('id');
-		var nPers	= $(this).attr('value');
-		var xJSON1	= getCompMedico(xPers, xTip);
+	$('#tableLoadCMed tbody').on('click', 'tr', function(event) {
+		var xMod	= document.getElementById('tableLoadDMed').className;
+		var xPers	= event.target.id;
+		var nPers	= event.target.value;
+		var xJSON1	= getMedicoCompeticion(xPers, xMod);
+
 		localStorage.removeItem('persona_codigo');
 		localStorage.removeItem('persona_nombre');
+
 		localStorage.setItem('persona_codigo', xPers);
 		localStorage.setItem('persona_nombre', nPers);
-		tableData.clear().rows.add(xJSON1).draw();
+
+		tableComp.clear().rows.add(xJSON1).draw();
 	});
 });
+
+function setCompetenciaPersona(){
+	var xMod	= document.getElementById('tableLoadDMed').className;
+	var codPers = localStorage.getItem('persona_codigo');
+	var nomPers = localStorage.getItem('persona_nombre');
+	var xJSON   = getCompetenciaListado();
+	var selComp = '';
+
+	xJSON.forEach(element => {
+		selComp = selComp + '                               <option value="'+element.competicion_codigo+'">DISCIPLINA: '+ element.competicion_disciplina +' - COMPETICION: '+ element.competicion_nombre + ' - GENERO: ' + element.competicion_genero + ' - PERIODO: ' + element.competicion_anho +'</option>';
+	});
+
+	var html    = 
+		'<div class="modal-content">'+
+		'   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_competencia.php">'+
+		'	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+		'		    <h4 class="modal-title" id="vcenter"> Agregar Competencia </h4>'+
+		'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+		'	    </div>'+
+		''+
+		'	    <div class="modal-body" >'+
+		'           <div class="row pt-3">'+
+		'               <div class="col-sm-12">'+
+		'                   <div class="form-group">'+
+		'                       <label for="var01_1">Médico</label>'+
+		'                       <input id="var01_1" name="var01_1" class="form-control" type="text" value="'+nomPers+'" style="text-transform:uppercase; height:40px;" required readonly>'+
+		'                       </select>'+
+		'                    </div>'+
+		'                </div>'+
+		''+
+		'               <div class="col-sm-12">'+
+		'                   <div class="form-group">'+
+		'                       <label for="var02">Competencia</label>'+
+		'                       <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+selComp+
+		'                       </select>'+
+		'                    </div>'+
+		'                </div>'+
+		''+
+		'                <div class="col-sm-12">'+
+		'                    <div class="form-group">'+
+		'                        <label for="var03">Comentario</label>'+
+		'                        <textarea id="var03" name="var03" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
+		'                    </div>'+
+		'                </div>'+
+		'           </div>'+
+		''+
+		'           <div class="form-group">'+
+		'               <input type="hidden" class="form-control"	id="var01"			name="var01" 		value="'+codPers+'"						required readonly>'+
+		'               <input type="hidden" class="form-control"	id="workModo"		name="workModo" 	value="C"								required readonly>'+
+		'               <input type="hidden" class="form-control"	id="workCodigo" 	name="workCodigo" 	value="0"								required readonly>'+
+		'               <input type="hidden" class="form-control"	id="workPage"		name="workPage" 	value="medico.php?codigo='+ xMod +'&"	required readonly>'+
+		'               <input type="hidden" class="form-control"	id="workModulo"		name="workModulo" 	value="'+ xMod +'"						required readonly>'+
+		'           </div>'+
+		'	    </div>'+
+		''+
+		'	    <div class="modal-footer">'+
+		'           <button type="submit" class="btn btn-info">Agregar</button>'+
+		'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+		'	    </div>'+
+		'   </form>'+
+		'</div>';
+
+	$("#modalcontent").empty();
+	$("#modalcontent").append(html);
+}

@@ -189,49 +189,7 @@
                                                         <input id="var103" name="var103" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
-<!--
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="var104">Personas adultas</label>
-                                                        <select id="var104" name="var104" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Cantidad">
-                                                                <option value="0">Vive solo</option>
-                                                                <option value="1">1 Persona</option>
-                                                                <option value="2">2 Persona</option>
-                                                                <option value="3">3 Persona</option>
-                                                                <option value="4">4 Persona</option>
-                                                                <option value="5">5 Persona</option>
-                                                                <option value="6">6 Persona</option>
-                                                                <option value="7">7 Persona</option>
-                                                                <option value="8">8 Persona</option>
-                                                                <option value="9">9 Persona</option>
-                                                                <option value="10">10 Persona</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-12 col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="var105">Personas menores</label>
-                                                        <select id="var105" name="var105" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <optgroup label="Cantidad">
-                                                                <option value="0">Vive solo</option>
-                                                                <option value="1">1 Persona</option>
-                                                                <option value="2">2 Persona</option>
-                                                                <option value="3">3 Persona</option>
-                                                                <option value="4">4 Persona</option>
-                                                                <option value="5">5 Persona</option>
-                                                                <option value="6">6 Persona</option>
-                                                                <option value="7">7 Persona</option>
-                                                                <option value="8">8 Persona</option>
-                                                                <option value="9">9 Persona</option>
-                                                                <option value="10">10 Persona</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
--->
+                                                
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var106">Convocado</label>
