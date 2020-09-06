@@ -147,7 +147,7 @@
                                                         <select id="var101" name="var101" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Tipo">
                                                                 <option value="P">JUGADOR</option>
-                                                                <option value="T">DELEGADO</option>
+                                                                <option value="T">CUERPO T&Eacute;NICO</option>
                                                             </optgroup>
                                                         </select>
                                                     </div>
