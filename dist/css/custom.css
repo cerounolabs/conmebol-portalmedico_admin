@@ -14,3 +14,7 @@
 .custom-float{
 	margin-top:22px;
 }
+
+.page-breadcrumb .breadcrumb {
+	font-size: 16px !important;
+}
