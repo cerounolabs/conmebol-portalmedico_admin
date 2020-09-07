@@ -11,7 +11,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="../public/home.php">
+                    <a class="navbar-brand" href="javascript:void(0);">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -95,7 +95,7 @@
 										<p class=" m-b-0"><?php echo $log_03; ?></p>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="setChangeCont('<?php echo $log_04; ?>', '<?php echo $log_02; ?>', '<?php echo $log_01; ?>', 'medico');">
+                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="setChangeCont('<?php echo $log_04; ?>', '<?php echo $log_02; ?>', '<?php echo $log_01; ?>', 'examen/competicion');">
                                     <i class="ti-key m-r-5 m-l-5"></i> Cambiar contrase&ntilde;a</a>
                                 <a class="dropdown-item" href="../class/session/session_logout.php">
                                     <i class="fa fa-power-off m-r-5 m-l-5"></i> Cerrar Sesi&oacute;n</a>
