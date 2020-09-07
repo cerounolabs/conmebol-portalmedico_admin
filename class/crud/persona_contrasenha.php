@@ -33,7 +33,7 @@
 
 	$result		= json_decode($result, true);
 
-	header('Location: ../../public/'.$work02.'.php?code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../'.$work02.'.php?code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>

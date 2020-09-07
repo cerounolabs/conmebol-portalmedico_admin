@@ -37,7 +37,7 @@ function postJSON(codPAGE, codURL, codPARS) {
     xHTTP.send(codPARS);
 }
 
-function setChangeCont(codId, codEmail, codUser) {
+function setChangeCont(codId, codEmail, codUser, codPage) {
     var html = 
     '<div class="modal-content">'+
     '   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_contrasenha.php">'+
@@ -70,7 +70,7 @@ function setChangeCont(codId, codEmail, codUser) {
     '           </div>'+
     '           <div class="form-group">'+
     '               <input id="workCodigo" name="workCodigo" value="'+codId+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-    '               <input id="workPage" name="workPage" value="home" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+    '               <input id="workPage" name="workPage" value="'+ codPage +'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
     '           </div>'+
     '	    </div>'+
     '	    <div class="modal-footer">'+
