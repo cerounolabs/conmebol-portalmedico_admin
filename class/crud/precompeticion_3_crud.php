@@ -13,6 +13,8 @@
 	$val104			= $_POST['var104'];
 	$val105			= $_POST['var105'];
 	$val106			= strtoupper(strtolower(trim($_POST['var106'])));
+	$val107			= $_POST['var107'];
+	$val108			= strtoupper(strtolower(trim($_POST['var108'])));
 	
 	$work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
@@ -36,9 +38,11 @@
 				'equipo_codigo'						=> $work07,
 				'tipo_persona_codigo'				=> $val101,
 				'tipo_genero_codigo'				=> $val104,
+				'tipo_documento_codigo'				=> $val107,
 				'persona_nombre'					=> $val102,
 				'persona_apellido'					=> $val103,
 				'persona_fecha_nacimiento'			=> $val105,
+				'persona_documento'					=> $val108,
 				'persona_posicion'					=> $val106,
 				'auditoria_usuario'					=> $log_01,
 				'auditoria_fecha_hora'				=> date('Y-m-d H:i:s'),

@@ -303,6 +303,13 @@
                                         </li>
 
                                         <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICODOCUMENTO" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
+                                                <span class="hide-menu"> Tipo Documento</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
                                             <a href="../public/dominio.php?dominio=EXAMENMEDICOANTMEDICO" class="sidebar-link">
                                                 <i class="mdi mdi-competicion"></i> 
                                                 <span class="hide-menu"> Ant. M&eacute;dicos</span>

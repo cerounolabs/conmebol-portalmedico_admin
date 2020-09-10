@@ -147,7 +147,8 @@
                                                         <select id="var101" name="var101" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <optgroup label="Tipo">
                                                                 <option value="P">JUGADOR</option>
-                                                                <option value="T">CUERPO T&Eacute;NICO</option>
+                                                                <option value="T">CUERPO T&Eacute;CNICO</option>
+                                                                <option value="Z">ZONA 1</option>
                                                             </optgroup>
                                                         </select>
                                                     </div>
@@ -188,8 +189,36 @@
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>POSICI&Oacute;N</label>
+                                                        <label>POSICI&Oacute;N O FUNCI&Oacute;N</label>
                                                         <input id="var106" name="var106" class="form-control" type="text" style="text-transform:uppercase; height:40px;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var107">TIPO DOCUMENTO</label>
+                                                        <select id="var107" name="var107" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                            <optgroup label="Tipo">
+<?php
+    if ($dominioJSON['code'] == 200) {
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_dominio'] == 'EXAMENMEDICODOCUMENTO'){
+?>
+                                                                <option value="<?php echo $dominioVALUE['tipo_codigo'];?>"><?php echo $dominioVALUE['tipo_nombre_castellano'];?></option>
+<?php
+            }
+        }
+    }
+?>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var108">N&Uacute;MERO DOCUMENTO</label>
+                                                        <input id="var108" name="var108" class="form-control" type="text" style="text-transform:uppercase; height:40px;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,8 +240,8 @@
                                         <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $valorEquipo; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workAntExamen"    name="workAntExamen"    value="0" required readonly>
-                                        <input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="207" required readonly>
-                                        <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="210" required readonly>
+                                        <input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="0" required readonly>
+                                        <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="0" required readonly>
                                         <input class="form-control" type="hidden" id="workRegistro"     name="workRegistro"     value="0" required readonly>
                                     </div>
 

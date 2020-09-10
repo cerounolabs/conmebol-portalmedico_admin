@@ -12,7 +12,7 @@
     } else {
         $valorCompeticion   = 0;
     }
-
+    
     $encuentroJSON  = get_curl('200/competicion/encuentro/'.$usu_04.'/'.$valorCompeticion);
 ?>
 
