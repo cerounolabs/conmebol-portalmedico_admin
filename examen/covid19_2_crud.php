@@ -25,6 +25,28 @@
         $valorTipo          = 'P';
     }
 
+    switch ($valorTipo) {
+        case 'T':
+            $tit102 = 'Cargo';
+            $tit103 = '';
+            break;
+
+        case 'P':
+            $tit102 = 'Posición';
+            $tit103 = 'Camiseta nro.';
+            break;
+
+        case 'Z':
+            $tit102 = 'Función';
+            $tit103 = 'Documento';
+            break;
+
+        case 'O':
+            $tit102 = 'Posición';
+            $tit103 = '';
+            break;
+    }
+
     $dominioJSON    = get_curl('000');
     $juegoJSON      = get_curl('200/competicion/juego/'.$usu_04.'/'.$valorEncuentro);
     $equipoJSON     = get_curl('200/competicion/equipo/alta/'.$usu_04.'/'.$valorCompeticion.'/174/'.$valorEncuentro);
@@ -218,18 +240,34 @@
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Posici&oacute;n</label>
+                                                        <label for="var102"><?php echo $tit102; ?></label>
                                                         <input id="var102" name="var102" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
-                                                
+<?php
+    if ($valorTipo == 'P' || $valorTipo == 'Z'){
+?>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Camiseta nro.</label>
+                                                        <label for="var103"><?php echo $tit103; ?></label>
                                                         <input id="var103" name="var103" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
+<?php
+    } else {
+?>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <input id="var103" name="var103" value="0" class="form-control" type="hidden" style="text-transform:uppercase; height:40px;" readonly>
+                                                    </div>
+                                                </div>
+<?php
+    }
+?>
 
+<?php
+    if ($valorTipo != 'Z'){
+?>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var104">Personas adultas</label>
@@ -283,6 +321,35 @@
                                                         </select>
                                                     </div>
                                                 </div>
+<?php
+    } else {
+?>
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var106">Convocado</label>
+                                                        <select id="var106" name="var106" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                            <optgroup label="Convocado">
+                                                                <option value="NO">NO</option>
+                                                                <option value="SI">SI</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <input id="var104" name="var104" value="0" class="form-control" type="hidden" style="text-transform:uppercase; height:40px;" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <input id="var105" name="var105" value="0" class="form-control" type="hidden" style="text-transform:uppercase; height:40px;" readonly>
+                                                    </div>
+                                                </div>                                                
+<?php
+    }
+?>
 
 <?php
     if ($dominioJSON['code'] === 200){

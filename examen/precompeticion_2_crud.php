@@ -25,6 +25,28 @@
         $valorTipo          = 'P';
     }
 
+    switch ($valorTipo) {
+        case 'T':
+            $tit102 = 'Cargo';
+            $tit103 = '';
+            break;
+
+        case 'P':
+            $tit102 = 'Posición';
+            $tit103 = 'Camiseta nro.';
+            break;
+
+        case 'Z':
+            $tit102 = 'Función';
+            $tit103 = 'Documento';
+            break;
+
+        case 'O':
+            $tit102 = 'Posición';
+            $tit103 = '';
+            break;
+    }
+
     $valorEncuentro = 0;
     $dominioJSON    = get_curl('000');
 
@@ -178,18 +200,22 @@
 
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Posici&oacute;n</label>
+                                                        <label for="var102"><?php echo $tit102; ?></label>
                                                         <input id="var102" name="var102" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
-                                                
+<?php
+    if ($valorTipo == 'P' || $valorTipo == 'Z'){
+?>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label>Camiseta nro.</label>
+                                                        <label for="var103"><?php echo $tit103; ?></label>
                                                         <input id="var103" name="var103" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>
                                                     </div>
                                                 </div>
-                                                
+<?php
+    }
+?>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var106">Convocado</label>
@@ -201,7 +227,9 @@
                                                         </select>
                                                     </div>
                                                 </div>
-
+<?php
+    if ($valorTipo == 'P' || $valorTipo == 'Z'){
+?>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                     </div>
@@ -211,6 +239,9 @@
                                                     <div class="form-group">
                                                     </div>
                                                 </div>
+<?php
+    }
+?>
 
 <?php
     if ($dominioJSON['code'] === 200){

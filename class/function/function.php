@@ -57,6 +57,10 @@
             case 'EXAMENMEDICOTIPO':
                 $result = 'EXAMEN MÉDICO TIPO';
                 break;
+            
+            case 'EXAMENMEDICODOCUMENTO':
+                $result = 'EXAMEN MÉDICO TIPO DOCUMENTO';
+                break;
 
             case 'EXAMENMEDICOANTMEDICO':
                 $result = 'EXAMEN MÉDICO ANTECEDENTES M&Eacute;DICOS';

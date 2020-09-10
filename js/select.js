@@ -35,8 +35,8 @@ function selectEquipo(rowComp, rowEncu, rowEqui, rowTipo, rowPlay, rowPers) {
 function selectJugador2(rowJud, inpPos, inpNro, rowEqui, rowComp, rowEncu, rowTipo, rowPlay){
     var elemJug = document.getElementById(rowJud);
     var elemEqu = '';
-    var elemPos = document.getElementById(inpPos);
-    var elemNro = document.getElementById(inpNro);
+    var elemPos = '';
+    var elemNro = '';
 
     if (rowEqui == 'var110') {
         elemEqu = document.getElementById(rowEqui).value;
@@ -50,18 +50,27 @@ function selectJugador2(rowJud, inpPos, inpNro, rowEqui, rowComp, rowEncu, rowTi
         if (element.jugador_codigo == elemJug.value) {
             switch (rowPlay) {
                 case 'T':
-                    elemPos.value = element.jugador_rol_1;
-                    elemNro.value = '';
+                    elemPos         = document.getElementById(inpPos);
+                    elemPos.value   = element.jugador_rol_1;
                     break;
             
                 case 'P':
-                    elemPos.value = element.jugador_posicion;
-                    elemNro.value = element.jugador_numero;
+                    elemPos         = document.getElementById(inpPos);
+                    elemNro         = document.getElementById(inpNro);
+                    elemPos.value   = element.jugador_posicion;
+                    elemNro.value   = element.jugador_numero;
+                    break;
+
+                case 'Z':
+                    elemPos         = document.getElementById(inpPos);
+                    elemNro         = document.getElementById(inpNro);
+                    elemPos.value   = element.jugador_posicion;
+                    elemNro.value   = element.tipo_documento_nombre_castellano + ' - ' + element.tipo_documento_numero;
                     break;
 
                 case 'O':
-                    elemPos.value = element.jugador_posicion;
-                    elemNro.value = '';
+                    elemPos         = document.getElementById(inpPos);
+                    elemPos.value   = element.jugador_posicion;
                     break;
             }
         }

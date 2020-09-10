@@ -110,16 +110,18 @@
     if ($usu_04 == 39393 && $usu_05 == 157){
 ?>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=Z" role="button" title="Agregar"><i class="ti-plus"></i> ALTA ZONA 1 </a>
 <?php
     } elseif ($usu_04 == 39393 && $usu_05 == 9) {
 ?>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA CUERPO T&Eacute;NICO </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA CUERPO T&Eacute;CNICO </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=Z" role="button" title="Agregar"><i class="ti-plus"></i> ALTA ZONA 1 </a>
 <?php
     } else {
 ?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA CUERPO T&Eacute;NICO </a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA CUERPO T&Eacute;CNICO </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
 <?php
     }
