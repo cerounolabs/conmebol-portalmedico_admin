@@ -189,12 +189,13 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js"></script>
     <script>
         const _codPers = <?php echo $log_04; ?>;
         const _codEqui = <?php echo $usu_04; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
     </script>
-    <script src="../js/antmedico.js"></script>
+    
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/antmedico.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>

@@ -166,11 +166,11 @@
 <?php
     include '../include/footer.php';
 ?>
-
-        <script src="../js/api.js"></script>
         <script>
             localStorage.removeItem('examenPruebaJSON');
             localStorage.removeItem('jugadorJSON');
         </script>
+        
+        <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
     </body>
 </html>

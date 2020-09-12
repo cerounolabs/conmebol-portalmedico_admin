@@ -202,7 +202,6 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js"></script>
     <script>
         const _codPers = <?php echo $log_04; ?>;
         const _codEqui = <?php echo $usu_04; ?>;
@@ -211,6 +210,8 @@
 
         localStorage.removeItem('examenJugadorJSON');
     </script>
-    <script src="../js/preencuentro.js"></script>
+
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/preencuentro.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>
