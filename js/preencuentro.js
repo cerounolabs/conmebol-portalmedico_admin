@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var xDATA       = getExamenPrueba(209, _codEncu, _codEqui);
+	var xDATA       = getExamenPrueba(174, _codEncu, _codEqui);
     var tableData   = $('#tableLoad').DataTable(
         {
             processing	: true,
@@ -84,13 +84,13 @@ $(document).ready(function() {
     );
 
     $('.form-group').change(function() {
-        var xDATA       = getExamenPrueba(209, _codEncu, _codEqui);
+        var xDATA       = getExamenPrueba(174, _codEncu, _codEqui);
         tableData.clear().rows.add(xDATA).draw();
     });
 });
 
 function setExamenCovid(codElem, codAcc){
-	var xJSON       = getExamenPrueba(209, _codEncu, _codEqui);
+	var xJSON       = getExamenPrueba(174, _codEncu, _codEqui);
 	var html        = '';
 	var bodyCol     = '';
 	var bodyTit     = '';
