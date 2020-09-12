@@ -310,9 +310,16 @@
                                         </li>
 
                                         <li class="sidebar-item">
+                                            <a href="../public/dominio.php?dominio=EXAMENMEDICOANTMEDICOESTADO" class="sidebar-link">
+                                                <i class="mdi mdi-competicion"></i> 
+                                                <span class="hide-menu"> Ant. M&eacute;dicos Estado</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="sidebar-item">
                                             <a href="../public/dominio.php?dominio=EXAMENMEDICOANTMEDICO" class="sidebar-link">
                                                 <i class="mdi mdi-competicion"></i> 
-                                                <span class="hide-menu"> Ant. M&eacute;dicos</span>
+                                                <span class="hide-menu"> Ant. M&eacute;dicos Tipo</span>
                                             </a>
                                         </li>
 

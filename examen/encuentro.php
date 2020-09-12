@@ -108,7 +108,8 @@
 <?php   
     if ($usu_04 == 39393 && $usu_05 == 9) {
 ?>
-                                            <a href="../examen/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> Pre-Encuentro </a>
+<!--                                            <a href="../examen/preencuentro.php?competicion=<?php //echo $valorCompeticion; ?>&encuentro=<?php //echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> Pre-Encuentro </a>-->
+                                            <a href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $encuentroVALUE['juego_codigo']; ?>" class="btn btn-info" style="background-color:#005ea6;"> Control de TEST </a>
 <?php   
     } else {
 ?>
