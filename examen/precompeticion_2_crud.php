@@ -328,8 +328,9 @@
     include '../include/footer.php';
 ?>
 
-        <script src="../js/api.js"></script>
-        <script src="../js/select.js"></script>
+        <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+        <script src="../js/select.js?<?php echo date('Ymd');?>"></script>
+        
         <script>
             selectEquipo(<?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 'var110', 210, '<?php echo $valorTipo; ?>', 'var101');
         </script>

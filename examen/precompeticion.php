@@ -169,7 +169,7 @@
         localStorage.removeItem('examenJugadorJSON');
     </script>
     
-    <script src="../js/api.js"></script>
-    <script src="../js/precompeticion.js"></script>
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/precompeticion.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>
