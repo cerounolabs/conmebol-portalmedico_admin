@@ -138,6 +138,7 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">ENCUENTRO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">EQUIPO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">POSICI&Oacute;N / FUNCI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="5">LABORATORIO</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">AUDITORIA</th>
                                             </tr>

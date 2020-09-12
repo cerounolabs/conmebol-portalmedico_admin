@@ -38,10 +38,11 @@ $(document).ready(function() {
                 { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
 				{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
 				{ targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] },
-                { targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0] },
-                { targets			: [12],	visible : false,searchable : false,	orderData : [12, 0] },
+				{ targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0] },
+				{ targets			: [12],	visible : true,	searchable : true,	orderData : [12, 0] },
                 { targets			: [13],	visible : false,searchable : false,	orderData : [13, 0] },
-                { targets			: [14],	visible : false,searchable : false,	orderData : [14, 0] }
+                { targets			: [14],	visible : false,searchable : false,	orderData : [14, 0] },
+                { targets			: [15],	visible : false,searchable : false,	orderData : [15, 0] }
             ],
             columns		: [
                 { data				: 'examen_codigo', name : 'examen_codigo'},
@@ -50,7 +51,8 @@ $(document).ready(function() {
                 { data				: 'competicion_nombre', name : 'competicion_nombre'},
                 { data				: 'encuentro_nombre', name : 'encuentro_nombre'},
                 { data				: 'equipo_nombre', name : 'equipo_nombre'},
-                { data				: 'persona_nombre', name : 'persona_nombre'},
+				{ data				: 'persona_nombre', name : 'persona_nombre'},
+				{ data				: 'examen_persona_posicion', name : 'examen_persona_posicion'},
                 { data				: 'examen_laboratorio_nombre', name : 'examen_laboratorio_nombre'},
                 { data				: 'examen_laboratorio_fecha_envio', name : 'examen_laboratorio_fecha_envio'},
 				{ data				: 'examen_laboratorio_fecha_recepcion', name : 'examen_laboratorio_fecha_recepcion'},
