@@ -87,8 +87,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">PRE-ENCUENTRO Test</h4>
-                                    <h4 class="col-6 card-title" style="text-align: right;">
+                                    <h4 class="col-sm-12 col-md-4 card-title">PRE-ENCUENTRO Test</h4>
+                                    <h4 class="col-sm-12 col-md-8 card-title" style="text-align: right;">
 <?php
     if ($valorEquipo == 39393) {
 ?>

@@ -104,8 +104,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title"> S&Iacute;NTOMAS </h4>
-                                    <h4 class="col-6 card-title" style="text-align: right;">
+                                    <h4 class="col-sm-12 col-md-4 card-title"> S&Iacute;NTOMAS </h4>
+                                    <h4 class="col-sm-12 col-md-8 card-title" style="text-align: right;">
 <?php
     if ($usu_04 == 39393 && $usu_05 == 157) {
 ?>

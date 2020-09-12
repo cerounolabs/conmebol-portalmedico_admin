@@ -104,8 +104,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-6 card-title">Control de TEST</h4>
-                                    <h4 class="col-6 card-title" style="text-align: right;">
+                                    <h4 class="col-sm-12 col-md-4 card-title">Control de TEST</h4>
+                                    <h4 class="col-sm-12 col-md-8 card-title" style="text-align: right;">
 <?php
     if ($usu_04 == 39393 && $usu_05 == 157){
 ?>
@@ -207,6 +207,7 @@
         const _codEqui = <?php echo $usu_04; ?>;
         const _codComp = <?php echo $valorCompeticion; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
+        const _codPerf = <?php echo $usu_05; ?>;
     </script>
     <script src="../js/covid19.js"></script>
 </body>

@@ -62,8 +62,11 @@
                 $result = 'EXAMEN MÉDICO TIPO DOCUMENTO';
                 break;
 
+            case 'EXAMENMEDICOANTMEDICOESTADO':
+                $result = 'EXAMEN MÉDICO ANTECEDENTES M&Eacute;DICOS ESTADO';
+
             case 'EXAMENMEDICOANTMEDICO':
-                $result = 'EXAMEN MÉDICO ANTECEDENTES M&Eacute;DICOS';
+                $result = 'EXAMEN MÉDICO ANTECEDENTES M&Eacute;DICOS TIPO';
                 break;
 
             case 'EXAMENMEDICOCOVID19ESTADO':
