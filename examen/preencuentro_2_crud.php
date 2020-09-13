@@ -141,14 +141,14 @@
 <?php
     if ($valorTipo == 'O') {
 ?>
-                                                        <select id="var110" name="var110" onchange="selectEquipo(<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>, <?php echo $valorEncuentro; ?>, 'var110', 209, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <select id="var110" name="var110" onchange="selectEquipo(<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>, <?php echo $valorEncuentro; ?>, 'var110', 174, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <option selected disabled>SELECCIONAR...</option>
                                                             <option value="<?php echo $usu_04; ?>"><?php echo $juegoJSON['data'][0]['equipo_local_nombre'].' VS '.$juegoJSON['data'][0]['equipo_visitante_nombre']; ?></option>
                                                         </select>
 <?php
     } else {
 ?>
-                                                        <select id="var110" name="var110" onchange="removeItem('examenJugadorJSON'); selectEquipo(<?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 'var110', 209, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <select id="var110" name="var110" onchange="removeItem('examenJugadorJSON'); selectEquipo(<?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 'var110', 174, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <option selected disabled>SELECCIONAR...</option>
                                                             <option value="<?php echo $juegoJSON['data'][0]['equipo_local_codigo']; ?>">LOCAL: <?php echo $juegoJSON['data'][0]['equipo_local_nombre']; ?></option>
                                                             <option value="<?php echo $juegoJSON['data'][0]['equipo_visitante_codigo']; ?>">VISITANTE: <?php echo $juegoJSON['data'][0]['equipo_visitante_nombre']; ?></option>
@@ -221,7 +221,7 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var101">Persona</label>
-                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', 'var110', <?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 209, '<?php echo $valorTipo; ?>');" style="width:100%; height:40px;" required></select>
+                                                        <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', 'var110', <?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 174, '<?php echo $valorTipo; ?>');" style="width:100%; height:40px;" required></select>
                                                     </div>
                                                 </div>
                                                 
@@ -389,7 +389,7 @@
                                         <input class="form-control" type="hidden" id="workEquipo"       name="workEquipo"       value="<?php echo $usu_04; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workAntExamen"    name="workAntExamen"    value="0" required readonly>
                                         <input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="207" required readonly>
-                                        <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="209" required readonly>
+                                        <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="174" required readonly>
                                         <input class="form-control" type="hidden" id="workRegistro"     name="workRegistro"     value="0" required readonly>
                                     </div>
 
