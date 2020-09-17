@@ -211,6 +211,6 @@
     </script>
     
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
-    <script src="../js/covid19.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/covid19.js?1<?php echo date('Ymd');?>"></script>
 </body>
 </html>

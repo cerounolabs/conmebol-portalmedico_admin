@@ -214,6 +214,6 @@
     </script>
 
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
-    <script src="../js/preencuentro.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/preencuentro.js?1<?php echo date('Ymd');?>"></script>
 </body>
 </html>

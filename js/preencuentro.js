@@ -61,6 +61,7 @@ $(document).ready(function() {
                     function (data, type, full, meta) {
 						var btnUPD	= '';
 						var btnIMG  = '';
+						var btnANU  = '';
 
 						if (full.tipo_estado_codigo == 207) {
 							btnUPD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 3);" title="Laboratorio" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
@@ -70,7 +71,11 @@ $(document).ready(function() {
 							btnIMG  = '<a href="http://portalmedico.conmebol.com/'+ full.examen_laboratorio_adjunto +'" target="_blank" title="Adjunto" type="button" class="btn btn-warning btn-icon btn-circle"><i class="fa fa-image"></i></a>';
 						}
 
-                        return (btnUPD + '&nbsp;' + btnIMG);
+						if (_codPerf == 9 && full.tipo_estado_codigo != 211){
+							btnANU = '<button onclick="setExamenCovid('+ full.examen_codigo +', 4);" title="Anular" type="button" class="btn btn-danger btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-trash"></i></button>';
+						}
+
+                        return (btnUPD + '&nbsp;' + btnIMG + '&nbsp;' + btnANU);
                     }
                 },
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
@@ -126,11 +131,11 @@ function setExamenCovid(codElem, codAcc){
 			break;
 
 		case 4:
-			bodyTit = 'ELIMINAR';
+			bodyTit = 'ANULAR';
 			bodyCol = '#ff2924;';
 			bodyMod = 'D';
 			bodyOnl = 'readonly';
-			bodyBot = '           <button type="submit" class="btn btn-danger">Eliminar</button>';
+			bodyBot = '           <button type="submit" class="btn btn-danger">Anular</button>';
 			break;
 	
 		case 5:
@@ -234,6 +239,65 @@ function setExamenCovid(codElem, codAcc){
 						'                   <div class="form-group">'+
 						'                       <label for="var106">Comentario</label>'+
 						'                       <textarea id="var106" name="var106" class="form-control" rows="5" style="text-transform:uppercase;"></textarea>'+
+						'                   </div>'+
+						'               </div>'+
+						'           </div>'+
+						'	    </div>'+
+						''+
+						'	    <div class="modal-footer">'+ bodyBot +
+						'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+						'	    </div>'+
+						'   </form>'+
+						'</div>';
+				}
+			});
+			break;
+
+		case 4:
+			xJSON.forEach(element => {
+				if (element.examen_codigo == codElem) {
+					html = 
+						'<div class="modal-content">'+
+						'   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/preencuentro_estado_crud.php">'+
+						'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
+						'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
+						'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+						'	    </div>'+
+						''+
+						'	    <div class="modal-body" >'+
+						'           <div class="form-group">'+
+						'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="'+ element.examen_codigo +'" required readonly>'+
+						'               <input class="form-control" type="hidden" id="workModo"		name="workModo"		value="'+ bodyMod +'" required readonly>'+
+						'               <input class="form-control" type="hidden" id="workPage"		name="workPage"		value="preencuentro.php?competicion='+ _codComp +'&encuentro='+ _codEncu +'&" required readonly>'+
+						'               <input class="form-control" type="hidden" id="workEstado"	name="workEstado"	value="211" required readonly>'+
+						'           </div>'+
+						''+
+						'           <div class="row pt-3">'+
+						'               <div class="col-sm-12">'+
+						'                   <div class="form-group">'+
+						'                       <label>ENCUENTRO</label>'+
+						'                       <input class="form-control" value="'+ element.encuentro_nombre +'" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12 col-md-8">'+
+						'                   <div class="form-group">'+
+						'                       <label>PERSONA</label>'+
+						'                       <input class="form-control" value="'+ element.persona_nombre +'" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label>POSICIÓN / FUNCIÓN</label>'+
+						'                       <input class="form-control" value="'+ element.examen_persona_posicion +'" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var108">Comentario</label>'+
+						'                       <textarea id="var108" name="var108" class="form-control" rows="5" style="text-transform:uppercase;" required></textarea>'+
 						'                   </div>'+
 						'               </div>'+
 						'           </div>'+
