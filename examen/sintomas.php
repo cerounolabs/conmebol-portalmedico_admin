@@ -194,6 +194,7 @@
         const _codPers = <?php echo $log_04; ?>;
         const _codEqui = <?php echo $usu_04; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
+        const _codPerf = <?php echo $usu_05; ?>;
     </script>
 
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>

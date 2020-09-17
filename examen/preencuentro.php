@@ -137,7 +137,7 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">COMPETICI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">ENCUENTRO</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">EQUIPO</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2">PERSONA</th>
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2">POSICI&Oacute;N / FUNCI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="5">LABORATORIO</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">AUDITORIA</th>
@@ -208,6 +208,7 @@
         const _codEqui = <?php echo $usu_04; ?>;
         const _codComp = <?php echo $valorCompeticion; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
+        const _codPerf = <?php echo $usu_05; ?>;
 
         localStorage.removeItem('examenJugadorJSON');
     </script>

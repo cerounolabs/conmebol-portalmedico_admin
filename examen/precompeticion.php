@@ -165,6 +165,7 @@
         const _codEqui = <?php echo $valorEquipo; ?>;
         const _codComp = <?php echo $valorCompeticion; ?>;
         const _codEncu = 0;
+        const _codPerf = <?php echo $usu_05; ?>;
 
         localStorage.removeItem('examenJugadorJSON');
     </script>
