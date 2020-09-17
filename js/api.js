@@ -805,11 +805,19 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     var xDATA = [];
 
     if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
-                xDATA.push(element);
-            }
-        });
+        if (codEqui == 39393 && _codPerf != 9) {
+            xJSON['data'].forEach(element => {
+                if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu && element.equipo_codigo == null) {
+                    xDATA.push(element);
+                }
+            });
+        } else {
+            xJSON['data'].forEach(element => {
+                if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
+                    xDATA.push(element);
+                }
+            });
+        }
     }
 
     return xDATA; 
