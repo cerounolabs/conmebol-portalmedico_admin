@@ -27,7 +27,7 @@
     
     if (!empty($_FILES['var102']['tmp_name'])) {
         $target_msn     = '';
-        $target_nam     = getFechaHora();
+        $target_nam     = getFechaHora().''.rand(100, 999);
         $target_ban     = false;
         $target_dir     = '../../imagen/examencovid19/';
         $target_file    = $target_dir.basename($_FILES['var102']['name']);
