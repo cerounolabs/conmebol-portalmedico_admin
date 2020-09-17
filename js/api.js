@@ -807,7 +807,7 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     if (xJSON['code'] == 200){
         if (codEqui == 39393 && _codPerf != 9) {
             xJSON['data'].forEach(element => {
-                if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu && element.equipo_codigo == null) {
+                if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
                     xDATA.push(element);
                 }
             });
