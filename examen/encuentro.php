@@ -96,8 +96,13 @@
                         <div class="row">
 <?php
     if ($encuentroJSON['code'] === 200) {
+        $fecVal = date('Y-m-d', strtotime('2020-09-14'));
+
         foreach ($encuentroJSON['data'] as $encuentroKEY => $encuentroVALUE) {
-//            if ($encuentroVALUE['juego_estado'] != 'PLAYED'){
+            $fecReg = str_replace('/', '-', $encuentroVALUE['juego_horario']);
+            $fecReg = date('Y-m-d', strtotime($fecReg));
+            
+            if ($encuentroVALUE['juego_estado'] != 'TO_SCHEDULE' && $fecReg > $fecVal){
 ?>
                             <div class="col-sm-12 col-md-4 col-lg-4">
                                 <div class="card" style="height:250px;">
@@ -123,7 +128,7 @@
                                 </div>
                             </div>
 <?php
-//            }
+            }
         }
     }
 ?>
