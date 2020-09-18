@@ -97,7 +97,7 @@
 <?php
     if ($encuentroJSON['code'] === 200) {
         foreach ($encuentroJSON['data'] as $encuentroKEY => $encuentroVALUE) {
-            if ($encuentroVALUE['juego_estado'] != 'PLAYED'){
+//            if ($encuentroVALUE['juego_estado'] != 'PLAYED'){
 ?>
                             <div class="col-sm-12 col-md-4 col-lg-4">
                                 <div class="card" style="height:250px;">
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
 <?php
-            }
+//            }
         }
     }
 ?>
