@@ -171,6 +171,6 @@
     </script>
     
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
-    <script src="../js/precompeticion.js?1<?php echo date('Ymd');?>"></script>
+    <script src="../js/precompeticion.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>
