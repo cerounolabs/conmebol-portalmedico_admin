@@ -25,7 +25,7 @@
         $resultJSON         = json_decode($resultJSON, true);
 
         if ($resultJSON['code'] === 200) {
-            if ($resultJSON['data'][0]['tipo_estado_codigo'] == 1) {
+//            if ($resultJSON['data'][0]['tipo_estado_codigo'] == 'A') {
                 $_SESSION['log_01'] = $resultJSON['data'][0]['persona_user'];
                 $_SESSION['log_02'] = $resultJSON['data'][0]['persona_email'];
                 $_SESSION['log_03'] = $val_03;
@@ -48,15 +48,15 @@
                         header('Location: ../../public/home.php');
                         break;
                 }
-            } else {
-                $val_01             = NULL;
-                $val_02             = NULL;
-                $val_03             = NULL;
-                $code               = 204;
-                $mens               = 'El usuario se encuentra temporalmente BLOQUEADO';
+//            } else {
+//                $val_01             = NULL;
+//                $val_02             = NULL;
+//                $val_03             = NULL;
+//                $code               = 204;
+//                $mens               = 'El usuario se encuentra temporalmente BLOQUEADO';
         
-                header('Location: ../../?code='.$code.'&msg='.$mens);  
-            }
+//                header('Location: ../../?code='.$code.'&msg='.$mens);  
+//            }
         } else {
             $val_01             = NULL;
             $val_02             = NULL;
