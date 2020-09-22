@@ -61,6 +61,7 @@ $(document).ready(function() {
                     function (data, type, full, meta) {
 						var btnUPD	= '';
 						var btnIMG  = '';
+						var btnNEW  = '';
 
 						if (full.tipo_estado_codigo == 207) {
 							btnUPD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 3);" title="Laboratorio" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
@@ -70,7 +71,11 @@ $(document).ready(function() {
 							btnIMG  = '<a href="http://portalmedico.conmebol.com/'+ full.examen_laboratorio_adjunto +'" target="_blank" title="Adjunto" type="button" class="btn btn-warning btn-icon btn-circle"><i class="fa fa-image"></i></a>';
 						}
 
-                        return (btnUPD + '&nbsp;' + btnIMG);
+						if (full.tipo_estado_codigo == 208 && full.examen_bandera != 'S') {
+							btnNEW  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 6);" title="Nuevo Test" type="button" class="btn btn-info btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
+						}
+
+                        return (btnUPD + '&nbsp;' + btnIMG + '&nbsp;' + btnNEW);
                     }
                 },
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
@@ -93,12 +98,15 @@ $(document).ready(function() {
 
 function setExamenCovid(codElem, codAcc){
 	var xJSON       = getExamenPrueba(174, _codEncu, _codEqui);
+	var xJSON1		= getDominio('EXAMENMEDICOCOVID19SEROLOGIA');
 	var html        = '';
 	var bodyCol     = '';
 	var bodyTit     = '';
 	var bodyMod     = '';
 	var bodyOnl     = '';
 	var bodyBot     = '';
+	var selTest		= '';
+	var indTest		= 0;
 
 	switch (codAcc) {
 		case 1:
@@ -139,6 +147,14 @@ function setExamenCovid(codElem, codAcc){
 			bodyMod = 'A';
 			bodyOnl = 'readonly';
 			bodyBot = '';
+			break;
+
+		case 6:
+			bodyTit = 'RE CONTROL DE TEST';
+			bodyCol = '#163562;';
+			bodyMod = 'C';
+			bodyOnl = '';
+			bodyBot = '           <button type="submit" class="btn btn-info">Agregar</button>';
 			break;
 
 		default:
@@ -248,6 +264,167 @@ function setExamenCovid(codElem, codAcc){
 			});
 			break;
 	
+		case 6:
+			xJSON1.forEach(element1 => {
+				if (element1.tipo_estado_codigo == 'A'){
+					selTest = selTest +
+						'				<div class="col-sm-12 col-md-4">'+
+						'					<div class="form-group">'+
+						'						<input id="var2091_'+ indTest +'" name="var2091_'+ indTest +'" value="'+ element1.tipo_codigo +'" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+						'						<label for="var2092_'+ indTest +'"> TEST  '+ element1.tipo_nombre_castellano +'</label>'+
+						'						<select id="var2092_'+ indTest +'" name="var2092_'+ indTest +'" onchange="inputValid(this.id, var2093_'+ indTest +');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+						'							<optgroup label="Presento">'+
+						'								<option value="NO">NO</option>'+
+						'								<option value="SI">SI</option>'+
+						'							</optgroup>'+
+						'						</select>'+
+						'					</div>'+
+						'				</div>'+
+						''+
+						'				<div class="col-sm-12 col-md-8">'+
+						'					<div class="form-group">'+
+						'						<label for="var2093_'+ indTest +'">Comentario</label>'+
+						'						<input id="var2093_'+ indTest +'" name="var2093_'+ indTest +'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+						'					</div>'+
+						'				</div>'+
+						'';
+					
+					indTest = indTest + 1;
+				}
+			});
+
+			xJSON.forEach(element => {
+				if (element.examen_codigo == codElem) {
+					html = 
+						'<div class="modal-content">'+
+						'   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/covid19_nuevo_crud.php">'+
+						'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
+						'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
+						'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+						'	    </div>'+
+						''+
+						'	    <div class="modal-body" >'+
+						'           <div class="form-group">'+
+						'               <input class="form-control" type="hidden" id="workCodigo"		name="workCodigo"		value="0" required readonly>'+
+						'               <input class="form-control" type="hidden" id="workModo"			name="workModo"			value="'+ bodyMod +'" 														required readonly>'+
+						'               <input class="form-control" type="hidden" id="workPage"			name="workPage"			value="covid19.php?competicion='+ _codComp +'&encuentro='+ _codEncu +'&" 	required readonly>'+
+						'               <input class="form-control" type="hidden" id="workTest"			name="workTest"			value="'+ indTest +'" 														required readonly>'+
+						'               <input class="form-control" type="hidden" id="workCompeticion"	name="workCompeticion"	value="'+ element.competicion_codigo +'" 									required readonly>'+
+						'               <input class="form-control" type="hidden" id="workEncuentro"	name="workEncuentro"	value="'+ element.encuentro_codigo +'" 										required readonly>'+
+						'               <input class="form-control" type="hidden" id="workEquipo"		name="workEquipo"		value="'+ element.equipo_codigo +'" 										required readonly>'+
+						'               <input class="form-control" type="hidden" id="workAntExamen"	name="workAntExamen"	value="'+ element.examen_codigo +'"											required readonly>'+
+						'               <input class="form-control" type="hidden" id="workEstado"		name="workEstado"		value="207" 																required readonly>'+
+						'               <input class="form-control" type="hidden" id="workTipo"			name="workTipo"			value="174" 																required readonly>'+
+						'           </div>'+
+						''+
+						'           <div class="row">'+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var200">Persona</label>'+
+						'                       <select id="var200" name="var200" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+						'                       	<option value="'+ element.persona_codigo +'" selected>'+ element.persona_nombre +'</option>'+
+						'                       </select>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var201">Posición / Cargo</label>'+
+						'                       <input id="var201" name="var201" value="'+ element.examen_persona_posicion +'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required readonly>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var202">Camiseta Nro.</label>'+
+						'                       <input id="var202" name="var202" value="'+ element.examen_persona_camiseta +'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required readonly>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var203">Fecha realización de test</label>'+
+						'                       <input id="var203" name="var203" class="form-control" type="date" style="text-transform:uppercase; height:40px;" required>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                       <label for="var204">Laboratorio de test</label>'+
+						'                       <input id="var204" name="var204" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required>'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'               <div class="col-sm-12 col-md-4">'+
+						'                   <div class="form-group">'+
+						'                   </div>'+
+						'               </div>'+
+						''+
+						'				<div class="col-sm-12 col-md-4">'+
+						'					<div class="form-group">'+
+						'						<label for="var206">Personas adultas</label>'+
+						'						<select id="var206" name="var206" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+						'							<optgroup label="Cantidad">'+
+						'								<option value="0">Vive solo</option>'+
+						'								<option value="1">1 Persona</option>'+
+						'								<option value="2">2 Persona</option>'+
+						'								<option value="3">3 Persona</option>'+
+						'								<option value="4">4 Persona</option>'+
+						'								<option value="5">5 Persona</option>'+
+						'								<option value="6">6 Persona</option>'+
+						'								<option value="7">7 Persona</option>'+
+						'								<option value="8">8 Persona</option>'+
+						'								<option value="9">9 Persona</option>'+
+						'								<option value="10">10 Persona</option>'+
+						'							</optgroup>'+
+						'						</select>'+
+						'					</div>'+
+						'				</div>'+
+						''+
+						'				<div class="col-sm-12 col-md-4">'+
+						'					<div class="form-group">'+
+						'						<label for="var207">Personas menores</label>'+
+						'						<select id="var207" name="var207" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+						'							<optgroup label="Cantidad">'+
+						'								<option value="0">Vive solo</option>'+
+						'								<option value="1">1 Persona</option>'+
+						'								<option value="2">2 Persona</option>'+
+						'								<option value="3">3 Persona</option>'+
+						'								<option value="4">4 Persona</option>'+
+						'								<option value="5">5 Persona</option>'+
+						'								<option value="6">6 Persona</option>'+
+						'								<option value="7">7 Persona</option>'+
+						'								<option value="8">8 Persona</option>'+
+						'								<option value="9">9 Persona</option>'+
+						'								<option value="10">10 Persona</option>'+
+						'							</optgroup>'+
+						'						</select>'+
+						'					</div>'+
+						'				</div>'+
+						''+
+						'				<div class="col-sm-12 col-md-4">'+
+						'					<div class="form-group">'+
+						'						<label for="var208">Convocado</label>'+
+						'						<select id="var208" name="var208" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+						'							<optgroup label="Convocado">'+
+						'								<option value="NO">NO</option>'+
+						'								<option value="SI">SI</option>'+
+						'							</optgroup>'+
+						'						</select>'+
+						'					</div>'+
+						'				</div>'+ selTest +
+						'           </div>'+
+						'	    </div>'+
+						''+
+						'	    <div class="modal-footer">'+ bodyBot +
+						'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+						'	    </div>'+
+						'   </form>'+
+						'</div>';
+				}
+			});
+			break;
+
 		default:
 			break;
 	}
