@@ -175,7 +175,7 @@ function setExamenCovid(codElem, codAcc){
 						''+
 						'	    <div class="modal-body" >'+
 						'           <div class="form-group">'+
-						'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="'+ element.examen_codigo +'" required readonly>'+
+						'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="'+ codElem +'" required readonly>'+
 						'               <input class="form-control" type="hidden" id="workModo"		name="workModo"		value="'+ bodyMod +'" required readonly>'+
 						'               <input class="form-control" type="hidden" id="workPage"		name="workPage"		value="covid19.php?competicion='+ _codComp +'&encuentro='+ _codEncu +'&" required readonly>'+
 						'               <input class="form-control" type="hidden" id="workEstado"	name="workEstado"	value="208" required readonly>'+
