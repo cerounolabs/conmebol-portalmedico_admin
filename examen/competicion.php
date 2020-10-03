@@ -90,7 +90,7 @@
         foreach ($competicionJSON['data'] as $competicionKEY => $competicionVALUE) {
 ?>
                             <div class="col-md-2">
-                                <div class="card" style="height:200px; padding:20px;">
+                                <div class="card" style="height:200px; padding:0px;">
                                     <a href="../examen/encuentro.php?competicion=<?php echo $competicionVALUE['competicion_codigo']; ?>" style="height:100%">
                                         <img class="card-img-top img-responsive" src="http://portalmedico.conmebol.com/<?php echo $competicionVALUE['competicion_imagen_path']; ?>" alt="<?php echo $competicionVALUE['competicion_nombre']; ?>" title="<?php echo $competicionVALUE['competicion_nombre']; ?>" style="height:100%">
                                     </a>
