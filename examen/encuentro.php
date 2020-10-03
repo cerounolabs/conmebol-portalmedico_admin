@@ -102,7 +102,7 @@
             $fecReg = str_replace('/', '-', $encuentroVALUE['juego_horario']);
             $fecReg = date('Y-m-d', strtotime($fecReg));
             
-            if ($encuentroVALUE['juego_estado'] != 'TO_SCHEDULE' && $fecReg > $fecVal){
+            if (($encuentroVALUE['juego_estado'] != 'TO_SCHEDULE' && $fecReg > $fecVal) || $valorCompeticion = 41888663 ){
 ?>
                             <div class="col-sm-12 col-md-4 col-lg-4">
                                 <div class="card" style="height:250px;">
