@@ -121,3 +121,140 @@ function selectCompetencias(rowOrg, rowDisc, rowAnho, rowInp){
         }
     });
 }
+
+function selectEncuentros(rowOrg, rowComp, rowAnho, rowTip, rowInp){
+    var selComp     = document.getElementById(rowComp);
+    var selAnho     = document.getElementById(rowAnho);
+    var selInp      = document.getElementById(rowInp);
+    var xJSON       = getJuego(rowOrg, selAnho.value, selComp.value)
+            
+    while (selInp.length > 0) {
+        selInp.remove(0);
+    }
+
+    switch (rowTip) {
+        case 1:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'SELECCIONAR';
+            option.selected = true;
+            selInp.add(option, null);
+            break;
+    
+        case 2:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'TODOS';
+            option.selected = true;
+            selInp.add(option, null);
+            break;
+    }
+
+    xJSON.forEach(element => {
+        var option      = document.createElement('option');
+        option.value    = element.juego_codigo;
+        option.text     = element.equipo_local_nombre + ' vs ' + element.equipo_visitante_nombre;
+        selInp.add(option, null);
+    });
+}
+
+function selectEquipos(rowComp, rowEncu, rowTip, rowInp){
+    var selComp     = document.getElementById(rowComp);
+    var selEncu     = document.getElementById(rowEncu);
+    var selInp      = document.getElementById(rowInp);
+
+    while (selInp.length > 0) {
+        selInp.remove(0);
+    }
+
+    switch (rowTip) {
+        case 1:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'SELECCIONAR';
+            option.selected = true;
+            selInp.add(option, null);
+            break;
+    
+        case 2:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'TODOS';
+            option.selected = true;
+            selInp.add(option, null);
+            break;
+    }
+
+    if (selEncu.value == 0) {
+        var xJSON       = getCompetenciaParticipante(selComp.value);
+
+        xJSON.forEach(element => {
+            var option      = document.createElement('option');
+            option.value    = element.equipo_codigo;
+            option.text     = element.equipo_nombre;
+            selInp.add(option, null);
+        });
+
+        var option      = document.createElement('option');
+        option.value    = 39393;
+        option.text     = 'CONMEBOL';
+        selInp.add(option, null);
+    } else {
+        var xJSON       = getEncuentro(selEncu.value);
+        
+        xJSON.forEach(element => {
+            if (element.juego_codigo == selEncu.value) {
+                var option      = document.createElement('option');
+                option.value    = element.equipo_local_codigo;
+                option.text     = element.equipo_local_nombre;
+                selInp.add(option, null);
+    
+                var option      = document.createElement('option');
+                option.value    = element.equipo_visitante_codigo;
+                option.text     = element.equipo_visitante_nombre;
+                selInp.add(option, null);
+
+                var option      = document.createElement('option');
+                option.value    = 39393;
+                option.text     = 'CONMEBOL';
+                selInp.add(option, null);
+            }
+        });
+    }
+}
+
+function selectDominio(rowDom, rowTip, rowInp){
+    var selInp = document.getElementById(rowInp);
+    var xJSON   = getDominio(rowDom);
+
+    while (selInp.length > 0) {
+        selInp.remove(0);
+    }
+
+    switch (rowTip) {
+        case 1:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'SELECCIONAR';
+            option.selected = true;
+            selInp.add(option, null);
+            break;
+    
+        case 2:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'TODOS';
+            option.selected = true;
+            selInp.add(option, null);
+            break;
+    }
+
+    xJSON.forEach(element => {
+        if (element.tipo_dominio == rowDom) {
+            var option      = document.createElement('option');
+            option.value    = element.tipo_codigo;
+            option.text     = element.tipo_nombre_castellano;
+            selInp.add(option, null);
+        }
+    });
+}
