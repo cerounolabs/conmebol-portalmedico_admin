@@ -205,7 +205,7 @@
 
             switch (codInf) {
                 case 1:
-                    window.location = '../export/export_inflesion.php?cod01=' + codTipo + '&cod02=' + codComp + '&cod03=' + codEncu + '&cod04=' + codEqui;
+                    window.location = '../export/export_infexamen.php?cod01=' + codTipo + '&cod02=' + codComp + '&cod03=' + codEncu + '&cod04=' + codEqui;
                     break;
             }
         }
