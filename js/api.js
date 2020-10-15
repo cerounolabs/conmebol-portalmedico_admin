@@ -168,8 +168,6 @@ function inputSelect (rowOld, rowNew) {
     } else {
         inpNew.disabled = true;
     }
-
-    
 }
 
 function getDominio(codDom){
@@ -291,6 +289,58 @@ function getCompetenciaListado(){
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
             xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getCompetenciaParticipante(codComp){
+    localStorage.removeItem('competenciaParticipanteJSON');
+    
+    if (localStorage.getItem('competenciaParticipanteJSON') === null){
+        getJSON('competenciaParticipanteJSON', '200/competicion/equipo/participante/'+ codComp);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('competenciaParticipanteJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui){
+    localStorage.removeItem('competenciaExamenJSON');
+
+    if (localStorage.getItem('competenciaExamenJSON') === null){
+        getJSON('competenciaExamenJSON', '200/competicion/examen/'+ codComp + '/' + codTipo);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('competenciaExamenJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.TIPO_EXAMEN_CODIGO == codTipo){
+                if (codEncu == 0) {
+                    if (codEqui == 0) {
+                        xDATA.push(element);
+                    }else if (element.EQUIPO_CODIGO == codEqui){
+                        xDATA.push(element);
+                    }
+                } else if (element.JUEGO_CODIGO == codEncu){
+                    if (codEqui == 0) {
+                        xDATA.push(element);
+                    }else if (element.EQUIPO_CODIGO == codEqui){
+                        xDATA.push(element);
+                    }
+                }
+            }
         });
     }
 

@@ -62,36 +62,50 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
-                                                    <label for="var01">Disciplina</label>
-                                                    <select id="var01" name="var01" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                        <optgroup label="Disciplina">
-                                                            <option value="FOOTBALL">F&uacute;tbol de Campo</option>
-                                                            <option value="FUTSAL">F&uacute;tbol de Sal&oacute;n</option>
-                                                            <option value="BEACH_SOCCER">F&uacute;tbol de Playa</option>
-                                                        </optgroup>
+                                                    <label for="var01">Periodo</label>
+                                                    <input id="var01" name="var01" value="<?php echo $var04; ?>" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var02">Tipo</label>
+                                                    <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
-                                                    <label for="var02">Periodo</label>
-                                                    <input id="var02" name="var02" value="<?php echo $var04; ?>" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var03">Competencia</label>
-                                                    <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <label for="var03">Disciplina</label>
+                                                    <select id="var03" name="var03" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <option value="FOOTBALL">F&Uacute;TBOL DE CAMPO</option>
+                                                        <option value="FUTSAL">F&Uacute;TBOL DE SAL&Oacute;N</option>
+                                                        <option value="BEACH_SOCCER">F&Uacute;TBOL DE PLAYA</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
-                                                    <label for="var04">Tipo</label>
-                                                    <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <label for="var04">Competici&oacute;n</label>
+                                                    <select id="var04" name="var04" onchange="selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var05">Encuentro</label>
+                                                    <select id="var05" name="var05" onchange="selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var06">Equipo</label>
+                                                    <select id="var06" name="var06" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                     </select>
                                                 </div>
                                             </div>
@@ -124,26 +138,31 @@
                                 <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
                                             <tr class="bg-conmebol">
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">C&Oacute;DIGO</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="2">TEST</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">COMPETICI&Oacute;N</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">ENCUENTRO</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">EQUIPO</th>
-                                                <th class="border-top-0" style="text-align:center;" rowspan="2">JUGADOR</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="5">LABORATORIO</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="3">AUDITORIA</th>
+                                                <th class="border-top-0" style="text-align:center;" rowspan="2"></th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="3">TEST</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="3">EQUIPO</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="5">PERSONA</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="4">LABORATORIO</th>
                                             </tr>
                                             <tr class="bg-conmebol">
+                                                <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
                                                 <th class="border-top-0" style="text-align:center;">ESTADO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA</th>
+
+                                                <th class="border-top-0" style="text-align:center;">EQUIPO</th>
+                                                <th class="border-top-0" style="text-align:center;">LOCAL</th>
+                                                <th class="border-top-0" style="text-align:center;">VISITANTE</th>
+
                                                 <th class="border-top-0" style="text-align:center;">NOMBRE</th>
+                                                <th class="border-top-0" style="text-align:center;">APELLIDO</th>
+                                                <th class="border-top-0" style="text-align:center;">CONVOCADO</th>
+                                                <th class="border-top-0" style="text-align:center;">POSICI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center;">DOCUMENTO</th>
+
+                                                <th class="border-top-0" style="text-align:center;">NOMBRE</th>
+                                                <th class="border-top-0" style="text-align:center;">RESULTADO</th>
                                                 <th class="border-top-0" style="text-align:center;">FEC. ENVIO</th>
-                                                <th class="border-top-0" style="text-align:center;">FEC. RECEPCI&Oacute;N</th>
-                                                <th class="border-top-0" style="text-align:center;">POSITIVO</th>
-                                                <th class="border-top-0" style="text-align:center; width:80px;">&nbsp;</th>
-                                                <th class="border-top-0" style="text-align:center;">USUARIO</th>
-                                                <th class="border-top-0" style="text-align:center;">FECHA HORA</th>
-                                                <th class="border-top-0" style="text-align:center;">IP</th>
+                                                <th class="border-top-0" style="text-align:center;">FEC. RETORNO</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -179,17 +198,22 @@
 
     <script>
         function getInforme(codInf){
-            var codComp = document.getElementById('var03').value;
+            var codTipo     = document.getElementById('var02').value;
+            var codComp     = document.getElementById('var04').value;
+            var codEncu     = document.getElementById('var05').value;
+            var codEqui     = document.getElementById('var06').value;
 
             switch (codInf) {
                 case 1:
-                    window.location = "../public/inflesion_xls.php?competencia=" + codComp;
+                    window.location = '../export/export_inflesion.php?cod01=' + codTipo + '&cod02=' + codComp + '&cod03=' + codEncu + '&cod04=' + codEqui;
                     break;
             }
         }
 
-        selectCompetencias(<?php echo $usu_04; ?>, 'var01', 'var02', 'var03');
-        selectTipoExamen('var04');
+        selectDominio('EXAMENMEDICOTIPO', 0, 'var02');
+        selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04');
+        selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05');
+        selectEquipos('var04', 'var05', 2, 'var06');
     </script>
 </body>
 </html>
