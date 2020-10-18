@@ -97,7 +97,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var04">Competici&oacute;n</label>
-                                                    <select id="var04" name="var04" onchange="selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var04" name="var04" onchange="selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                     </select>
                                                 </div>
                                             </div>
