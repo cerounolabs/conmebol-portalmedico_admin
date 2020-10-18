@@ -3,7 +3,8 @@ $(document).ready(function() {
     var codComp     = document.getElementById('var04').value;
     var codEncu     = document.getElementById('var05').value;
     var codEqui     = document.getElementById('var06').value;
-    var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui);
+    var codEsta     = document.getElementById('var07').value;
+    var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta);
     var tableData   = $('#tableLoad').DataTable(
         {
             processing	: true,
@@ -83,7 +84,7 @@ $(document).ready(function() {
 				if (data['LABORATORIO_RESULTADO'] == 'POSITIVO' ) {        
 					$(row).addClass('bg-danger text-white');
 				}
-			}
+            }
         }
     );
 
@@ -92,7 +93,8 @@ $(document).ready(function() {
         var codComp     = document.getElementById('var04').value;
         var codEncu     = document.getElementById('var05').value;
         var codEqui     = document.getElementById('var06').value;
-        var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui);
+        var codEsta     = document.getElementById('var07').value;
+        var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta);
         tableData.clear().rows.add(xDATA).draw();
     });
 });

@@ -27,7 +27,8 @@
     $codComp        = $_GET['cod02'];
     $codEncu        = $_GET['cod03'];
     $codEqui        = $_GET['cod04'];
-    $infJSON        = get_curl('200/competicion/examen/'.$codComp.'/'.$codTipo);
+    $codEsta        = $_GET['cod05'];
+    $infJSON        = get_curl('200/competicion/examen/'.$codComp.'/'.$codEncu.'/'.$codTipo.'/'.$codEsta);
     $fileName       = "planilla_examen_".date('YmdHis').".xls";
     $indexRow       = 1;
 

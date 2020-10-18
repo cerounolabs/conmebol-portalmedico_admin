@@ -63,7 +63,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var01">Periodo</label>
-                                                    <input id="var01" name="var01" value="<?php echo $var04; ?>" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
+                                                    <input id="var01" name="var01" value="<?php echo $var04; ?>" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
                                                 </div>
                                             </div>
 
@@ -77,8 +77,16 @@
 
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
+                                                    <label for="var07">Estado</label>
+                                                    <select id="var07" name="var07" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
                                                     <label for="var03">Disciplina</label>
-                                                    <select id="var03" name="var03" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var03" name="var03" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <option value="FOOTBALL">F&Uacute;TBOL DE CAMPO</option>
                                                         <option value="FUTSAL">F&Uacute;TBOL DE SAL&Oacute;N</option>
                                                         <option value="BEACH_SOCCER">F&Uacute;TBOL DE PLAYA</option>
@@ -202,17 +210,19 @@
             var codComp     = document.getElementById('var04').value;
             var codEncu     = document.getElementById('var05').value;
             var codEqui     = document.getElementById('var06').value;
+            var codEsta     = document.getElementById('var07').value;
 
             switch (codInf) {
                 case 1:
-                    window.location = '../export/export_infexamen.php?cod01=' + codTipo + '&cod02=' + codComp + '&cod03=' + codEncu + '&cod04=' + codEqui;
+                    window.location = '../export/export_infexamen.php?cod01=' + codTipo + '&cod02=' + codComp + '&cod03=' + codEncu + '&cod04=' + codEqui + '&cod05=' + codEsta;
                     break;
             }
         }
 
         selectDominio('EXAMENMEDICOTIPO', 0, 'var02');
+        selectDominio('EXAMENMEDICOCOVID19ESTADO', 0, 'var07');
         selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04');
-        selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05');
+        selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05');
         selectEquipos('var04', 'var05', 2, 'var06');
     </script>
 </body>
