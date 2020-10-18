@@ -74,7 +74,7 @@ $(document).ready(function() {
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
                 { data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
                 { data				: 'auditoria_ip', name : 'auditoria_ip'},
-            ],
+			],
 			createdRow : function( row, data, dataIndex ) {
 				if (data['examen_laboratorio_resultado'] == 'SI' ) {        
 					$(row).addClass('bg-danger text-white');

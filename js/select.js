@@ -156,6 +156,24 @@ function selectEncuentros(rowOrg, rowComp, rowAnho, rowTip, rowInp){
         option.text     = element.equipo_local_nombre + ' vs ' + element.equipo_visitante_nombre;
         selInp.add(option, null);
     });
+
+    switch (rowTip) {
+        case 3:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'SELECCIONAR';
+            option.selected = false;
+            selInp.add(option, null);
+            break;
+    
+        case 4:
+            var option      = document.createElement('option');
+            option.value    = 0;
+            option.text     = 'TODOS';
+            option.selected = false;
+            selInp.add(option, null);
+            break;
+    }
 }
 
 function selectEquipos(rowComp, rowEncu, rowTip, rowInp){
