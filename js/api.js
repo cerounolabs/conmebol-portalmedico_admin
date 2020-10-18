@@ -315,16 +315,7 @@ function getCompetenciaParticipante(codComp){
 }
 
 function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta){
-    if (localStorage.getItem('competenciaExamenCOD1') != codComp || localStorage.getItem('competenciaExamenCOD2') != codTipo || localStorage.getItem('competenciaExamenCOD3') != codEsta) {
-        localStorage.removeItem('competenciaExamenJSON');
-    }
-
-    if (localStorage.getItem('competenciaExamenJSON') === null){
-        localStorage.setItem('competenciaExamenCOD1', codComp);
-        localStorage.setItem('competenciaExamenCOD2', codTipo);
-        localStorage.setItem('competenciaExamenCOD3', codEsta);
-        getJSON('competenciaExamenJSON', '200/competicion/examen/'+ codComp + '/' + codEncu + '/' + codTipo + '/' + codEsta);
-    }
+    getJSON('competenciaExamenJSON', '200/competicion/examen/'+ codComp + '/' + codEncu + '/' + codTipo + '/' + codEsta);
 
     var xJSON = JSON.parse(localStorage.getItem('competenciaExamenJSON'));
     var xDATA = [];
@@ -348,7 +339,7 @@ function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta){
             }
         });
     }
-
+    
     return xDATA; 
 }
 
