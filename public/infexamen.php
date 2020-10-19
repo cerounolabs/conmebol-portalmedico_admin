@@ -117,6 +117,19 @@
                                                     </select>
                                                 </div>
                                             </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var08">Tipo</label>
+                                                    <select id="var08" name="var08" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <option value="Y">TODOS</option>
+                                                        <option value="P">JUGADOR</option>
+                                                        <option value="T">CUERPO T&Eacute;CNICO</option>
+                                                        <option value="Z">ZONA 1</option>
+                                                        <option value="O">OFICIAL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -149,7 +162,7 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2"></th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">TEST</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">EQUIPO</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="5">PERSONA</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="6">PERSONA</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="4">LABORATORIO</th>
                                             </tr>
                                             <tr class="bg-conmebol">
@@ -164,6 +177,7 @@
                                                 <th class="border-top-0" style="text-align:center;">NOMBRE</th>
                                                 <th class="border-top-0" style="text-align:center;">APELLIDO</th>
                                                 <th class="border-top-0" style="text-align:center;">CONVOCADO</th>
+                                                <th class="border-top-0" style="text-align:center;">TIPO</th>
                                                 <th class="border-top-0" style="text-align:center;">POSICI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;">DOCUMENTO</th>
 

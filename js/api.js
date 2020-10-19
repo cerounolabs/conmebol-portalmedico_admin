@@ -314,7 +314,7 @@ function getCompetenciaParticipante(codComp){
     return xDATA; 
 }
 
-function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta){
+function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta, codCate){
     getJSON('competenciaExamenJSON', '200/competicion/examen/'+ codComp + '/' + codEncu + '/' + codTipo + '/' + codEsta);
 
     var xJSON = JSON.parse(localStorage.getItem('competenciaExamenJSON'));
@@ -323,16 +323,16 @@ function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta){
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
             if (element.TIPO_EXAMEN_CODIGO == codTipo){
-                if (codEncu == 0) {
-                    if (codEqui == 0) {
+                if (codEqui == 0) {
+                    if (codCate == 'Y'){
                         xDATA.push(element);
-                    }else if (element.EQUIPO_CODIGO == codEqui){
+                    } else if (element.PERSONA_TIPO == codCate) {
                         xDATA.push(element);
                     }
-                } else if (element.JUEGO_CODIGO == codEncu){
-                    if (codEqui == 0) {
+                }else if (element.EQUIPO_CODIGO == codEqui){
+                    if (codCate == 'Y'){
                         xDATA.push(element);
-                    }else if (element.EQUIPO_CODIGO == codEqui){
+                    } else if (element.PERSONA_TIPO == codCate) {
                         xDATA.push(element);
                     }
                 }
