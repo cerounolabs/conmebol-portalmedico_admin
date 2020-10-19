@@ -4,7 +4,8 @@ $(document).ready(function() {
     var codEncu     = document.getElementById('var05').value;
     var codEqui     = document.getElementById('var06').value;
     var codEsta     = document.getElementById('var07').value;
-    var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta);
+    var codCate     = document.getElementById('var08').value;
+    var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta, codCate);
     var tableData   = $('#tableLoad').DataTable(
         {
             processing	: true,
@@ -48,6 +49,7 @@ $(document).ready(function() {
                 { targets			: [13],	visible : true,	searchable : true,	orderData : [13, 0] },
                 { targets			: [14],	visible : true,	searchable : true,	orderData : [14, 0] },
                 { targets			: [15],	visible : true,	searchable : true,	orderData : [15, 0] },
+                { targets			: [16],	visible : true,	searchable : true,	orderData : [16, 0] },
             ],
             columns		: [
                 { render            : 
@@ -72,6 +74,7 @@ $(document).ready(function() {
                 { data				: 'PERSONA_NOMBRE', name : 'PERSONA_NOMBRE'},
                 { data				: 'PERSONA_APELLIDO', name : 'PERSONA_APELLIDO'},
                 { data				: 'PERSONA_CONVOCADO', name : 'PERSONA_CONVOCADO'},
+                { data				: 'PERSONA_TIPO', name : 'PERSONA_TIPO'},
                 { data				: 'PERSONA_POSICION_CARGO', name : 'PERSONA_POSICION_CARGO'},
                 { data				: 'PERSONA_CAMISETA_DOCUMENTO', name : 'PERSONA_CAMISETA_DOCUMENTO'},
                 
@@ -94,7 +97,8 @@ $(document).ready(function() {
         var codEncu     = document.getElementById('var05').value;
         var codEqui     = document.getElementById('var06').value;
         var codEsta     = document.getElementById('var07').value;
-        var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta);
+        var codCate     = document.getElementById('var08').value;
+        var xDATA       = getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta, codCate);
         tableData.clear().rows.add(xDATA).draw();
     });
 });
