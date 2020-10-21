@@ -873,6 +873,23 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     return xDATA; 
 }
 
+function getPersona(){
+    if (localStorage.getItem('personaCometJSON') === null){
+        getJSON('personaCometJSON', '200/persona');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('personaCometJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA;
+}
+
 function removeItem(codITEM){
     localStorage.removeItem(codITEM);
 }
