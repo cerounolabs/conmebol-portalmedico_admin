@@ -262,7 +262,13 @@
                             	<li class="sidebar-item">
                                		<a href="../public/persona.php" class="sidebar-link">
                                			<i class="mdi mdi-usuario"></i>
-                               			<span class="hide-menu"> Usuarios </span>
+                               			<span class="hide-menu"> Persona Plataforma </span>
+                                    </a>
+                               	</li>
+                                <li class="sidebar-item">
+                               		<a href="../public/persona_comet.php" class="sidebar-link">
+                               			<i class="mdi mdi-usuario"></i>
+                               			<span class="hide-menu"> Persona COMET </span>
                                     </a>
                                	</li>
                             </ul>

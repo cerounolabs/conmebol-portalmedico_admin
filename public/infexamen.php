@@ -63,7 +63,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var01">Periodo</label>
-                                                    <input id="var01" name="var01" value="<?php echo $var04; ?>" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
+                                                    <input id="var01" name="var01" value="<?php echo $var04; ?>" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" type="number" min="2019" max="<?php echo $var04; ?>" class="form-control" style="width:100%; height:40px;" required>
                                                 </div>
                                             </div>
 
@@ -77,8 +77,16 @@
 
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
+                                                    <label for="var07">Estado</label>
+                                                    <select id="var07" name="var07" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
                                                     <label for="var03">Disciplina</label>
-                                                    <select id="var03" name="var03" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var03" name="var03" onchange="selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04'); selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                         <option value="FOOTBALL">F&Uacute;TBOL DE CAMPO</option>
                                                         <option value="FUTSAL">F&Uacute;TBOL DE SAL&Oacute;N</option>
                                                         <option value="BEACH_SOCCER">F&Uacute;TBOL DE PLAYA</option>
@@ -89,7 +97,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var04">Competici&oacute;n</label>
-                                                    <select id="var04" name="var04" onchange="selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    <select id="var04" name="var04" onchange="selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05'); selectEquipos('var04', 'var05', 2, 'var06');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                     </select>
                                                 </div>
                                             </div>
@@ -106,6 +114,19 @@
                                                 <div class="form-group">
                                                     <label for="var06">Equipo</label>
                                                     <select id="var06" name="var06" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var08">Tipo</label>
+                                                    <select id="var08" name="var08" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <option value="Y">TODOS</option>
+                                                        <option value="P">JUGADOR</option>
+                                                        <option value="T">CUERPO T&Eacute;CNICO</option>
+                                                        <option value="Z">ZONA 1</option>
+                                                        <option value="O">OFICIAL</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -141,7 +162,7 @@
                                                 <th class="border-top-0" style="text-align:center;" rowspan="2"></th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">TEST</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="3">EQUIPO</th>
-                                                <th class="border-top-0" style="text-align:center;" colspan="5">PERSONA</th>
+                                                <th class="border-top-0" style="text-align:center;" colspan="6">PERSONA</th>
                                                 <th class="border-top-0" style="text-align:center;" colspan="4">LABORATORIO</th>
                                             </tr>
                                             <tr class="bg-conmebol">
@@ -156,6 +177,7 @@
                                                 <th class="border-top-0" style="text-align:center;">NOMBRE</th>
                                                 <th class="border-top-0" style="text-align:center;">APELLIDO</th>
                                                 <th class="border-top-0" style="text-align:center;">CONVOCADO</th>
+                                                <th class="border-top-0" style="text-align:center;">TIPO</th>
                                                 <th class="border-top-0" style="text-align:center;">POSICI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;">DOCUMENTO</th>
 
@@ -202,17 +224,19 @@
             var codComp     = document.getElementById('var04').value;
             var codEncu     = document.getElementById('var05').value;
             var codEqui     = document.getElementById('var06').value;
+            var codEsta     = document.getElementById('var07').value;
 
             switch (codInf) {
                 case 1:
-                    window.location = '../export/export_infexamen.php?cod01=' + codTipo + '&cod02=' + codComp + '&cod03=' + codEncu + '&cod04=' + codEqui;
+                    window.location = '../export/export_infexamen.php?cod01=' + codTipo + '&cod02=' + codComp + '&cod03=' + codEncu + '&cod04=' + codEqui + '&cod05=' + codEsta;
                     break;
             }
         }
 
         selectDominio('EXAMENMEDICOTIPO', 0, 'var02');
+        selectDominio('EXAMENMEDICOCOVID19ESTADO', 0, 'var07');
         selectCompetencias(<?php echo $usu_04; ?>, 'var03', 'var01', 'var04');
-        selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 2, 'var05');
+        selectEncuentros(<?php echo $usu_04; ?>, 'var04', 'var01', 4, 'var05');
         selectEquipos('var04', 'var05', 2, 'var06');
     </script>
 </body>

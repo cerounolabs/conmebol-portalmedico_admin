@@ -314,12 +314,8 @@ function getCompetenciaParticipante(codComp){
     return xDATA; 
 }
 
-function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui){
-    localStorage.removeItem('competenciaExamenJSON');
-
-    if (localStorage.getItem('competenciaExamenJSON') === null){
-        getJSON('competenciaExamenJSON', '200/competicion/examen/'+ codComp + '/' + codTipo);
-    }
+function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui, codEsta, codCate){
+    getJSON('competenciaExamenJSON', '200/competicion/examen/'+ codComp + '/' + codEncu + '/' + codTipo + '/' + codEsta);
 
     var xJSON = JSON.parse(localStorage.getItem('competenciaExamenJSON'));
     var xDATA = [];
@@ -327,23 +323,23 @@ function getCompetenciaExamen(codTipo, codComp, codEncu, codEqui){
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
             if (element.TIPO_EXAMEN_CODIGO == codTipo){
-                if (codEncu == 0) {
-                    if (codEqui == 0) {
+                if (codEqui == 0) {
+                    if (codCate == 'Y'){
                         xDATA.push(element);
-                    }else if (element.EQUIPO_CODIGO == codEqui){
+                    } else if (element.PERSONA_TIPO == codCate) {
                         xDATA.push(element);
                     }
-                } else if (element.JUEGO_CODIGO == codEncu){
-                    if (codEqui == 0) {
+                }else if (element.EQUIPO_CODIGO == codEqui){
+                    if (codCate == 'Y'){
                         xDATA.push(element);
-                    }else if (element.EQUIPO_CODIGO == codEqui){
+                    } else if (element.PERSONA_TIPO == codCate) {
                         xDATA.push(element);
                     }
                 }
             }
         });
     }
-
+    
     return xDATA; 
 }
 
@@ -420,6 +416,23 @@ function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu, rowPlay){
                 }
             });
         }
+    }
+
+    return xDATA; 
+}
+
+function getExamenPersona(rowComp, rowTipo, rowEncu){
+    if (localStorage.getItem('examenPersonaJSON') === null){
+        getJSON('examenPersonaJSON', '200/competicion/persona/zona1/' + rowComp + '/' + rowTipo + '/' + rowEncu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('examenPersonaJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
     }
 
     return xDATA; 
@@ -871,6 +884,23 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     }
 
     return xDATA; 
+}
+
+function getPersona(){
+    if (localStorage.getItem('personaCometJSON') === null){
+        getJSON('personaCometJSON', '200/persona');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('personaCometJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA;
 }
 
 function removeItem(codITEM){
