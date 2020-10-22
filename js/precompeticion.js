@@ -77,7 +77,7 @@ $(document).ready(function() {
             ],
 			createdRow : function( row, data, dataIndex ) {
 				if (data['examen_laboratorio_resultado'] == 'SI' ) {        
-					$(row).addClass('bg-danger text-white');
+					$(row).addClass('bg-covid-positivo text-white');
 				}
 			}
         }
