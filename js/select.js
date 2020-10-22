@@ -1,7 +1,13 @@
 function selectEquipo(rowComp, rowEncu, rowEqui, rowTipo, rowPlay, rowPers) {
     var selEqui = document.getElementById(rowEqui);
     var selPers = document.getElementById(rowPers);
-    var xJSON   = getExamenJugador(rowComp, selEqui.value, rowTipo, rowEncu, rowPlay);
+    var xJSON   = '';
+
+    if (rowPlay == 'Z') {
+        xJSON   = getExamenPersona(rowComp, rowTipo, rowEncu);
+    } else {
+        xJSON   = getExamenJugador(rowComp, selEqui.value, rowTipo, rowEncu, rowPlay);
+    }
 
     while (selPers.length > 0) {
         selPers.remove(0);
@@ -43,8 +49,14 @@ function selectJugador2(rowJud, inpPos, inpNro, rowEqui, rowComp, rowEncu, rowTi
     } else {
         elemEqu = rowEqui;
     }
+    
+    var xJSON   = '';
 
-    var xJSON   = getExamenJugador(rowComp, elemEqu, rowTipo, rowEncu, rowPlay);
+    if (rowPlay == 'Z') {
+        xJSON   = getExamenPersona(rowComp, rowTipo, rowEncu);
+    } else {
+        xJSON   = getExamenJugador(rowComp, elemEqu, rowTipo, rowEncu, rowPlay);
+    }
 
     xJSON.forEach(element => {
         if (element.jugador_codigo == elemJug.value) {

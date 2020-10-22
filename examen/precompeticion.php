@@ -96,7 +96,7 @@
 <?php
     } else {
 ?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/precompeticion_3_crud.php?competicion=<?php echo $valorCompeticion; ?>&equipo=<?php echo $valorEquipo; ?>" role="button" title="Agregar"><i class="ti-plus"></i> NUEVA PERSONA </a>
+                                        <!--<a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/precompeticion_3_crud.php?competicion=<?php //echo $valorCompeticion; ?>&equipo=<?php //echo $valorEquipo; ?>" role="button" title="Agregar"><i class="ti-plus"></i> NUEVA PERSONA </a>-->
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/precompeticion_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&equipo=<?php echo $valorEquipo; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA CUERPO T&Eacute;CNICO </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/precompeticion_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&equipo=<?php echo $valorEquipo; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/precompeticion_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&equipo=<?php echo $valorEquipo; ?>&tipo=Z" role="button" title="Agregar"><i class="ti-plus"></i> ALTA ZONA 1 </a>
@@ -168,6 +168,7 @@
         const _codPerf = <?php echo $usu_05; ?>;
 
         localStorage.removeItem('examenJugadorJSON');
+        localStorage.removeItem('examenPersonaJSON');
     </script>
     
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>

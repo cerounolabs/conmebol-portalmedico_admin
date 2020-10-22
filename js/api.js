@@ -421,6 +421,23 @@ function getExamenJugador(rowComp, rowEqui, rowTipo, rowEncu, rowPlay){
     return xDATA; 
 }
 
+function getExamenPersona(rowComp, rowTipo, rowEncu){
+    if (localStorage.getItem('examenPersonaJSON') === null){
+        getJSON('examenPersonaJSON', '200/competicion/persona/zona1/' + rowComp + '/' + rowTipo + '/' + rowEncu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('examenPersonaJSON'));
+    var xDATA = [];
+    
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
 function getExamenOficial(rowComp, rowEqui, rowTipo, rowEncu){
     localStorage.removeItem('examenOficialJSON');
 
