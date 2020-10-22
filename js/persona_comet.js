@@ -55,7 +55,7 @@ $(document).ready(function() {
 					var btnUPD	= '<button onclick="setPersonaComet('+ full.persona_codigo +', 3);" title="Editar" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-edit"></i></button>';
 					var btnDLT	= '<button onclick="setPersonaComet('+ full.persona_codigo +', 4);" title="Eliminar" type="button" class="btn btn-danger btn-icon btn-circle" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-eraser"></i></button>';
 					var btnAUD	= '<button onclick="setPersonaComet('+ full.persona_codigo +', 5);" title="Auditoria" type="button" class="btn btn-warning btn-icon btn-circle" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-user-secret"></i></button>';
-					return (btnDSP + '&nbsp;' + btnUPD + '&nbsp;' + btnDLT + '&nbsp;' + btnAUD);
+					return (btnDSP + '&nbsp;' + btnUPD + '&nbsp;' + btnDLT);
 				}
 			},
 		]
@@ -286,7 +286,7 @@ function setPersonaComet(codElem, codAcc){
 				'               <input class="form-control" type="hidden" id="workPage" 	name="workPage"		value="persona_comet" 	required readonly>'+
 				'           </div>'+
 				''+
-				'           <div class="row pt-3">'+
+				'           <div class="row">'+
 				'               <div class="col-sm-12 col-md-4">'+
 				'                   <div class="form-group">'+
 				'                       <label for="var01">TIPO</label>'+
@@ -324,7 +324,7 @@ function setPersonaComet(codElem, codAcc){
 				'               <div class="col-sm-12 col-md-4">'+
 				'                   <div class="form-group">'+
 				'                       <label for="var05">FECHA NACIMIENTO</label>'+
-				'                       <input id="var05" name="var05" value="'+element.persona_fecha_nacimiento_1+'" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="FECHA NACIMIENTO" '+ bodyOnl +'>'+
+				'                       <input id="var05" name="var05" value="'+ element.persona_fecha_nacimiento_1 +'" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="FECHA NACIMIENTO" '+ bodyOnl +'>'+
 				'                   </div>'+
 				'               </div>'+
 				''+

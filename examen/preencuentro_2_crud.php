@@ -148,7 +148,7 @@
 <?php
     } else {
 ?>
-                                                        <select id="var110" name="var110" onchange="removeItem('examenJugadorJSON'); selectEquipo(<?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 'var110', 174, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
+                                                        <select id="var110" name="var110" onchange="removeItem('examenJugadorJSON'); removeItem('examenPersonaJSON'); selectEquipo(<?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 'var110', 174, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <option selected disabled>SELECCIONAR...</option>
                                                             <option value="<?php echo $juegoJSON['data'][0]['equipo_local_codigo']; ?>">LOCAL: <?php echo $juegoJSON['data'][0]['equipo_local_nombre']; ?></option>
                                                             <option value="<?php echo $juegoJSON['data'][0]['equipo_visitante_codigo']; ?>">VISITANTE: <?php echo $juegoJSON['data'][0]['equipo_visitante_nombre']; ?></option>
