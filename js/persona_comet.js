@@ -136,21 +136,19 @@ function setPersonaComet(codElem, codAcc){
 			'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
 			'	    </div>'+
 			''+
-			'	    <div class="modal-body" >'+
+			'	    <div class="modal-body">'+
 			'           <div class="form-group">'+
 			'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="0"  				required readonly>'+
 			'               <input class="form-control" type="hidden" id="workModo" 	name="workModo"		value="'+ bodyMod +'" 	required readonly>'+
 			'               <input class="form-control" type="hidden" id="workPage" 	name="workPage"		value="persona_comet" 	required readonly>'+
 			'           </div>'+
 			''+
-			'           <div class="row pt-3">'+
+			'           <div class="row">'+
 			'               <div class="col-sm-12 col-md-4">'+
 			'                   <div class="form-group">'+
 			'                       <label for="var01">TIPO</label>'+
 			'                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" '+ bodyOnl +'>'+
 			'                           <optgroup label="Tipo">'+
-			'                               <option value="P">JUGADOR</option>'+
-			'                               <option value="T">CUERPO TÉCNICO</option>'+
 			'                               <option value="Z">ZONA 1</option>'+
 			'                           </optgroup>'+
 			'                       </select>'+
@@ -261,6 +259,8 @@ function setPersonaComet(codElem, codAcc){
 						break;
 
 				}
+
+				selTipo = '                               <option value="Z" selected>ZONA 1</option>';
 		
 				xJSON1.forEach(element1 => {
 					if(element.tipo_documento_codigo == element1.tipo_codigo){
@@ -279,7 +279,7 @@ function setPersonaComet(codElem, codAcc){
 				'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
 				'	    </div>'+
 				''+
-				'	    <div class="modal-body" >'+
+				'	    <div class="modal-body">'+
 				'           <div class="form-group">'+
 				'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="'+codElem+'"  				required readonly>'+
 				'               <input class="form-control" type="hidden" id="workModo" 	name="workModo"		value="'+ bodyMod +'" 	required readonly>'+
