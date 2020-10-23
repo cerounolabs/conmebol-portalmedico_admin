@@ -20,6 +20,8 @@
     }
 
     $valorEncuentro     = NULL;
+
+    $chart01JSON  = get_curl('801/examen/competicion/chart01/'.$usu_04.'/'.$valorCompeticion.'/210');
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +82,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -103,8 +105,57 @@
 <?php
     }
 ?>
-                                	</h4>
-								</div>
+                                    </h4>
+                                </div>
+                                <div class="row">
+ <?php           
+    if ($chart01JSON['code'] === 200){
+        foreach ($chart01JSON['data'] as $chart01KEY => $chart01VALUE){
+            $csschart01 = '';
+            switch ($chart01VALUE['tipo_codigo']) {
+                case 1:
+                    $csschart01 = 'bg-light-info';
+                    break;
+                
+                case 207:
+                    $csschart01 = 'bg-encu';
+                    break;
+
+                case 208:
+                    $csschart01 = 'bg-light-danger';
+                    break;
+
+                case 211:
+                    $csschart01 = 'bg-light-warning';
+                    break;
+
+                case 2:
+                    $csschart01 = 'bg-light-success';
+                    break;
+            }            
+ ?>
+                                    <div class="col-sm-3 col-sm-3">
+                                        <div class="card card <?php echo $csschart01; ?>">
+                                            <div class="card-body">
+                                                <div class="row p-t-10 p-b-10">
+                                                    <div class="col p-r-0">
+                                                        <h1 class="font-light" id="titPER01"><?php echo $chart01VALUE['cantidad_persona']; ?></h1>
+                                                        <h6 class="text-muted"><?php echo $chart01VALUE['tipo_nombre']; ?></h6>
+                                                    </div>
+
+                                                    <div class="col text-right align-self-center">
+                                                        <div id="valPER01" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+<?php
+        }
+    }
+ ?>
+                                </div>
+                                
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">

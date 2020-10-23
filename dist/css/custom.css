@@ -22,3 +22,11 @@
 .card {
 	border: 1px solid #163562;
 }
+
+.bg-covid-positivo {
+	background-color:#D17E7C
+}
+
+.bg-encu {
+	background-color:#C3CCDB
+}
