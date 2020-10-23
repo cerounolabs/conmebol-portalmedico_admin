@@ -19,7 +19,7 @@
         $valorEncuentro     = 0;
     }
 
-    $chart01JSON  = get_curl('801/examen/competicion/chart01/'.$usu_04.'/'.$valorCompeticion.'/174');
+    $chart01JSON  = get_curl('801/examen/competicion/chart01/'.$usu_04.'/'.$valorCompeticion.'/174/'.$valorEncuentro);
 ?>
 
 <!DOCTYPE html>
@@ -133,36 +133,51 @@
                                     </h4>
                                 </div>
                                 
-                                 <div class="row">
+                                <div class="row">
  <?php           
     if ($chart01JSON['code'] === 200){
+        $cantTot = 0;
+        $cantEsp = 0;
+        $cantAdj = 0;
+        $cantPen = 0;
+
         foreach ($chart01JSON['data'] as $chart01KEY => $chart01VALUE){
             $csschart01 = '';
+            $csschartpor= '100%';
+
             switch ($chart01VALUE['tipo_codigo']) {
                 case 1:
+                    $cantTot    = $chart01VALUE['cantidad_persona'];
                     $csschart01 = 'bg-light-info';
+                    $csschartcss= 'css-bar-info css-bar-100';
                     break;
                 
                 case 207:
-                    $csschart01 = 'bg-encu';
+                    $cantEsp    = $chart01VALUE['cantidad_persona'];
+                    $csschart01 = 'bg-light-warning';
+                    $csschartcss= 'css-bar-warning css-bar-100';
                     break;
 
                 case 208:
-                    $csschart01 = 'bg-light-danger';
+                    $cantAdj    = $chart01VALUE['cantidad_persona'];
+                    $csschart01 = 'bg-light-success';
+                    $csschartcss= 'css-bar-success css-bar-100';
                     break;
 
                 case 211:
-                    $csschart01 = 'bg-light-warning';
+                    $csschart01 = 'bg-encu';
                     break;
 
                 case 2:
-                    $csschart01 = 'bg-light-success';
+                    $cantPen    = $chart01VALUE['cantidad_persona'];
+                    $csschart01 = 'bg-light-danger';
+                    $csschartcss= 'css-bar-danger css-bar-100';
                     break;
             }
-           
             
+            if ($chart01VALUE['tipo_codigo'] != 211){
  ?>
-                                    <div class="col-sm-3 col-sm-4">
+                                    <div class="col-sm-3">
                                             <div class="card card <?php echo $csschart01; ?>">
                                                 <div class="card-body">
                                                     <div class="row p-t-10 p-b-10">
@@ -172,17 +187,19 @@
                                                         </div>
 
                                                         <div class="col text-right align-self-center">
-                                                            <div id="valPER01" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
+                                                            <div id="valPER01" class="css-bar m-b-0 <?php echo $csschartcss; ?>" data-label="<?php echo $csschartpor; ?>"><i class="mdi mdi-star-circle"></i></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                     </div>
 <?php      
+            }
         }
     }
  ?>
                                 </div>
+                                
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_04; ?>">
