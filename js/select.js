@@ -288,3 +288,27 @@ function selectDominio(rowDom, rowTip, rowInp){
         }
     });
 }
+
+function selectEquiposAll(rowComp, rowInp){
+    var selComp     = document.getElementById(rowComp);
+    var selInp      = document.getElementById(rowInp);
+    console.log(selComp.value);
+    var xJSON       = getCompetenciaParticipante(selComp.value);
+
+    while (selInp.length > 0) {
+        selInp.remove(0);
+    }
+
+        xJSON.forEach(element => {
+            var option      = document.createElement('option');
+            option.value    = element.equipo_codigo;
+            option.text     = element.equipo_nombre;
+            selInp.add(option, null);
+        });
+
+        var option      = document.createElement('option');
+        option.value    = 39393;
+        option.text     = 'CONMEBOL';
+        selInp.add(option, null);
+    
+}
