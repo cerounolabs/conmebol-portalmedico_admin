@@ -417,3 +417,106 @@ function setPersonaComet(codElem, codAcc){
 	$("#modal-content").empty();
 	$("#modal-content").append(html);
 }
+
+function setPersonaComet2(codElem, codAcc){
+	var xJSON		= getCompetenciaListado();
+	var xJSON1		= getEquipo(equipo_codigo);
+	var selComp		='';
+	if (codAcc == 1) {
+        xJSON.forEach(element => {
+			selComp = selComp + '                               <option value="'+element.competicion_codigo+'">DISCIPLINA: '+ element.competicion_disciplina +' - COMPETICION: '+ element.competicion_nombre + ' - GENERO: ' + element.competicion_genero + ' - PERIODO: ' + element.competicion_anho +'</option>';
+		});
+
+		xJSON1.forEach(element => {
+			selComp = selComp + '                               <option value="'+element.competicion_codigo+'">DISCIPLINA: '+ element.competicion_disciplina +' - COMPETICION: '+ element.competicion_nombre + ' - GENERO: ' + element.competicion_genero + ' - PERIODO: ' + element.competicion_anho +'</option>';
+		});
+
+		html = 
+			'<div class="modal-content">'+
+			'   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_comet.php">'+
+			'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
+			'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
+			'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+			'	    </div>'+
+			''+
+			'	    <div class="modal-body">'+
+			'           <div class="form-group">'+
+			'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="0"  				required readonly>'+
+			'               <input class="form-control" type="hidden" id="workModo" 	name="workModo"		value="'+ bodyMod +'" 	required readonly>'+
+			'               <input class="form-control" type="hidden" id="workPage" 	name="workPage"		value="persona_comet" 	required readonly>'+
+			'           </div>'+
+			''+
+			'               <div class="col-sm-12">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var02">Competencia</label>'+
+			'                       <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+selComp+
+			'                       </select>'+
+			'                    </div>'+
+			'                </div>'+
+			''+
+			'               <div class="col-sm-12 col-md-4">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var02">Equipo</label>'+
+			'                       <input id="var02" name="var02" value="" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="NOMBRE" '+ bodyOnl +' required >'+
+			'                   </div>'+
+			'               </div>'+
+			''+
+			'               <div class="col-sm-12 col-md-4">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var03">Persona</label>'+
+			'                       <input id="var03" name="var03" value="" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="APELLIDO" '+ bodyOnl +' required >'+
+			'                   </div>'+
+			'               </div>'+
+			''+
+			'               <div class="col-sm-12 col-md-4">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var04">Tipo</label>'+
+			'                       <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;" '+ bodyOnl +'>'+
+			'                           <optgroup label="Tipo">'+
+			'                               <option value="MALE">MALE</option>'+
+			'                               <option value="FEMALE">FEMALE</option>'+
+			'                           </optgroup>'+
+			'                       </select>'+	
+			'                   </div>'+
+			'               </div>'+
+			''+
+			'               <div class="col-sm-12 col-md-4">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var05">FECHA NACIMIENTO</label>'+
+			'                       <input id="var05" name="var05" value="" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="FECHA NACIMIENTO" '+ bodyOnl +'>'+
+			'                   </div>'+
+			'               </div>'+
+			''+
+			'               <div class="col-sm-12 col-md-4">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var06">POSICIÓN O FUNCIÓN</label>'+
+			'                       <input id="var06" name="var06" value="" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="POSICIÓN O FUNCIÓN" '+ bodyOnl +'>'+
+			'                   </div>'+
+			'               </div>'+
+			''+
+			'               <div class="col-sm-12 col-md-4">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var07">TIPO DOCUMENTO</label>'+
+			'                       <select id="var07" name="var07" class="form-control" style="width:100%; height:40px;" '+ bodyOnl +'  required>'+
+            '                           <optgroup label="TIPO DOCUMENTO">'+ selTipoDoc +
+            '                           </optgroup>'+
+			'                       </select>'+			
+			'                   </div>'+
+			'               </div>'+
+			''+
+			'               <div class="col-sm-12 col-md-4">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var08">NÚMERO DOCUMENTO</label>'+
+			'                       <input id="var08" name="var08" value="" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NÚMERO DOCUMENTO" '+ bodyOnl +' required>'+
+			'                   </div>'+
+			'               </div>'+
+			'           </div>'+
+			'	    </div>'+
+			''+
+			'	    <div class="modal-footer">'+ bodyBot +
+			'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+			'	    </div>'+
+			'   </form>'+
+			'</div>';
+	}
+}
