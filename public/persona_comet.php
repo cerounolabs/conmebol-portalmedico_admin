@@ -77,10 +77,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-10 card-title">PERSONAS</h4>
-                                    <h4 class="col-2 card-title" style="text-align: right;">
-                                    <a href="javascript:void(0)" onclick="setPersonaComet(0, 1);" title="Nuevo" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i></a>
-                                	</h4>
+                                    <h4 class="col-6 card-title">PERSONAS</h4>
+                                    <h4 class="col-6 card-title" style="text-align: right;">
+                                    <a href="javascript:void(0)" onclick="setPersonaComet(0, 1);" title="Persona Zona1" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i>Persona Zona 1</a>
+                                    <a href="javascript:void(0)" onclick="setPersonaComet2(0, 1);" title="Persona Comet" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i>Persona Comet</a>
+                                </h4>
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
@@ -151,6 +152,7 @@
 ?>
 
         <script src="../js/api.js"></script>
+        <script src="../js/select.js"></script>
         <script src="../js/persona_comet.js"></script>
     </body>
 </html>

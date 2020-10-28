@@ -1,5 +1,5 @@
 <?php
-    $api = 'http://api.conmebol.com/portalmedico/public/v1';
+    $api = 'http://api.conmebol.com/portalmedico/public/v2';
     $aut = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 
     function get_curl($ext){
