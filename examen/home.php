@@ -14,6 +14,26 @@
     }
     
     $encuentroJSON  = get_curl('200/competicion/home/ultimoencuentro/'.$usu_04);
+
+    $pruebaJSON  = get_curl('200/competicion/home/resultado/'.$usu_04);
+
+    $indRow         = 0;
+
+    if ($pruebaJSON['code'] === 200) {
+        foreach ($pruebaJSON['data'] as $pruebaKEY => $pruebaVALUE) {
+            if ($indRow == 0){
+                $titleEncuentro     = '"'.$pruebaVALUE['encuentro_equipo'].'"';
+                $cantPositivo       = $pruebaVALUE['encuentro_cantidad_positivo'];
+                $cantNegativo       = $pruebaVALUE['encuentro_cantidad_negativo'];
+
+                $indRow       = 1;
+            } else {
+                $titleEncuentro      = $titleEncuentro.', "'.$pruebaVALUE['encuentro_equipo'].'"';
+                $cantPositivo        = $cantPositivo.', '.$pruebaVALUE['encuentro_cantidad_positivo'];
+                $cantNegativo        = $cantNegativo.', '.$pruebaVALUE['encuentro_cantidad_negativo'];
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -112,9 +132,27 @@
         }
     }
 ?>
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card o-income">
+                                    <div class="card-body">
+                                        <div class="d-flex m-b-30 no-block">
+                                            <h5 class="card-title m-b-0 align-self-center">Resultados de Encuentros</h5>
+                                        </div>
+                                        <div id="char01" style="height:250px; width:100%;"></div>
+                                        <ul class="list-inline m-t-30 text-center font-12">
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-circle text-danger"></i> Positivo</li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fa-circle text-success"></i> Negativo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
                 
                 <!-- Modal Procesar -->
                 <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
@@ -153,12 +191,64 @@
 <?php
     include '../include/footer.php';
 ?>
-        <script>
-            localStorage.removeItem('examenPruebaJSON');
-            localStorage.removeItem('jugadorJSON');
-        </script>
-        
+
         <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
-        <script src="../js/api.js?"></script>
+        <script>
+            var chart = c3.generate({
+                bindto: '#char01',
+                data: {
+                    labels: true,
+                columns: [
+                    ['Positivo', <?php echo $cantPositivo; ?>],
+                    ['Negativo', <?php echo $cantNegativo; ?>]
+                ],
+                type: 'bar',
+                names: {
+                        data1: 'Data Name 1',
+                        data2: 'Data Name 2'
+                    }
+                },
+                
+                bar: {
+                    space: 0.2,
+                // or
+                    width: 15 // this makes bar width 100px
+                },
+
+                axis: {
+                y: {
+                    tick: {
+                    count: 3,
+                    outer: false
+                    }
+                },
+
+                x: {
+                    type: 'category',
+                    categories: [ <?php echo $titleEncuentro; ?>]
+                    }
+                },
+
+                legend: {
+                    hide: true
+                },
+
+                grid: {
+                    x: {
+                        show: true
+                    },
+                    y: {
+                        show: true
+                    }
+                },
+
+                size: {
+                    height: 270
+                },
+                color: {
+                    pattern: ['#ef6e6e', '#22c6ab']
+                }
+            });
+        </script>
     </body>
 </html>
