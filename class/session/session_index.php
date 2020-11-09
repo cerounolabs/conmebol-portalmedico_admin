@@ -41,7 +41,7 @@
     
                 switch ($_SESSION['usu_05']) {
                     case '157':
-                        header('Location: ../../examen/competicion.php');
+                        header('Location: ../../examen/home.php');
                         break;
                     
                     default:
