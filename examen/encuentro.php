@@ -14,7 +14,6 @@
     }
     
     $encuentroJSON  = get_curl('200/competicion/encuentro/'.$usu_04.'/'.$valorCompeticion);
-    echo $usu_04;
 ?>
 
 <!DOCTYPE html>
