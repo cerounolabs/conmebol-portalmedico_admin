@@ -5,11 +5,9 @@
 
     if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
         header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
-        header('Location: ../examen/competicion.php');
     }
 
     if ($log_02 !='prueba02@conmebol.com'){
-        header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
         header('Location: ../examen/competicion.php');
     }
 
