@@ -11,7 +11,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="../examen/home.php">
+                    <a class="navbar-brand" href="../examen/competicion.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -128,7 +128,7 @@
                         	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="../examen/home.php" class="sidebar-link">
+                               		<a href="../examen/competicion.php" class="sidebar-link">
                                			<i class="mdi mdi-home"></i>
                                			<span class="hide-menu"> Home </span>
                                		</a>
