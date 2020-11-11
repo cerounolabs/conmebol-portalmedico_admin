@@ -4,7 +4,7 @@
     require '../class/session/session_system.php';
 
     if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
-        header('Location: ../examen/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+        header('Location: ../examen/competicion.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
     
     $competicionJSON    = get_curl('200/competicion/medico/'.$usu_04.'/'.$log_04);
