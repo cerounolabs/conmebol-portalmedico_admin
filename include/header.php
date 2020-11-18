@@ -19,7 +19,8 @@
 	<link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
 	<link href="../assets/libs/nouislider/distribute/nouislider.min.css" rel="stylesheet">
     <link href="../assets/extra-libs/nouislider/palette-noui.css" rel="stylesheet">
-    <link href="../assets/extra-libs/nouislider/noui-slider.min.css" rel="stylesheet">
+	<link href="../assets/extra-libs/nouislider/noui-slider.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
 	<link href="../dist/css/style.css" rel="stylesheet">
 	<link href="../dist/css/custom.css" rel="stylesheet">
 	
