@@ -1,4 +1,4 @@
-const urlBASE   = 'http://api.conmebol.com/portalmedico/public/v1';
+const urlBASE   = 'http://api.conmebol.com/portalmedico/public/v2';
 const autBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 const xHTTP	    = new XMLHttpRequest();
 
@@ -31,6 +31,22 @@ function postJSON(codPAGE, codURL, codPARS) {
         }
     };
     
+    xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
+    xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+    xHTTP.send(codPARS);
+}
+
+function putJSON(codPAGE, codURL, codPARS) {
+    var urlJSON = urlBASE + '/' + codURL;
+
+    xHTTP.open('PUT', urlJSON, true);
+    xHTTP.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var xJSON = JSON.parse(this.responseText);
+            window.location.replace('../public/' + codPAGE + 'code='+ xJSON.code + '&msg=' + xJSON.message);
+        }
+    };
     xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
     xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
@@ -294,6 +310,7 @@ function getCompetenciaListado(){
 
     return xDATA; 
 }
+
 
 function getCompetenciaParticipante(codComp){
     localStorage.removeItem('competenciaParticipanteJSON');

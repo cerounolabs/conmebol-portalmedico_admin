@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var xDATA       = getExamenPrueba(174, _codEncu, _codEqui);
+	var xDATA       = getExamenPrueba(174, _codEncu, _codEqui);
     var tableData   = $('#tableLoad').DataTable(
         {
             processing	: true,
@@ -71,7 +71,7 @@ $(document).ready(function() {
 							btnIMG  = '<a href="http://portalmedico.conmebol.com/'+ full.examen_laboratorio_adjunto +'" target="_blank" title="Adjunto" type="button" class="btn btn-warning btn-icon btn-circle"><i class="fa fa-image"></i></a>';
 						}
 
-						if (full.tipo_estado_codigo == 208 && full.examen_bandera != 'S' && (full.equipo_codigo == 57358 || full.equipo_codigo == 57377 || full.equipo_codigo == 57354 || full.equipo_codigo == 57378 || full.equipo_codigo == 57320)) {
+						if (full.tipo_estado_codigo == 208 && full.examen_bandera != 'S' && _codRts == 'S') {
 							btnNEW  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 6);" title="Nuevo Test" type="button" class="btn btn-info btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
 						}
 
@@ -199,7 +199,6 @@ function setExamenCovid(codElem, codAcc){
 
 			xJSON2.forEach(element => {
 				if (element.examen_codigo == codElem) {
-					console.log(element.examen_fecha_1);
 					html = 
 						'<div class="modal-content">'+
 						'   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="">'+

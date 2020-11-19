@@ -106,7 +106,10 @@ $(document).ready(function() {
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
 			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] },
 			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
-			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] }
+			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
+			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
+			{ targets			: [10],	visible : true, searchable : false,	orderData : [10, 0] }
+
 		],
 		columns		: [
 			{ data				: 'persona_codigo', name : 'persona_codigo'},
@@ -121,7 +124,21 @@ $(document).ready(function() {
 			{ data				: 'auditoria_usuario', name : 'auditoria_usuario'},
 			{ data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
 			{ data				: 'auditoria_ip', name : 'auditoria_ip'},
+			{ data				: 'competicion_persona_rts', name : 'competicion_persona_rts'},
+			
+				{ render			: 
+				function (data, type, full, meta) {
+					var btnComp 		= '';
+					if (full.competicion_persona_rts == 'S'){  
+						btnComp	= `<input type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo},${full.persona_codigo},${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}','N');"> <script> $("input[type='checkbox']").bootstrapSwitch(); </script>`;
+					} else{
+						btnComp	= `<input type="checkbox" data-on-color="success" data-off-color="info"  data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo},${full.persona_codigo},${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}','S');"> <script> $("input[type='checkbox']").bootstrapSwitch();</script>`;
+					}
+					return (btnComp);
+				}
+			},
 		]
+		
 	});
 
 	$('#tableLoadCMed tbody').on('click', 'tr', function(event) {
@@ -146,61 +163,79 @@ function setCompetenciaPersona(){
 	var nomPers = localStorage.getItem('persona_nombre');
 	var xJSON   = getCompetenciaListado();
 	var selComp = '';
+	var html='';
 
 	xJSON.forEach(element => {
 		selComp = selComp + '                               <option value="'+element.competicion_codigo+'">DISCIPLINA: '+ element.competicion_disciplina +' - COMPETICION: '+ element.competicion_nombre + ' - GENERO: ' + element.competicion_genero + ' - PERIODO: ' + element.competicion_anho +'</option>';
 	});
 
-	var html    = 
-		'<div class="modal-content">'+
-		'   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_competencia.php">'+
-		'	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-		'		    <h4 class="modal-title" id="vcenter"> Agregar Competencia </h4>'+
-		'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-		'	    </div>'+
-		''+
-		'	    <div class="modal-body" >'+
-		'           <div class="row pt-3">'+
-		'               <div class="col-sm-12">'+
-		'                   <div class="form-group">'+
-		'                       <label for="var01_1">Médico</label>'+
-		'                       <input id="var01_1" name="var01_1" class="form-control" type="text" value="'+nomPers+'" style="text-transform:uppercase; height:40px;" required readonly>'+
-		'                       </select>'+
-		'                    </div>'+
-		'                </div>'+
-		''+
-		'               <div class="col-sm-12">'+
-		'                   <div class="form-group">'+
-		'                       <label for="var02">Competencia</label>'+
-		'                       <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+selComp+
-		'                       </select>'+
-		'                    </div>'+
-		'                </div>'+
-		''+
-		'                <div class="col-sm-12">'+
-		'                    <div class="form-group">'+
-		'                        <label for="var03">Comentario</label>'+
-		'                        <textarea id="var03" name="var03" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
-		'                    </div>'+
-		'                </div>'+
-		'           </div>'+
-		''+
-		'           <div class="form-group">'+
-		'               <input type="hidden" class="form-control"	id="var01"			name="var01" 		value="'+codPers+'"						required readonly>'+
-		'               <input type="hidden" class="form-control"	id="workModo"		name="workModo" 	value="C"								required readonly>'+
-		'               <input type="hidden" class="form-control"	id="workCodigo" 	name="workCodigo" 	value="0"								required readonly>'+
-		'               <input type="hidden" class="form-control"	id="workPage"		name="workPage" 	value="medico.php?codigo='+ xMod +'&"	required readonly>'+
-		'               <input type="hidden" class="form-control"	id="workModulo"		name="workModulo" 	value="'+ xMod +'"						required readonly>'+
-		'           </div>'+
-		'	    </div>'+
-		''+
-		'	    <div class="modal-footer">'+
-		'           <button type="submit" class="btn btn-info">Agregar</button>'+
-		'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-		'	    </div>'+
-		'   </form>'+
-		'</div>';
+		html    = 
+			'<div class="modal-content">'+
+			'   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_competencia.php">'+
+			'	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+			'		    <h4 class="modal-title" id="vcenter"> Agregar Competencia </h4>'+
+			'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+			'	    </div>'+
+			''+
+			'	    <div class="modal-body" >'+
+			'           <div class="row pt-3">'+
+			'               <div class="col-sm-12">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var01_1">Médico</label>'+
+			'                       <input id="var01_1" name="var01_1" class="form-control" type="text" value="'+nomPers+'" style="text-transform:uppercase; height:40px;" required readonly>'+
+			'                       </select>'+
+			'                    </div>'+
+			'                </div>'+
+			''+
+			'               <div class="col-sm-12">'+
+			'                   <div class="form-group">'+
+			'                       <label for="var02">Competencia</label>'+
+			'                       <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+selComp+
+			'                       </select>'+
+			'                    </div>'+
+			'                </div>'+
+			''+
+			'                <div class="col-sm-12">'+
+			'                    <div class="form-group">'+
+			'                        <label for="var03">Comentario</label>'+
+			'                        <textarea id="var03" name="var03" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
+			'                    </div>'+
+			'                </div>'+
+			'           </div>'+
+			''+
+			'           <div class="form-group">'+
+			'               <input type="hidden" class="form-control"	id="var01"			name="var01" 		value="'+codPers+'"						required readonly>'+
+			'               <input type="hidden" class="form-control"	id="workModo"		name="workModo" 	value="C"								required readonly>'+
+			'               <input type="hidden" class="form-control"	id="workCodigo" 	name="workCodigo" 	value="0"								required readonly>'+
+			'               <input type="hidden" class="form-control"	id="workPage"		name="workPage" 	value="medico.php?codigo='+ xMod +'&"	required readonly>'+
+			'               <input type="hidden" class="form-control"	id="workModulo"		name="workModulo" 	value="'+ xMod +'"						required readonly>'+
+			'           </div>'+
+			'	    </div>'+
+			''+
+			'	    <div class="modal-footer">'+
+			'           <button type="submit" class="btn btn-info">Agregar</button>'+
+			'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+			'	    </div>'+
+			'   </form>'+
+			'</div>';
 
 	$("#modalcontent").empty();
 	$("#modalcontent").append(html);
+}
+
+function setCompetenciaAsignada(codElem, codPer, TipPAr,comObs,codRts ){
+	var xPAGE	= _parm04BASE;
+	var xURL	= '200/competicion/medico/' + codElem +'/'+ codPer;
+	var xPARS   = JSON.stringify({
+		'competicion_codigo' : codElem,
+		'persona_codigo': codPer,
+		'tipo_modulo_parametro': TipPAr,
+		'competicion_persona_observacion': comObs,
+		'competicion_persona_rts': codRts,
+		'auditoria_usuario': _parm01BASE,
+		'auditoria_fecha_hora': _parm02BASE,
+		'auditoria_ip': _parm03BASE
+	});
+
+	putJSON(xPAGE, xURL, xPARS);
 }

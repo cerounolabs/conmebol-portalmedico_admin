@@ -19,7 +19,17 @@
         $valorEncuentro     = 0;
     }
 
-    $chart01JSON  = get_curl('801/examen/competicion/chart01/'.$usu_04.'/'.$valorCompeticion.'/174/'.$valorEncuentro);
+    $chart01JSON        = get_curl('801/examen/competicion/chart01/'.$usu_04.'/'.$valorCompeticion.'/174/'.$valorEncuentro);
+    $competicionJSON    = get_curl('200/competicion/medico/'.$usu_04.'/'.$log_04);
+
+    if ($competicionJSON['code'] == 200){
+		foreach ($competicionJSON['data'] as $competicionKEY => $competicionVALUE) {
+			if (($competicionVALUE['competicion_codigo'] == $valorCompeticion))  {       
+                $compRts = $competicionVALUE['competicion_persona_rts'];
+            }
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +67,7 @@
             break;
     }
 ?>
-       
+
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -278,6 +288,8 @@
         const _codComp = <?php echo $valorCompeticion; ?>;
         const _codEncu = <?php echo $valorEncuentro; ?>;
         const _codPerf = <?php echo $usu_05; ?>;
+        const _codRts  = '<?php echo $compRts; ?>';
+        
     </script>
     
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>

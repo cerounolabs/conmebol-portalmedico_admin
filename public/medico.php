@@ -111,7 +111,7 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table id="tableLoadCComp" class="table v-middle" style="width: 100%;">
+                                    <table id="tableLoadCComp" class="table v-middle" style="width: 100%;">
                                             <thead id="tableLoadDComp" class="<?php echo $usu_04; ?>">
                                                 <tr class="bg-conmebol">
                                                     <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
@@ -123,6 +123,8 @@
                                                     <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                     <th class="border-top-0" style="text-align:center;">FECHA - HORA</th>
                                                     <th class="border-top-0" style="text-align:center;">IP</th>
+                                                    <th class="border-top-0" style="text-align:center;">RE-TEST-VAL</th>
+                                                    <th class="border-top-0" style="text-align:center;">RE-TEST</th>
                                                 </tr>
                                             </thead>
 
@@ -153,8 +155,17 @@
 <?php
     include '../include/footer.php';
 ?>
-
+    
+		<script>
+			const _parm01BASE = '<?php echo $log_01; ?>';
+			const _parm02BASE = '<?php echo date('Y-m-d H:m:s'); ?>';
+			const _parm03BASE = '<?php echo $log_03; ?>';
+			const _parm04BASE = 'medico.php?codigo=<?php echo $codPerfil; ?>&';
+			const _parm05BASE = '<?php echo $codPerfil; ?>';
+        </script>
+        
         <script src="../js/api.js"></script>
         <script src="../js/medico.js"></script>
+        
     </body>
 </html>

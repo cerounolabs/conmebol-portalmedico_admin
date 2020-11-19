@@ -97,6 +97,10 @@
         <script src="../assets/libs/wnumb/wNumb.js"></script>
         <script src="../assets/libs/nouislider/distribute/nouislider.min.js"></script>
 
+        <!--bootstrap-switch JavaScript -->
+        <script src="../dist/js/app-style-switcher.horizontal.js"></script>
+        <script src="../assets/libs/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+
 <?php
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];

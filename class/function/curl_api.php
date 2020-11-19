@@ -1,5 +1,5 @@
 <?php
-    $api        = 'http://api.conmebol.com/portalmedico/public/v1';
+    $api        = 'http://api.conmebol.com/portalmedico/public/v2';
     $aut        = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 
     $api_comet  = 'https://api-latam.analyticom.de/api/export/comet';
