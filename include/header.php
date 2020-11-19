@@ -4,23 +4,23 @@
 	<meta name="description" content="CONMEBOL, Sistema Medico">
 	<meta name="author" content="IT Consulting - https://it.com.py">
 
-    <link href="http://www.conmebol.com/sites/all/themes/conm/favicon.ico" type="image/vnd.microsoft.icon" rel="shortcut icon"/>
+	<link href="http://www.conmebol.com/sites/all/themes/conm/favicon.ico" type="image/vnd.microsoft.icon" rel="shortcut icon"/>
 	<link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
 	<link href="../assets/libs/morris.js/morris.css" rel="stylesheet">
 	<link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="../assets/libs/select2/dist/css/select2.min.css" type="text/css" rel="stylesheet">
-    <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+	<link href="../assets/libs/select2/dist/css/select2.min.css" type="text/css" rel="stylesheet">
+	<link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 	<link href="../assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 	<link href="../dist/js/pages/chartist/chartist-init.css" rel="stylesheet">
-    <link href="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
-    <link href="../assets/extra-libs/css-chart/css-chart.css" rel="stylesheet">
+	<link href="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+	<link href="../assets/extra-libs/css-chart/css-chart.css" rel="stylesheet">
 	<link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
 	<link href="../assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
 	<link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
 	<link href="../assets/libs/nouislider/distribute/nouislider.min.css" rel="stylesheet">
-    <link href="../assets/extra-libs/nouislider/palette-noui.css" rel="stylesheet">
+	<link href="../assets/extra-libs/nouislider/palette-noui.css" rel="stylesheet">
 	<link href="../assets/extra-libs/nouislider/noui-slider.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../assets/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+	<link href="../assets/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
 	<link href="../dist/css/style.css" rel="stylesheet">
 	<link href="../dist/css/custom.css" rel="stylesheet">
 	

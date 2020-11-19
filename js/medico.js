@@ -130,15 +130,14 @@ $(document).ready(function() {
 				function (data, type, full, meta) {
 					var btnComp 		= '';
 					if (full.competicion_persona_rts == 'S'){  
-						btnComp	= `<input type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo},${full.persona_codigo},${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}','N');"> <script> $("input[type='checkbox']").bootstrapSwitch(); </script>`;
+						btnComp	= `<input type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo}, ${full.persona_codigo}, ${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}', 'N');"> <script> $("input[type='checkbox']").bootstrapSwitch(); </script>`;
 					} else{
-						btnComp	= `<input type="checkbox" data-on-color="success" data-off-color="info"  data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo},${full.persona_codigo},${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}','S');"> <script> $("input[type='checkbox']").bootstrapSwitch();</script>`;
+						btnComp	= `<input type="checkbox" data-on-color="success" data-off-color="info"  data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo}, ${full.persona_codigo}, ${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}', 'S');"> <script> $("input[type='checkbox']").bootstrapSwitch();</script>`;
 					}
 					return (btnComp);
 				}
 			},
 		]
-		
 	});
 
 	$('#tableLoadCMed tbody').on('click', 'tr', function(event) {
