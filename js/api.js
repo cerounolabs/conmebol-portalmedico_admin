@@ -53,6 +53,22 @@ function putJSON(codPAGE, codURL, codPARS) {
     xHTTP.send(codPARS);
 }
 
+function delJSON(codPAGE, codURL, codPARS) {
+    var urlJSON = urlBASE + '/' + codURL;
+
+    xHTTP.open('DELETE', urlJSON, true);
+    xHTTP.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var xJSON = JSON.parse(this.responseText);
+            window.location.replace('../public/' + codPAGE + 'code='+ xJSON.code + '&msg=' + xJSON.message);
+        }
+    };
+    xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
+    xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+    xHTTP.send(codPARS);
+}
+
 function setChangeCont(codId, codEmail, codUser, codPage) {
     var html = 
     '<div class="modal-content">'+

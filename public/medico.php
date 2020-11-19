@@ -125,6 +125,7 @@
                                                     <th class="border-top-0" style="text-align:center;">IP</th>
                                                     <th class="border-top-0" style="text-align:center;">RE-TEST-VAL</th>
                                                     <th class="border-top-0" style="text-align:center;">RE-TEST</th>
+                                                    <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>
                                                 </tr>
                                             </thead>
 
