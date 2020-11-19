@@ -29,7 +29,6 @@
             }
         }
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -289,7 +288,6 @@
         const _codEncu = <?php echo $valorEncuentro; ?>;
         const _codPerf = <?php echo $usu_05; ?>;
         const _codRts  = '<?php echo $compRts; ?>';
-        
     </script>
     
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
