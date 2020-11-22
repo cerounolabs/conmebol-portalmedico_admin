@@ -71,7 +71,7 @@ $(document).ready(function() {
 							btnIMG  = '<a href="http://portalmedico.conmebol.com/'+ full.examen_laboratorio_adjunto +'" target="_blank" title="Adjunto" type="button" class="btn btn-warning btn-icon btn-circle"><i class="fa fa-image"></i></a>';
 						}
 
-						if (full.tipo_estado_codigo == 208 && full.examen_bandera != 'S' && _codRts == 'S') {
+						if (full.tipo_estado_codigo == 208 && full.examen_bandera != 'S' && (_codRts == 'S' || full.equipo_codigo == 74168)) {
 							btnNEW  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 6);" title="Nuevo Test" type="button" class="btn btn-info btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
 						}
 
