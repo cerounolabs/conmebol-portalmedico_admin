@@ -108,7 +108,8 @@ $(document).ready(function() {
 			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
 			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
 			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
-			{ targets			: [10],	visible : true, searchable : false,	orderData : [10, 0] }
+			{ targets			: [10],	visible : true, searchable : false,	orderData : [10, 0] },
+			{ targets			: [11],	visible : true, searchable : false,	orderData : [11, 0] }
 
 		],
 		columns		: [
@@ -125,16 +126,21 @@ $(document).ready(function() {
 			{ data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
 			{ data				: 'auditoria_ip', name : 'auditoria_ip'},
 			{ data				: 'competicion_persona_rts', name : 'competicion_persona_rts'},
-			
-				{ render			: 
+			{ render			: 
 				function (data, type, full, meta) {
-					var btnComp 		= '';
+					var btnComp = '';
 					if (full.competicion_persona_rts == 'S'){  
 						btnComp	= `<input type="checkbox" checked data-on-color="success" data-off-color="info" data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo}, ${full.persona_codigo}, ${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}', 'N');"> <script> $("input[type='checkbox']").bootstrapSwitch(); </script>`;
 					} else{
 						btnComp	= `<input type="checkbox" data-on-color="success" data-off-color="info"  data-on-text="SI" data-off-text="NO" onchange="setCompetenciaAsignada(${full.competicion_codigo}, ${full.persona_codigo}, ${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}', 'S');"> <script> $("input[type='checkbox']").bootstrapSwitch();</script>`;
 					}
 					return (btnComp);
+				}
+			},
+			{ render			: 
+				function (data, type, full, meta) {
+					var btnDLT	= `<button onclick="setCompetenciaAsignadaDLT(${full.competicion_codigo},${full.persona_codigo},${full.tipo_modulo_parametro}, '${full.competicion_persona_observacion}', '${full.competicion_persona_rts}');" title="Elminar" type="button" class="btn btn-danger btn-icon btn-circle btn-md" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-eraser"></i></button>`;
+					return (btnDLT);
 				}
 			},
 		]
@@ -237,4 +243,21 @@ function setCompetenciaAsignada(codElem, codPer, TipPAr,comObs,codRts ){
 	});
 
 	putJSON(xPAGE, xURL, xPARS);
+}
+
+function setCompetenciaAsignadaDLT(codElem, codPer, TipPAr,comObs,codRts ){
+	var xPAGE	= _parm04BASE;
+	var xURL	= '200/competicion/medico/' + codElem +'/'+ codPer;
+	var xPARS   = JSON.stringify({
+		'competicion_codigo' : codElem,
+		'persona_codigo': codPer,
+		'tipo_modulo_parametro': TipPAr,
+		'competicion_persona_observacion': comObs,
+		'competicion_persona_rts': codRts,
+		'auditoria_usuario': _parm01BASE,
+		'auditoria_fecha_hora': _parm02BASE,
+		'auditoria_ip': _parm03BASE
+	});
+
+	delJSON(xPAGE, xURL, xPARS);
 }
