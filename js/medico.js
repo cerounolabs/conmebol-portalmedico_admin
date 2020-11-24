@@ -232,16 +232,14 @@ function setCompetenciaAsignada(codElem, codPer, TipPAr,comObs,codRts ){
 	var xPAGE	= _parm04BASE;
 	var xURL	= '200/competicion/medico/' + codElem +'/'+ codPer;
 	var xPARS   = JSON.stringify({
-		'competicion_codigo' : codElem,
-		'persona_codigo': codPer,
-		'tipo_modulo_parametro': TipPAr,
+		'tipo_modulo_codigo': TipPAr,
 		'competicion_persona_observacion': comObs,
 		'competicion_persona_rts': codRts,
 		'auditoria_usuario': _parm01BASE,
 		'auditoria_fecha_hora': _parm02BASE,
 		'auditoria_ip': _parm03BASE
 	});
-
+	
 	putJSON(xPAGE, xURL, xPARS);
 }
 
@@ -251,7 +249,7 @@ function setCompetenciaAsignadaDLT(codElem, codPer, TipPAr,comObs,codRts ){
 	var xPARS   = JSON.stringify({
 		'competicion_codigo' : codElem,
 		'persona_codigo': codPer,
-		'tipo_modulo_parametro': TipPAr,
+		'tipo_modulo_codigo': TipPAr,
 		'competicion_persona_observacion': comObs,
 		'competicion_persona_rts': codRts,
 		'auditoria_usuario': _parm01BASE,
