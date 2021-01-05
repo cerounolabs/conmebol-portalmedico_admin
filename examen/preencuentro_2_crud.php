@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="container-fluid">
-                    <form method="post" action="../class/crud/preencuentro_2_crud.php" class="validation-wizard wizard-circle">
+                    <form method="post" action="../class/crud/preencuentro_2_crud.php" enctype="multipart/form-data" class="validation-wizard wizard-circle">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -220,7 +220,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <label for="var101">Persona</label>
+                                                        <label for="var101">Personas</label>
                                                         <select id="var101" name="var101" class="select2 form-control custom-select" onchange="selectJugador2(this.id, 'var102', 'var103', 'var110', <?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 174, '<?php echo $valorTipo; ?>');" style="width:100%; height:40px;" required></select>
                                                     </div>
                                                 </div>
@@ -369,6 +369,92 @@
         }
     }
 ?>
+
+<?php
+    if ($valorTipo == 'Z'){
+?>
+                                                <div class="col-sm-12 col-md-4">
+						                            <div class="form-group">
+						                             <label for="var111">Ya cuenta con los resultados? </label>
+                                                        <select id="var111" name="var111" class="select2 form-control custom-select" onchange="inputSelect(this.id, var111); inputSelect(this.id, var112); inputSelect(this.id, var113); inputSelect(this.id, var114); inputValid(this.id, var117);" style="width:100%; height:40px;" required>
+                                                            <option value="NO" selected>NO</option>
+                                                            <option value="SI">SI</option>                                                           
+                                                        </select>
+						                            </div>
+						                        </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var112">Recepción del test</label>
+                                                        <input id="var112" name="var112" class="form-control"  type="date" style="text-transform:uppercase; height:40px;" placeholder="Recepción del test" required disabled>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+						                            <div class="form-group">
+						                             <label for="var113">Resultado del test</label>
+                                                        <select id="var113" name="var113" class="select2 form-control custom-select" onchange="inputSelect(this.id, var115); inputSelect(this.id, var116); inputSelect(this.id, var117); inputSelect(this.id, var118); inputValid(this.id, var117);" style="width:100%; height:40px;" required disabled>
+                                                            <optgroup label="Resultado">
+                                                                <option value="NO" selected>NEGATIVO</option>
+                                                                <option value="SI">POSITIVO</option>
+                                                            </optgroup>
+                                                        </select>
+						                            </div>
+						                        </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var114">Adjuntar resultado</label>
+                                                        <input id="var114" name="var114" class="form-control" type="file" style="text-transform:uppercase; height:40px;" placeholder="Resultado" required disabled>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var115">Ingresa a cuarentena?</label>
+                                                        <select id="var115" name="var115" class="select2 form-control custom-select" style="width:100%; height:40px;" disabled>
+                                                            <optgroup label="Estado">
+                                                                <option value="NO" selected>NO</option>
+                                                                <option value="SI">SI</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+						                        </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var116">Nuevo test?</label>
+                                                        <select id="var116" name="var116" class="select2 form-control custom-select" style="width:100%; height:40px;" disabled>
+                                                            <optgroup label="Estado">
+                                                                <option value="NO" selected>NO</option>
+                                                                <option value="SI">SI</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var117">Inicio de aislamiento</label>
+                                                        <input id="var117" name="var117" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Inicio de aislamiento" disabled>
+                                                    </div>
+						                        </div>
+
+                                                <div class="col-sm-12 col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="var118">Fin de aislamiento</label>
+                                                        <input id="var118" name="var118" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="Fin de aislamiento" disabled>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-sm-12 col-md-3">
+                                                    <div class="input-group mb-3">
+                                                        <input type="hidden" id="var119" name="var119" class="form-control" value="208" style="height:40px; text-transform:lowercase;">
+                                                    </div>
+                                                </div>
+<?php
+    }
+?>
                                             </div>
                                         </div>
                                     </div>
@@ -393,8 +479,8 @@
                                         <input class="form-control" type="hidden" id="workRegistro"     name="workRegistro"     value="0" required readonly>
                                     </div>
 
-                                    <div class="card-body" style="">
-                                        <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
+                                    <div class="card-body">
+                                        <button type="submit" name="submit" class="btn btn-info"> Guardar </button>
                                         <a role="button" class="btn btn-dark" href="../examen/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
                                     </div>
                                 </div>
