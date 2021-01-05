@@ -14,9 +14,10 @@ function selectEquipo(rowComp, rowEncu, rowEqui, rowTipo, rowPlay, rowPers) {
     }
 
     var option      = document.createElement('option');
-    option.value    = 0;
+    option.value    = '';
     option.text     = 'SELECCIONAR...';
     option.selected = true;
+    option.disabled = true;
     selPers.add(option, null);
 
     if (selEqui.value == 39393 && rowPlay == 'O' && rowTipo == 210) {
