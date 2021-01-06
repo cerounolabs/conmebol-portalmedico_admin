@@ -263,7 +263,7 @@ function getMedicoCompeticion(codPersona, codModulo){
        
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
-            if (element.persona_codigo == codPersona && element.tipo_modulo_codigo == codModulo) {
+            if (element.persona_codigo == codPersona && element.tipo_modulo_parametro == codModulo) {
                 xDATA.push(element);
             }
         });
@@ -282,7 +282,7 @@ function getCompMedico(codPers, codTip){
        
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
-            if (element.persona_codigo == codPers && element.tipo_modulo_codigo == codTip) {
+            if (element.persona_codigo == codPers && element.tipo_modulo_parametro == codTip) {
                 xDATA.push(element);
             }
         });
