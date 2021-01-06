@@ -10,7 +10,7 @@
     if(isset($_GET['codigo'])){
         $codPerfil  = $_GET['codigo'];
     } else {
-        $codPerfil  = 168;
+        $codPerfil  = 1;
     }
 ?>
 
