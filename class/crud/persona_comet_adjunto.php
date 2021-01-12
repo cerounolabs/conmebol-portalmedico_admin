@@ -91,6 +91,12 @@
 			$val07 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(7, $indRow)->getValue();
 			$val08 	= 'Z';//$spreadsheet->getSheet($indPage)->getCellByColumnAndRow(8, $indRow)->getValue();
 
+			if ($val03 == 'F') {
+				$val03 = 'FEMALE';
+			} else {
+				$val03 = 'MALE';
+			}
+
 			if ($val06 == 'D') {
 				$val06 = 212;
 			} else {
