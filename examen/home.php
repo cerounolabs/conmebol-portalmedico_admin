@@ -14,26 +14,7 @@
     }
     
     $encuentroJSON  = get_curl('200/competicion/home/ultimoencuentro/'.$usu_04);
-
-    $pruebaJSON  = get_curl('200/competicion/home/resultado/'.$usu_04);
-
-    $indRow         = 0;
-
-    if ($pruebaJSON['code'] === 200) {
-        foreach ($pruebaJSON['data'] as $pruebaKEY => $pruebaVALUE) {
-            if ($indRow == 0){
-                $titleEncuentro     = '"'.$pruebaVALUE['encuentro_equipo'].'"';
-                $cantPositivo       = $pruebaVALUE['encuentro_cantidad_positivo'];
-                $cantNegativo       = $pruebaVALUE['encuentro_cantidad_negativo'];
-
-                $indRow       = 1;
-            } else {
-                $titleEncuentro      = $titleEncuentro.', "'.$pruebaVALUE['encuentro_equipo'].'"';
-                $cantPositivo        = $cantPositivo.', '.$pruebaVALUE['encuentro_cantidad_positivo'];
-                $cantNegativo        = $cantNegativo.', '.$pruebaVALUE['encuentro_cantidad_negativo'];
-            }
-        }
-    }
+    $pruebaJSON     = get_curl('200/competicion/home/resultado/'.$usu_04); 
 ?>
 
 <!DOCTYPE html>
@@ -132,23 +113,52 @@
         }
     }
 ?>
-
-                            <div class="col-lg-12 col-md-12">
-                                <div class="card o-income">
+<?php
+    if($pruebaJSON['code'] == 200){
+        $indReg = 0;
+        
+        foreach ($pruebaJSON['data'] as $pruebaKEY => $pruebaVALUE) {
+?>
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="card ">
                                     <div class="card-body">
-                                        <div class="d-flex m-b-30 no-block">
-                                            <h5 class="card-title m-b-0 align-self-center">Resultados de Encuentros</h5>
+                                        <h4 class="card-title"><?php echo $pruebaVALUE['encuentro_competicion'].' - '.$pruebaVALUE['encuentro_equipo'] ?></h4>
+                                        <div id="chart01_<?php echo $indReg;?>" style="height:253px;" class="m-t-20"></div>
+                                        <!-- row -->
+                                        <div class="row m-t-30 m-b-15">
+                                            <!-- column -->
+                                            <div class="col-4 birder-right text-left">
+                                                <h4 class="m-b-0"><?php echo  $pruebaVALUE['encuentro_cantidad_positivo'] + $pruebaVALUE['encuentro_cantidad_negativo']; ?>
+                                                </h4>Cant. Pruebas</div>
+                                            <!-- column -->
+                                            <div class="col-4 birder-right text-center">
+                                                <h4 class="m-b-0"><?php echo  $pruebaVALUE['encuentro_cantidad_positivo']; ?>
+                                                    <small>
+                                                        <i class="ti-arrow-up text-danger"></i>
+                                                    </small>
+                                                </h4>Cant. Positivo</div>
+                                            <!-- column -->
+                                            <div class="col-4 text-right">
+                                                <h4 class="m-b-0"><?php echo  $pruebaVALUE['encuentro_cantidad_negativo']; ?>
+                                                    <small>
+                                                        <i class="ti-arrow-down text-info"></i>
+                                                    </small>
+                                                </h4>Cant. Negativo</div>
                                         </div>
-                                        <div id="char01" style="height:250px; width:100%;"></div>
                                         <ul class="list-inline m-t-30 text-center font-12">
                                             <li class="list-inline-item">
                                                 <i class="fa fa-circle text-danger"></i> Positivo</li>
                                             <li class="list-inline-item">
-                                                <i class="fa fa-circle text-success"></i> Negativo</li>
+                                                <i class="fa fa-circle text-info"></i> Negativo</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
+<?php
+            $indReg = $indReg + 1;
+        }
+    }
+?>
                         </div>
                     </div>
                 </div>
@@ -191,64 +201,64 @@
 <?php
     include '../include/footer.php';
 ?>
-
         <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
         <script>
-            var chart = c3.generate({
-                bindto: '#char01',
-                data: {
-                    labels: true,
-                columns: [
-                    ['Positivo', <?php echo $cantPositivo; ?>],
-                    ['Negativo', <?php echo $cantNegativo; ?>]
-                ],
-                type: 'bar',
-                names: {
-                        data1: 'Data Name 1',
-                        data2: 'Data Name 2'
-                    }
-                },
-                
-                bar: {
-                    space: 0.2,
-                // or
-                    width: 15 // this makes bar width 100px
-                },
+            function loadChart(inpElem, cantPositivo, cantNegativo){
+                $(function() {
+                    'use strict';
 
-                axis: {
-                y: {
-                    tick: {
-                    count: 3,
-                    outer: false
-                    }
-                },
+                    var inputDiv =  document.getElementById(inpElem);
 
-                x: {
-                    type: 'category',
-                    categories: [ <?php echo $titleEncuentro; ?>]
-                    }
-                },
+                    var chart = c3.generate({
+                        bindto: inputDiv,
+                        data: {
+                        columns: [
+                            ['Positivo', cantPositivo],
+                            ['Negativo', cantNegativo]
+                        ],
 
-                legend: {
-                    hide: true
-                },
+                        type: 'donut',
 
-                grid: {
-                    x: {
-                        show: true
-                    },
-                    y: {
-                        show: true
-                    }
-                },
+                        onclick: function(d, i) {
+                            console.log('onclick', d, i);
+                        },
+                        onmouseover: function(d, i) {
+                            console.log('onmouseover', d, i);
+                        },
+                        onmouseout: function(d, i) {
+                            console.log('onmouseout', d, i);
+                        }
+                        },
+                        donut: {
+                        label: {
+                            show: false
+                        },
+                        title: 'Datos',
+                        width: 30
+                        },
 
-                size: {
-                    height: 270
-                },
-                color: {
-                    pattern: ['#ef6e6e', '#22c6ab']
-                }
-            });
+                        legend: {
+                        hide: true
+                        },
+                        color: {
+                        pattern: ['#ff7676', '#4798e8']
+                        }
+                    });
+                });
+            }
+
+<?php
+    if($pruebaJSON['code'] == 200){
+        $indReg = 0;
+
+        foreach ($pruebaJSON['data'] as $pruebaKEY => $pruebaVALUE) {
+?>
+            loadChart('chart01_<?php echo $indReg; ?>', <?php echo  $pruebaVALUE['encuentro_cantidad_positivo']; ?>, <?php echo  $pruebaVALUE['encuentro_cantidad_negativo']; ?> );
+<?php
+            $indReg = $indReg + 1;
+        }
+    }
+?>
         </script>
     </body>
 </html>

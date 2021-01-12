@@ -191,7 +191,7 @@
                                         <input class="form-control" type="hidden" id="workTipo"         name="workTipo"         value="174" required readonly>
                                     </div>
 
-                                    <div class="card-body" style="">
+                                    <div class="card-body">
                                         <button type="submit" type="submit" class="btn btn-info"> Guardar </button>
                                         <a role="button" class="btn btn-dark" href="../examen/covid19.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
                                     </div>

@@ -117,6 +117,14 @@ function setPersonaComet(codElem, codAcc){
 			bodyBot = '';
 			break;
 
+		case 6:
+			bodyTit = 'NUEVO';
+			bodyCol = '#163562;';
+			bodyMod = 'C';
+			bodyOnl = '';
+			bodyBot = '           <button type="submit" name="submit" class="btn  text-center text-white" style="background-color:'+ bodyCol +'">Agregar</button>';
+			break;
+
 		default:
 			break;
 	}
@@ -412,6 +420,40 @@ function setPersonaComet(codElem, codAcc){
 		'	    </div>'+
 		'   </form>'+
 		'</div>';
+	} else if(codAcc == 6){
+		html = 
+			'<div class="modal-content">'+
+			'   <form id="form" data-parsley-validate method="post" action="../class/crud/persona_comet_adjunto.php" enctype="multipart/form-data">'+
+			'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
+			'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
+			'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+			'	    </div>'+
+			''+
+			'	    <div class="modal-body">'+
+			'           <div class="row">'+
+			'               <div class="col-sm-12">'+
+			'               	<div class="row">'+
+			'               		<div class="col-xl-12">'+
+			'                   		<div class="form-group">'+
+			'                       		<label for="var09" style="color:#163562; font-weight:bold;">Adjuntar Archivo</label>'+
+			'                       		<input id="var09" name="var09" class="form-control" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="height:40px;" required>'+
+			'                   		</div>'+
+			'               		</div>'+
+			'               	</div>'+
+			'           	</div>'+
+			'           </div>'+
+			''+
+			'           <div class="form-group">'+
+			'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="0"  				required readonly>'+
+			'               <input class="form-control" type="hidden" id="workModo" 	name="workModo"		value="'+ bodyMod +'" 	required readonly>'+
+			'               <input class="form-control" type="hidden" id="workPage" 	name="workPage"		value="persona_comet" 	required readonly>'+
+			'           </div>'+
+			'       </div>'+
+			'	    <div class="modal-footer">'+ bodyBot +
+			'		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+			'	    </div>'+
+			'   </form>'+
+			'</div>';
 	}
 
 	$("#modal-content").empty();

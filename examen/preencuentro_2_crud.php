@@ -371,8 +371,9 @@
 ?>
 
 <?php
-    if ($valorTipo == 'Z'){
+    if ($valorTipo == 'Z' || $valorTipo == 'O'){
 ?>
+
                                                 <div class="col-sm-12 col-md-4">
 						                            <div class="form-group">
 						                             <label for="var111">Ya cuenta con los resultados? </label>
