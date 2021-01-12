@@ -175,6 +175,8 @@
 	
 				$result	= put_curl('801/examen/prueba/'.$work01, $dataJSON);
 				$result	= json_decode($result, true);
+				$code 	= $result['code'];
+				$msg	= $result['message'];
 			}
 		}
 

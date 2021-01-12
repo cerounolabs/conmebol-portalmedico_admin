@@ -79,8 +79,9 @@
                                 <div class="row">
                                     <h4 class="col-6 card-title">PERSONAS</h4>
                                     <h4 class="col-6 card-title" style="text-align: right;">
-                                    <a href="javascript:void(0)" onclick="setPersonaComet(0, 1);" title="Persona Zona1" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i>Persona Zona 1</a>
-                                    <a href="javascript:void(0)" onclick="setPersonaComet2(0, 1);" title="Persona Comet" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i>Persona Comet</a>
+                                        <a href="javascript:void(0)" onclick="setPersonaComet(0, 6);" title="Persona Zona1" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-cloud-upload-alt"></i> Importar Excel </a>
+                                        <a href="javascript:void(0)" onclick="setPersonaComet(0, 1);" title="Importar Excel" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i> Persona Zona 1 </a>
+                                        <a href="javascript:void(0)" onclick="setPersonaComet2(0, 1);" title="Persona Comet" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i> Persona Comet </a>
                                 </h4>
 								</div>
                                 <div class="table-responsive">
@@ -111,6 +112,11 @@
                 <!-- Modal Procesar -->
                 <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" id="modalcontent">
+                    </div>
+                </div>
+
+                <div id="modal-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modal-content">
                     </div>
                 </div>
 
