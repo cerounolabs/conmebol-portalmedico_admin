@@ -89,7 +89,7 @@
 			$val05 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(5, $indRow)->getValue();
 			$val06 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(6, $indRow)->getValue();
 			$val07 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(7, $indRow)->getValue();
-			$val08 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(8, $indRow)->getValue();
+			$val08 	= 'Z';//$spreadsheet->getSheet($indPage)->getCellByColumnAndRow(8, $indRow)->getValue();
 
 			if ($val06 == 'D') {
 				$val06 = 212;
@@ -118,7 +118,7 @@
 				$result	= json_decode($result, true);
 			}
 		}
-		
+
 		if(empty($val01) && empty($val02) && empty($val03)){
 			$indRow = 200;
 		}		
