@@ -82,6 +82,7 @@ $RECYCLE.BIN/
 
 #Imagen
 imagen/*
+upload/*
 
 #Plugins
 vendor/*
