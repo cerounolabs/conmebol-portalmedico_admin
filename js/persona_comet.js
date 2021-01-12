@@ -146,9 +146,9 @@ function setPersonaComet(codElem, codAcc){
 			''+
 			'	    <div class="modal-body">'+
 			'           <div class="form-group">'+
-			'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="0"  				required readonly>'+
-			'               <input class="form-control" type="hidden" id="workModo" 	name="workModo"		value="'+ bodyMod +'" 	required readonly>'+
-			'               <input class="form-control" type="hidden" id="workPage" 	name="workPage"		value="persona_comet" 	required readonly>'+
+			'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="0"  					required readonly>'+
+			'               <input class="form-control" type="hidden" id="workModo" 	name="workModo"		value="'+ bodyMod +'" 		required readonly>'+
+			'               <input class="form-control" type="hidden" id="workPage" 	name="workPage"		value="persona_comet.php"	required readonly>'+
 			'           </div>'+
 			''+
 			'           <div class="row">'+
