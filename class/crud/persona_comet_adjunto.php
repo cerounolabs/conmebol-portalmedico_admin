@@ -103,7 +103,7 @@
 				$val06 = 213;
 			}
 
-			if (!empty($val01) && !empty($val02) && !empty($val03) && !empty($val04) && !empty($val05) && !empty($val06) && !empty($val07)) {
+			if (!empty($val01) && !empty($val02) && !empty($val03) && !empty($val06) && !empty($val07)) {
 				$dataJSON = json_encode(
 					array(
 						'persona_codigo'			=> $work01,
