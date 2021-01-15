@@ -77,9 +77,9 @@ $(document).ready(function() {
 							btnNEW  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 6);" title="Nuevo Test" type="button" class="btn btn-info btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
 						}
 
-						btnPER  = '<a href="../examen/perfil.php?codigo='+full.persona_codigo +'" target="_blank" title="Ver Perfil" type="button" class="btn btn-circle" style="background-color:#0BD9F4; color:#ffffff;"><i class=" fas fa-user"></i></a>';
+						btnPER  = '<a href="../examen/perfil.php?codigo='+full.persona_codigo +'" target="_blank" title="Histórico" type="button" class="btn btn-circle" style="background-color:#0BD9F4; color:#ffffff;"><i class=" fas fa-user"></i></a>';
 						
-                        return (btnUPD + '&nbsp;' + btnIMG + '&nbsp;' + btnNEW + '&nbsp;' + btnDSP  + '&nbsp;' + btnPER);
+                        return (btnPER + '&nbsp;' + btnUPD + '&nbsp;' + btnIMG + '&nbsp;' + btnNEW + '&nbsp;' + btnDSP);
                     }
                 },
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},

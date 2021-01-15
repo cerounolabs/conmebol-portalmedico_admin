@@ -221,7 +221,7 @@
                                                 <th class="border-top-0" style="text-align:center;">FECHA ENVIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA RECEPCI&Oacute;N</th>
                                                 <th class="border-top-0" style="text-align:center;">RESULTADO</th>
-                                                <th class="border-top-0" style="text-align:center; width:80px;">&nbsp;</th>
+                                                <th class="border-top-0" style="text-align:center; width:160px;">&nbsp;</th>
                                                 <th class="border-top-0" style="text-align:center;">USUARIO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA HORA</th>
                                                 <th class="border-top-0" style="text-align:center;">IP</th>
