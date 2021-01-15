@@ -60,7 +60,15 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-    	include '../include/menu.php';
+    switch ($usu_05) {
+        case 157:
+            include '../include/menu_examen.php';
+            break;
+        
+        default:
+            include '../include/menu.php';
+            break;
+    }
 ?>
        
         <!-- Page wrapper  -->
@@ -79,8 +87,13 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../public/home.php">Home</a>
+                                        <a href="javascript:void(0)">HOME</a>
                                     </li>
+
+                                    <li class="breadcrumb-item" aria-current="page">
+                                        <a href="../examen/competicion.php">COMPETICIONES</a>
+                                    </li>
+                                    
                                     <li class="breadcrumb-item active" aria-current="page">Perfil</li>
                                 </ol>
                             </nav>
@@ -199,12 +212,15 @@
                                     <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
 <?php
     if($tipotestJSON['code'] == 200){
-      foreach ($tipotestJSON['data'] as $tipotestKEY => $tipotestVALUE) {
+        $activeCSS = 'active show';
+
+        foreach ($tipotestJSON['data'] as $tipotestKEY => $tipotestVALUE) {
 ?>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="pills-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>-tab" data-toggle="pill" href="#tab-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>" role="tab" aria-controls="pills-profile01" aria-selected="false"><?php echo $tipotestVALUE['tipo_nombre_castellano']; ?></a>
+                                            <a class="nav-link <?php echo $activeCSS.'PRUEBAON'; ?>" id="pills-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>-tab" data-toggle="pill" href="#tab-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>" role="tab" aria-controls="pills-profile01" aria-selected="false"><?php echo $tipotestVALUE['tipo_nombre_castellano']; ?></a>
                                         </li>
 <?php
+            $activeCSS = '';
         }
     }
 ?>
@@ -215,10 +231,13 @@
                             
                             
 <?php
-    if($testJSON['code'] == 200){
+    if($testJSON['code'] == 200) {
+        $activeCSS = 'active';
+
         foreach ($tipotestJSON['data'] as $tipotestKEY => $tipotestVALUE) {
+
 ?>
-                                        <div class="tab-pane fade show" id="tab-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>" role="tab" aria-labelledby="pills-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>-tab">
+                                        <div class="tab-pane fade show <?php echo $activeCSS; ?>" id="tab-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>" role="tab" aria-labelledby="pills-profile01<?php echo $tipotestVALUE['tipo_parametro']; ?>-tab">
                                             <div class="card-body">
                                                 <section>
 <?php
@@ -227,8 +246,8 @@
 ?>
 
 
-<div class="row pt-5">
-                                                <?php
+                                                    <div class="row">
+<?php
                 if ($testVALUE['examen_laboratorio_adjunto'] !=  ''){
 ?>
                                                         <div class="col-sm-12 col-md-4">
@@ -253,8 +272,20 @@
 ?>
                                                     </div>
                                                     
-                                                    <div class="row pt-5">
-                                                        <div class="col-sm-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Test Control</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"><i class="fas fa-syringe"></i></span>
+                                                                    </div>
+                                                                    <input type="text" value="<?php echo $testVALUE['examen_codigo']; ?>" class="form-control" style="height:40px; text-transform:uppercase;" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-12 col-md-4">
                                                             <div class="form-group">
                                                                 <label>Competición</label>
                                                                 <div class="input-group mb-3">
@@ -454,6 +485,9 @@
                         }
                     }
 ?>
+                                                        <div class="col-sm-12">
+                                                            <hr>
+                                                        </div>
                                                     </div>
 <?php
                 }
@@ -464,6 +498,7 @@
                                         </div>
 
 <?php
+            $activeCSS = '';
         }
     }
 ?>

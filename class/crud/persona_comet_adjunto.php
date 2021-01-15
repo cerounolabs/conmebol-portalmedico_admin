@@ -41,7 +41,7 @@
 				$check = getimagesize($_FILES['var09']['tmp_name']);
 			}
 
-            if ($check !== false) {
+            if($check !== false) {
 				$target_ban = true;
             } else {
 				$target_ban = false;
