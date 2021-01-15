@@ -62,7 +62,9 @@ $(document).ready(function() {
 						var btnUPD	= '';
 						var btnIMG  = '';
 						var btnNEW  = '';
+						var btnPER	= '';
 						var btnDSP = '<button onclick="setExamenCovid('+ full.examen_codigo +', 2);" type="button" class="btn btn-primary btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv" title="Ver"><i class="ti-eye"></i></button>';
+						
 						if (full.tipo_estado_codigo == 207) {
 							btnUPD  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 3);" title="Laboratorio" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
 						}
@@ -75,7 +77,9 @@ $(document).ready(function() {
 							btnNEW  = '<button onclick="setExamenCovid('+ full.examen_codigo +', 6);" title="Nuevo Test" type="button" class="btn btn-info btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-edit"></i></button>';
 						}
 
-                        return (btnUPD + '&nbsp;' + btnIMG + '&nbsp;' + btnNEW + '&nbsp;' + btnDSP);
+						btnPER  = '<a href="../examen/perfil.php?codigo='+full.persona_codigo +'" target="_blank" title="Ver Perfil" type="button" class="btn btn-circle" style="background-color:#0BD9F4; color:#ffffff;"><i class=" fas fa-user"></i></a>';
+						
+                        return (btnUPD + '&nbsp;' + btnIMG + '&nbsp;' + btnNEW + '&nbsp;' + btnDSP  + '&nbsp;' + btnPER);
                     }
                 },
                 { data				: 'auditoria_usuario', name : 'auditoria_usuario'},
