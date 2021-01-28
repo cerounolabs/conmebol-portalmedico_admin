@@ -161,7 +161,7 @@
             const _parm01BASE = '<?php echo $log_01; ?>';
             const _parm02BASE = '<?php echo date('Y-m-d H:i:s'); ?>';
             const _parm03BASE = '<?php echo $log_03; ?>';
-            const _parm04BASE = 'externo/persona_comet.php?';
+            const _parm04BASE = 'public/persona_comet.php?';
         </script>
 
         <script src="../js/api.js"></script>
