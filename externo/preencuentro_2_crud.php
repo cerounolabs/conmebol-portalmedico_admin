@@ -3,10 +3,6 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
-        header('Location: ../examen/competicion.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
-    }
-
     if(isset($_GET['competicion'])){
         $valorCompeticion   = $_GET['competicion'];
     } else {
@@ -69,15 +65,7 @@
 
         <div id="main-wrapper">
 <?php
-    switch ($usu_05) {
-        case 157:
-            include '../include/menu_examen.php';
-            break;
-        
-        default:
-            include '../include/menu.php';
-            break;
-    }
+    include '../include/menu_externo.php';
 ?>
 
             <div class="page-wrapper">
@@ -97,15 +85,15 @@
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/competicion.php">COMPETICIONES</a>
+                                            <a href="../externo/competicion.php">COMPETICIONES</a>
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                            <a href="../externo/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
                                         </li>
 
                                         <li class="breadcrumb-item" aria-current="page">
-                                            <a href="../examen/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">PRE-ENCUENTRO TEST</a>
+                                            <a href="../externo/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>">PRE-ENCUENTRO TEST</a>
                                         </li>
 
                                         <li class="breadcrumb-item active" aria-current="page">ALTA DE TEST</li>
@@ -138,24 +126,10 @@
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
                                                         <label for="var110"> Equipo </label>
-<?php
-    if ($valorTipo == 'O') {
-?>
                                                         <select id="var110" name="var110" onchange="selectEquipo(<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>, <?php echo $valorEncuentro; ?>, 'var110', 174, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
                                                             <option selected disabled>SELECCIONAR...</option>
                                                             <option value="<?php echo $usu_04; ?>"><?php echo $juegoJSON['data'][0]['equipo_local_nombre'].' VS '.$juegoJSON['data'][0]['equipo_visitante_nombre']; ?></option>
                                                         </select>
-<?php
-    } else {
-?>
-                                                        <select id="var110" name="var110" onchange="removeItem('examenJugadorJSON'); removeItem('examenPersonaJSON'); selectEquipo(<?php echo $valorCompeticion; ?>, <?php echo $valorEncuentro; ?>, 'var110', 174, '<?php echo $valorTipo; ?>', 'var101');" class="select2 form-control custom-select" style="width:100%; height:40px;" required>
-                                                            <option selected disabled>SELECCIONAR...</option>
-                                                            <option value="<?php echo $juegoJSON['data'][0]['equipo_local_codigo']; ?>">LOCAL: <?php echo $juegoJSON['data'][0]['equipo_local_nombre']; ?></option>
-                                                            <option value="<?php echo $juegoJSON['data'][0]['equipo_visitante_codigo']; ?>">VISITANTE: <?php echo $juegoJSON['data'][0]['equipo_visitante_nombre']; ?></option>
-                                                        </select>
-<?php
-    }
-?>
                                                     </div>
                                                 </div>
 
@@ -469,7 +443,7 @@
                                     <div class="form-group">
                                         <input class="form-control" type="hidden" id="workCodigo"       name="workCodigo"       value="0" required readonly>
                                         <input class="form-control" type="hidden" id="workModo"         name="workModo"         value="C" required readonly>
-                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
+                                        <input class="form-control" type="hidden" id="workPage"         name="workPage"         value="externo/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=<?php echo $valorTipo; ?>&" required readonly>
                                         <input class="form-control" type="hidden" id="workTest"         name="workTest"         value="<?php echo $indexTest; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workCompeticion"  name="workCompeticion"  value="<?php echo $juegoJSON['data'][0]['competicion_codigo']; ?>" required readonly>
                                         <input class="form-control" type="hidden" id="workEncuentro"    name="workEncuentro"    value="<?php echo $valorEncuentro; ?>" required readonly>
@@ -482,7 +456,7 @@
 
                                     <div class="card-body">
                                         <button type="submit" name="submit" class="btn btn-info"> Guardar </button>
-                                        <a role="button" class="btn btn-dark" href="../examen/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
+                                        <a role="button" class="btn btn-dark" href="../externo/preencuentro.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>"> Volver </a>
                                     </div>
                                 </div>
                             </div>

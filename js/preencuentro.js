@@ -76,7 +76,7 @@ $(document).ready(function() {
 							btnANU = '<button onclick="setExamenCovid('+ full.examen_codigo +', 4);" title="Anular" type="button" class="btn btn-danger btn-icon btn-circle" data-toggle="modal" data-target="#modaldiv"><i class="fa fa-trash"></i></button>';
 						}
 
-						btnPER  = '<a href="../examen/perfil.php?codigo='+full.persona_codigo +'" target="_blank" title="Histórico" type="button" class="btn btn-circle" style="background-color:#0BD9F4; color:#ffffff;"><i class=" fas fa-user"></i></a>';
+						btnPER  = '<a href="../'+ _parm05BASE +'codigo='+full.persona_codigo +'" target="_blank" title="Histórico" type="button" class="btn btn-circle" style="background-color:#0BD9F4; color:#ffffff;"><i class=" fas fa-user"></i></a>';
 
                         return (btnPER + '&nbsp;' + btnUPD + '&nbsp;' + btnIMG + '&nbsp;' + btnANU);
                     }
@@ -169,7 +169,7 @@ function setExamenCovid(codElem, codAcc){
 						'           <div class="form-group">'+
 						'               <input class="form-control" type="hidden" id="workCodigo"	name="workCodigo"	value="'+ element.examen_codigo +'" required readonly>'+
 						'               <input class="form-control" type="hidden" id="workModo"		name="workModo"		value="'+ bodyMod +'" required readonly>'+
-						'               <input class="form-control" type="hidden" id="workPage"		name="workPage"		value="preencuentro.php?competicion='+ _codComp +'&encuentro='+ _codEncu +'&" required readonly>'+
+						'               <input class="form-control" type="hidden" id="workPage"		name="workPage"		value="'+ _parm04BASE +'competicion='+ _codComp +'&encuentro='+ _codEncu +'&" required readonly>'+
 						'               <input class="form-control" type="hidden" id="workEstado"	name="workEstado"	value="208" required readonly>'+
 						'           </div>'+
 						''+

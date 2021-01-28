@@ -130,7 +130,7 @@
 		}		
 	}
 
-	header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../'.$work03.'code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>
