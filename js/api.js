@@ -901,12 +901,20 @@ function getExamenPrueba(codTipo, codEncu, codEqui) {
     var xDATA = [];
 
     if (xJSON['code'] == 200){
-        if (codEqui == 39393 && _codPerf != 9) {
-            xJSON['data'].forEach(element => {
-                if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
-                    xDATA.push(element);
-                }
-            });
+        if (codEqui == 39393) {
+            if (_codPerf == 9){
+                xJSON['data'].forEach(element => {
+                    if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
+                        xDATA.push(element);
+                    }
+                });
+            } else {
+                xJSON['data'].forEach(element => {
+                    if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu && element.equipo_codigo != element.encuentro_local_codigo && element.equipo_codigo != element.encuentro_visitante_codigo) {
+                        xDATA.push(element);
+                    }
+                });
+            }
         } else {
             xJSON['data'].forEach(element => {
                 if (element.tipo_examen_codigo == codTipo && element.encuentro_codigo == codEncu) {
