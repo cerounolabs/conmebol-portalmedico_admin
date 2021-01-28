@@ -3,9 +3,7 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($usu_05 != 11 && $usu_05 != 9){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
-    }
+    $competicionJSON    = get_curl('200/competicion/medico/'.$usu_04.'/'.$log_04);
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +30,9 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-    	include '../include/menu.php';
+    include '../include/menu_externo.php';
 ?>
-       
+
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -52,9 +50,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../public/home.php">HOME</a>
+                                        <a href="javascript:void(0)">HOME</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">PERSONAS</li>
+                                    <li class="breadcrumb-item active" aria-current="page">COMPETICIONES</li>
                                 </ol>
                             </nav>
                         </div>
@@ -74,54 +72,29 @@
                 <!-- basic table -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <h4 class="col-6 card-title">PERSONAS</h4>
-                                    <h4 class="col-6 card-title" style="text-align: right;">
-                                        <a href="javascript:void(0)" onclick="setPersonaComet(0, 6);" title="Persona Zona1" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-cloud-upload-alt"></i> Importar Excel </a>
-                                        <a href="javascript:void(0)" onclick="setPersonaComet(0, 1);" title="Importar Excel" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i> Persona Zona 1 </a>
-                                        <a href="javascript:void(0)" onclick="setPersonaComet2(0, 1);" title="Persona Comet" class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;" role="button" data-toggle="modal" data-target="#modal-dialog"><i class="ti-plus"></i> Persona Comet </a>
-                                </h4>
-								</div>
-                                <div class="table-responsive">
-                                    <table id="tableLoad" class="table v-middle" style="width: 100%;">
-                                        <thead id="tableCodigo" class="">
-                                            <tr class="bg-conmebol">
-                                                <th class="border-top-0" style="text-align:center;">C&Oacute;DIGO</th>
-                                                <th class="border-top-0" style="text-align:center;">TIPO</th>
-                                                <th class="border-top-0" style="text-align:center;">TIPO DOCUMENTO</th>
-                                                <th class="border-top-0" style="text-align:center;">N&Uacute;MERO DOCUMENTO</th>
-                                                <th class="border-top-0" style="text-align:center;">NOMBRE</th>
-                                                <th class="border-top-0" style="text-align:center;">APELLIDO</th>
-                                                <th class="border-top-0" style="text-align:center;">GENERO</th>
-                                                <th class="border-top-0" style="text-align:center;">FECHA NACIMIENTO</th>
-                                                <th class="border-top-0" style="text-align:center;">POSICI&Oacute;N O FUNCI&Oacute;N</th>
-                                                <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                        <div class="row">
+<?php
+    if ($competicionJSON['code'] === 200) {
+        foreach ($competicionJSON['data'] as $competicionKEY => $competicionVALUE) {
+?>
+                            <div class="col-md-2">
+                                <div class="card" style="height:200px; padding:0px;">
+                                    <a href="../externo/encuentro.php?competicion=<?php echo $competicionVALUE['competicion_codigo']; ?>" style="height:100%">
+                                        <img class="card-img-top img-responsive" src="http://portalmedico.conmebol.com/<?php echo $competicionVALUE['competicion_imagen_path']; ?>" alt="<?php echo $competicionVALUE['competicion_nombre']; ?>" title="<?php echo $competicionVALUE['competicion_nombre']; ?>" style="height:100%">
+                                    </a>
                                 </div>
                             </div>
+<?php
+        }
+    }
+?>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Modal Procesar -->
                 <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" id="modalcontent">
-                    </div>
-                </div>
-
-                <div id="modal-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="modal-content">
-                    </div>
-                </div>
-
-                <div id="modal-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="modal-content">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -157,15 +130,6 @@
     include '../include/footer.php';
 ?>
 
-        <script>
-            const _parm01BASE = '<?php echo $log_01; ?>';
-            const _parm02BASE = '<?php echo date('Y-m-d H:i:s'); ?>';
-            const _parm03BASE = '<?php echo $log_03; ?>';
-            const _parm04BASE = 'externo/persona_comet.php?';
-        </script>
-
-        <script src="../js/api.js"></script>
-        <script src="../js/select.js"></script>
-        <script src="../js/persona_comet.js"></script>
+        <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
     </body>
 </html>

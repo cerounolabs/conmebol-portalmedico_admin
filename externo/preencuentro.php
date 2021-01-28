@@ -3,10 +3,6 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($usu_05 != 9 && $usu_05 != 10 && $usu_05 != 11 && $usu_05 != 157){
-        header('Location: ../examen/competicion.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
-    }
-
     if(isset($_GET['competicion'])){
         $valorCompeticion   = $_GET['competicion'];
     } else {
@@ -47,15 +43,7 @@
     <div id="main-wrapper">
 
 <?php
-    switch ($usu_05) {
-        case 157:
-            include '../include/menu_examen.php';
-            break;
-        
-        default:
-            include '../include/menu.php';
-            break;
-    }
+    include '../include/menu_externo.php';
 ?>
        
         <!-- Page wrapper  -->
@@ -78,10 +66,10 @@
                                         <a href="javascript:void(0)">HOME</a>
                                     </li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../examen/competicion.php">COMPETICIONES</a>
+                                        <a href="../externo/competicion.php">COMPETICIONES</a>
                                     </li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a href="../examen/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
+                                        <a href="../externo/encuentro.php?competicion=<?php echo $valorCompeticion; ?>">ENCUENTROS</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">PRE-ENCUENTRO TEST</li>
                                 </ol>
@@ -110,26 +98,10 @@
                                 <div class="row">
                                     <h4 class="col-sm-12 col-md-4 card-title">PRE-ENCUENTRO Test</h4>
                                     <h4 class="col-sm-12 col-md-8 card-title" style="text-align: right;">
-<?php
-    if ($usu_04 == 39393 && $usu_05 == 157){
-?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=Z" role="button" title="Agregar"><i class="ti-plus"></i> ALTA ZONA 1 </a>
-<?php
-    } elseif ($usu_04 == 39393 && $usu_05 == 9) {
-?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA CUERPO T&Eacute;CNICO </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=Z" role="button" title="Agregar"><i class="ti-plus"></i> ALTA ZONA 1 </a>
-<?php
-    } else {
-?>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=T" role="button" title="Agregar"><i class="ti-plus"></i> ALTA CUERPO T&Eacute;CNICO </a>
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../examen/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=P" role="button" title="Agregar"><i class="ti-plus"></i> ALTA JUGADORES </a>
-<?php
-    }
-?>
+<!--
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../externo/preencuentro_2_crud.php?competicion=<?php //echo $valorCompeticion; ?>&encuentro=<?php //echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
+-->
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../externo/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=Z" role="button" title="Agregar"><i class="ti-plus"></i> ALTA ZONA 1 </a>
                                     </h4>
                                 </div>
                                 
@@ -279,8 +251,8 @@
         const _parm01BASE = '<?php echo $log_01; ?>';
         const _parm02BASE = '<?php echo date('Y-m-d H:i:s'); ?>';
         const _parm03BASE = '<?php echo $log_03; ?>';
-        const _parm04BASE = 'examen/preencuentro.php?';
-        const _parm05BASE = 'examen/perfil.php?';
+        const _parm04BASE = 'externo/preencuentro.php?';
+        const _parm05BASE = 'externo/perfil.php?';
 
         const _codPers = <?php echo $log_04; ?>;
         const _codEqui = <?php echo $usu_04; ?>;

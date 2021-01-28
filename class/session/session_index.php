@@ -38,16 +38,27 @@
                 $_SESSION['usu_05'] = $resultJSON['data'][0]['tipo_perfil_codigo'];
         
                 $_SESSION['expire'] = time() + 600;
-    
-                switch ($_SESSION['usu_05']) {
-                    case '157':
-                        header('Location: ../../examen/home.php');
-                        break;
-                    
-                    default:
-                        header('Location: ../../public/home.php');
-                        break;
+
+                if($resultJSON['data'][0]['equipo_codigo'] == 39393 && $resultJSON['data'][0]['tipo_perfil_codigo'] == 9){
+                    header('Location: ../../public/home.php');
                 }
+
+                if($resultJSON['data'][0]['equipo_codigo'] == 39393 && $resultJSON['data'][0]['tipo_perfil_codigo'] == 157){
+                    header('Location: ../../externo/competicion.php');
+                }
+
+                if($resultJSON['data'][0]['equipo_codigo'] != 39393 && $resultJSON['data'][0]['tipo_perfil_codigo'] == 157){
+                    header('Location: ../../medico/home.php');
+                }
+//                switch ($_SESSION['usu_05']) {
+//                    case '157':
+//                        header('Location: ../../examen/home.php');
+//                        break;
+//                    
+//                    default:
+//                        header('Location: ../../public/home.php');
+//                        break;
+//                }
 //            } else {
 //                $val_01             = NULL;
 //                $val_02             = NULL;
@@ -62,7 +73,7 @@
             $val_02             = NULL;
             $val_03             = NULL;
     
-            header('Location: ../../?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
+//            header('Location: ../../?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
         }
     }
 ?>

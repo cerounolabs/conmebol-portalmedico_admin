@@ -3,7 +3,7 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($usu_05 != 11 && $usu_05 != 9){
+    if ($usu_04 != 39393 || $usu_05 != 157){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 ?>
@@ -32,7 +32,7 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-    	include '../include/menu.php';
+    include '../include/menu_externo.php';
 ?>
        
         <!-- Page wrapper  -->
@@ -52,7 +52,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../public/home.php">HOME</a>
+                                        <a href="javascript:void(0)">HOME</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">PERSONAS</li>
                                 </ol>
@@ -97,7 +97,7 @@
                                                 <th class="border-top-0" style="text-align:center;">GENERO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA NACIMIENTO</th>
                                                 <th class="border-top-0" style="text-align:center;">POSICI&Oacute;N O FUNCI&Oacute;N</th>
-                                                <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center; width:120px;">ACCI&Oacute;N</th>
                                             </tr>
                                         </thead>
                                         <tbody>

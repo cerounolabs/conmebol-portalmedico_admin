@@ -59,13 +59,13 @@
 		}
 
 		$code 	= $result['code'];
-		$msg	= $result['message'];
+		$msg	= str_replace("\n", ' ', $result['message']);
 	} else {
 		$code 	= 204;
 		$msg	= 'Error. Algún esta vacio, verifique';
 	}
 	
-	header('Location: ../../public/'.$work03.'.php?code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../'.$work03.'code='.$code.'&msg='.$msg);
 
 	ob_end_flush();
 ?>

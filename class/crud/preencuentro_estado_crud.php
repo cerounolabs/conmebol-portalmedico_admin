@@ -119,7 +119,7 @@
         }
     }
     
-    header('Location: ../../examen/'.$work03.'code='.$code.'&msg='.$msg);
+    header('Location: ../../'.$work03.'code='.$code.'&msg='.$msg);
 
 	ob_end_flush();
 ?>
