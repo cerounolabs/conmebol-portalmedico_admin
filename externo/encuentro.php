@@ -71,8 +71,8 @@
             $fecReg = str_replace('/', '-', $encuentroVALUE['juego_horario']);
             $fecReg = date('Y-m-d', strtotime($fecReg));
 
-            if ($fecReg > $fecVal){
-//                if ($encuentroVALUE['juego_codigo'] == 54581310){
+            if ($fecReg > $fecVal) {
+                if (($log_04 != 218 && $log_04 != 219 && $log_04 != 220 && $log_04 != 221 && $log_04 != 222) || ($encuentroVALUE['juego_codigo'] == 54581310 && ($log_04 == 218 || $log_04 == 219 || $log_04 == 220 || $log_04 == 221 || $log_04 == 222))) {
 ?>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <div class="card" style="height:250px;">
@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
 <?php
-//                }
+                }
             }
         }
     }
