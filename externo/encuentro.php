@@ -72,7 +72,7 @@
             $fecReg = date('Y-m-d', strtotime($fecReg));
 
             if ($fecReg > $fecVal){
-                if ($encuentroVALUE['juego_codigo'] == 54581310){
+//                if ($encuentroVALUE['juego_codigo'] == 54581310){
 ?>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <div class="card" style="height:250px;">
@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
 <?php
-                }
+//                }
             }
         }
     }
