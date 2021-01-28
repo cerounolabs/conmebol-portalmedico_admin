@@ -73,7 +73,7 @@
             $val_02             = NULL;
             $val_03             = NULL;
     
-//            header('Location: ../../?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
+            header('Location: ../../?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
         }
     }
 ?>

@@ -98,9 +98,7 @@
                                 <div class="row">
                                     <h4 class="col-sm-12 col-md-4 card-title">PRE-ENCUENTRO Test</h4>
                                     <h4 class="col-sm-12 col-md-8 card-title" style="text-align: right;">
-<!--
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../externo/preencuentro_2_crud.php?competicion=<?php //echo $valorCompeticion; ?>&encuentro=<?php //echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
--->
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../externo/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=O" role="button" title="Agregar"><i class="ti-plus"></i> ALTA OFICIALES </a>
                                         <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../externo/preencuentro_2_crud.php?competicion=<?php echo $valorCompeticion; ?>&encuentro=<?php echo $valorEncuentro; ?>&tipo=Z" role="button" title="Agregar"><i class="ti-plus"></i> ALTA ZONA 1 </a>
                                     </h4>
                                 </div>
