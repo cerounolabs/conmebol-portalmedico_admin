@@ -81,7 +81,7 @@
 	$xlsHojas		= $spreadsheet->getSheetCount();
 
 	for ($indPage = 0; $indPage < $xlsHojas; $indPage++) {
-		for ($indRow = 2; $indRow < 20; $indRow++) {
+		for ($indRow = 2; $indRow < 200; $indRow++) {
 			$val01 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(1, $indRow)->getValue();
 			$val02 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(2, $indRow)->getValue();
 			$val03 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(3, $indRow)->getValue();
