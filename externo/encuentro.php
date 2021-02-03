@@ -72,7 +72,11 @@
             $fecReg = date('Y-m-d', strtotime($fecReg));
 
             if ($fecReg > $fecVal) {
-                if (($log_04 != 218 && $log_04 != 219 && $log_04 != 220 && $log_04 != 221 && $log_04 != 222) || ($encuentroVALUE['juego_codigo'] == 54581310 && ($log_04 == 218 || $log_04 == 219 || $log_04 == 220 || $log_04 == 221 || $log_04 == 222))) {
+                if (
+                    ($log_04 != 218 && $log_04 != 219 && $log_04 != 220 && $log_04 != 221 && $log_04 != 222 && $log_04 != 223 && $log_04 != 224 && $log_04 != 225) || 
+                    ($encuentroVALUE['juego_codigo'] == 54581310 && ($log_04 == 218 || $log_04 == 219 || $log_04 == 220 || $log_04 == 221 || $log_04 == 222)) || 
+                    ($encuentroVALUE['juego_codigo'] == 52356413 && ($log_04 == 223 || $log_04 == 224 || $log_04 == 225))
+                ) {
 ?>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <div class="card" style="height:250px;">
