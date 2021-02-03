@@ -50,6 +50,7 @@
                 if($resultJSON['data'][0]['equipo_codigo'] != 39393 && $resultJSON['data'][0]['tipo_perfil_codigo'] == 157){
                     header('Location: ../../examen/home.php');
                 }
+                
 //                switch ($_SESSION['usu_05']) {
 //                    case '157':
 //                        header('Location: ../../examen/home.php');
