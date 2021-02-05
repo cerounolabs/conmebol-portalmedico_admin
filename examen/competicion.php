@@ -8,6 +8,7 @@
     }
     
     $competicionJSON    = get_curl('200/competicion/medico/'.$usu_04.'/'.$log_04);
+    $compAnhio          = date('Y');
 ?>
 
 <!DOCTYPE html>
@@ -82,12 +83,27 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- basic table -->
+<?php
+    for ($indAnhio = $compAnhio; $indAnhio >= 2020; $indAnhio--) {
+        if($indAnhio != $compAnhio) {
+?>
+            <br>
+            
+            <div class="dropdown-divider" style="border-color:#163562;"></div>
+
+            <br>
+<?php
+        }
+?>
                 <div class="row">
                     <div class="col-12">
+                        <h4 class="card-title">Competiciones <?php echo $indAnhio; ?></h4>
                         <div class="row">
+                            
 <?php
-    if ($competicionJSON['code'] === 200) {
-        foreach ($competicionJSON['data'] as $competicionKEY => $competicionVALUE) {
+        if ($competicionJSON['code'] == 200) {
+            foreach ($competicionJSON['data'] as $competicionKEY => $competicionVALUE) {
+                if ($competicionVALUE['competicion_anho'] == $indAnhio) {
 ?>
                             <div class="col-md-2">
                                 <div class="card" style="height:200px; padding:0px;">
@@ -97,12 +113,17 @@
                                 </div>
                             </div>
 <?php
+                }
+            }
         }
-    }
 ?>
                         </div>
                     </div>
                 </div>
+
+<?php
+    }
+?>
                 
                 <!-- Modal Procesar -->
                 <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
