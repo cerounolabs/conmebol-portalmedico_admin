@@ -14,6 +14,7 @@
     use PhpOffice\PhpSpreadsheet\Settings;
     use PhpOffice\PhpSpreadsheet\IOFactory;
 	use PhpOffice\PhpSpreadsheet\Spreadsheet;
+	use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 	use PhpOffice\PhpSpreadsheet\Reader\IReader;
 	
 	$val09			= '';
@@ -90,7 +91,7 @@
 			$val06 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(6, $indRow)->getValue();
 			$val07 	= $spreadsheet->getSheet($indPage)->getCellByColumnAndRow(7, $indRow)->getValue();
 			$val08 	= 'Z';//$spreadsheet->getSheet($indPage)->getCellByColumnAndRow(8, $indRow)->getValue();
-
+echo $val04;
 			if ($val03 == 'F') {
 				$val03 = 'FEMALE';
 			} else {
@@ -120,8 +121,8 @@
 						'auditoria_ip'        	    => $log_03
 					));
 
-				$result	= post_curl('200/persona', $dataJSON);
-				$result	= json_decode($result, true);
+//				$result	= post_curl('200/persona', $dataJSON);
+//				$result	= json_decode($result, true);
 			}
 		}
 
@@ -130,7 +131,7 @@
 		}		
 	}
 
-	header('Location: ../../'.$work03.'code='.$result['code'].'&msg='.$result['message']);
+//	header('Location: ../../'.$work03.'code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>
