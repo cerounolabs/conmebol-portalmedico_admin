@@ -14,7 +14,6 @@
     use PhpOffice\PhpSpreadsheet\Settings;
     use PhpOffice\PhpSpreadsheet\IOFactory;
 	use PhpOffice\PhpSpreadsheet\Spreadsheet;
-	use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 	use PhpOffice\PhpSpreadsheet\Reader\IReader;
 	
 	$val09			= '';
