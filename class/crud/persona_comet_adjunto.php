@@ -111,7 +111,7 @@
 						'persona_nombre'			=> $val01,
 						'persona_apellido'			=> $val02,
 						'persona_genero'			=> $val03,
-						'persona_fecha_nacimiento'	=> $val04,
+						'persona_fecha_nacimiento'	=> date('Y-m-d', strtotime($val04)),
 						'persona_funcion'			=> $val05,
 						'tipo_documento_codigo'		=> $val06,
 						'tipo_documento_numero'		=> $val07,
@@ -123,10 +123,10 @@
 				$result	= post_curl('200/persona', $dataJSON);
 				$result	= json_decode($result, true);
 			}
-		}
 
-		if(empty($val01) && empty($val02) && empty($val03)){
-			$indRow = 200;
+			if(empty($val01) || empty($val02) || empty($val03) || empty($val06) || empty($val07)){
+				$indRow = 200;
+			}
 		}		
 	}
 
