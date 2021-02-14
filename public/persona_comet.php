@@ -6,6 +6,8 @@
     if ($usu_05 != 11 && $usu_05 != 9){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
+
+    $personJSON         = get_curl('200/persona');
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +34,7 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-    	include '../include/menu.php';
+    include '../include/menu.php';
 ?>
        
         <!-- Page wrapper  -->
@@ -97,7 +99,7 @@
                                                 <th class="border-top-0" style="text-align:center;">GENERO</th>
                                                 <th class="border-top-0" style="text-align:center;">FECHA NACIMIENTO</th>
                                                 <th class="border-top-0" style="text-align:center;">POSICI&Oacute;N O FUNCI&Oacute;N</th>
-                                                <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>
+                                                <th class="border-top-0" style="text-align:center; width:120px;">ACCI&Oacute;N</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -167,5 +169,71 @@
         <script src="../js/api.js"></script>
         <script src="../js/select.js"></script>
         <script src="../js/persona_comet.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                var xJSON	= JSON.parse('<?php echo json_encode($personJSON['data']); ?>');
+
+                $('#tableLoad').DataTable({
+                    processing	: true,
+                    destroy		: true,
+                    searching	: true,
+                    paging		: true,
+                    lengthChange: true,
+                    info		: true,
+                    orderCellsTop: false,
+                    fixedHeader	: false,
+                    language	: {
+                        lengthMenu: "Mostrar _MENU_ registros por pagina",
+                        zeroRecords: "Nothing found - sorry",
+                        info: "Mostrando pagina _PAGE_ de _PAGES_",
+                        infoEmpty: "No hay registros disponibles.",
+                        infoFiltered: "(Filtrado de _MAX_ registros totales)",
+                        sZeroRecords: "No se encontraron resultados",
+                        sSearch: "buscar",
+                        oPaginate: {
+                            sFirst:    "Primero",
+                            sLast:     "Último",
+                            sNext:     "Siguiente",
+                            sPrevious: "Anterior"
+                        },
+                    },
+                    data		: xJSON,
+                    columnDefs	: [
+                        { targets			: [0],	visible : true, searchable : true,	orderData : [0, 0] },
+                        { targets			: [1],	visible : false,searchable : false,	orderData : [1, 0] },
+                        { targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
+                        { targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
+                        { targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
+                        { targets			: [5],	visible : true, searchable : true,	orderData : [5, 0] },
+                        { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
+                        { targets			: [7],	visible : false, searchable : false,orderData : [7, 0] },
+                        { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
+                        { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
+                    ],
+                    columns		: [
+                        { data				: 'persona_codigo', name : 'persona_codigo'},
+                        { data				: 'persona_tipo', name : 'persona_tipo'},
+                        { data				: 'tipo_documento_nombre_castellano', name : 'tipo_documento_nombre_castellano'},
+                        { data				: 'tipo_documento_numero', name : 'tipo_documento_numero'},
+                        { data				: 'persona_nombre', name : 'persona_nombre'},
+                        { data				: 'persona_apellido', name : 'persona_apellido'},
+                        { data				: 'persona_genero', name : 'persona_genero'},
+                        { data				: 'persona_fecha_nacimiento_2', name : 'persona_fecha_nacimiento_2'},
+                        { data				: 'persona_funcion', name : 'persona_funcion'},
+
+                        { render			: 
+                            function (data, type, full, meta) {
+                                var btnDSP	= '<button onclick="setPersonaComet('+ full.persona_codigo +', 2);" title="Ver" type="button" class="btn btn-primary btn-icon btn-circle" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-eye"></i></button>';
+                                var btnUPD	= '<button onclick="setPersonaComet('+ full.persona_codigo +', 3);" title="Editar" type="button" class="btn btn-success btn-icon btn-circle" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-edit"></i></button>';
+                                var btnDLT	= '<button onclick="setPersonaComet('+ full.persona_codigo +', 4);" title="Eliminar" type="button" class="btn btn-danger btn-icon btn-circle" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-eraser"></i></button>';
+                                var btnAUD	= '<button onclick="setPersonaComet('+ full.persona_codigo +', 5);" title="Auditoria" type="button" class="btn btn-warning btn-icon btn-circle" data-toggle="modal" data-target="#modal-dialog"><i class="fa fa-user-secret"></i></button>';
+                                return (btnDSP + '&nbsp;' + btnUPD + '&nbsp;' + btnDLT);
+                            }
+                        },
+                    ]
+                });
+            });
+        </script>
     </body>
 </html>
